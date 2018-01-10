@@ -1,0 +1,49 @@
+app
+├── database
+│	└── queries.php
+│
+├── config
+│	├── config.php
+│	└── settings.php
+│
+├── loader
+│   └── loader.php
+│   
+├── core
+│	├── request.php
+│   └── controls.php
+│
+├── helpers
+│   └── helper.php
+│
+│
+class
+├── class
+│
+├── requests
+│
+│
+resources
+├── css
+├── js
+├── plugins
+├── img
+│
+│
+admin
+├── views
+├── includes
+│
+│
+public
+├── views
+├── includes
+│
+│
+index.php
+│
+│
+.htaccess
+│
+│
+

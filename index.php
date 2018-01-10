@@ -5,4 +5,5 @@
  */
 
 
-require (dirname(__FILE__) . '/frontend.php');
+//require (dirname(__FILE__) . '/frontend.php');
+
