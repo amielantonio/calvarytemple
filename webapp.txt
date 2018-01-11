@@ -4,14 +4,14 @@ app
 │
 ├── config
 │	├── config.php
-│	└── settings.php
+│	├── constants.php
+│	└── database.php
 │
 ├── loader
 │   └── loader.php
 │   
 ├── core
-│	├── request.php
-│   └── controls.php
+│  └── Controls.php
 │
 ├── helpers
 │   └── helper.php

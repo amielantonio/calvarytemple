@@ -23,7 +23,26 @@ require APPPATH . '/config/constants.php';
 
 
 /**
- * Load Routes
+ * Load application helpers
+ */
+
+require APPPATH . '/helper/helper.php';
+
+/**
+ * Load Routes functions
  */
 
 require COREPATH . '/Control.php';
+
+/**
+ * Load Application functions
+ */
+
+require COREPATH . '/Functions.php';
+
+
+/**
+ * Load routing file
+ */
+
+require ROUTESPATH . '/control.php';

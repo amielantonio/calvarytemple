@@ -53,6 +53,8 @@ defined( 'HELPERPATH') OR define( 'HELPERPATH', APPPATH . '/helper');
 
 defined( 'RESOURCEPATH' ) OR define( 'RESOURCEPATH', BASEPATH . '/resources');
 
+defined( 'resources_dir' ) OR define( 'resources_dir', '/'.$config['APP_BASE_URL'] . '/resources');
+
 
 /**
  * Define public path
