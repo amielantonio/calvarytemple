@@ -50,7 +50,7 @@ function admin_base_url(){
 
     $base_url = $base_url['APP_HOST'] . $base_url['APP_BASE_URL'];
 
-    $route = $base_url.'/dashboard/';
+    $route = $base_url.'/dashboard';
 
 
     return $route;
@@ -63,7 +63,11 @@ function direct_admin_url( $url='' ){
 
     $base_url = $base_url['APP_HOST'] . $base_url['APP_BASE_URL'];
 
-    $route = $base_url.'/dashboard/' . $url;
+    if( $url <> '' ){
+        $url = '/'.$url;
+    }
+
+    $route = $base_url.'/dashboard' . $url;
 
     return $route;
 }
@@ -75,9 +79,34 @@ function direct_admin_url( $url='' ){
  */
 function public_base_url(){
 
-    $route = '';
+    // Get config file
+    $base_url = require CONFIGPATH . '/config.php';
+
+    $base_url = $base_url['APP_HOST'] . $base_url['APP_BASE_URL'];
+
+    $route = $base_url.'/';
+
 
     return $route;
+}
+
+/**
+ * Return URI string for accessing public pages
+ *
+ * @param string $url
+ * @return string
+ */
+function direct_public_url( $url = ''){
+
+    // Get config file
+    $base_url = require CONFIGPATH . '/config.php';
+
+    $base_url = $base_url['APP_HOST'] . $base_url['APP_BASE_URL'];
+
+    $route = $base_url.'/' . $url;
+
+    return $route;
+
 }
 
 /**

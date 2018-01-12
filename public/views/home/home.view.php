@@ -7,10 +7,10 @@
 
         <div class="hero-headline">
             <h1>
-                Calvary Temple
+                Lorem Ipsum
             </h1>
             <h2>
-                Passion for God, Compassion for Men
+                Lorem Ipsum Dolor Sit Amet
             </h2>
         </div>
 

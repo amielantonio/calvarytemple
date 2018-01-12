@@ -62,7 +62,7 @@
 
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-calendar"></i>
+                    <i class="fa fa-file-o"></i>
                     <span>Blogs</span>
                     <span class="pull-right-container">
                       <i class="fa fa-angle-left pull-right"></i>

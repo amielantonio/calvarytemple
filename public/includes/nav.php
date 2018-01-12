@@ -11,25 +11,25 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="<?= direct_public_url(); ?>">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Events</a>
+                    <a class="nav-link" href="<?= direct_public_url( 'events' ) ?>">Events</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="about">About us</a>
+                    <a class="nav-link" href="<?= direct_public_url( 'about' ) ?>">About us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Ministries</a>
+                    <a class="nav-link" href="<?= direct_public_url( 'ministries' ) ?>">Ministries</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Blog</a>
+                    <a class="nav-link" href="<?= direct_public_url( 'blog' ) ?>">Blog</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Reservations</a>
+                    <a class="nav-link" href="<?= direct_public_url( 'reservations' ) ?>">Reservations</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="login">Login</a>
+                    <a class="nav-link" href="<?= direct_public_url( 'login' ) ?>">Login</a>
                 </li>
             </ul>
 

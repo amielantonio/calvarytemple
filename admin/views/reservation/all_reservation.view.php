@@ -99,11 +99,11 @@
     <!-- /.content-wrapper -->
 
 
-    <!-- jQuery 3 -->
-    <script src="<?= resource_dir()?>/plugins/adminlte/bower_components/jquery/dist/jquery.min.js"></script>
+
     <script>
         $ = jQuery;
         $(function () {
+
 
             /* initialize the external events
              -----------------------------------------------------------------*/
