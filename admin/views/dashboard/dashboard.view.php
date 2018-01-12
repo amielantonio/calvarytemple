@@ -1,6 +1,6 @@
-<?php include "../includes/header.php" ?>
-<?php include "../includes/nav.php"?>
-<?php include "../includes/sidebar.php"?>
+<?php admin_get_header(); ?>
+<?php admin_get_nav(); ?>
+<?php admin_get_sidebar(); ?>
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -50,4 +50,4 @@
 <!-- /.content-wrapper -->
 
 
-<?php include "../includes/footer.php"?>
+<?php admin_get_footer(); ?>

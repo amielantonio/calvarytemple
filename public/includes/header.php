@@ -8,15 +8,20 @@
     <title>Calvary Temple Angeles City</title>
 
     <!-- Normalize -->
-    <link rel="stylesheet" type="text/css" href="<?php echo resources_dir ?>/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo resource_dir() ?>/css/normalize.css">
 
     <!-- Animate -->
-    <link rel="stylesheet" type="text/css" href="<?php echo resources_dir ?>/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo resource_dir() ?>/css/animate.css">
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" type="text/css" href="<?php echo resources_dir ?>/plugins/bootstrap4/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo resource_dir() ?>/plugins/bootstrap4/css/bootstrap.min.css">
 
     <!-- Application -->
-    <link rel="stylesheet" type="text/css" href="<?php echo resources_dir ?>/css/app.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo resource_dir() ?>/css/app.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700|Open+Sans:300,400,700,700i" rel="stylesheet">
 </head>
 <body>

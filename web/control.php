@@ -22,5 +22,8 @@ control_get('login', 'public', 'login/login');
  * Admin Router
  */
 
+control_get('dashboard', 'admin', 'dashboard/dashboard');
 
 
+/** Reservation Router */
+control_get('dashboard/reservation', 'admin', 'reservation/all_reservation');

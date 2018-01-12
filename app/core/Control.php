@@ -41,13 +41,13 @@ function control_get($uri, $endpoint, $dir, $requestClass = '')
          * Check if the view has functionalities included
          */
         if( $requestClass <> ''){
-            require REQUESTPATH . '/' . $requestClass . '.php';
+            require REQUESTPATH . '/' . $requestClass . '.requests.php';
         }
 
         /**
          * show view
          */
-        return require $thisEndpoint . $dir . '.php';
+        return require $thisEndpoint . $dir . '.view.php';
 
     }
     return '';

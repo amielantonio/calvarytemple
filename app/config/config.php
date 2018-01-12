@@ -26,8 +26,13 @@ $config['APP_TIMEZONE'] = 'UTC';
 /**
  * Application Base Url
  */
-
 $config['APP_BASE_URL'] = 'calvarytemple';
 
+
+/**
+ * Application Host
+ */
+
+$config['APP_HOST'] = 'http://localhost/';
 
 return $config;
