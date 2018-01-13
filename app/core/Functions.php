@@ -165,15 +165,56 @@ function admin_get_sidebar(){
 
 
 /**
- * Check if the current URI is the home page
+ * Check if current URI is home page
  *
+ * @return bool
  */
 function is_home(){
 
+    $url = require CONFIGPATH . '/config.php';
+
+    $url = $url['APP_BASE_URL'];
+
+    $request = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
+
+    if( $url == $request){
+        return true;
+    }else{
+        false;
+    }
 }
 
+function is_page( $page ){
+
+}
+
+/**
+ * Return a View
+ *
+ * @param $endpoint
+ * @param $view
+ * @return mixed
+ */
 function view($endpoint, $view){
 
-    return require $endpoint . $view . '.view.php';
+    if( file_exists($endpoint . $view . '.view.php')){
+        return require $endpoint . $view . '.view.php';
+//        echo $endpoint . $view . '.view.php';
+    }else{
 
+    }
+}
+
+/**
+ * Return a template within the current layout
+ *
+ * @param $endpoint
+ * @param $partialView
+ * @return mixed
+ */
+function view_partial($endpoint, $partialView){
+
+    $partial = 'template/'. $partialView;
+
+    return include $endpoint. $partial . '.view.php';
 }

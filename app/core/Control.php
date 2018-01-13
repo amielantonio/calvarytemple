@@ -44,6 +44,10 @@ function control_get($uri, $endpoint, $dir, $requestClass = '')
             require REQUESTPATH . '/' . $requestClass . '.requests.php';
         }
 
+        if( $endpoint == 'admin'){
+            require COREPATH . '/Auth.php';
+        }
+
         /**
          * show view
          */
