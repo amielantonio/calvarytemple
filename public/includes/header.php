@@ -16,6 +16,9 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" type="text/css" href="<?php echo resource_dir() ?>/plugins/bootstrap4/css/bootstrap.min.css">
 
+    <!-- FontAwesome -->
+    <link rel="stylesheet" type="text/css" href="<?php echo resource_dir() ?>/plugins/font-awesome/css/font-awesome.min.css">
+
     <!-- Application -->
     <link rel="stylesheet" type="text/css" href="<?php echo resource_dir() ?>/css/app.css">
 

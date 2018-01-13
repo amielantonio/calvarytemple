@@ -6,6 +6,66 @@ Calvary Temple CSS
 
 
 /*---------------------------
+| Base Class
+-----------------------------*/
+
+html{
+    overflow-x: hidden;
+    -ms-overflow-x: hidden;
+}
+
+/*---------------------------
+| NAVIGATION
+-----------------------------*/
+
+
+.ct-nav{
+    position: fixed;
+    top:0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: rgba(255,255,255,0.8);
+    z-index: 1000;
+}
+/*top*/
+.nav-top{
+    font-size: 13px;
+    background: none;
+}
+
+/*main*/
+.nav-main{
+
+}
+
+.ct-nav .nav{
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-flow: row;
+    width: 100%;
+
+}
+
+.nav-end{
+    justify-content: flex-end !important;
+}
+
+.nav >li a{
+    color: #000;
+    display: block;
+    padding: 0.65em 1.2em;
+    text-decoration: none;
+}
+
+.nav > li a:hover{
+    color: #07BBFF;
+}
+
+
+/*---------------------------
 | Section Class
 -----------------------------*/
 
@@ -13,7 +73,7 @@ Calvary Temple CSS
     width: 100%;
     display: block;
     position: relative;
-    padding: 100px 0;
+    padding: 150px 0;
     margin: 0;
 }
 
@@ -26,6 +86,11 @@ Calvary Temple CSS
 
     height: 100vh;
     width: 100vw;
+}
+
+.section-dark{
+    background-color: #2d2d2d;
+    color: #FFF;
 }
 
 /*---------------------------
@@ -42,6 +107,150 @@ Calvary Temple CSS
 }
 
 /*---------------------------
+| HEADLINE
+-----------------------------*/
+
+.ct-headline{
+    text-transform: uppercase;
+}
+
+.section-title{
+    font-size: 4em;
+    border-left: 5px solid #fff;
+    padding-left: 15px;
+}
+
+.section-light .section-title{
+    border-left-color: #2d2d2d;
+}
+
+.section-title-sub{
+    font-size: 50%;
+}
+
+
+.event-header{
+    padding: 40px;
+    background: rgba(255,255,255,0.9);
+    position: absolute;
+}
+
+
+
+/*---------------------------
+| LISTS
+-----------------------------*/
+
+
+.no-bullets{
+    list-style: none;
+    margin:0;
+    padding: 0;
+}
+
+/*---------------------------
+| FOOTER
+-----------------------------*/
+
+.site-footer{
+    width: 100%;
+    background-color: #2d2d2d;
+    color: #fff;
+}
+
+.site-footer > .site-footer--links{
+    width: 100%;
+    display: block;
+    position: relative;
+    padding: 80px 0;
+}
+
+
+.site-footer > .site-footer--copy{
+    width: 100%;
+    font-size: 15px;
+    padding: 40px 0;
+    display: block;
+    position: relative;
+
+    background-color: #212121;
+}
+
+
+.site-footer .footer-headline{
+
+}
+
+.site-footer .footer-headline::before{
+    content: "";
+    position: absolute;
+    width:1px;
+    top: 0;
+    left: 0;
+    border-left: 1px solid #fff;
+
+    margin-right: 20px;
+}
+
+
+.site-footer .footer-link{
+    color: #fff;
+}
+
+.site-footer .footer-link:hover{
+    color:#07BBFF;
+    text-decoration: none;
+}
+
+
+/*---------------------------
+| Backgrounds
+-----------------------------*/
+
+.bg-ministries,
+.bg-events,
+.bg-reservations{
+    padding: 120px 1em !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2d2d2d;
+
+}
+
+.bg-ministries{
+    background: url('../img/ydc-youth.jpg') no-repeat center center;
+    background-size: cover;
+    padding: 0;
+}
+
+.bg-events{
+    background:  url('../img/fresh.jpg') no-repeat center center;
+    background-size: cover;
+    padding: 0;
+}
+
+.bg-reservations{
+    background: url('../img/bible-2.jpeg') no-repeat center center;
+    background-size: cover;
+    padding: 0;
+}
+
+/*---------------------------
+| SEPARATOR
+-----------------------------*/
+.separator{
+    display: block;
+    height: 5px;
+    width: 50px;
+    background-color: #07BBFF;
+    margin: 20px 0 30px;
+
+}
+
+
+
+/*---------------------------
 | Patch Class
 -----------------------------*/
 
@@ -49,3 +258,106 @@ Calvary Temple CSS
     background: transparent;
     position: absolute;
 }
+
+
+.--text-shadow{
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.8);
+}
+small{
+    font-weight: 300;
+}
+.light{
+    font-weight: 300;
+}
+
+/* Helper Class
+ ******************************************/
+/*Margin Bottom*/
+.mb-10{margin-bottom: 10px;}
+.mb-20{margin-bottom: 20px;}
+.mb-30{margin-bottom: 30px;}
+.mb-40{margin-bottom: 40px;}
+.mb-50{margin-bottom: 50px;}
+.mb-60{margin-bottom: 60px;}
+.mb-70{margin-bottom: 70px;}
+.mb-80{margin-bottom: 80px;}
+.mb-90{margin-bottom: 90px;}
+.mb-100{margin-bottom: 100px;}
+
+/*Margin Top*/
+.mt-10{margin-top: 10px;}
+.mt-20{margin-top: 20px;}
+.mt-30{margin-top: 30px;}
+.mt-40{margin-top: 40px;}
+.mt-50{margin-top: 50px;}
+.mt-60{margin-top: 60px;}
+.mt-70{margin-top: 70px;}
+.mt-80{margin-top: 80px;}
+.mt-90{margin-top: 90px;}
+.mt-100{margin-top: 100px;}
+
+/*Margin Right*/
+.mr-10{margin-right: 10px;}
+.mr-20{margin-right: 20px;}
+.mr-30{margin-right: 30px;}
+.mr-40{margin-right: 40px;}
+.mr-50{margin-right: 50px;}
+.mr-60{margin-right: 60px;}
+.mr-70{margin-right: 70px;}
+.mr-80{margin-right: 80px;}
+.mr-90{margin-right: 90px;}
+.mr-100{margin-right: 100px;}
+
+/*Margin Left*/
+.ml-10{margin-left: 10px;}
+.ml-20{margin-left: 20px;}
+.ml-30{margin-left: 30px;}
+.ml-40{margin-left: 40px;}
+.ml-50{margin-left: 50px;}
+.ml-60{margin-left: 60px;}
+.ml-70{margin-left: 70px;}
+.ml-80{margin-left: 80px;}
+.ml-90{margin-left: 90px;}
+.ml-100{margin-left: 100px}
+
+/*Padding Left Right*/
+.plr-10{ padding: 0 10px; }
+.plr-20{ padding: 0 20px; }
+.plr-30{ padding: 0 30px; }
+.plr-40{ padding: 0 40px; }
+.plr-50{ padding: 0 50px; }
+.plr-60{ padding: 0 60px; }
+.plr-70{ padding: 0 70px; }
+.plr-80{ padding: 0 80px; }
+.plr-90{ padding: 0 90px; }
+.plr-100{ padding: 0 100px; }
+
+/*Padding Top Button*/
+.ptb-10{ padding: 10px 0; }
+.ptb-20{ padding: 20px 0; }
+.ptb-30{ padding: 30px 0; }
+.ptb-40{ padding: 40px 0; }
+.ptb-50{ padding: 50px 0; }
+.ptb-60{ padding: 60px 0; }
+.ptb-70{ padding: 70px 0; }
+.ptb-80{ padding: 80px 0; }
+.ptb-90{ padding: 90px 0; }
+.ptb-100{ padding: 100px 0; }
+
+/*Padding*/
+.p-10{ padding: 10px; }
+.p-20{ padding: 20px; }
+.p-30{ padding: 30px; }
+.p-40{ padding: 40px; }
+.p-50{ padding: 50px; }
+.p-60{ padding: 60px; }
+.p-70{ padding: 70px; }
+.p-80{ padding: 80px; }
+.p-90{ padding: 90px; }
+.p-100{ padding: 100px; }
+
+/*Text Position*/
+.text-center{text-align: center}
+.text-right{text-align: right}
+.text-normal{text-align: left}
+.text-justify{text-align: justify}
