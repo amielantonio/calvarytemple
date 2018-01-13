@@ -13,6 +13,10 @@
 
 control_get('/', 'public', 'home/home');
 control_get('about', 'public', 'home/about');
+control_get('about', 'public', 'home/about');
+control_get('about', 'public', 'home/about');
+control_get('about', 'public', 'home/about');
+control_get('about', 'public', 'home/about');
 control_get('login', 'public', 'login/login');
 
 

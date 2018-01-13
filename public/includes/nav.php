@@ -48,20 +48,21 @@
 
                         <ul class="nav nav-end">
                             <li class="">
-                                <a class="nav-link" href="<?= direct_public_url(); ?>">Home <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="<?= direct_public_url(); ?>">Home</a>
                             </li>
-                            <li class="">
-                                <a class="nav-link" href="<?= direct_public_url( 'events' ) ?>">Events</a>
-                            </li>
+
                             <li class="">
                                 <a class="nav-link" href="<?= direct_public_url( 'about' ) ?>">About us</a>
                             </li>
-                            <li class="">
-                                <a class="nav-link" href="<?= direct_public_url( 'ministries' ) ?>">Ministries</a>
-                            </li>
+
                             <li class="">
                                 <a class="nav-link" href="<?= direct_public_url( 'blog' ) ?>">Blog</a>
                             </li>
+
+                            <li class="">
+                                <a class="nav-link" href="<?= direct_public_url( 'events' ) ?>">Events</a>
+                            </li>
+
                             <li class="">
                                 <a class="nav-link" href="<?= direct_public_url( 'reservations' ) ?>">Reservations</a>
                             </li>

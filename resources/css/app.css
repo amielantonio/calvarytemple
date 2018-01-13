@@ -207,7 +207,7 @@ html{
 | Backgrounds
 -----------------------------*/
 
-.bg-ministries,
+.bg-devotions,
 .bg-events,
 .bg-reservations{
     padding: 120px 1em !important;
@@ -218,7 +218,7 @@ html{
 
 }
 
-.bg-ministries{
+.bg-devotions{
     background: url('../img/ydc-youth.jpg') no-repeat center center;
     background-size: cover;
     padding: 0;
@@ -235,6 +235,52 @@ html{
     background-size: cover;
     padding: 0;
 }
+
+/*---------------------------
+| ARTICLE SNIPPET
+-----------------------------*/
+
+.posts-collection{
+    padding: 0 20px;
+    display: block;
+    margin: 0 auto;
+}
+
+.article-snippet {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+
+    position: relative;
+    display: inline-block;
+}
+
+.article-snippet--image{
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+}
+
+.article-snippet--information{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-width: 450px;
+    width: 100%;
+
+    padding: 1em;
+    background: rgba(255,255,255,0.5);
+}
+
+.article-snippet--information a{
+    color: #2d2d2d;
+}
+
+.article-snippet--information .article-snippet--headline{
+    margin: 0 !important;
+}
+
 
 /*---------------------------
 | SEPARATOR

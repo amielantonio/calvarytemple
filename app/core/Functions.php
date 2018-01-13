@@ -171,3 +171,9 @@ function admin_get_sidebar(){
 function is_home(){
 
 }
+
+function view($endpoint, $view){
+
+    return require $endpoint . $view . '.view.php';
+
+}

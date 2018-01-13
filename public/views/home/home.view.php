@@ -41,8 +41,8 @@
 
     <section id="section-functionality" class="">
        <div class="row">
-           <div class="col-sm-4 bg-ministries">
-               <h3 class="event-header">Ministries</h3>
+           <div class="col-sm-4 bg-devotions">
+               <h3 class="event-header">Blog & Devotion</h3>
            </div>
 
            <div class="col-sm-4 bg-events">
@@ -68,14 +68,36 @@
                     </div>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="current-events">
-
-                </div>
-            </div>
         </div>
 
+    </section>
+
+    <section id="events-list" class="section-continuation">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-sm-6">
+
+                    <h3>Recent Events</h3>
+
+                    <div class="card">
+
+                    </div>
+
+                </div>
+
+                <div class="col-sm-6">
+
+                    <h3>Upcoming Events</h3>
+
+                    <div class="card">
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
     </section>
 
 
@@ -83,26 +105,124 @@
 
         <div class="container">
 
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="ct-headline">
-                            <h2 class="section-title">
-                                <small class="section-title-sub">Blogs & Devotions</small><br />
-                                Lorem Ipsum dolor
-                            </h2>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="current-events">
-
+            <div class="row mb-8 0">
+                <div class="col-sm-12">
+                    <div class="ct-headline">
+                        <h2 class="section-title">
+                            <small class="section-title-sub">Blog & Devotion</small><br />
+                            Lorem Ipsum dolor
+                        </h2>
                     </div>
                 </div>
             </div>
+            <!--END CONTAINER-->
 
         </div>
+
+        <div class="posts-collection">
+
+            <div class="post">
+
+                <div id="" class="article-snippet">
+
+                    <a href="#">
+                        <img src="<?= resource_dir()?>/img/hero.jpeg" class="article-snippet--image img-responsive">
+                    </a>
+
+                    <article class="article-snippet--information">
+                        <header>
+                            <h3 class="article-snippet--headline">
+                                <a href="">Lorem Ipsum</a>
+                            </h3>
+                            <h4 class="article-snippet--subheadline">
+                                <a href="#">Dolor sit amet consectetur</a>
+                            </h4>
+                        </header>
+
+                        <section class="article-snippet--body">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                            </p>
+                        </section>
+
+                        <footer class="article-snipet--footer">
+                            <a href="#">
+                                <button type="button" class="">
+                                    <span>View</span>
+                                </button>
+                            </a>
+                        </footer>
+                    </article>
+                </div>
+
+                <div id="" class="article-snippet">
+
+                    <a href="#">
+                        <img src="<?= resource_dir()?>/img/hero.jpeg" class="article-snippet--image img-responsive">
+                    </a>
+
+                    <article class="article-snippet--information">
+                        <header>
+                            <h3 class="article-snippet--headline">
+                                <a href="">Lorem Ipsum</a>
+                            </h3>
+                            <h4 class="article-snippet--subheadline">
+                                <a href="#">Dolor sit amet consectetur</a>
+                            </h4>
+                        </header>
+
+                        <section class="article-snippet--body">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                            </p>
+                        </section>
+
+                        <footer class="article-snipet--footer">
+                            <a href="#">
+                                <button type="button" class="">
+                                    <span>View</span>
+                                </button>
+                            </a>
+                        </footer>
+                    </article>
+                </div>
+
+                <div id="" class="article-snippet">
+
+                    <a href="#">
+                        <img src="<?= resource_dir()?>/img/hero.jpeg" class="article-snippet--image img-responsive">
+                    </a>
+
+                    <article class="article-snippet--information">
+                        <header>
+                            <h3 class="article-snippet--headline">
+                                <a href="">Lorem Ipsum</a>
+                            </h3>
+                            <h4 class="article-snippet--subheadline">
+                                <a href="#">Dolor sit amet consectetur</a>
+                            </h4>
+                        </header>
+
+                        <section class="article-snippet--body">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                            </p>
+                        </section>
+
+                        <footer class="article-snipet--footer">
+                            <a href="#">
+                                <button type="button" class="">
+                                    <span>View</span>
+                                </button>
+                            </a>
+                        </footer>
+                    </article>
+                </div>
+
+            </div>
+            <!--END POST-->
+        </div>
+        <!--END POSTS COLLECTION-->
 
     </section>
 

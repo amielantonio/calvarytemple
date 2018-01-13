@@ -47,7 +47,7 @@ function control_get($uri, $endpoint, $dir, $requestClass = '')
         /**
          * show view
          */
-        return require $thisEndpoint . $dir . '.view.php';
+        return view($thisEndpoint, $dir);
 
     }
     return '';
