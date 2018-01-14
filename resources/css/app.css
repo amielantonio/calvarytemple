@@ -407,3 +407,57 @@ small{
 .text-right{text-align: right}
 .text-normal{text-align: left}
 .text-justify{text-align: justify}
+
+
+
+
+/*-------------------------------------------------------------------------------
+| ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN
+---------------------------------------------------------------------------------*/
+
+
+
+/*--------------------------
+Admin Nav
+----------------------------*/
+
+.skin-blue .main-header .navbar,
+.skin-blue .main-header li.user-header,
+.skin-blue .main-header .logo{
+    background-color: #07BBFF;
+}
+.skin-blue .main-header .navbar{
+    box-shadow: 9px -2px 14px #000;
+}
+
+.navbar-nav>.user-menu>.dropdown-menu>li.user-header{
+    height: auto;
+}
+.navbar-nav>.user-menu>.dropdown-menu>li.user-settings{
+    height: auto;
+    padding: 10px;
+}
+.navbar-nav>.user-menu>.dropdown-menu>li.user-header>a{
+    color: #2d2d2d;
+}
+
+.sidebar{
+    background:linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7)), url('../img/hero.jpeg') 19% center no-repeat fixed;
+    background-size: cover;
+}
+
+.skin-blue .sidebar-menu>li:hover>a, .skin-blue .sidebar-menu>li.active>a, .skin-blue .sidebar-menu>li.menu-open>a{
+    background: rgba(30, 40, 44, 0.8);
+}
+
+.skin-blue .sidebar-menu>li.header{
+    color: #fff;
+    background: #00729D;
+}
+
+.main-header .navbar-custom-menu{
+    margin-top: 5px;
+}
+.content-header{
+    margin-top: 20px;
+}

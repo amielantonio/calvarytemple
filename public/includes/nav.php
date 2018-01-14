@@ -25,7 +25,7 @@
                             </li>
 
                             <li>
-                                <a href="#">
+                                <a href="<?= direct_admin_url()?>">
                                     Login
                                 </a>
                             </li>

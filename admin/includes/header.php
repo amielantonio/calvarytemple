@@ -27,6 +27,8 @@
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="<?= resource_dir()?>/plugins/adminlte/dist/css/skins/_all-skins.min.css">
 
+    <link rel="stylesheet" href="<?= resource_dir()?>/css/app.css">
+
 
     <!-- jQuery 3 -->
     <script src="<?= resource_dir()?>/plugins/adminlte/bower_components/jquery/dist/jquery.min.js"></script>

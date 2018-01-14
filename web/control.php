@@ -28,8 +28,17 @@ control_get( 'dashboard', 'admin', 'dashboard/dashboard' );
 /** Reservation Router */
 control_get( 'dashboard/reservation', 'admin', 'reservation/all_reservation' );
 
+/** Security Router */
+control_get( 'dashboard/security', 'admin', 'dashboard/security' );
+
 /** Events Router */
 control_get( 'dashboard/events', 'admin', 'events/events' );
 
 /** Blog Router */
 control_get( 'dashboard/blog', 'admin', 'blog/blog' );
+
+/** User Router */
+control_get( 'dashboard/user', 'admin', 'user/user');
+
+/** Settings Router */
+control_get( 'dashboard/settings', 'admin', 'dashboard/settings');

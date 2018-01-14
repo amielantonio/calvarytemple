@@ -1,10 +1,10 @@
 <header class="main-header">
     <!-- Logo -->
-    <a href="../../index2.html" class="logo">
+    <a href="<?= direct_public_url()?>" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>A</b>LT</span>
+        <span class="logo-mini"><b>CT</b></span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>Admin</b>LTE</span>
+        <span class="logo-lg"><b>Calvary Temple</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -21,19 +21,26 @@
 
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
+
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="<?= resource_dir()?>/plugins/adminlte/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                        <span class="hidden-xs">Logged in as</span>
                         <span class="hidden-xs">Rommer Tiangco</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
-                            <img src="<?= resource_dir()?>/plugins/adminlte/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-
                             <p>
-                                Alexander Pierce - Web Developer
-                                <small>Member since Nov. 2012</small>
+                                Rommer Tiangco - <span><em>Super Admin</em></span>
                             </p>
+                        </li>
+
+                        <li class="user-settings">
+                            <a href="">
+                                Profile
+                            </a>
+                            <a href="">
+                                Activity Log
+                            </a>
                         </li>
 
                         <!-- Menu Footer-->
