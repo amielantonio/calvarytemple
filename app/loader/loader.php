@@ -39,10 +39,3 @@ require COREPATH . '/Control.php';
  */
 
 require COREPATH . '/Functions.php';
-
-
-/**
- * Load routing file
- */
-
-require ROUTESPATH . '/control.php';

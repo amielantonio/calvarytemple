@@ -32,7 +32,12 @@ $config['APP_BASE_URL'] = 'calvarytemple';
 /**
  * Application Host
  */
-
 $config['APP_HOST'] = 'http://localhost/';
+
+/**
+ *
+ */
+
+$config['APP_PORT'] = '80';
 
 return $config;

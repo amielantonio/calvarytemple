@@ -196,13 +196,7 @@ function is_page( $page ){
  * @return mixed
  */
 function view($endpoint, $view){
-
-    if( file_exists($endpoint . $view . '.view.php')){
-        return require $endpoint . $view . '.view.php';
-//        echo $endpoint . $view . '.view.php';
-    }else{
-
-    }
+    return require $endpoint . '/' . $view . '.view.php';
 }
 
 /**

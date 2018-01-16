@@ -4,104 +4,82 @@
  */
 
 
-//function control_get($uri, $endpoint, $dir, $requestClass = '')
-//{
-//    /**
-//     * Check request method
-//     */
-//    if( $_SERVER['REQUEST_METHOD'] <> "GET"){
-//        exit;
-//    }
-//    /**
-//     * Get config base url
-//     */
-//
-//    $config = require CONFIGPATH . '/config.php';
-//    $base_url = $config['APP_BASE_URL'];
-//
-//    /**
-//     * Instantiate variables
-//     */
-//    $thisEndpoint = endpoint_check($endpoint);
-//    $thisURI = $base_url.'/' . trim($uri, '/');
-//    $thisCurrentURI = current_uri();
-//
-//    /**
-//     * parse base uri
-//     */
-//    if( $base_url == $thisCurrentURI){
-//        $thisCurrentURI = $thisCurrentURI.'/';
-//    }
-//
-//    /**
-//     * Compare URI
-//     */
-//    if($thisURI == $thisCurrentURI){
-//        /**
-//         * Check if the view has functionalities included
-//         */
-//        if( $requestClass <> ''){
-//            require REQUESTPATH . '/' . $requestClass . '.requests.php';
-//        }
-//
-//        if( $endpoint == 'admin'){
-//            require COREPATH . '/Auth.php';
-//        }
-//
-//        /**
-//         * show view
-//         */
-//        return view($thisEndpoint, $dir);
-//
-//    }
-//    return '';
-//
-//}
-
-/**
- * Function for control get method
- *
- * @param $uri                  - request URI
- * @param $endpoint             - endpoints for the project folder [ADMIN, PUBLIC]
- * @param $view                 - view location
- * @param string $request       - process request class
- * @param string $middleware    - authentication for view
- * @throws exception
- * @return mixed
- */
-
-function control_get( $uri, $endpoint, $view, $request = "", $middleware = "" )
-{
+function direct_control( $uri ){
 
 
-    /** Check request method */
-    if ($_SERVER['REQUEST_METHOD'] <> "GET") {
-        throw new exception('Invalid Request Type');
+    /**
+     * Todo:
+     * Get controls
+     * check URI if available, else return error 404;
+     * check what endpoint, if admin, automatically append auth::middleware
+     * if URI available check if middleware key exists, append;
+     * check if Requests key exists, append;
+     * check if view exists, return;
+     *
+     */
+
+    /** Get config */
+
+    $config = require CONFIGPATH . '/config.php';
+    $base_url = $config['APP_BASE_URL'];
+    $home_dir = '/'. $base_url;
+
+    /** Get controls */
+    $controls = require ROUTESPATH .'/control.php';
+
+    /**
+     * if not Self serve
+     * add base url
+     */
+    if( self_serve() ){
+        $uri = '/'. $base_url .$uri;
     }
 
-    /** verify the request and current URI */
-//    if (!verify_uri($uri)) {
-//        throw new exception('Invalid Route');
-//    }
+    /** Verify if requested URI exists */
+    if( ! verify_routes( $uri, $controls, $home_dir )){
+        require BASEPATH.'/public/error/404.view.php';
+    }
 
-    echo $uri."<br />";
-
-    echo $_SERVER['REQUEST_URI']."<br />";
-
-    /** Process for getting the view */
+    return view('public', 'home/about');
 
 
-    return "";
+
 
 }
 
 
-function control_request($uri, $endpoint, $dir)
-{
+
+function verify_routes( $uri, $controls, $home_dir ){
+
+    $uri = str_replace( $home_dir.'/',"",  $uri);
+
+    /** Check if URI is the home page */
+    if( $uri == ''){
+        $uri = "/";
+    }
+
+    if( array_key_exists($uri, $controls )){
+        return true;
+    }
+    return false;
+}
 
 
-    
-    
+/**
+ * Check if the current application is being self served by the server
+ *
+ * @return bool
+ */
+function self_serve(){
+
+    $port = $_SERVER['SERVER_PORT'];
+
+    if($port <> '80'){
+        return true;
+    }
+
+    return false;
+
 }
 
 /**
@@ -111,50 +89,12 @@ function control_request($uri, $endpoint, $dir)
  * @param $endpoint
  * @return string
  */
-
-function direct_endpoint( $endpoint ){
+function endpoint_check($endpoint)
+{
     if($endpoint == 'public'){
         return PUBLICPATH . '/views/';
     }
     if($endpoint == 'admin'){
         return ADMINPATH . '/views/';
     }
-
-    // if other endpoint is specified, return a wildcard  endpoint folder
-    return BASEPATH . '/' . $endpoint . '/views';
-}
-
-/**
- * Get current URI
- *
- * @return string
- */
-function get_current_uri(){
-
-    $current_uri = trim( parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH ), '/' );
-
-    return $current_uri;
-}
-
-/**
- * Check requested URI with the current URI
- *
- * @param $requested_uri
- * @return bool
- */
-
-function verify_uri( $requested_uri ){
-
-//    $current_uri = $current_uri = trim( parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH ), '/' );
-//
-//    if( $current_uri == $requested_uri ){
-//        return true;
-//    }
-//
-//    return false;
-
-
-//    echo $requested_uri;
-
-
 }
