@@ -11,6 +11,7 @@
 $Route['/'] = [
     'endpoint' => 'public',
     'view' => 'home/home',
+    'method' => 'resource'
 ];
 $Route['about'] = [
     'endpoint' => 'public',
@@ -54,30 +55,39 @@ $Route['dashboard/reservation'] = [
     'view' => 'dashboard/dashboard',
     'request' => 'dashboard/dashboard',
     'method' => 'resource'
-];$Route['dashboard'] = [
+];
+$Route['dashboard'] = [
     'endpoint' => 'admin',
     'view' => 'dashboard/dashboard',
     'request' => 'dashboard/dashboard',
+
     'method' => 'resource'
-];$Route['dashboard'] = [
+];
+$Route['dashboard'] = [
     'endpoint' => 'admin',
     'view' => 'dashboard/dashboard',
+
     'request' => 'dashboard/dashboard',
     'method' => 'resource'
-];$Route['dashboard'] = [
-    'endpoint' => 'admin',
-    'view' => 'dashboard/dashboard',
-    'request' => 'dashboard/dashboard',
-    'method' => 'resource'
-];$Route['dashboard'] = [
-    'endpoint' => 'admin',
-    'view' => 'dashboard/dashboard',
-    'request' => 'dashboard/dashboard',
-    'method' => 'resource'
-];$Route['dashboard'] = [
+];
+$Route['dashboard'] = [
     'endpoint' => 'admin',
     'view' => 'dashboard/dashboard',
     'request' => 'dashboard/dashboard',
     'method' => 'resource'
 ];
+$Route['dashboard'] = [
+    'endpoint' => 'admin',
+    'view' => 'dashboard/dashboard',
+    'request' => 'dashboard/dashboard',
+    'method' => 'resource'
+];
+$Route['dashboard'] = [
+    'endpoint' => 'admin',
+    'view' => 'dashboard/dashboard',
+    'request' => 'dashboard/dashboard',
+    'method' => 'resource'
+];
+
+
 return $Route;

@@ -9,7 +9,9 @@ function direct_control( $uri ){
 
     /**
      * Todo:
-     * Check groupings
+     * check if URI is resource URI
+     *
+     *
      */
 
     /** Get config */
@@ -30,34 +32,51 @@ function direct_control( $uri ){
     }
 
     /** Verify if requested URI exists */
-    if( ! verify_routes( $uri, $controls, $home_dir )){
-        return view_error('404');
-    }
+//    if( ! verify_routes( $uri, $controls, $home_dir )){
+//        return view_error('404');
+//    }
+
+    verify_routes($uri, $controls, $home_dir);
 
 
+    return"";
 }
 
 
 function process_route_key( $route ){
 
+
+    return "";
 }
 
 
-function is_resource( $uri ){
-    
+function is_resource_route( $route ){
+
 }
 
 
+/**
+ * Verify that the routing exist
+ *
+ * @param $uri
+ * @param $controls
+ * @param $home_dir
+ * @return bool
+ */
 function verify_routes( $uri, $controls, $home_dir ){
 
-    $uri = str_replace( $home_dir.'/',"",  $uri);
+//    $uri = str_replace( $home_dir.'/',"",  $uri);
+//
+//    /** Check if URI is the home page */
+//    if( $uri == ''){
+//        $uri = "/";
+//    }
 
-    /** Check if URI is the home page */
-    if( $uri == ''){
-        $uri = "/";
-    }
+    var_dump($controls);
 
+//    echo $uri;
     if( array_key_exists($uri, $controls )){
+
         return true;
     }
     return false;
