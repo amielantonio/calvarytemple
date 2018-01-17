@@ -196,7 +196,18 @@ function is_page( $page ){
  * @return mixed
  */
 function view($endpoint, $view){
-    return require $endpoint . '/' . $view . '.view.php';
+    return require BASEPATH.'/'.$endpoint . '/views/' . $view . '.view.php';
+}
+
+/**
+ * Return a View
+ *
+ * @param $endpoint
+ * @param $view
+ * @return mixed
+ */
+function view_error($error){
+    return require BASEPATH.'/public/error/' . $error . '.view.php';
 }
 
 /**

@@ -5,54 +5,79 @@
  */
 
 
-
-
 /**
  * Public Router
  */
-
-//control_get( '/', 'public', 'home/home' );
-//control_get( 'about', 'public', 'home/about' );
-//control_get( 'blog', 'public', 'home/about' );
-//control_get( 'events', 'public', 'home/about' );
-//control_get( 'reservations', 'public', 'home/about' );
-//control_get( 'login', 'public', 'login/login' );
-//
-//
-///**
-// * Admin Router
-// */
-//
-//control_get( 'dashboard', 'admin', 'dashboard/dashboard' );
-//
-///** Reservation Router */
-//control_get( 'dashboard/reservation', 'admin', 'reservation/all_reservation' );
-//
-///** Security Router */
-//control_get( 'dashboard/security', 'admin', 'dashboard/security' );
-//
-///** Events Router */
-//control_get( 'dashboard/events', 'admin', 'events/events' );
-//
-///** Blog Router */
-//control_get( 'dashboard/blog', 'admin', 'blog/blog' );
-//
-///** User Router */
-//control_get( 'dashboard/user', 'admin', 'user/user');
-//
-///** Settings Router */
-//control_get( 'dashboard/settings', 'admin', 'dashboard/settings');
-//
-
-
 $Route['/'] = [
-    'endpoints' => 'public',
+    'endpoint' => 'public',
     'view' => 'home/home',
 ];
-
 $Route['about'] = [
-    'endpoints' => 'public',
+    'endpoint' => 'public',
     'view' => 'home/about',
 ];
+$Route['blog'] = [
+    'endpoint' => '',
+    'view' => 'blog/blog'
+];
+$Route['events'] = [
+    'endpoint' => '',
+    'view' => 'events/events'
+];
+$Route['reservations'] = [
+    'endpoint' => '',
+    'view' => 'home/reservations'
+];
+$Route['login'] = [
+    'endpoint' => '',
+    'view' => 'login/login'
+];
+$Route['track'] = [
+    'endpoint' => '',
+    'view' => 'home/home'
+];
 
+
+/**
+ * Admin Router
+ */
+
+
+$Route['dashboard'] = [
+    'endpoint' => 'admin',
+    'view' => 'dashboard/dashboard',
+    'request' => 'dashboard/dashboard',
+    'method' => 'resource'
+];
+$Route['dashboard/reservation'] = [
+    'endpoint' => 'admin',
+    'view' => 'dashboard/dashboard',
+    'request' => 'dashboard/dashboard',
+    'method' => 'resource'
+];$Route['dashboard'] = [
+    'endpoint' => 'admin',
+    'view' => 'dashboard/dashboard',
+    'request' => 'dashboard/dashboard',
+    'method' => 'resource'
+];$Route['dashboard'] = [
+    'endpoint' => 'admin',
+    'view' => 'dashboard/dashboard',
+    'request' => 'dashboard/dashboard',
+    'method' => 'resource'
+];$Route['dashboard'] = [
+    'endpoint' => 'admin',
+    'view' => 'dashboard/dashboard',
+    'request' => 'dashboard/dashboard',
+    'method' => 'resource'
+];$Route['dashboard'] = [
+    'endpoint' => 'admin',
+    'view' => 'dashboard/dashboard',
+    'request' => 'dashboard/dashboard',
+    'method' => 'resource'
+];$Route['dashboard'] = [
+    'endpoint' => 'admin',
+    'view' => 'dashboard/dashboard',
+    'request' => 'dashboard/dashboard',
+    'method' => 'resource'
+];
 return $Route;

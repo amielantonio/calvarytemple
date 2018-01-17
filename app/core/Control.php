@@ -9,13 +9,7 @@ function direct_control( $uri ){
 
     /**
      * Todo:
-     * Get controls
-     * check URI if available, else return error 404;
-     * check what endpoint, if admin, automatically append auth::middleware
-     * if URI available check if middleware key exists, append;
-     * check if Requests key exists, append;
-     * check if view exists, return;
-     *
+     * Check groupings
      */
 
     /** Get config */
@@ -37,16 +31,21 @@ function direct_control( $uri ){
 
     /** Verify if requested URI exists */
     if( ! verify_routes( $uri, $controls, $home_dir )){
-        require BASEPATH.'/public/error/404.view.php';
+        return view_error('404');
     }
-
-    return view('public', 'home/about');
-
-
 
 
 }
 
+
+function process_route_key( $route ){
+
+}
+
+
+function is_resource( $uri ){
+    
+}
 
 
 function verify_routes( $uri, $controls, $home_dir ){
@@ -80,21 +79,4 @@ function self_serve(){
 
     return false;
 
-}
-
-/**
- * Check endpoint if the view is in the public directory
- * or if it's in the admin directory
- *
- * @param $endpoint
- * @return string
- */
-function endpoint_check($endpoint)
-{
-    if($endpoint == 'public'){
-        return PUBLICPATH . '/views/';
-    }
-    if($endpoint == 'admin'){
-        return ADMINPATH . '/views/';
-    }
 }
