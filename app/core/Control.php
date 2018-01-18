@@ -32,11 +32,9 @@ function direct_control( $uri ){
     }
 
     /** Verify if requested URI exists */
-//    if( ! verify_routes( $uri, $controls, $home_dir )){
-//        return view_error('404');
-//    }
-
-    verify_routes($uri, $controls, $home_dir);
+    if( ! verify_routes( $uri, $controls, $home_dir )){
+        return view_error('404');
+    }
 
 
     return"";
@@ -65,21 +63,28 @@ function is_resource_route( $route ){
  */
 function verify_routes( $uri, $controls, $home_dir ){
 
-//    $uri = str_replace( $home_dir.'/',"",  $uri);
-//
-//    /** Check if URI is the home page */
-//    if( $uri == ''){
-//        $uri = "/";
-//    }
+    $uri = str_replace( $home_dir.'/',"",  $uri);
 
-    var_dump($controls);
-
-//    echo $uri;
-    if( array_key_exists($uri, $controls )){
-
-        return true;
+    /** Check if URI is the home page */
+    if( $uri == ''){
+        $uri = "/";
     }
-    return false;
+
+    /** Add Routing key to an array */
+    $routes = array_keys( $controls );
+
+    echo $uri;
+
+    /** Process array */
+//    foreach( $routes as $key =>$value ){
+//
+//        if( preg_match( "@".$uri."@", $value)  ){
+//            return true;
+//        }
+//
+//    }
+//
+//    return false;
 }
 
 

@@ -54,39 +54,7 @@ $Route['dashboard/reservation'] = [
     'endpoint' => 'admin',
     'view' => 'dashboard/dashboard',
     'request' => 'dashboard/dashboard',
-    'method' => 'resource'
-];
-$Route['dashboard'] = [
-    'endpoint' => 'admin',
-    'view' => 'dashboard/dashboard',
-    'request' => 'dashboard/dashboard',
-
-    'method' => 'resource'
-];
-$Route['dashboard'] = [
-    'endpoint' => 'admin',
-    'view' => 'dashboard/dashboard',
-
-    'request' => 'dashboard/dashboard',
-    'method' => 'resource'
-];
-$Route['dashboard'] = [
-    'endpoint' => 'admin',
-    'view' => 'dashboard/dashboard',
-    'request' => 'dashboard/dashboard',
-    'method' => 'resource'
-];
-$Route['dashboard'] = [
-    'endpoint' => 'admin',
-    'view' => 'dashboard/dashboard',
-    'request' => 'dashboard/dashboard',
-    'method' => 'resource'
-];
-$Route['dashboard'] = [
-    'endpoint' => 'admin',
-    'view' => 'dashboard/dashboard',
-    'request' => 'dashboard/dashboard',
-    'method' => 'resource'
+    'resource' => true
 ];
 
 
