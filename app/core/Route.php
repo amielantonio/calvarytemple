@@ -3,7 +3,18 @@
  * This will be responsible for domain events and routing of the website application
  */
 
-
+/**
+ * Application main router function.
+ * This function will direct the traffic of the web app and do
+ * specific function based on the user request
+ *
+ * Todo: add middleware if middleware config in the $Route is specified
+ * or if accessing admin side auth.
+ *
+ * @param $uri
+ * @return mixed
+ * @throws exception
+ */
 function direct_route( $uri ){
 
     // Get config
