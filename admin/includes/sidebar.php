@@ -27,7 +27,7 @@
                 <ul class="treeview-menu">
                     <li><a href="<?= direct_admin_url( 'reservation' )?>"><i
                                     class="fa fa-circle-o"></i> View Reservations</a></li>
-                    <li><a href="<?= direct_admin_url( 'reservation/add' )?>"><i
+                    <li><a href="<?= direct_admin_url( 'reservation?action=create' )?>"><i
                                     class="fa fa-circle-o"></i> Add New</a></li>
                     <li><a href="<?= direct_admin_url('reservation/categories' )?>"><i
                                     class="fa fa-circle-o"></i> Categories</a></li>

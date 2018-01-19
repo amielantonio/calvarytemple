@@ -196,6 +196,10 @@ function is_page( $page ){
  * @return mixed
  */
 function view($endpoint, $view){
+
+    if(!file_exists( BASEPATH.'/'.$endpoint . '/views/' . $view . '.view.php' )){
+        throw new exception('No View');
+    }
     return require BASEPATH.'/'.$endpoint . '/views/' . $view . '.view.php';
 }
 
@@ -207,6 +211,11 @@ function view($endpoint, $view){
  * @return mixed
  */
 function view_error($error){
+
+    if( !file_exists( BASEPATH.'/public/error/' . $error . '.view.php' )){
+        throw new exception('No View Error');
+    }
+
     return require BASEPATH.'/public/error/' . $error . '.view.php';
 }
 
@@ -220,6 +229,10 @@ function view_error($error){
 function view_partial($endpoint, $partialView){
 
     $partial = 'template/'. $partialView;
+
+    if(! file_exists($endpoint. $partial . '.view.php')){
+        throw new exception( 'No View' );
+    }
 
     return include $endpoint. $partial . '.view.php';
 }

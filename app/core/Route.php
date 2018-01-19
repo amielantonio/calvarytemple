@@ -44,10 +44,12 @@ function direct_route( $uri ){
     $currentRoute = $routes[ $uri ];
 
     if( has_request_file( $currentRoute ) ){
-        include REQUESTPATH . '/' . $currentRoute['request'] . '.request.php';
+        if( file_exists( REQUESTPATH . '/' . $currentRoute['request'] . '.request.php' )){
+            include REQUESTPATH . '/' . $currentRoute['request'] . '.request.php';
 
+            run_control_index();
+        }
         // Assumes there is an index function in the request class;
-        run_control_index();
     }
 
     // check if there is a request action
