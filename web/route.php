@@ -66,30 +66,33 @@ $Route['dashboard/reservation/categories'] = [
     'resource' => true
 ];
 
-
-
-
-$Route['dashboard/reservation'] = [
+$Route['dashboard/security'] = [
     'endpoint' => 'admin',
-    'view' => 'dashboard/dashboard',
+    'view' => 'security/security',
+    'request' => 'dashboard/dashboard',
+];
+$Route['dashboard/events'] = [
+    'endpoint' => 'admin',
+    'view' => 'events/events',
     'request' => 'dashboard/dashboard',
     'resource' => true
 ];
-$Route['dashboard/reservation'] = [
+$Route['dashboard/blog'] = [
     'endpoint' => 'admin',
-    'view' => 'dashboard/dashboard',
+    'view' => 'blog/blog',
     'request' => 'dashboard/dashboard',
     'resource' => true
 ];
-$Route['dashboard/reservation'] = [
+$Route['dashboard/user'] = [
     'endpoint' => 'admin',
-    'view' => 'dashboard/dashboard',
+    'view' => 'user/user',
     'request' => 'dashboard/dashboard',
     'resource' => true
 ];
-$Route['dashboard/reservation'] = [
+
+$Route['dashboard/settings'] = [
     'endpoint' => 'admin',
-    'view' => 'dashboard/dashboard',
+    'view' => 'dashboard/settings',
     'request' => 'dashboard/dashboard',
     'resource' => true
 ];

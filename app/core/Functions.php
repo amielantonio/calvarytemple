@@ -179,12 +179,15 @@ function is_home(){
 
     if( $url == $request){
         return true;
-    }else{
-        false;
     }
+
+    return false;
 }
 
 function is_page( $page ){
+
+
+
 
 }
 

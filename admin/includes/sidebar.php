@@ -55,7 +55,7 @@
                 <ul class="treeview-menu">
                     <li><a href="<?= direct_admin_url( 'events' )?>"><i
                                     class="fa fa-circle-o"></i> View Events</a></li>
-                    <li><a href="#"><i
+                    <li><a href="<?= direct_admin_url( 'events?action=create' )?>"><i
                                     class="fa fa-circle-o"></i> Add New</a></li>
                 </ul>
             </li>
@@ -71,9 +71,9 @@
                 <ul class="treeview-menu">
                     <li><a href="<?= direct_admin_url( 'blog' )?>"><i
                                     class="fa fa-circle-o"></i> View Blog</a></li>
-                    <li><a href="#"><i
+                    <li><a href="<?= direct_admin_url( 'blog?action=create' )?>"><i
                                     class="fa fa-circle-o"></i> Add New</a></li>
-                    <li><a href="#"><i
+                    <li><a href="<?= direct_admin_url( 'blog/categories' )?>"><i
                                     class="fa fa-circle-o"></i> Categories</a></li>
                 </ul>
             </li>
@@ -91,7 +91,7 @@
                 <ul class="treeview-menu">
                     <li><a href="<?= direct_admin_url( 'user' )?>"><i
                                     class="fa fa-circle-o"></i> View User</a></li>
-                    <li><a href="#"><i
+                    <li><a href="<?= direct_admin_url( 'user?action=create' )?>"><i
                                     class="fa fa-circle-o"></i> Add New</a></li>
                 </ul>
             </li>
