@@ -26,7 +26,7 @@ require BASEPATH . '/app/loader/loader.php';
 
 
 /**
- * Pass Routing to Control.php
+ * Pass Routing to Route.php
  */
 $uri = urldecode(
     parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)
@@ -35,4 +35,4 @@ $uri = urldecode(
 /**
  * Direct Routing
  */
-direct_control( $uri );
+direct_route( $uri );

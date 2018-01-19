@@ -11,11 +11,12 @@
 $Route['/'] = [
     'endpoint' => 'public',
     'view' => 'home/home',
-    'method' => 'resource'
 ];
 $Route['about'] = [
     'endpoint' => 'public',
     'view' => 'home/about',
+    'resource' => true,
+    'request' => 'home/home'
 ];
 $Route['blog'] = [
     'endpoint' => '',

@@ -32,10 +32,14 @@ require APPPATH . '/helper/helper.php';
  * Load Routes functions
  */
 
-require COREPATH . '/Control.php';
+require COREPATH . '/Route.php';
 
 /**
  * Load Application functions
  */
-
 require COREPATH . '/Functions.php';
+
+/**
+ * Load Application functions
+ */
+require COREPATH . '/Control.php';
