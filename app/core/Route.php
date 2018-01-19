@@ -46,12 +46,11 @@ function direct_route( $uri ){
     if( has_request_file( $currentRoute ) ){
         include REQUESTPATH . '/' . $currentRoute['request'] . '.request.php';
 
-
         // Assumes there is an index function in the request class;
         run_control_index();
     }
 
-
+    // check if there is a request action
     if( !has_requested_action() ) {
         return view($currentRoute['endpoint'], $currentRoute['view']);
     }
@@ -61,13 +60,9 @@ function direct_route( $uri ){
         throw new exception ('Routing Configuration Error');
     }
 
+
     // Run requested action
-
     run_control_function();
-
-
-
-    echo '<br />if reached this point. you are good';
 
     return view($currentRoute['endpoint'], $currentRoute['view']);
 }
@@ -88,8 +83,6 @@ function clean_uri( $uri, $home_dir ){
     }
 
     return $uri;
-
-
 }
 
 /**
