@@ -188,7 +188,6 @@ function is_page( $page ){
 
 
 
-
 }
 
 /**

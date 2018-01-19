@@ -28,6 +28,26 @@ require APPPATH . '/config/constants.php';
 
 require APPPATH . '/helper/helper.php';
 
+
+/**
+ * Load application helpers
+ */
+
+require HELPERPATH . '/helper.php';
+
+/**
+ * Load application helpers
+ */
+
+require COREPATH . '/Migration.php';
+
+
+/**
+ * Load Application Query builder
+ */
+require DBPATH . '/database.php';
+
+
 /**
  * Load Routes functions
  */
@@ -40,6 +60,6 @@ require COREPATH . '/Route.php';
 require COREPATH . '/Functions.php';
 
 /**
- * Load Application functions
+ * Load Application Control Functions
  */
 require COREPATH . '/Control.php';

@@ -66,6 +66,7 @@ function direct_route( $uri ){
     // Run requested action
     run_control_function();
 
+    // Return Final view
     return view($currentRoute['endpoint'], $currentRoute['view']);
 }
 
