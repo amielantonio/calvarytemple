@@ -60,7 +60,7 @@ $Route['dashboard'] = [
 $Route['dashboard/reservation'] = [
     'endpoint' => 'admin',
     'view' => 'reservation/reservation',
-    'request' => 'dashboard/dashboard',
+    'request' => 'dashboard/reservation',
     'resource' => true
 ];
 
@@ -85,7 +85,7 @@ $Route['dashboard/events'] = [
 $Route['dashboard/blog'] = [
     'endpoint' => 'admin',
     'view' => 'blog/blog',
-    'request' => 'dashboard/dashboard',
+    'request' => 'dashboard/blog',
     'resource' => true
 ];
 $Route['dashboard/user'] = [

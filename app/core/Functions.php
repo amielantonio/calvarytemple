@@ -191,11 +191,12 @@ function is_page( $page ){
 }
 
 /**
- * Return a View
+ * Returns the view
  *
  * @param $endpoint
  * @param $view
  * @return mixed
+ * @throws exception
  */
 function view($endpoint, $view){
 
@@ -208,9 +209,9 @@ function view($endpoint, $view){
 /**
  * Return a View
  *
- * @param $endpoint
- * @param $view
+ * @param $error
  * @return mixed
+ * @throws exception
  */
 function view_error($error){
 
@@ -227,6 +228,7 @@ function view_error($error){
  * @param $endpoint
  * @param $partialView
  * @return mixed
+ * @throws exception
  */
 function view_partial($endpoint, $partialView){
 

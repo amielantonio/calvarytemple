@@ -26,13 +26,6 @@ require APPPATH . '/config/constants.php';
  * Load application helpers
  */
 
-require APPPATH . '/helper/helper.php';
-
-
-/**
- * Load application helpers
- */
-
 require HELPERPATH . '/helper.php';
 
 /**
@@ -40,12 +33,6 @@ require HELPERPATH . '/helper.php';
  */
 
 require COREPATH . '/Migration.php';
-
-
-/**
- * Load Application Query builder
- */
-require DBPATH . '/database.php';
 
 
 /**
