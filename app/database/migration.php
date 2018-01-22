@@ -117,16 +117,16 @@ $migration['events'] = [
     ]
 ];
 
-$migration['blog'] = [
+$migration['post'] = [
     'id' => [
         'field_type' => 'INT',
         'is_null' => false,
         'key' => 'PRIMARY KEY AUTO_INCREMENT'
     ],
-    'blog_name' =>[
+    'post_name' =>[
         'field_type' => "VARCHAR(100)"
     ],
-    'blog_text' => [
+    'post_text' => [
         'field_type' => 'TEXT'
     ],
     'categories' =>[
@@ -151,6 +151,8 @@ $migration['blog'] = [
         'field_type' => 'DATETIME'
     ]
 ];
+
+
 
 
 

@@ -7,7 +7,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                <i class="fa fa-pencil-square-o"></i> Blog
+                <i class="fa fa-pencil-square-o"></i> Posts
             </h1>
 
         </section>

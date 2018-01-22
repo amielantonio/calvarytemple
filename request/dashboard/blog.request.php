@@ -4,5 +4,5 @@
 function create(){
 
 
-    return view( 'admin', 'blog/add_blog');
+    return view( 'admin', 'post/add_post');
 }

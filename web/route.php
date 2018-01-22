@@ -23,9 +23,9 @@ $Route['about'] = [
     'resource' => true,
     'request' => 'home/home'
 ];
-$Route['blog'] = [
+$Route['post'] = [
     'endpoint' => 'public',
-    'view' => 'blog/blog'
+    'view' => 'post/post'
 ];
 $Route['events'] = [
     'endpoint' => 'public',
@@ -88,10 +88,10 @@ $Route['dashboard/events'] = [
     'request' => 'dashboard/dashboard',
     'resource' => true
 ];
-$Route['dashboard/blog'] = [
+$Route['dashboard/post'] = [
     'endpoint' => 'admin',
-    'view' => 'blog/blog',
-    'request' => 'dashboard/blog',
+    'view' => 'post/post',
+    'request' => 'dashboard/post',
     'resource' => true
 ];
 $Route['dashboard/user'] = [

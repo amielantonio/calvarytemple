@@ -69,17 +69,17 @@
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-pencil-square-o"></i>
-                    <span>Blog</span>
+                    <span>Posts</span>
                     <span class="pull-right-container">
                       <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="<?= direct_admin_url('blog') ?>"><i
-                                    class="fa fa-circle-o"></i> View Blog</a></li>
-                    <li><a href="<?= direct_admin_url('blog?action=create') ?>"><i
+                    <li><a href="<?= direct_admin_url('post') ?>"><i
+                                    class="fa fa-circle-o"></i> View Posts</a></li>
+                    <li><a href="<?= direct_admin_url('post?action=create') ?>"><i
                                     class="fa fa-circle-o"></i> Add New</a></li>
-                    <li><a href="<?= direct_admin_url('blog/categories') ?>"><i
+                    <li><a href="<?= direct_admin_url('post/categories') ?>"><i
                                     class="fa fa-circle-o"></i> Categories</a></li>
                 </ul>
             </li>
