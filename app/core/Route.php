@@ -52,15 +52,18 @@ function direct_route( $uri ){
         // Assumes there is an index function in the request class;
     }
 
+    // check if there is a request action
+    if( !has_requested_action() ) {
+        return view($currentRoute['endpoint'], $currentRoute['view']);
+    }
+
+
     // Check if the route configuration is there
     if( !is_resource_route( $currentRoute )){
         throw new exception ('Routing Configuration Error');
     }
 
-    // check if there is a request action
-    if( !has_requested_action() ) {
-        return view($currentRoute['endpoint'], $currentRoute['view']);
-    }
+
 
     // Run requested action
     run_control_function();

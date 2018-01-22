@@ -30,33 +30,55 @@ function create_table(){
     //include migration
     $migration = require DBPATH . '/migration.php';
 
-    $db = require CONFIGPATH . '/database.php';
-
     //include connection
-    require DBPATH . '/database.php';
-
-
-    process_migration_table( $migration, $db['TB_PREFIX'] );
-
-
-
-}
-
-function process_migration_table( $migration, $prefix ){
-
-    $result = "CREATE TABLE IF NOT EXISTS ";
+    require DBPATH . '/connection.php';
 
     foreach($migration as $key => $value){
 
-        $result .= "{" . $prefix .  $key." ";
-        foreach( $value as $val => $field_name){
-            $result .= $val. " " .
-                $field_name['field_type']. " " .
-                $field_name['is_null']. " " .
-                $field_name['key']. " ";
+        $sql = process_migration_table( $key, $value, $db['TB_PREFIX'] );
+
+        try{
+            if( $conn->exec( $sql ) ){
+                echo "Table ". $key ." migrated<br />";
+            }
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
         }
     }
-    $result .= '}';
 
-    echo $result;
+}
+
+function process_migration_table( $table, $fields, $prefix ){
+
+
+    $result = "";
+    $result .= "CREATE TABLE IF NOT EXISTS ";
+
+        $result .= $prefix .  $table." " . "(";
+        $delimiter = "";
+        foreach( $fields as $val => $field_name){
+            $result .= $delimiter . $val . " ";
+
+            if( array_key_exists( 'field_type', $field_name )){
+                $result .= $field_name['field_type']." ";
+            }else{
+                throw new exception('Migration Error: no Field type indicated');
+            }
+
+            if( array_key_exists( 'is_null', $field_name ) ){
+                $result .= "NOT NULL ";
+            }else{
+                $result .= $field_name['is_null'] . " ";
+            }
+
+            if( array_key_exists( 'key', $field_name ) ){
+                $result .= $field_name['key']. "";
+            }
+
+            $delimiter = ", ";
+        }
+        $result .= ')';
+
+    return $result;
 }

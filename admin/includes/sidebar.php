@@ -9,7 +9,7 @@
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">NAVIGATION</li>
             <li>
-                <a href="<?= direct_admin_url()?>">
+                <a href="<?= direct_admin_url() ?>">
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                 </a>
             </li>
@@ -25,17 +25,23 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="<?= direct_admin_url( 'reservation' )?>"><i
-                                    class="fa fa-circle-o"></i> View Reservations</a></li>
-                    <li><a href="<?= direct_admin_url( 'reservation?action=create' )?>"><i
-                                    class="fa fa-circle-o"></i> Add New</a></li>
-                    <li><a href="<?= direct_admin_url('reservation/categories' )?>"><i
-                                    class="fa fa-circle-o"></i> Categories</a></li>
+                    <li><a href="<?= direct_admin_url('reservation') ?>">
+                            <i class="fa fa-circle-o"></i> View Reservations</a>
+                    </li>
+                    <li><a href="<?= direct_admin_url('reservation/pending') ?>">
+                            <i class="fa fa-circle-o"></i> Pending Reservations</a>
+                    </li>
+                    <li><a href="<?= direct_admin_url('reservation?action=create') ?>">
+                            <i class="fa fa-circle-o"></i> Add New</a>
+                    </li>
+                    <li><a href="<?= direct_admin_url('reservation/categories') ?>">
+                            <i class="fa fa-circle-o"></i> Categories</a>
+                    </li>
                 </ul>
             </li>
 
             <li>
-                <a href="<?= direct_admin_url( 'security' )?>">
+                <a href="<?= direct_admin_url('security') ?>">
                     <i class="fa fa-shield"></i> <span>Security</span>
                 </a>
             </li>
@@ -53,9 +59,9 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="<?= direct_admin_url( 'events' )?>"><i
+                    <li><a href="<?= direct_admin_url('events') ?>"><i
                                     class="fa fa-circle-o"></i> View Events</a></li>
-                    <li><a href="<?= direct_admin_url( 'events?action=create' )?>"><i
+                    <li><a href="<?= direct_admin_url('events?action=create') ?>"><i
                                     class="fa fa-circle-o"></i> Add New</a></li>
                 </ul>
             </li>
@@ -69,11 +75,11 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="<?= direct_admin_url( 'blog' )?>"><i
+                    <li><a href="<?= direct_admin_url('blog') ?>"><i
                                     class="fa fa-circle-o"></i> View Blog</a></li>
-                    <li><a href="<?= direct_admin_url( 'blog?action=create' )?>"><i
+                    <li><a href="<?= direct_admin_url('blog?action=create') ?>"><i
                                     class="fa fa-circle-o"></i> Add New</a></li>
-                    <li><a href="<?= direct_admin_url( 'blog/categories' )?>"><i
+                    <li><a href="<?= direct_admin_url('blog/categories') ?>"><i
                                     class="fa fa-circle-o"></i> Categories</a></li>
                 </ul>
             </li>
@@ -89,15 +95,15 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="<?= direct_admin_url( 'user' )?>"><i
+                    <li><a href="<?= direct_admin_url('user') ?>"><i
                                     class="fa fa-circle-o"></i> View User</a></li>
-                    <li><a href="<?= direct_admin_url( 'user?action=create' )?>"><i
+                    <li><a href="<?= direct_admin_url('user?action=create') ?>"><i
                                     class="fa fa-circle-o"></i> Add New</a></li>
                 </ul>
             </li>
 
             <li>
-                <a href="<?= direct_admin_url( 'settings' )?>">
+                <a href="<?= direct_admin_url('settings') ?>">
                     <i class="fa fa-wrench"></i> <span>Settings</span>
                 </a>
             </li>

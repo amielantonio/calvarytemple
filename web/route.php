@@ -54,10 +54,16 @@ $Route['dashboard'] = [
     'endpoint' => 'admin',
     'view' => 'dashboard/dashboard',
     'request' => 'dashboard/dashboard',
-    'method' => 'resource'
+    'resource' => true
 ];
 
 $Route['dashboard/reservation'] = [
+    'endpoint' => 'admin',
+    'view' => 'reservation/reservation',
+    'request' => 'dashboard/reservation',
+    'resource' => true
+];
+$Route['dashboard/reservation/pending'] = [
     'endpoint' => 'admin',
     'view' => 'reservation/reservation',
     'request' => 'dashboard/reservation',
