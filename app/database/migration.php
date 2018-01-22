@@ -30,12 +30,10 @@
 $migration['users'] = [
     'id' => [
         'field_type' => 'INT',
-        'is_null' => false,
         'key' => 'PRIMARY KEY AUTO_INCREMENT'
     ],
     'username' => [
         'field_type' => 'VARCHAR(100)',
-        'is_null' => false,
         'key' => 'UNIQUE'
     ],
     'password' => [
@@ -48,16 +46,56 @@ $migration['users'] = [
     'access_level' =>[
         'field_type' => 'VARCHAR(100)',
     ],
+    'profile_picture'=> [
+        'field_type' => 'VARCHAR(200)'
+    ],
+    'profile_summary' =>[
+        'field_type' => 'TEXT'
+    ],
     'created_at' =>[
         'field_type' => 'DATETIME',
+    ],
+    'updated_at' => [
+        'field_type' => 'DATETIME'
     ]
-
 ];
 
-$migration['reservation'] = [
+$migration['accounts'] = [
     'id' => [
         'field_type' => 'INT',
-        'is_null' => false,
+        'key' => 'PRIMARY KEY AUTO_INCREMENT'
+    ],
+    'firstname' => [
+        'field_type' => 'VARCHAR(50)'
+    ],
+    'middlename' =>[
+        'field_type' => 'VARCHAR(50)'
+    ],
+    'lastname' => [
+        'field_type' => 'VARCHAR(50)'
+    ],
+    'date_of_birth' => [
+        'field_type' => 'DATE'
+    ],
+    'email' => [
+        'field_type' => 'VARCHAR(50)'
+    ],
+    'phone_number' => [
+        'field_type' => 'VARCHAR(20)'
+    ],
+    'created_at' =>[
+        'field_type' => 'DATETIME',
+    ],
+    'updated_at' => [
+        'field_type' => 'DATETIME'
+    ]
+];
+
+
+
+$migration['reservations'] = [
+    'id' => [
+        'field_type' => 'INT',
         'key' => 'PRIMARY KEY AUTO_INCREMENT'
     ],
     'reserver_name' => [
@@ -70,11 +108,15 @@ $migration['reservation'] = [
         'field_type' => 'DATETIME',
     ],
     'pastor' => [
-        'field_type' => 'VARCHAR(100)'
+        'field_type' => 'VARCHAR(100)',
+        'is_null' => true
     ],
     'personnel' => [
         'field_type' => 'VARCHAR(100)',
         'is_null' => true
+    ],
+    'reservation_status' => [
+        'field_type' => 'VARCHAR(50)'
     ],
     'created_at' =>[
         'field_type' => 'DATETIME',
@@ -85,10 +127,39 @@ $migration['reservation'] = [
 
 ];
 
+$migration['reservation_categories'] = [
+    'id' => [
+        'field_type' => 'INT',
+        'key' => 'PRIMARY KEY AUTO_INCREMENT'
+    ],
+    'reservation_category' => [
+        'field_type' => 'VARCHAR(100)',
+        'key' => 'UNIQUE'
+    ],
+    'category_description' => [
+        'field_type' => 'TEXT'
+    ]
+];
+
+$migration['pastors'] =[
+    'id' => [
+        'field_type' => 'INT',
+        'key' => 'PRIMARY KEY AUTO_INCREMENT'
+    ],
+    'pastor_firstname' => [
+        'field_type' => 'VARCHAR(50)'
+    ],
+    'pastor_lastname' => [
+        'field_type' => 'VARCHAR(50)'
+    ],
+    'phone_number' => [
+        'field_type' => 'VARCHAR(15)'
+    ]
+];
+
 $migration['events'] = [
     'id' => [
         'field_type' => 'INT',
-        'is_null' => false,
         'key' => 'PRIMARY KEY AUTO_INCREMENT'
     ],
     'event' =>[
@@ -117,10 +188,9 @@ $migration['events'] = [
     ]
 ];
 
-$migration['post'] = [
+$migration['posts'] = [
     'id' => [
         'field_type' => 'INT',
-        'is_null' => false,
         'key' => 'PRIMARY KEY AUTO_INCREMENT'
     ],
     'post_name' =>[
@@ -152,7 +222,19 @@ $migration['post'] = [
     ]
 ];
 
-
+$migration['posts_categories'] = [
+    'id' => [
+        'field_type' => 'INT',
+        'key' => 'PRIMARY KEY AUTO_INCREMENT'
+    ],
+    'posts_category' => [
+        'field_type' => 'VARCHAR(100)',
+        'key' => 'UNIQUE'
+    ],
+    'category_description' => [
+        'field_type' => 'TEXT'
+    ]
+];
 
 
 

@@ -16,22 +16,16 @@ function run_migration(){
 
 }
 
-
-
-function create_database(){
-
-
-
-}
-
-
 function create_table(){
 
     //include migration
     $migration = require DBPATH . '/migration.php';
 
     //include connection
-    require DBPATH . '/connection.php';
+    $conn = require DBPATH . '/connection.php';
+
+    // Require database configuration file
+    $db = require CONFIGPATH.'/database.php';
 
     foreach($migration as $key => $value){
 
@@ -66,10 +60,10 @@ function process_migration_table( $table, $fields, $prefix ){
                 throw new exception('Migration Error: no Field type indicated');
             }
 
-            if( array_key_exists( 'is_null', $field_name ) ){
-                $result .= "NOT NULL ";
+            if( array_key_exists( 'is_null', $field_name ) && $field_name['is_null']){
+                $result .= "NULL ";
             }else{
-                $result .= $field_name['is_null'] . " ";
+                $result .= "NOT NULL ";
             }
 
             if( array_key_exists( 'key', $field_name ) ){
