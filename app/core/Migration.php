@@ -10,7 +10,7 @@
 
 
 
-function run_migration(){
+function migrate(){
 
     create_table();
 

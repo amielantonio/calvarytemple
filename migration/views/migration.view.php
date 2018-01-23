@@ -1,4 +1,4 @@
 <?php
 
 
-run_migration();
+migrate();
