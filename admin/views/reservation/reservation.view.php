@@ -2,6 +2,8 @@
 <?php admin_get_nav(); ?>
 <?php admin_get_sidebar(); ?>
 
+    <link rel="stylesheet" href="<?php echo  resource_dir();?>/plugins/adminlte/bower_components/fullcalendar/dist/fullcalendar.css">
+
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -71,6 +73,9 @@
     <!-- /.content-wrapper -->
 
 
+    <script src="<?php echo resource_dir();?>/plugins/moment/js/moment.min.js"></script>
+
+    <script src="<?php echo resource_dir();?>/plugins/adminlte/bower_components/fullcalendar/dist/fullcalendar.js"></script>
 
     <script>
         $ = jQuery;

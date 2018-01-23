@@ -22,7 +22,11 @@ function select( $table, $fields = ['*'], $where = "", $order = "" , $limit = ""
 
 
 function insert( $table, $data = [] ){
+    $table = '';
 
+
+
+    return true;
 }
 
 function update( $table, $id, $data = [], $where = "" ){

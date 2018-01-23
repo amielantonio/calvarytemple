@@ -285,7 +285,7 @@ html{
 /*---------------------------
 | SEPARATOR
 -----------------------------*/
-.separator{
+.ct-separator{
     display: block;
     height: 5px;
     width: 50px;
@@ -460,4 +460,12 @@ Admin Nav
 }
 .content-header{
     margin-top: 20px;
+}
+
+
+.select2,
+.select2-container--default .select2-selection--single{
+    border-color: #d2d6de !important;
+    border-radius: 0 !important;
+    height: 35px !important;
 }

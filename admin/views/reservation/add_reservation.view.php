@@ -5,9 +5,9 @@
     <link rel="stylesheet" href="<?= resource_dir()?>/plugins/adminlte/bower_components/select2/dist/css/select2.min.css">
     <link rel="stylesheet" href="<?= resource_dir()?>/plugins/timepicker/bootstrap-timepicker.min.css">
     <link rel="stylesheet" href="<?= resource_dir()?>/plugins/adminlte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-    <link rel="stylesheet" href="<?= resource_dir()?>/plugins/adminlte/bower_components/bootstrap-daterangepicker/daterangepicker.css">
 
-
+    <!-- JQUERYUI -->
+<!--    <link rel="stylesheet" href="--><?php //echo resource_dir() ?><!--/plugins/adminlte/bower_components/jquery-ui/themes/base/datepicker.css">-->
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -28,7 +28,10 @@
                         </div>
 
                         <div class="box-body">
-                            <form method="post" class="" action="">
+                            <form method="post" action="<?php echo direct_admin_url( 'reservation?action=store' )?>">
+
+                                <input type="hidden" name="personnel">
+
                                 <div class="form-group">
 
                                     <label for="reserver_name"> Reserver Name</label>
@@ -47,21 +50,39 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="reservation_date">Date</label>
+                                    <label for="datepicker">Date</label>
 
                                     <div class="input-group date">
                                         <div class="input-group-addon">
-                                            <i class="fa fa-calendar"></i>
+                                            <i class="fa fa-clock-o"></i>
                                         </div>
-                                        <input type="text" class="form-control pull-right" id="datepicker" name="reservation_date" id="reservation_date">
+                                        <input type="text" class="form-control pull-right" id="datepicker" name="reservation_date" >
                                     </div>
                                     <!-- /.input group -->
                                 </div>
                                 <!-- /.form group -->
 
+                                <!-- time Picker -->
+                                <div class="bootstrap-timepicker">
+                                    <div class="form-group">
+                                        <label>Time picker:</label>
+
+                                        <div class="input-group">
+                                            <input type="text" class="form-control timepicker" name="time">
+
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-clock-o"></i>
+                                            </div>
+                                        </div>
+                                        <!-- /.input group -->
+                                    </div>
+                                    <!-- /.form group -->
+                                </div>
+
+
                                 <div class="form-group">
                                     <label for="reservation">Pastor</label>
-                                    <select class="form-control select2" style="width: 100%;" id="reservation" name="reservation">
+                                    <select class="form-control select2" style="width: 100%;" id="reservation" name="pastor">
                                         <option selected="selected">Ptr. A</option>
                                         <option>Ptr. B</option>
                                         <option>Ptr. C</option>
@@ -94,8 +115,27 @@
     <!-- /.content-wrapper -->
 
 
-<script src="<?php echo resource_dir()?>/plugins/adminlte/bower_components/select2/dist/js/select2.full.js"></script>
-<script src="<?php echo resource_dir()?>/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+    <!-- InputMask -->
+    <script src="<?php echo resource_dir() ?>/plugins/input-mask/jquery.inputmask.js"></script>
+    <script src="<?php echo resource_dir() ?>/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+    <script src="<?php echo resource_dir() ?>/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+    <!-- date-range-picker -->
+    <script src="<?php echo resource_dir() ?>/plugins/adminlte/bower_components/moment/min/moment.min.js"></script>
+<!--    <script src="--><?php //echo resource_dir() ?><!--/plugins/adminlte/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>-->
+    <!-- bootstrap datepicker -->
+    <script src="<?php echo resource_dir() ?>/plugins/adminlte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <!-- datepicker -->
+<!--    <script src="--><?php //echo resource_dir() ?><!--/plugins/adminlte/bower_components/jquery-ui/ui/minified/datepicker.min.js"></script>-->
+    <!-- bootstrap color picker -->
+<!--    <script src="--><?php //echo resource_dir() ?><!--/plugins/adminlte/bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>-->
+    <!-- bootstrap time picker -->
+    <script src="<?php echo resource_dir() ?>/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+    <!-- SlimScroll -->
+    <script src="<?php echo resource_dir() ?>/plugins/adminlte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- iCheck 1.0.1 -->
+    <script src="<?php echo resource_dir() ?>/plugins/iCheck/icheck.min.js"></script>
+    <!-- Select2 -->
+    <script src="<?php echo resource_dir() ?>/plugins/adminlte/bower_components/select2/dist/js/select2.full.min.js"></script>
 
     <script>
         $ = jQuery;
@@ -107,6 +147,11 @@
             //Date picker
             $('#datepicker').datepicker({
                 autoclose: true
+            })
+
+            //Timepicker
+            $('.timepicker').timepicker({
+                showInputs: false
             })
 
         });
