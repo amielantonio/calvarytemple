@@ -30,7 +30,8 @@
                         <div class="box-body">
                             <form method="post" action="<?php echo direct_admin_url( 'reservation?action=store' )?>">
 
-                                <input type="hidden" name="personnel">
+                                <input type="hidden" name="personnel" value="">
+                                <input type="hidden" name="reservation_status" value="Approved">
 
                                 <div class="form-group">
 
@@ -40,6 +41,7 @@
                                 </div>
 
                                 <div class="form-group">
+
                                     <label for="reservation">Reservation</label>
                                     <select class="form-control select2" style="width: 100%;" id="reservation" name="reservation">
                                         <option selected="selected">Wedding</option>
@@ -47,9 +49,11 @@
                                         <option>Counselling</option>
                                         <option>Preaching</option>
                                     </select>
+
                                 </div>
 
                                 <div class="form-group">
+
                                     <label for="datepicker">Date</label>
 
                                     <div class="input-group date">
@@ -59,6 +63,7 @@
                                         <input type="text" class="form-control pull-right" id="datepicker" name="reservation_date" >
                                     </div>
                                     <!-- /.input group -->
+
                                 </div>
                                 <!-- /.form group -->
 

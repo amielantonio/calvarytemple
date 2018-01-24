@@ -16,6 +16,7 @@ function auth( $user ){
 
 function current_user(){
 
+    return "";
 }
 
 function access_level( $user=""  ){

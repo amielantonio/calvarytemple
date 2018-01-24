@@ -21,6 +21,9 @@ function create(){
 
 }
 
+/**
+ * Save a specific record to the database
+ */
 function store(){
 
     $reservation_date = date('Y-m-d h:i:s', strtotime($_POST['reservation_date'] . " " . $_POST['time']));
@@ -31,7 +34,7 @@ function store(){
         'reservation' => $_POST['reservation'],
         'reservation_date' => $reservation_date,
         'pastor' => $_POST['pastor'],
-        'personnel' => '',
+        'personnel' => $_POST['personnel'],
         'reservation_status' => '',
         'created_at' => date('Y-m-d h:i:s'),
         'updated_at' => date('Y-m-d h:i:s'),
@@ -39,25 +42,44 @@ function store(){
 
     ];
 
-//    var_dump($data);
 
-    if(insert('reservations', $data)){
+    insert('reservations', $data );
 
-    }else{
 
-    }
+//    redirect( direct_admin_url( 'dashboard/reservation' ) );
 
+    header("Location: reservation");
 }
 
 function edit(){
-
+    echo "test edit";
 }
 
 function destroy(){
-
+    echo "test destroy";
 }
 
 function update(){
+    echo "test update";
+}
+
+/**
+ * Save Categoriees to Reservation category database
+ */
+function savecat(){
+
+    $data =[
+
+        'reservation_category' => $_POST['reservation_category'],
+        'category_description' => $_POST['category_description']
+
+    ];
+
+    var_dump($data);
+
+    insert( 'reservation_categories', $data );
+
+    header('Location: reservation/categories');
 
 }
 

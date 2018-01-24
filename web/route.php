@@ -73,7 +73,7 @@ $Route['dashboard/reservation/pending'] = [
 $Route['dashboard/reservation/categories'] = [
     'endpoint' => 'admin',
     'view' => 'reservation/reservation_categories',
-    'request' => 'dashboard/dashboard',
+    'request' => 'dashboard/reservation',
     'resource' => true
 ];
 

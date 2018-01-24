@@ -25,31 +25,82 @@
 
                     <div class="box-body">
                         <ul class="products-list product-list-in-box">
-                            <li class="item">
-                                <div class="product-info no-margin">
-                                    <a href="#" class="product-title">
-                                        Peter Parker
+                            <?php
 
-                                        <span class="pull-right"><i class="fa fa-clock-o"></i> Jan 20, 2018</span>
-                                    </a>
-                                    <span class="product-description">
-                                        Wedding
+                            $data = [
+                                'reserver_name',
+                                'reservation',
+                                'reservation_date'
+                            ];
+
+                            $fields = get('reservations', $data );
+
+                            ?>
+
+                            <?php foreach($fields as $key => $value) : ?>
+
+                                <li class="item">
+                                    <div class="product-info no-margin">
+                                        <a href="#" class="product-title">
+
+                                            <?php echo $value['reserver_name'] ?>
+
+                                            <span class="pull-right"><i class="fa fa-clock-o"></i> <?php echo date('M d, Y', strtotime($value['reservation_date']))?></span>
+                                        </a>
+                                        <span class="product-description">
+                                        <?php echo $value['reservation']?>
                                     </span>
-                                </div>
-                            </li>
+                                    </div>
+                                </li>
 
-                            <li class="item">
-                                <div class="product-info no-margin">
-                                    <a href="#" class="product-title">
-                                        Bruce Wayne
+                            <?php endforeach; ?>
 
-                                        <span class="pull-right"><i class="fa fa-clock-o"></i> Jan 20, 2018</span>
-                                    </a>
-                                    <span class="product-description">
-                                        Wedding
+                        </ul>
+                        <!--END PRODUCT-->
+
+                    </div>
+
+                </div>
+                <!--END BOX-->
+
+                <div class="box box-info">
+                    <div class="box-header with-boarder ">
+                        <h3 class="box-title">Pending Reservations</h3>
+                    </div>
+
+
+                    <div class="box-body">
+                        <ul class="products-list product-list-in-box">
+                            <?php
+
+                            $data = [
+                                'reserver_name',
+                                'reservation',
+                                'reservation_date'
+                            ];
+
+                            $fields = get('reservations', $data, 1);
+
+                            ?>
+
+                            <?php foreach($fields as $key => $value) : ?>
+
+                                <li class="item">
+                                    <div class="product-info no-margin">
+                                        <a href="#" class="product-title">
+
+                                            <?php echo $value['reserver_name'] ?>
+
+                                            <span class="pull-right"><i class="fa fa-clock-o"></i> <?php echo date('M d, Y', strtotime($value['reservation_date']))?></span>
+                                        </a>
+                                        <span class="product-description">
+                                        <?php echo $value['reservation']?>
                                     </span>
-                                </div>
-                            </li>
+                                    </div>
+                                </li>
+
+                            <?php endforeach; ?>
+
                         </ul>
                         <!--END PRODUCT-->
 

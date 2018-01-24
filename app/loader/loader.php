@@ -34,6 +34,12 @@ require HELPERPATH . '/helper.php';
 
 require COREPATH . '/Migration.php';
 
+/**
+ * Load application queries
+ */
+
+require DBPATH . '/queries.php';
+
 
 /**
  * Load Routes functions

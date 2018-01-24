@@ -469,3 +469,7 @@ Admin Nav
     border-radius: 0 !important;
     height: 35px !important;
 }
+
+textarea{
+    resize: none;
+}
