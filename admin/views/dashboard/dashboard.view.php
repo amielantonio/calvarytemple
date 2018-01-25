@@ -27,13 +27,11 @@
                         <ul class="products-list product-list-in-box">
                             <?php
 
-                            $data = [
-                                'reserver_name',
-                                'reservation',
-                                'reservation_date'
+                            $where = [
+                                'created_at >=  NOW()  '
                             ];
 
-                            $fields = get('reservations', $data );
+                            $fields = where('reservations', $where );
 
                             ?>
 
@@ -79,7 +77,60 @@
                                 'reservation_date'
                             ];
 
-                            $fields = get('reservations', $data, 1);
+                            $fields = get('reservations', $data, 3);
+
+                            ?>
+
+                            <?php foreach($fields as $key => $value) : ?>
+
+                                <li class="item">
+                                    <div class="product-info no-margin">
+                                        <a href="#" class="product-title">
+
+                                            <?php echo $value['reserver_name'] ?> <br />
+                                            <i class="fa fa-clock-o"></i> <?php echo date('M d, Y', strtotime($value['reservation_date']))?>
+
+                                        </a>
+
+                                        <div class="pull-right">
+                                            <button class="btn btn-primary">approve</button>
+                                        </div>
+
+                                        <span class="product-description">
+                                            <?php echo $value['reservation']?>
+
+                                        </span>
+                                    </div>
+                                </li>
+
+                            <?php endforeach; ?>
+
+                        </ul>
+                        <!--END PRODUCT-->
+
+                    </div>
+                    <!--END BODY-->
+
+                </div>
+                <!--END BOX-->
+            </div>
+            <!--END COLUMN-->
+
+            <div class="col-sm-4">
+                <div class="box">
+                    <div class="box-header with-boarder">
+                        <h3 class="box-title">Upcoming Reservations</h3>
+                    </div>
+
+                    <div class="box-body">
+                        <ul class="products-list product-list-in-box">
+                            <?php
+
+                            $where = [
+                                'DATEDIFF(NOW(), reservation_date) <= 30 AND reservation_date > NOW()'
+                            ];
+
+                            $fields = where('reservations', $where );
 
                             ?>
 
@@ -100,35 +151,6 @@
                                 </li>
 
                             <?php endforeach; ?>
-
-                        </ul>
-                        <!--END PRODUCT-->
-
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="col-sm-4">
-                <div class="box">
-                    <div class="box-header with-boarder">
-                        <h3 class="box-title">Upcoming Reservations</h3>
-                    </div>
-
-                    <div class="box-body">
-                        <ul class="products-list product-list-in-box">
-                            <li class="item">
-                                <div class="product-info no-margin">
-                                    <a href="#" class="product-title">
-                                        Tony Stark
-
-                                        <span class="pull-right"><i class="fa fa-clock-o"></i> Jan 20, 2018</span>
-                                    </a>
-                                    <span class="product-description">
-                                        Party
-                                    </span>
-                                </div>
-                            </li>
 
                         </ul>
                         <!--END PRODUCT-->

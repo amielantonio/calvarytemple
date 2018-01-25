@@ -171,7 +171,7 @@ function atleast( $table, $limit){
  * @param array $where
  * @return mixed
  */
-function where( $table, $where = [], $order, $limit){
+function where( $table, $where = []){
     //pull in connection
     $conn = require DBPATH . '/connection.php';
 
@@ -189,8 +189,8 @@ function where( $table, $where = [], $order, $limit){
     //Create SQL statement
     $sql = sprintf(
 
-        'SELECT * FROM %s WHERE %s ORDER %s LIMIT %s',
-        $table, $where, $order, $limit
+        'SELECT * FROM %s WHERE %s',
+        $table, $where
 
     );
 
