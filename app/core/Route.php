@@ -47,16 +47,15 @@ function direct_route( $uri ){
         if( file_exists( REQUESTPATH . '/' . $currentRoute['request'] . '.request.php' )){
             include REQUESTPATH . '/' . $currentRoute['request'] . '.request.php';
 
-            run_control_index();
+//            run_control_index();
         }
         // Assumes there is an index function in the request class;
     }
 
     // check if there is a request action
-    if( !has_requested_action() ) {
+    if( !has_requested_action() &&  has_view( $currentRoute )) {
         return view($currentRoute['endpoint'], $currentRoute['view']);
     }
-
 
     // Check if the route configuration is there
     if( !is_resource_route( $currentRoute )){
@@ -64,9 +63,11 @@ function direct_route( $uri ){
     }
 
 
-
     // Run requested action
     run_control_function();
+
+
+
 
 }
 
@@ -143,7 +144,7 @@ function is_resource_route( $route ){
  */
 function has_requested_action(){
 
-    if( isset($_GET['action']) || isset($_GET['resource'])){
+    if( isset($_GET['action']) || isset($_GET['id'])){
 
         return true;
     }
@@ -153,6 +154,17 @@ function has_requested_action(){
 function has_request_file( $route ){
 
     if( array_key_exists( 'request', $route)){
+        return true;
+    }
+    else{
+        return false;
+    }
+
+}
+
+function has_view( $route ){
+
+    if( array_key_exists( 'view', $route)){
         return true;
     }
     else{

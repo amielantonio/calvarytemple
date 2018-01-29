@@ -247,12 +247,12 @@ function where( $table, $where="", $limit = ''){
 }
 
 
-
 /**
  * Insert records to the database
  *
  * @param $table
  * @param array $data
+ * @return bool
  */
 function insert( $table, $data = [] ){
 
@@ -287,6 +287,8 @@ function insert( $table, $data = [] ){
     try {
         $statement->execute( $data );
 
+        return true;
+
     }
     catch( PDOException $e ) {
         throw new PDOException($e->getMessage());
@@ -294,6 +296,15 @@ function insert( $table, $data = [] ){
 
 }
 
+/**
+ * Update a certain resources in the database
+ *
+ * @param $table
+ * @param $id
+ * @param array $data
+ * @param string $where
+ * @return bool
+ */
 function patch( $table, $id, $data = [], $where = "" ){
     //pull in connection
     $conn = require DBPATH . '/connection.php';
@@ -309,17 +320,22 @@ function patch( $table, $id, $data = [], $where = "" ){
 
     $sql = sprintf(
 
-        'UPDATE %s SET %s WHERE id = %s %s',
-        $table, $updates, $id, 'AND '.$where
+        'UPDATE %s SET %s WHERE id = %s',
+        $table, $updates, $id
 
     );
+
+    if( $where <> "" ){
+        $sql .= 'AND ' . $where;
+    }
 
     //Prepare and bind
     $statement = $conn->prepare( $sql );
 
-
     try {
         $statement->execute( $data );
+
+        return true;
 
     }
     catch( PDOException $e ) {
@@ -330,7 +346,10 @@ function patch( $table, $id, $data = [], $where = "" ){
 
 }
 
-function put(){
+/**
+ *
+ */
+function updateOrCreate(){
 
 }
 

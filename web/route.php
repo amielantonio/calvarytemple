@@ -31,8 +31,8 @@ $Route['events'] = [
     'endpoint' => 'public',
     'view' => 'events/events'
 ];
-$Route['reservationpublics'] = [
-    'endpoint' => '',
+$Route['reservations'] = [
+    'endpoint' => 'public',
     'view' => 'home/reservations'
 ];
 $Route['login'] = [
@@ -64,7 +64,6 @@ $Route['dashboard/reservation'] = [
 ];
 $Route['dashboard/reservation/pending'] = [
     'endpoint' => 'admin',
-    'view' => 'reservation/pending_reservation',
     'request' => 'dashboard/pending_reservation',
     'resource' => true
 ];

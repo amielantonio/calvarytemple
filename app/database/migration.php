@@ -119,7 +119,8 @@ $migration['reservations'] = [
         'field_type' => 'VARCHAR(50)'
     ],
     'approved_date' =>[
-        'field_type' => 'DATETIME'
+        'field_type' => 'DATETIME',
+        'is_null' => true
     ],
     'created_at' =>[
         'field_type' => 'DATETIME',

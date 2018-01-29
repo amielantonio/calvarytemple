@@ -25,21 +25,25 @@ function run_control_index(){
 
 /**
  * Controller method to run a specific function
- * when calling a URI, this will
  *
  * @return bool
  */
 function run_control_function(){
 
-    $action = $_GET['action'];
 
-    $func = get_defined_functions()['user'];
+    if( isset($_GET['action'])){
+        $action = $_GET['action'];
 
-    if( in_array( $action, $func)){
+        $func = get_defined_functions()['user'];
 
-        $action();
-        return true;
+        if( in_array( $action, $func)){
+
+            $action();
+            return true;
+        }
     }
 
+    //If no action requested, run index
+    index();
     return false;
 }

@@ -19,6 +19,23 @@
 
         <!-- Main content -->
         <section class="content">
+
+            <?php if( isset( $success ) && $success) : ?>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        The Reservation has been approved.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <?php  endif;?>
+
+
             <div class="row">
 
                 <div class="col-sm-12">
@@ -35,6 +52,14 @@
                                     <th>Actions</th>
                                 </tr>
 
+                                <?php if( empty($pending) ) :  ?>
+
+                                <td colspan="6">
+                                    <h3 class="text-center">No Pending Reservations</h3>
+                                </td>
+
+                                <?php endif;?>
+
                                 <?php $x = 1; foreach( $pending as $key => $value) : ?>
                                 <tr>
                                     <td><?php echo $x ?></td>
@@ -43,7 +68,7 @@
                                     <td><?php echo date('M d, Y - g:i A', strtotime( $value[ 'reservation_date' ] ) ); ?></td>
                                     <td><?php echo date('M d, Y - g:i A', strtotime( $value[ 'created_at' ] ) ); ?></td>
                                     <td>
-                                        <a href="<?php echo direct_admin_url( 'reservation/pending?action=show&id='.$value['id'] ); ?>">
+                                        <a href="<?php echo direct_admin_url( 'reservation/pending?action=approve&id='. $value['id'] ); ?>">
                                             <button type="button" class="btn btn-primary">
                                                 Approve
                                             </button>
