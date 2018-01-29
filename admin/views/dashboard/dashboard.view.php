@@ -139,7 +139,7 @@
 
             <div class="col-sm-4">
                 <div class="box box-solid bg-blue-gradient">
-                    <div class="box-header ui-sortable-handle" style="cursor: move;">
+                    <div class="box-header">
                         <i class="fa fa-calendar"></i>
 
                         <h3 class="box-title">Calendar</h3>

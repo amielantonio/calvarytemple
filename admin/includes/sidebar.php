@@ -41,7 +41,7 @@
             </li>
 
             <li>
-                <a href="<?= direct_admin_url('security') ?>">
+                <a href="<?= direct_admin_url('reservation/pending?action=create') ?>">
                     <i class="fa fa-shield"></i> <span>Security</span>
                 </a>
             </li>

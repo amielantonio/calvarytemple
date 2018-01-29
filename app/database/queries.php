@@ -295,6 +295,38 @@ function insert( $table, $data = [] ){
 }
 
 function patch( $table, $id, $data = [], $where = "" ){
+    //pull in connection
+    $conn = require DBPATH . '/connection.php';
+
+    // Require database configuration file
+    $db = require CONFIGPATH.'/database.php';
+
+    //create table instance
+    $table = $db['TB_PREFIX'] . $table;
+
+    //Get data to update
+    $updates = implode(', ', $data);
+
+    $sql = sprintf(
+
+        'UPDATE %s SET %s WHERE id = %s %s',
+        $table, $updates, $id, 'AND '.$where
+
+    );
+
+    //Prepare and bind
+    $statement = $conn->prepare( $sql );
+
+
+    try {
+        $statement->execute( $data );
+
+    }
+    catch( PDOException $e ) {
+        throw new PDOException($e->getMessage());
+    }
+
+
 
 }
 

@@ -52,7 +52,6 @@ $Route['track'] = [
 
 $Route['dashboard'] = [
     'endpoint' => 'admin',
-//    'view' => 'dashboard/dashboard',
     'request' => 'dashboard/dashboard',
     'resource' => true
 ];
@@ -66,7 +65,7 @@ $Route['dashboard/reservation'] = [
 $Route['dashboard/reservation/pending'] = [
     'endpoint' => 'admin',
     'view' => 'reservation/pending_reservation',
-    'request' => 'dashboard/reservation',
+    'request' => 'dashboard/pending_reservation',
     'resource' => true
 ];
 

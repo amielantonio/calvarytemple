@@ -27,21 +27,41 @@
                         <div class="box-body table-responsive no-padding">
                             <table class="table table-hover">
                                 <tbody><tr>
-                                    <th>ID</th>
+                                    <th>#</th>
                                     <th>Reserver Name</th>
-                                    <th>Reservation Type</th>
+                                    <th>Reservation</th>
                                     <th>Date of Event</th>
                                     <th>Date reserved</th>
                                     <th>Actions</th>
                                 </tr>
+
+                                <?php $x = 1; foreach( $pending as $key => $value) : ?>
                                 <tr>
-                                    <td>1</td>
-                                    <td>John Doe</td>
-                                    <td>Wedding</td>
-                                    <td>Jan 20, 2018</td>
-                                    <td>Jan 20, 2018</td>
-                                    <td>View</td>
+                                    <td><?php echo $x ?></td>
+                                    <td><?php echo $value['reserver_name']?></td>
+                                    <td><?php echo $value['reservation']?></td>
+                                    <td><?php echo date('M d, Y - g:i A', strtotime( $value[ 'reservation_date' ] ) ); ?></td>
+                                    <td><?php echo date('M d, Y - g:i A', strtotime( $value[ 'created_at' ] ) ); ?></td>
+                                    <td>
+                                        <a href="<?php echo direct_admin_url( 'reservation/pending?action=show&id='.$value['id'] ); ?>">
+                                            <button type="button" class="btn btn-primary">
+                                                Approve
+                                            </button>
+                                        </a>
+
+                                        <a href="<?= direct_admin_url('reservation/pending?action=create') ?>" class="btn btn-warning">
+                                            Reschedule
+                                        </a>
+
+                                        <a href="<?php echo direct_admin_url( 'reservation/pending?action=cancel' );?>">
+                                            <button type="button" class="btn btn-danger">
+                                                Cancel
+                                            </button>
+                                        </a>
+                                    </td>
                                 </tr>
+
+                                <?php $x++; endforeach; ?>
 
                                 </tbody>
                             </table>
