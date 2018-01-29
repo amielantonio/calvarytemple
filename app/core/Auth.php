@@ -23,16 +23,20 @@ function access_level( $user=""  ){
 	
 }
 
-function is_admin(){
+function is_admin( $user="" ){
 
 }
 
-function is_author(){
+function is_author( $user="" ){
 
 }
 
-function user_settings(){
+function user_settings( $user="" ){
 	
+}
+
+function user_id( $user="" ){
+
 }
 
 

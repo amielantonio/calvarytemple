@@ -111,12 +111,15 @@ $migration['reservations'] = [
         'field_type' => 'VARCHAR(100)',
         'is_null' => true
     ],
-    'personnel' => [
+    'approved_by' => [
         'field_type' => 'VARCHAR(100)',
         'is_null' => true
     ],
     'reservation_status' => [
         'field_type' => 'VARCHAR(50)'
+    ],
+    'approved_date' =>[
+        'field_type' => 'DATETIME'
     ],
     'created_at' =>[
         'field_type' => 'DATETIME',

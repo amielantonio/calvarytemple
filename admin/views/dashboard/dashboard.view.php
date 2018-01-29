@@ -25,34 +25,32 @@
 
                     <div class="box-body">
                         <ul class="products-list product-list-in-box">
-                            <?php
 
-                            $where = [
-                                'created_at >=  NOW()  '
-                            ];
+                            <?php if ( empty( $new_reservations ) ) : ?>
 
-                            $fields = where('reservations', $where );
+                                <h5>No reservations</h5>
 
-                            ?>
+                            <?php else: ?>
 
-                            <?php foreach($fields as $key => $value) : ?>
+                                <?php foreach($new_reservations as $key => $value) : ?>
 
-                                <li class="item">
-                                    <div class="product-info no-margin">
-                                        <a href="#" class="product-title">
+                                    <li class="item">
+                                        <div class="product-info no-margin">
+                                            <a href="#" class="product-title">
 
-                                            <?php echo $value['reserver_name'] ?>
+                                                <?php echo $value['reserver_name'] ?>
 
-                                            <span class="pull-right"><i class="fa fa-clock-o"></i> <?php echo date('M d, Y', strtotime($value['reservation_date']))?></span>
-                                        </a>
-                                        <span class="product-description">
+                                                <span class="pull-right"><i class="fa fa-clock-o"></i> <?php echo date('M d, Y', strtotime($value['reservation_date']))?></span>
+                                            </a>
+                                            <span class="product-description">
                                         <?php echo $value['reservation']?>
                                     </span>
-                                    </div>
-                                </li>
+                                        </div>
+                                    </li>
 
-                            <?php endforeach; ?>
+                                <?php endforeach; ?>
 
+                            <?php endif;?>
                         </ul>
                         <!--END PRODUCT-->
 
@@ -69,19 +67,8 @@
 
                     <div class="box-body">
                         <ul class="products-list product-list-in-box">
-                            <?php
 
-                            $data = [
-                                'reserver_name',
-                                'reservation',
-                                'reservation_date'
-                            ];
-
-                            $fields = get('reservations', $data, 3);
-
-                            ?>
-
-                            <?php foreach($fields as $key => $value) : ?>
+                            <?php foreach($pending as $key => $value) : ?>
 
                                 <li class="item">
                                     <div class="product-info no-margin">
@@ -124,17 +111,8 @@
 
                     <div class="box-body">
                         <ul class="products-list product-list-in-box">
-                            <?php
 
-                            $where = [
-                                'DATEDIFF(NOW(), reservation_date) <= 30 AND reservation_date > NOW()'
-                            ];
-
-                            $fields = where('reservations', $where );
-
-                            ?>
-
-                            <?php foreach($fields as $key => $value) : ?>
+                            <?php foreach($upcoming as $key => $value) : ?>
 
                                 <li class="item">
                                     <div class="product-info no-margin">

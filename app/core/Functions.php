@@ -195,15 +195,21 @@ function is_page( $page ){
  *
  * @param $endpoint
  * @param $view
+ * @param $data null
  * @return mixed
  * @throws exception
  */
-function view($endpoint, $view){
 
-    if(!file_exists( BASEPATH.'/'.$endpoint . '/views/' . $view . '.view.php' )){
+function view($endpoint, $view, $data = []){
+
+    if(!file_exists( BASEPATH."/{$endpoint}/views/{$view}.view.php" )){
         throw new exception('No View');
     }
-    return require BASEPATH.'/'.$endpoint . '/views/' . $view . '.view.php';
+
+
+    extract( $data );
+
+    return require BASEPATH."/{$endpoint}/views/{$view}.view.php";
 }
 
 /**
@@ -215,11 +221,11 @@ function view($endpoint, $view){
  */
 function view_error($error){
 
-    if( !file_exists( BASEPATH.'/public/error/' . $error . '.view.php' )){
+    if( !file_exists( BASEPATH."/public/error/{$error}.view.php" )){
         throw new exception('No View Error');
     }
 
-    return require BASEPATH.'/public/error/' . $error . '.view.php';
+    return require BASEPATH."/public/error/{$error}.view.php";
 }
 
 /**
@@ -239,4 +245,13 @@ function view_partial($endpoint, $partialView){
     }
 
     return include $endpoint. $partial . '.view.php';
+}
+
+
+
+function redirect( $location, $response=302 ){
+
+
+
+    return header("Location: {$location}", true, $response);
 }
