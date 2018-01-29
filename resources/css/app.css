@@ -93,6 +93,13 @@ html{
     color: #FFF;
 }
 
+#events-list{
+    color: #fff;
+}
+.section-continuation{
+    margin-top: -60px;
+}
+
 /*---------------------------
 | HERO SECTION
 -----------------------------*/
@@ -104,6 +111,10 @@ html{
     transform: translate(-50%, -50%);
     text-align: center;
     color: white;
+}
+
+.hero-title{
+    font-size: 50px;
 }
 
 /*---------------------------
@@ -288,9 +299,9 @@ html{
 .ct-separator{
     display: block;
     height: 5px;
-    width: 50px;
+    width: 30px;
     background-color: #07BBFF;
-    margin: 20px 0 30px;
+    margin: 10px 0 30px;
 
 }
 

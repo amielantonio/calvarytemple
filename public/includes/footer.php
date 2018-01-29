@@ -16,7 +16,10 @@
                 <div class="col-sm-4">
                     <div class="">
                         <h5 class="footer-headline">Information</h5>
-                        <div class="separator"></div>
+                        <div class="ct-separator"></div>
+                        <div class="">
+                            <img src="<?php echo resource_dir();?>/img/calvary_logo.jpg" alt="Logo" width="200">
+                        </div>
                         <p>
                             At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias
                         </p>
@@ -26,33 +29,33 @@
                 <div class="col-sm-2">
                     <div class="">
                         <h5 class="footer-headline">Quick Links</h5>
-                        <div class="separator"></div>
+                        <div class="ct-separator"></div>
                         <ul class="no-bullets">
-                            <li>
+                            <li class="mb-10">
                                 <a href="<?= public_base_url(); ?>" class="footer-link">
                                     Home
                                 </a>
                             </li>
 
-                            <li>
+                            <li class="mb-10">
                                 <a href="<?= direct_public_url( 'events' ); ?>" class="footer-link">
                                     Events
                                 </a>
-                            </li>
+                            </li class="mb-10">
 
-                            <li>
+                            <li class="mb-10">
                                 <a href="<?= direct_public_url( 'events' ); ?>" class="footer-link">
 
                                     About Us</a>
                             </li>
 
-                            <li>
+                            <li class="mb-10">
                                 <a href="<?= direct_public_url( 'ministries' ); ?>" class="footer-link">
 
                                     Ministries</a>
                             </li>
 
-                            <li>
+                            <li class="mb-10">
                                 <a href="<?= direct_public_url( 'blog' ); ?>" class="footer-link">
                                     Blog
                                 </a>
@@ -64,7 +67,7 @@
                 <div class="col-sm-3">
                     <div class="">
                         <h5 class="footer-headline">Connect with us</h5>
-                        <div class="separator"></div>
+                        <div class="ct-separator"></div>
 
                         <p>
                             Sed ut perspiciatis unde omnis iste natus error sit voluptatem
@@ -89,7 +92,7 @@
                 <div class="col-sm-3">
                     <div>
                         <h5 class="footer-headline">Find us</h5>
-                        <div class="separator mb-20"></div>
+                        <div class="ct-separator mb-20"></div>
 
                         <img src="<?= resource_dir()?>/img/map.png" width="330">
                     </div>

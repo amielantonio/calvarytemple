@@ -8,7 +8,7 @@
     <section id="section-hero" class="section-hero">
 
         <div class="hero-headline">
-            <h1>
+            <h1 class="hero-title">
                 Lorem Ipsum
             </h1>
             <h2>
