@@ -52,7 +52,7 @@ $Route['track'] = [
 
 $Route['dashboard'] = [
     'endpoint' => 'admin',
-    'view' => 'dashboard/dashboard',
+//    'view' => 'dashboard/dashboard',
     'request' => 'dashboard/dashboard',
     'resource' => true
 ];

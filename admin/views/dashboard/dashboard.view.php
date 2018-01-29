@@ -27,32 +27,41 @@
                         <ul class="products-list product-list-in-box">
                             <?php
 
-                            $where = [
-                                'created_at >=  NOW()  '
-                            ];
+//                            $where = [
+//                                'created_at >=  NOW()  '
+//                            ];
+//
+//                            $fields = where('reservations', $where );
 
-                            $fields = where('reservations', $where );
+                            var_dump($fields);
 
                             ?>
 
-                            <?php foreach($fields as $key => $value) : ?>
+                            <?php if ( empty( $fields ) ) : ?>
 
-                                <li class="item">
-                                    <div class="product-info no-margin">
-                                        <a href="#" class="product-title">
+                                <h5>No reservations</h5>
 
-                                            <?php echo $value['reserver_name'] ?>
+                            <?php else: ?>
 
-                                            <span class="pull-right"><i class="fa fa-clock-o"></i> <?php echo date('M d, Y', strtotime($value['reservation_date']))?></span>
-                                        </a>
-                                        <span class="product-description">
+                                <?php foreach($fields as $key => $value) : ?>
+
+                                    <li class="item">
+                                        <div class="product-info no-margin">
+                                            <a href="#" class="product-title">
+
+                                                <?php echo $value['reserver_name'] ?>
+
+                                                <span class="pull-right"><i class="fa fa-clock-o"></i> <?php echo date('M d, Y', strtotime($value['reservation_date']))?></span>
+                                            </a>
+                                            <span class="product-description">
                                         <?php echo $value['reservation']?>
                                     </span>
-                                    </div>
-                                </li>
+                                        </div>
+                                    </li>
 
-                            <?php endforeach; ?>
+                                <?php endforeach; ?>
 
+                            <?php endif;?>
                         </ul>
                         <!--END PRODUCT-->
 
