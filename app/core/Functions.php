@@ -195,10 +195,12 @@ function is_page( $page ){
  *
  * @param $endpoint
  * @param $view
+ * @param $data null
  * @return mixed
  * @throws exception
  */
-function view($endpoint, $view){
+
+function view($endpoint, $view, $data=null){
 
     if(!file_exists( BASEPATH.'/'.$endpoint . '/views/' . $view . '.view.php' )){
         throw new exception('No View');
