@@ -25,25 +25,14 @@
 
                     <div class="box-body">
                         <ul class="products-list product-list-in-box">
-                            <?php
 
-//                            $where = [
-//                                'created_at >=  NOW()  '
-//                            ];
-//
-//                            $fields = where('reservations', $where );
-
-                            var_dump($fields);
-
-                            ?>
-
-                            <?php if ( empty( $fields ) ) : ?>
+                            <?php if ( empty( $new_reservations ) ) : ?>
 
                                 <h5>No reservations</h5>
 
                             <?php else: ?>
 
-                                <?php foreach($fields as $key => $value) : ?>
+                                <?php foreach($new_reservations as $key => $value) : ?>
 
                                     <li class="item">
                                         <div class="product-info no-margin">
@@ -78,19 +67,8 @@
 
                     <div class="box-body">
                         <ul class="products-list product-list-in-box">
-                            <?php
 
-                            $data = [
-                                'reserver_name',
-                                'reservation',
-                                'reservation_date'
-                            ];
-
-                            $fields = get('reservations', $data, 3);
-
-                            ?>
-
-                            <?php foreach($fields as $key => $value) : ?>
+                            <?php foreach($pending as $key => $value) : ?>
 
                                 <li class="item">
                                     <div class="product-info no-margin">
@@ -133,17 +111,8 @@
 
                     <div class="box-body">
                         <ul class="products-list product-list-in-box">
-                            <?php
 
-                            $where = [
-                                'DATEDIFF(NOW(), reservation_date) <= 30 AND reservation_date > NOW()'
-                            ];
-
-                            $fields = where('reservations', $where );
-
-                            ?>
-
-                            <?php foreach($fields as $key => $value) : ?>
+                            <?php foreach($upcoming as $key => $value) : ?>
 
                                 <li class="item">
                                     <div class="product-info no-margin">

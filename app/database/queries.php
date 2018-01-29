@@ -164,49 +164,12 @@ function atleast( $table, $limit){
 }
 
 /**
- * Fetch all records that corresponds
- * to the where clause
+ * Retrieve records from the database based on the primary key given
  *
  * @param $table
- * @param array $where
+ * @param $primary_key
  * @return mixed
  */
-function where( $table, $where = []){
-    //pull in connection
-    $conn = require DBPATH . '/connection.php';
-
-    // Require database configuration file
-    $db = require CONFIGPATH.'/database.php';
-
-    //create table instance
-    $table = $db['TB_PREFIX'] . $table;
-
-    //Check if parameter is an array or string
-    if( is_array( $where )){
-        $where = implode( ', ', $where);
-    }
-
-    //Create SQL statement
-    $sql = sprintf(
-
-        'SELECT * FROM %s WHERE %s',
-        $table, $where
-
-    );
-
-    $statement = $conn->prepare( $sql );
-
-    try {
-        $statement->execute();
-
-        return $statement->fetchAll();
-    }
-    catch( PDOException $e ) {
-        throw new PDOException($e->getMessage());
-    }
-}
-
-
 function find($table, $primary_key){
     //pull in connection
     $conn = require DBPATH . '/connection.php';
@@ -237,6 +200,52 @@ function find($table, $primary_key){
     }
 
 }
+
+/**
+ * Fetch all records that corresponds
+ * to the where clause
+ *
+ * @param $table
+ * @param array $where
+ * @param string $limit
+ * @return mixed
+ */
+function where( $table, $where="", $limit = ''){
+    //pull in connection
+    $conn = require DBPATH . '/connection.php';
+
+    // Require database configuration file
+    $db = require CONFIGPATH.'/database.php';
+
+    //create table instance
+    $table = $db['TB_PREFIX'] . $table;
+
+    //Create SQL statement
+    $sql = sprintf(
+
+        'SELECT * FROM %s WHERE %s',
+        $table, $where
+
+    );
+
+    //Check if limit is available
+    if($limit <> ""){
+        $sql .= sprintf( " LIMIT %s", $limit );
+    }
+
+
+    $statement = $conn->prepare( $sql );
+
+    try {
+        $statement->execute();
+
+        return $statement->fetchAll();
+    }
+    catch( PDOException $e ) {
+        throw new PDOException($e->getMessage());
+    }
+}
+
 
 
 /**

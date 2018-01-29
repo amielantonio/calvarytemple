@@ -1,15 +1,29 @@
 <?php
 
 /**
- * Onload function for the views
+ * Show index page for the web application
+ *
+ * @return mixed
  */
 function index(){
 
-    $where = [
-        'created_at >=  NOW()  '
-    ];
+    //New Reservations
 
-    $fields = where('reservations', $where );
+    $now = date('Y-m-d');
+    $where = "created_at >={$now} AND reservation_status = 'Approved'";
+    $new_reservations = where('reservations', $where );
 
-    return view('admin','dashboard/dashboard', $fields);
+
+    //Pending Reservations
+    $where = "reservation_status = 'Pending'";
+
+    $pending = where('reservations', $where, 3);
+
+
+    //Upcoming Reservations
+    $where =  'DATEDIFF(NOW(), reservation_date) <= 30 AND reservation_date > NOW() AND reservation_status = "Approved"';
+    $upcoming = where('reservations', $where );
+
+
+    return view('admin','dashboard/dashboard', compact('new_reservations', 'pending', 'upcoming'));
 }
