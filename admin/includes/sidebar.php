@@ -37,6 +37,10 @@
                     <li><a href="<?= direct_admin_url('reservation/categories') ?>">
                             <i class="fa fa-circle-o"></i> Categories</a>
                     </li>
+                    <li><a href="<?= direct_admin_url('reservation/archive') ?>">
+                            <i class="fa fa-circle-o"></i> Archives</a>
+                    </li>
+
                 </ul>
             </li>
 
