@@ -8,7 +8,7 @@
 function index(){
 
 
-    $where = "MONTH( reservation_date ) = MONTH( NOW() )";
+    $where = "MONTH( reservation_date ) = MONTH( NOW() ) AND reservation_status = 'Approved'";
 
     $reservation = where( 'reservations', $where );
 
@@ -18,7 +18,9 @@ function index(){
 
 function show(){
 
-    $reservations = all( 'reservations' );
+
+    $where = "reservation_status <> 'Pending' ";
+    $reservations = where( 'reservations', $where );
 
     echo json_encode( $reservations );
     exit;

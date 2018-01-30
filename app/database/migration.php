@@ -145,19 +145,22 @@ $migration['reservation_categories'] = [
     ]
 ];
 
-$migration['pastors'] =[
+$migration['facilitators'] =[
     'id' => [
         'field_type' => 'INT',
         'key' => 'PRIMARY KEY AUTO_INCREMENT'
     ],
-    'pastor_firstname' => [
+    'first_name' => [
         'field_type' => 'VARCHAR(50)'
     ],
-    'pastor_lastname' => [
+    'last_name' => [
         'field_type' => 'VARCHAR(50)'
     ],
     'phone_number' => [
         'field_type' => 'VARCHAR(15)'
+    ],
+    'position' => [
+        'field_type' => 'VARCHAR(50)'
     ]
 ];
 
