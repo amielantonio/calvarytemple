@@ -222,7 +222,8 @@ $migration['posts'] = [
         'field_type' => 'VARCHAR(200)'
     ],
     'featured_image' =>[
-        'field_type' => 'TEXT'
+        'field_type' => 'TEXT',
+        'is_null' => true
     ],
     'post_date' =>[
         'field_type' => 'DATETIME'
@@ -231,7 +232,10 @@ $migration['posts'] = [
         'field_type' => 'VARCHAR(100)'
     ],
     'post_status' =>[
-           'field_type' => 'VARCHAR(50'
+           'field_type' => 'VARCHAR(50)'
+    ],
+    'post_likes' => [           // we will only save the number of likes, and not the number of people
+        'field_type' => 'INT'   // who pressed the like button
     ],
     'created_at' =>[
         'field_type' => 'DATETIME',
@@ -255,6 +259,30 @@ $migration['posts_categories'] = [
     ]
 ];
 
+// Future Enhancement
+// Saving the table Schema for future purposes
+$migration['post_comments'] = [
+    'id' =>[
+        'field_type' => 'INT',
+        'key' => 'PRIMARY KEY AUTO_INCREMENT'
+    ],
+    'commenter' => [
+        'field_type' => 'VARCHAR(100)'
+    ],
+    'comment' => [
+        'field_type' => 'TEXT'
+    ],
+    'comment_date' => [
+        'field_type' => 'DATE'
+    ],
+    'post_id' => [
+        'field_type' => 'INT'
+    ],
+    'comment_id' => [
+        'field_type' => 'INT',
+        'is_null' => true
+    ]
+];
 
 
 
