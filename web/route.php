@@ -93,12 +93,17 @@ $Route['dashboard/events'] = [
     'request' => 'dashboard/dashboard',
     'resource' => true
 ];
+
+/**
+ * Posts Routes
+ * --------------------------------------------------------------------
+ */
 $Route['dashboard/post'] = [
-    'endpoint' => 'admin',
-    'view' => 'post/post',
     'request' => 'dashboard/post',
     'resource' => true
 ];
+
+/** End Posts routes */
 $Route['dashboard/user'] = [
     'endpoint' => 'admin',
     'view' => 'user/user',

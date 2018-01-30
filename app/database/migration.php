@@ -197,17 +197,20 @@ $migration['posts'] = [
         'field_type' => 'INT',
         'key' => 'PRIMARY KEY AUTO_INCREMENT'
     ],
-    'post_name' =>[
+    'post_title' =>[
         'field_type' => "VARCHAR(100)"
     ],
-    'post_text' => [
+    'post_body' => [
+        'field_type' => 'TEXT'
+    ],
+    'post_excerpt' => [
         'field_type' => 'TEXT'
     ],
     'categories' =>[
-        'field_type' => 'TEXT'
+        'field_type' => 'VARCHAR(100)'
     ],
     'tag' =>[
-        'field_type' => 'TEXT'
+        'field_type' => 'VARCHAR(200)'
     ],
     'featured_image' =>[
         'field_type' => 'TEXT'
@@ -217,6 +220,9 @@ $migration['posts'] = [
     ],
     'author' => [
         'field_type' => 'VARCHAR(100)'
+    ],
+    'post_status' =>[
+           'field_type' => 'VARCHAR(50'
     ],
     'created_at' =>[
         'field_type' => 'DATETIME',

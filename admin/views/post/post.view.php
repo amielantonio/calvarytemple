@@ -24,7 +24,7 @@
                             <h3 class="box-title"></h3>
 
                             <div class="box-tools">
-                                <div class="input-group input-group-sm" style="width: 150px;">
+                                <div class="input-group input-group-sm" style="width: 250px;">
                                     <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
 
                                     <div class="input-group-btn">
@@ -37,26 +37,71 @@
                         <div class="box-body table-responsive no-padding">
                             <table class="table table-hover">
                                 <tbody><tr>
-                                    <th>ID</th>
-                                    <th>Title</th>
+                                    <th style="width: 20%;">Title</th>
                                     <th>Author</th>
+                                    <th>Categories</th>
+                                    <th>Tags</th>
+                                    <th><i class="fa fa-comments"></i></th>
                                     <th>Date</th>
                                     <th>Actions</th>
                                 </tr>
+
                                 <tr>
-                                    <td>1</td>
-                                    <td>The Lorem Ipsum</td>
-                                    <td>something@gmail.com</td>
-                                    <td>Jan 20, 2018</td>
-                                    <td>View</td>
+                                    <td>
+                                        <a href="#">
+                                            The Lorem Ipsum
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="#">
+                                            Sam Wan
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="#">
+                                            Blog
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="">
+                                            Tags
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="">
+                                            3
+                                        </a>
+                                    </td>
+                                    <td>
+                                        Published<br />
+                                        Jan 20, 2018
+                                    </td>
+                                    <td>
+                                        <a href="#">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+
+                                        <a href="#">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+
+                                        <a href="#" class="text-danger">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </td>
                                 </tr>
+
+
                                 <tr>
-                                    <td>2</td>
-                                    <td>The Dolor Sit Amet</td>
-                                    <td>something@gmail.com</td>
-                                    <td>Jan 20, 2018</td>
-                                    <td>View</td>
-                                </tr>
+                                    <th>Title</th>
+                                    <th>Author</th>
+                                    <th>Categories</th>
+                                    <th>Tags</th>
+                                    <th><i class="fa fa-comments"></i></th>
+                                    <th>Date</th>
+                                    <th>Actions</th>
+
+
                                 </tbody></table>
                         </div>
 
