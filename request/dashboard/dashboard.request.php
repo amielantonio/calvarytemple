@@ -26,4 +26,5 @@ function index(){
 
 
     return view('admin','dashboard/dashboard', compact('new_reservations', 'pending', 'upcoming'));
+
 }

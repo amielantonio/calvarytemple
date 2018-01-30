@@ -45,14 +45,14 @@ function all( $table ){
 }
 
 /**
- * Fetch all data with specific fields
+ * Get an Item from the collection by key
  *
  * @param $table
  * @param string $fields
  * @param string $limit < default = 1 >
  * @return mixed
  */
-function get($table, $fields = '', $limit = "1" ){
+function get($table, $key ){
     //pull in connection
     $conn = require DBPATH . '/connection.php';
 
@@ -62,16 +62,11 @@ function get($table, $fields = '', $limit = "1" ){
     //create table instance
     $table = $db['TB_PREFIX'] . $table;
 
-    //Check if parameter is an array or string
-    if( is_array( $fields )){
-        $fields = implode( ', ', $fields);
-    }
-
     //Create SQL statement
     $sql = sprintf(
 
-        'SELECT %s FROM %s LIMIT %s',
-        $fields, $table, $limit
+        'SELECT * FROM %s WHERE id = %s',
+        $key
 
     );
 
@@ -341,9 +336,6 @@ function patch( $table, $id, $data = [], $where = "" ){
     catch( PDOException $e ) {
         throw new PDOException($e->getMessage());
     }
-
-
-
 }
 
 /**
@@ -355,13 +347,57 @@ function updateOrCreate(){
 
 
 function delete( $table, $id, $where = ""){
+    //pull in connection
+    $conn = require DBPATH . '/connection.php';
+
+    // Require database configuration file
+    $db = require CONFIGPATH.'/database.php';
+
+    //create table instance
+    $table = $db['TB_PREFIX'] . $table;
+
+    $sql = sprintf(
+
+        'DELETE FROM %s WHERE id = %s',
+        $table, $id
+
+    );
+
+    if( $where <> "" ){
+        $sql .= 'AND ' . $where;
+    }
+
+    //Prepare and bind
+    $statement = $conn->prepare( $sql );
+
+    try {
+        $statement->execute();
+
+        return true;
+
+    }
+    catch( PDOException $e ) {
+        throw new PDOException($e->getMessage());
+    }
+
 
 }
-
 
 function last_id( $table ){
 
 }
+
+
+
+function orderBy( $array, $order){
+
+}
+
+
+
+/** HELPER CLASSES */
+
+
 
 /**
  * Prepare parameters for SQL

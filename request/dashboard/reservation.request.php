@@ -1,12 +1,41 @@
 <?php
 
-
+/**
+ * Show the index page of the reservation module
+ *
+ * @return mixed
+ */
 function index(){
 
+
+    $where = "MONTH( reservation_date ) = MONTH( NOW() )";
+
+    $reservation = where( 'reservations', $where );
+
+    return view('admin', 'reservation/reservation', compact( 'reservation' ));
 }
+
 
 function show(){
 
+    $reservations = all( 'reservations' );
+
+    echo json_encode( $reservations );
+    exit;
+
+}
+
+/**
+ * Show this month's reservation
+ */
+function thismonth(){
+
+    $where = "MONTH( reservation_date ) = MONTH( NOW() )";
+
+    $reservation = where( 'reservations', $where );
+
+    echo json_encode( $reservation );
+    exit;
 }
 
 /**
@@ -45,23 +74,9 @@ function store(){
 
     insert('reservations', $data );
 
-
-//    redirect( direct_admin_url( 'dashboard/reservation' ) );
-
     header("Location: reservation");
 }
 
-function edit(){
-    echo "test edit";
-}
-
-function destroy(){
-    echo "test destroy";
-}
-
-function update(){
-    echo "test update";
-}
 
 /**
  * Save Categoriees to Reservation category database
@@ -75,11 +90,8 @@ function savecat(){
 
     ];
 
-    var_dump($data);
-
     insert( 'reservation_categories', $data );
 
     header('Location: reservation/categories');
-
 }
 

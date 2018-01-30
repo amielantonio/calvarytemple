@@ -13,28 +13,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                <i class="fa fa-calendar-plus-o"></i> Pending Reservations
+                <i class="fa fa-archive"></i> Archives
             </h1>
         </section>
 
         <!-- Main content -->
         <section class="content">
-
-            <?php if( isset( $alert ) ) : ?>
-
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="alert alert-<?= $alert['alertable'] ?> alert-dismissible fade show" role="alert">
-                        <?= $alert['message'] ?>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <?php  endif;?>
-
 
             <div class="row">
 
@@ -42,7 +26,6 @@
                     <div class="box with-border">
                         <div class="box-header">
                             <h3 class="box-title"></h3>
-
                             <div class="box-tools">
                                 <div class="input-group input-group-sm" style="width: 250px;">
                                     <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
@@ -53,7 +36,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!--END BOX HEADER-->
 
                         <div class="box-body table-responsive no-padding">
                             <table class="table table-hover">
@@ -61,47 +43,33 @@
                                     <th>#</th>
                                     <th>Reserver Name</th>
                                     <th>Reservation</th>
+                                    <th>Facilitator</th>
                                     <th>Date of Event</th>
-                                    <th>Date reserved</th>
-                                    <th>Actions</th>
                                 </tr>
 
-                                <?php if( empty($pending) ) :  ?>
+                                <?php if( empty($archive) ) :  ?>
 
-                                <td colspan="6">
-                                    <h3 class="text-center">No Pending Reservations</h3>
-                                </td>
+                                    <td colspan="6">
+                                        <h3 class="text-center">No Archives</h3>
+                                    </td>
 
                                 <?php endif;?>
 
-                                <?php $x = 1; foreach( $pending as $key => $value) : ?>
-                                <tr>
-                                    <td><?php echo $x ?></td>
-                                    <td><?php echo $value['reserver_name']?></td>
-                                    <td><?php echo $value['reservation']?></td>
-                                    <td><?php echo date('M d, Y - g:i A', strtotime( $value[ 'reservation_date' ] ) ); ?></td>
-                                    <td><?php echo date('M d, Y - g:i A', strtotime( $value[ 'created_at' ] ) ); ?></td>
-                                    <td>
-                                        <a href="<?php echo direct_admin_url( 'reservation/pending?action=approve&id='. $value['id'] ); ?>">
-                                            <button type="button" class="btn btn-primary">
-                                                Approve
-                                            </button>
-                                        </a>
+                                <?php $x = 1; foreach( $archive as $key => $value) : ?>
+                                    <tr>
+                                        <td><?php echo $x ?></td>
+                                        <td><?php echo $value['reserver_name']?></td>
+                                        <td><?php echo $value['reservation']?></td>
+                                        <td><?php echo  $value['pastor']?></td>
+                                        <td><?php echo date('M d, Y - g:i A', strtotime( $value[ 'reservation_date' ] ) ); ?></td>
+                                    </tr>
 
-                                        <a href="<?php echo direct_admin_url( 'reservation/pending?action=destroy&id='. $value['id'] );?>">
-                                            <button type="button" class="btn btn-danger">
-                                                Cancel
-                                            </button>
-                                        </a>
-                                    </td>
-                                </tr>
-
-                                <?php $x++; endforeach; ?>
+                                    <?php $x++; endforeach; ?>
 
                                 </tbody>
                             </table>
                         </div>
-                        <!--END BOX BODY-->
+                        <!--END BODY-->
 
                         <div class="box-footer clearfix">
                             <ul class="pagination pagination-sm no-margin pull-right">
@@ -111,7 +79,7 @@
                                 <li><a href="#">»</a></li>
                             </ul>
                         </div>
-                        <!-- /.box-footer -->
+                        <!-- /.box-body -->
 
                     </div>
                     <!--END BOX-->
