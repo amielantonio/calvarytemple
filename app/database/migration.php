@@ -104,10 +104,13 @@ $migration['reservations'] = [
     'reservation' => [
         'field_type' => 'VARCHAR(100)'
     ],
-    'reservation_date' => [
+    'reservation_startdate' => [
         'field_type' => 'DATETIME',
     ],
-    'pastor' => [
+    'reservation_enddate' => [
+        'field_type' => 'DATETIME',
+    ],
+    'facilitator' => [
         'field_type' => 'VARCHAR(100)',
         'is_null' => true
     ],
@@ -175,7 +178,10 @@ $migration['events'] = [
     'event_description' => [
         'field_type' => 'TEXT'
     ],
-    'event_date' => [
+    'event_startdate' => [
+        'field_type' => 'DATETIME'
+    ],
+    'event_enddate' => [
         'field_type' => 'DATETIME'
     ],
     'event_details' => [
