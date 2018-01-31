@@ -123,19 +123,6 @@
                     week : 'week',
                     day  : 'day'
                 },
-                //Random default events
-//                events    : [
-//
-//                    {
-//                        title          : 'Peter Parker',
-//                        start          : new Date(2018, 1, 30),
-//                        end            : new Date(2018, 1, 31),
-//                        allDay         : false,
-//                        backgroundColor: '#00a65a', //Success (green)
-//                        borderColor    : '#00a65a' //Success (green)
-//
-//                    }
-//                ],
 
                 events    : function( start, end, timezone, callback){
                     $.ajax({

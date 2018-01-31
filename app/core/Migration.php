@@ -12,7 +12,9 @@
 
 function migrate(){
 
-    create_table();
+    if(create_table()){
+        echo 'Tables migrated';
+    }
 
 }
 
@@ -32,9 +34,8 @@ function create_table(){
         $sql = process_migration_table( $key, $value, $db['TB_PREFIX'] );
 
         try{
-            if( $conn->exec( $sql ) ){
-                echo "Table ". $key ." migrated<br />";
-            }
+            $conn->exec( $sql );
+            return true;
         }
         catch (PDOException $e){
             echo $e->getMessage();
