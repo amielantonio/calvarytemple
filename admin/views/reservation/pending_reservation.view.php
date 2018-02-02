@@ -79,7 +79,7 @@
                                     <td><?php echo $x ?></td>
                                     <td><?php echo $value['reserver_name']?></td>
                                     <td><?php echo $value['reservation']?></td>
-                                    <td><?php echo date('M d, Y - g:i A', strtotime( $value[ 'reservation_date' ] ) ); ?></td>
+                                    <td><?php echo date('M d, Y - g:i A', strtotime( $value[ 'reservation_startdate' ] ) ); ?></td>
                                     <td><?php echo date('M d, Y - g:i A', strtotime( $value[ 'created_at' ] ) ); ?></td>
                                     <td>
                                         <a href="<?php echo direct_admin_url( 'reservation/pending?action=approve&id='. $value['id'] ); ?>">

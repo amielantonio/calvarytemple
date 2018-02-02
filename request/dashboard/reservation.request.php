@@ -8,7 +8,7 @@
 function index(){
 
 
-    $where = "MONTH( reservation_date ) = MONTH( NOW() ) AND reservation_status = 'Approved'";
+    $where = "MONTH( reservation_startdate ) = MONTH( NOW() ) AND reservation_status = 'Approved'";
 
     $reservation = where( 'reservations', $where );
 
@@ -32,7 +32,7 @@ function show(){
  */
 function thismonth(){
 
-    $where = "MONTH( reservation_date ) = MONTH( NOW() )";
+    $where = "MONTH( reservation_startdate ) = MONTH( NOW() )";
 
     $reservation = where( 'reservations', $where );
 
@@ -57,13 +57,13 @@ function create(){
  */
 function store(){
 
-    $reservation_date = date('Y-m-d h:i:s', strtotime($_POST['reservation_date'] . " " . $_POST['time']));
+    $reservation_date = date('Y-m-d h:i:s', strtotime($_POST['reservation_startdate'] . " " . $_POST['time']));
 
     $data = [
 
         'reserver_name' => $_POST['reserver_name'],
         'reservation' => $_POST['reservation'],
-        'reservation_date' => $reservation_date,
+        'reservation_startdate' => $reservation_date,
         'pastor' => $_POST['pastor'],
         'personnel' => $_POST['personnel'],
         'reservation_status' => '',

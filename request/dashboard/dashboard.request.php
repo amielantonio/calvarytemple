@@ -21,7 +21,7 @@ function index(){
 
 
     //Upcoming Reservations
-    $where =  'DATEDIFF(NOW(), reservation_date) <= 30 AND reservation_date > NOW() AND reservation_status = "Approved"';
+    $where =  'DATEDIFF(NOW(), reservation_startdate) <= 30 AND reservation_startdate > NOW() AND reservation_status = "Approved"';
     $upcoming = where('reservations', $where );
 
 

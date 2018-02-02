@@ -60,7 +60,7 @@
                                         <div class="input-group-addon">
                                             <i class="fa fa-clock-o"></i>
                                         </div>
-                                        <input type="text" class="form-control pull-right" id="datepicker" name="reservation_date" >
+                                        <input type="text" class="form-control pull-right" id="datepicker" name="reservation_startdate" >
                                     </div>
                                     <!-- /.input group -->
 

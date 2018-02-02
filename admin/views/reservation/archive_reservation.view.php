@@ -61,7 +61,7 @@
                                         <td><?php echo $value['reserver_name']?></td>
                                         <td><?php echo $value['reservation']?></td>
                                         <td><?php echo  $value['pastor']?></td>
-                                        <td><?php echo date('M d, Y - g:i A', strtotime( $value[ 'reservation_date' ] ) ); ?></td>
+                                        <td><?php echo date('M d, Y - g:i A', strtotime( $value[ 'reservation_startdate' ] ) ); ?></td>
                                     </tr>
 
                                     <?php $x++; endforeach; ?>

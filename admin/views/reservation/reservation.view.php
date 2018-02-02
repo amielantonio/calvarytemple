@@ -34,7 +34,7 @@
                                         <a href="#" class="product-title">
                                             <?php echo $value['reserver_name']; ?>
 
-                                            <span class="pull-right"><i class="fa fa-clock-o"></i> <?= date('M d, Y', strtotime( $value['reservation_date'] ) )?></span>
+                                            <span class="pull-right"><i class="fa fa-clock-o"></i> <?= date('M d, Y', strtotime( $value['reservation_startdate'] ) )?></span>
                                         </a>
                                     <span class="product-description">
                                         <?php echo  $value['reservation'] ?>
@@ -53,8 +53,10 @@
                 <div class="col-md-8">
                     <div class="box box-primary">
                         <div class="box-body no-padding">
+
                             <!-- THE CALENDAR -->
                             <div id="calendar"></div>
+
                         </div>
                         <!-- /.box-body -->
                     </div>
@@ -92,17 +94,12 @@
                     // store the Event Object in the DOM element so we can get to it later
                     $(this).data('eventObject', eventObject)
 
-                    // make the event draggable using jQuery UI
-                    $(this).draggable({
-                        zIndex        : 1070,
-                        revert        : true, // will cause the event to go back to its
-                        revertDuration: 0  //  original position after the drag
-                    })
+
 
                 })
             }
 
-            init_events($('#external-events div.external-event'))
+            init_events($('#external-events div.external-event'));
 
             /* initialize the calendar
              -----------------------------------------------------------------*/

@@ -103,7 +103,17 @@ $Route['dashboard/post'] = [
     'resource' => true
 ];
 
+$Route['dashboard/post/categories'] = [
+    'endpoint' => 'admin',
+    'view' => 'post/categories',
+    'request' => 'dashboard/post',
+    'resource' => true
+];
+
+
 /** End Posts routes */
+
+
 $Route['dashboard/user'] = [
     'endpoint' => 'admin',
     'view' => 'user/user',
