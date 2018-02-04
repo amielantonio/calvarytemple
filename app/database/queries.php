@@ -48,8 +48,7 @@ function all( $table ){
  * Get an Item from the collection by key
  *
  * @param $table
- * @param string $fields
- * @param string $limit < default = 1 >
+ * @param string $key
  * @return mixed
  */
 function get($table, $key ){
@@ -159,13 +158,14 @@ function atleast( $table, $limit){
 }
 
 /**
- * Retrieve records from the database based on the primary key given
+ * Get the first record that matches the given attributes or create it
  *
- * @param $table
- * @param $primary_key
+ * @param $_table
+ * @param $attribute
+ * @param $value
  * @return mixed
  */
-function find($table, $primary_key){
+function firstOrCreate($_table, $attribute, $value = ""){
     //pull in connection
     $conn = require DBPATH . '/connection.php';
 
@@ -173,13 +173,16 @@ function find($table, $primary_key){
     $db = require CONFIGPATH.'/database.php';
 
     //create table instance
-    $table = $db['TB_PREFIX'] . $table;
+    $table = $db['TB_PREFIX'] . $_table;
+
+    // Action starts here
+    // Select the primary key form the database
 
     //Create SQL statement
     $sql = sprintf(
 
-        'SELECT * FROM %s WHERE id = "%s"',
-        $table, $primary_key
+        'SELECT * FROM %s WHERE %s = "%s"',
+        $table, $attribute, $value
 
     );
 
@@ -188,13 +191,28 @@ function find($table, $primary_key){
     try {
         $statement->execute();
 
-        return $statement->fetchAll();
+        $result =  $statement->fetchAll();
     }
     catch( PDOException $e ) {
         throw new PDOException($e->getMessage());
     }
 
+    if( !empty($result)){
+        return $result;
+    }
+
+    //Create the Model Instance
+
+
+    $data = [
+        $attribute => $value
+    ];
+
+    insert( $_table, $data);
+
 }
+
+
 
 /**
  * Fetch all records that corresponds

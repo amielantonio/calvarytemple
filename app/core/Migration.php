@@ -15,9 +15,7 @@
  */
 function migrate(){
 
-    if(create_table()){
-        echo 'Tables migrated';
-    }
+    create_table();
     save_migration_tables();
 
 }
@@ -44,18 +42,21 @@ function create_table(){
     // Require database configuration file
     $db = require CONFIGPATH.'/database.php';
 
+//    var_dump($migration);
+
     foreach($migration as $key => $value){
 
         $sql = process_migration_table( $key, $value, $db['TB_PREFIX'] );
 
         try{
             $conn->exec( $sql );
-            return true;
         }
         catch (PDOException $e){
             echo $e->getMessage();
         }
     }
+
+    return true;
 }
 
 /**
@@ -112,11 +113,8 @@ function save_migration_tables(){
 
     foreach( $tables as $table ){
 
-        $value = [
-            'tables' => $db['TB_PREFIX'].$table
-        ];
+        firstOrCreate( 'migration', 'tables', $db['TB_PREFIX'].$table );
 
-        insert( 'migration', $value);
     }
 }
 

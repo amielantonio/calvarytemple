@@ -40,7 +40,6 @@
                                     <th>ID</th>
                                     <th>Reserver Name</th>
                                     <th>Reservation Type</th>
-                                    <th>Actions</th>
                                 </tr>
 
                                 <?php $x = 1; foreach( $listing as $key => $value ) : ?>
@@ -48,7 +47,6 @@
                                     <td><?= $x ?></td>
                                     <td><?= $value['reservation_category'] ?></td>
                                     <td><?= $value['category_description'] ?></td>
-                                    <td>View</td>
                                 </tr>
 
                                 <?php $x++; endforeach; ?>

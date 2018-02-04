@@ -126,15 +126,40 @@
                         url: '<?php echo direct_admin_url('reservation?action=show') ?>',
                         method: 'GET',
                         success: function ( data ){
-                            var data = JSON.parse( data );
+                            var reservations = JSON.parse( data );
 
                             var events = [];
 
-                            $.each( data, function( key, value ){
+                            $.each( reservations, function( key, value ){
+
+                                var allday = false;
+
+                                var startDate = new Date( value['reservation_startdate'] );
+                                var endDate = new Date( value['reservation_enddate'] );
+
+                                endDate.setDate(endDate.getDate() + 1);
+
+                                //Identifies if the event is allDay
+                                if( startDate - endDate > 0){
+                                    allday = true;
+                                }
+
+                                var types = {
+                                    Wedding: '#FE2F50',
+                                    Councelling: '#408af8',
+                                    Dedication: '#2FE997'
+                                };
+
+
+
+
                                 events.push({
                                     title: value['reserver_name'],
-                                    start: value['reservation_startdate'],
-                                    end: value['reservation_enddate']
+                                    start: startDate,
+                                    end: endDate,
+                                    allDay:  allday,
+                                    url: '<?php echo direct_admin_url('reservation?action=getInfo&id=') ?>'+value["id"],
+                                    color: types[ value['reservation'] ]
                                 });
                             });
 

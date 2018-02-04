@@ -30,7 +30,7 @@
                         <div class="box-body">
                             <form method="post" action="<?php echo direct_admin_url( 'reservation?action=store' )?>">
 
-                                <input type="hidden" name="personnel" value="">
+                                <input type="hidden" name="personnel" value="This someone">
                                 <input type="hidden" name="reservation_status" value="Approved">
 
                                 <div class="form-group">
@@ -43,24 +43,28 @@
                                 <div class="form-group">
 
                                     <label for="reservation">Reservation</label>
+
+
                                     <select class="form-control select2" style="width: 100%;" id="reservation" name="reservation">
-                                        <option selected="selected">Wedding</option>
-                                        <option>Dedication</option>
-                                        <option>Counselling</option>
-                                        <option>Preaching</option>
+                                        <?php if( !empty($reservation_types )) : ?>
+                                        <?php foreach($reservation_types as $key=>$val) : ?>
+                                            <option><?php echo $val['reservation_category']?></option>
+                                        <?php endforeach;?>
+                                        <?php endif; ?>
                                     </select>
+
 
                                 </div>
 
                                 <div class="form-group">
 
-                                    <label for="datepicker">Start Date</label>
+                                    <label for="startDate">Start Date</label>
 
                                     <div class="input-group date">
                                         <div class="input-group-addon">
                                             <i class="fa fa-clock-o"></i>
                                         </div>
-                                        <input type="text" class="form-control pull-right" id="datepicker" name="reservation_startdate" >
+                                        <input type="text" class="form-control pull-right" id="startDate" name="reservation_startdate" >
                                     </div>
                                     <!-- /.input group -->
 
@@ -70,10 +74,42 @@
                                 <!-- time Picker -->
                                 <div class="bootstrap-timepicker">
                                     <div class="form-group">
-                                        <label>Time picker:</label>
+                                        <label>Start Time</label>
 
                                         <div class="input-group">
-                                            <input type="text" class="form-control timepicker" name="time">
+                                            <input type="text" class="form-control timepicker" name="startTime">
+
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-clock-o"></i>
+                                            </div>
+                                        </div>
+                                        <!-- /.input group -->
+                                    </div>
+                                    <!-- /.form group -->
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label for="endDate">End Date</label>
+
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-clock-o"></i>
+                                        </div>
+                                        <input type="text" class="form-control pull-right" id="endDate" name="reservation_enddate" >
+                                    </div>
+                                    <!-- /.input group -->
+
+                                </div>
+                                <!-- /.form group -->
+
+                                <!-- time Picker -->
+                                <div class="bootstrap-timepicker">
+                                    <div class="form-group">
+                                        <label>End Time</label>
+
+                                        <div class="input-group">
+                                            <input type="text" class="form-control timepicker" name="endTime">
 
                                             <div class="input-group-addon">
                                                 <i class="fa fa-clock-o"></i>
@@ -86,8 +122,8 @@
 
 
                                 <div class="form-group">
-                                    <label for="reservation">Pastor</label>
-                                    <select class="form-control select2" style="width: 100%;" id="reservation" name="pastor">
+                                    <label for="reservation">Facilitator</label>
+                                    <select class="form-control select2" style="width: 100%;" id="reservation" name="facilitator">
                                         <option selected="selected">Ptr. A</option>
                                         <option>Ptr. B</option>
                                         <option>Ptr. C</option>
@@ -150,9 +186,13 @@
             $('.select2').select2()
 
             //Date picker
-            $('#datepicker').datepicker({
+            $('#startDate').datepicker({
                 autoclose: true
             })
+            $('#endDate').datepicker({
+                autoclose: true
+            })
+
 
             //Timepicker
             $('.timepicker').timepicker({
