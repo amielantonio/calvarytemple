@@ -4,9 +4,6 @@
 <!-- Font Awesome -->
 <link rel="stylesheet" href="<?= resource_dir()?>/plugins/adminlte/bower_components/font-awesome/css/font-awesome.min.css">
 
-<!-- Ionicons -->
-<link rel="stylesheet" href="<?= resource_dir()?>/plugins/adminlte/bower_components/Ionicons/css/ionicons.min.css">
-
 <!-- Theme style -->
 <link rel="stylesheet" href="<?= resource_dir()?>/plugins/adminlte/dist/css/AdminLTE.min.css">
 <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -16,10 +13,6 @@
 <link rel="stylesheet" href="<?php echo resource_dir() ?>/plugins/adminlte/bower_components/bootstrap-daterangepicker/daterangepicker.css">
 <!-- bootstrap datepicker -->
 <link rel="stylesheet" href="<?php echo resource_dir() ?>/plugins/adminlte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-<!-- iCheck for checkboxes and radio inputs -->
-<link rel="stylesheet" href="<?php echo resource_dir() ?>/plugins/iCheck/all.css">
-<!-- Bootstrap Color Picker -->
-<link rel="stylesheet" href="<?php echo resource_dir() ?>/plugins/adminlte/bower_components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css">
 <!-- Bootstrap time Picker -->
 <link rel="stylesheet" href="<?php echo resource_dir() ?>/plugins/timepicker/bootstrap-timepicker.min.css">
 <!-- Select2 -->

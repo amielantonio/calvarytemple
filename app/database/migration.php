@@ -25,6 +25,20 @@
 //
 // ];
 
+/** Migration tables */
+
+$migration['migration'] = [
+    'id' => [
+        'field_type' => 'INT',
+        'key' => 'PRIMARY KEY AUTO_INCREMENT'
+    ],
+    'tables' => [
+        'field_type' => 'VARCHAR(100)'
+    ]
+];
+
+/** end migration tables */
+
 
 
 $migration['users'] = [

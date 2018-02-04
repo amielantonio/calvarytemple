@@ -54,7 +54,7 @@
 
                                 <div class="form-group">
 
-                                    <label for="datepicker">Date</label>
+                                    <label for="datepicker">Start Date</label>
 
                                     <div class="input-group date">
                                         <div class="input-group-addon">

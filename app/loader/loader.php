@@ -29,16 +29,18 @@ require APPPATH . '/config/constants.php';
 require HELPERPATH . '/helper.php';
 
 /**
+ * Load application queries
+ */
+
+require DBPATH . '/queries.php';
+
+
+/**
  * Load application helpers
  */
 
 require COREPATH . '/Migration.php';
 
-/**
- * Load application queries
- */
-
-require DBPATH . '/queries.php';
 
 
 /**

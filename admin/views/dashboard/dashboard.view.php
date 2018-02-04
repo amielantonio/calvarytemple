@@ -68,6 +68,12 @@
                     <div class="box-body">
                         <ul class="products-list product-list-in-box">
 
+                        <?php if ( empty( $new_reservations ) ) : ?>
+
+                            <h5>No reservations</h5>
+
+                        <?php else: ?>
+
                             <?php foreach($pending as $key => $value) : ?>
 
                                 <li class="item">
@@ -91,6 +97,7 @@
                                 </li>
 
                             <?php endforeach; ?>
+                        <?php endif; ?>
 
                         </ul>
                         <!--END PRODUCT-->
@@ -112,6 +119,12 @@
                     <div class="box-body">
                         <ul class="products-list product-list-in-box">
 
+                        <?php if ( empty( $new_reservations ) ) : ?>
+
+                            <h5>No reservations</h5>
+
+                        <?php else: ?>
+
                             <?php foreach($upcoming as $key => $value) : ?>
 
                                 <li class="item">
@@ -129,6 +142,7 @@
                                 </li>
 
                             <?php endforeach; ?>
+                        <?php endif; ?>
 
                         </ul>
                         <!--END PRODUCT-->

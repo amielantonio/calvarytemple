@@ -4,6 +4,7 @@
  * Show index page for the web application
  *
  * @return mixed
+ * @throws exception
  */
 function index(){
 

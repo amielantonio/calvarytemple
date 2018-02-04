@@ -9,13 +9,28 @@
  */
 
 
-
+/**
+ *
+ * @throws exception
+ */
 function migrate(){
 
     create_table();
+    save_migration_tables();
 
 }
 
+function drop_migrate(){
+
+}
+
+function refresh_migrate(){
+
+}
+
+/**
+ * @throws exception
+ */
 function create_table(){
 
     //include migration
@@ -40,9 +55,15 @@ function create_table(){
             echo $e->getMessage();
         }
     }
-
 }
 
+/**
+ * @param $table
+ * @param $fields
+ * @param $prefix
+ * @return string
+ * @throws exception
+ */
 function process_migration_table( $table, $fields, $prefix ){
 
 
@@ -75,4 +96,34 @@ function process_migration_table( $table, $fields, $prefix ){
         $result .= ')';
 
     return $result;
+}
+
+function save_migration_tables(){
+    //include migration
+    $migration = require DBPATH . '/migration.php';
+
+    // Require database configuration file
+    $db = require CONFIGPATH.'/database.php';
+
+
+
+    $tables = array_keys( $migration );
+
+    foreach( $tables as $table ){
+
+        $value = [
+            'tables' => $db['TB_PREFIX'].$table
+        ];
+
+        insert( 'migration', $value);
+    }
+}
+
+
+function drop_tables(){
+
+}
+
+function refresh_tables(){
+
 }

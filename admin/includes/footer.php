@@ -13,8 +13,7 @@
 
 <!-- Bootstrap 3.3.7 -->
 <script src="<?= resource_dir()?>/plugins/adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="<?= resource_dir()?>/plugins/adminlte/bower_components/jquery-ui/jquery-ui.min.js"></script>
+
 <!-- SlimScroll -->
 <script src="<?= resource_dir()?>/plugins/adminlte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
