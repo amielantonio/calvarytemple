@@ -490,3 +490,13 @@ Admin Nav
 textarea{
     resize: none;
 }
+
+
+.action-toolbar{
+    display: block;
+    position: relative;
+}
+
+.tools ~ .tools{
+    margin-left: 5px;
+}

@@ -127,6 +127,42 @@ function resource_dir(){
 }
 
 /**
+ * Return Upload folder
+ *
+ * @return string
+ */
+function upload_img_posts(){
+
+    return RESOURCEPATH.'/uploads';
+}
+
+
+function upload_post_image( $image, $destination ){
+
+
+    if (!file_exists($destination) && !is_dir($destination)) {
+
+        chmod($destination, 0755);
+        mkdir($destination, 0755, true);
+
+    }
+
+    /*
+     * move image to uploads directory
+     */
+
+    $file_name = $image['name'];
+
+    if( move_uploaded_file($image['tmp_name'], $destination . $file_name) ){
+        return true;
+    }
+
+    return false;
+
+}
+
+
+/**
  * Get admin header
  *
  * @return mixed

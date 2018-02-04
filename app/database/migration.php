@@ -229,18 +229,18 @@ $migration['posts'] = [
     'post_excerpt' => [
         'field_type' => 'TEXT'
     ],
-    'categories' =>[
+    'category' =>[
         'field_type' => 'VARCHAR(100)'
     ],
-    'tag' =>[
+    'tags' =>[
         'field_type' => 'VARCHAR(200)'
     ],
     'featured_image' =>[
         'field_type' => 'TEXT',
         'is_null' => true
     ],
-    'post_date' =>[
-        'field_type' => 'DATETIME'
+    'published_date' =>[
+        'field_type' => 'DATE'
     ],
     'author' => [
         'field_type' => 'VARCHAR(100)'
@@ -250,6 +250,9 @@ $migration['posts'] = [
     ],
     'post_likes' => [           // we will only save the number of likes, and not the number of people
         'field_type' => 'INT'   // who pressed the like button
+    ],
+    'is_delete' => [
+        'field_type' => 'INT(1)'
     ],
     'created_at' =>[
         'field_type' => 'DATETIME',

@@ -15,13 +15,30 @@
         <!-- Main content -->
         <section class="content">
 
+            <?php if( isset( $alert ) ) : ?>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="alert alert-<?= $alert['alertable'] ?> alert-dismissible fade show" role="alert">
+                            <?= $alert['message'] ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            <?php  endif;?>
+
             <div class="row">
 
                 <div class="col-sm-12">
 
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title"></h3>
+                            <a href="" class="btn btn-primary">View All Posts</a>
+                            <a href="" class="btn btn-info">View Your Post <span class="badge"></span></a>
+                            <a href="" class="btn btn-danger">View Trash <span class="badge"></span></a>
 
                             <div class="box-tools">
                                 <div class="input-group input-group-sm" style="width: 250px;">
@@ -39,65 +56,74 @@
                                 <tbody><tr>
                                     <th style="width: 20%;">Title</th>
                                     <th>Author</th>
-                                    <th>Categories</th>
+                                    <th>Category</th>
                                     <th>Tags</th>
-                                    <th><i class="fa fa-comments"></i></th>
                                     <th>Date</th>
                                     <th>Actions</th>
                                 </tr>
 
+                                <?php if( !empty( $posts )) : ?>
+
+                                    <?php foreach( $posts as $key => $value) : ?>
+                                            <tr>
+                                                <td>
+                                                    <a href="#">
+                                                        <?php echo $value['post_title']?>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a href="#">
+                                                        <?php echo $value['author']?>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a href="#">
+                                                        <?php echo $value['category']?>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a href="">
+                                                        <?php echo $value['tags']?>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <span style="text-transform: capitalize"><?php echo $value['post_status']?></span><br />
+                                                    <?php echo date( 'M d, Y', strtotime( $value['published_date'] ) )?>
+                                                </td>
+                                                <td>
+                                                    <div class="action-toolbar">
+                                                        <a href="<?php echo direct_admin_url('post?action=preview&id='.$value['id'] )?>" class="text-info tools">
+                                                            <i class="fa fa-eye"></i>
+                                                        </a>
+
+                                                        <a href="<?php echo direct_admin_url('post?action=edit&id='.$value['id'] )?>" class="text-info tools">
+                                                            <i class="fa fa-edit"></i>
+                                                        </a>
+
+                                                        <a href="<?php echo direct_admin_url('post?action=destroy&id='.$value['id'] )?>" class="text-danger tools">
+                                                            <i class="fa fa-trash"></i>
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                    <?php endforeach;?>
+
+                                <?php else : ?>
+
                                 <tr>
-                                    <td>
-                                        <a href="#">
-                                            The Lorem Ipsum
-                                        </a>
+                                    <td colspan="7">
+                                        <h3 class="text-center">No Posts. <a href="<?php echo direct_admin_url('post?action=create' )?>">Create one here</a></h3>
                                     </td>
-                                    <td>
-                                        <a href="#">
-                                            Sam Wan
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a href="#">
-                                            Blog
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a href="">
-                                            Tags
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a href="">
-                                            3
-                                        </a>
-                                    </td>
-                                    <td>
-                                        Published<br />
-                                        Jan 20, 2018
-                                    </td>
-                                    <td>
-                                        <a href="#">
-                                            <i class="fa fa-eye"></i>
-                                        </a>
 
-                                        <a href="#">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-
-                                        <a href="#" class="text-danger">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-                                    </td>
                                 </tr>
 
+                                <?php endif;?>
 
                                 <tr>
                                     <th>Title</th>
                                     <th>Author</th>
-                                    <th>Categories</th>
+                                    <th>Category</th>
                                     <th>Tags</th>
-                                    <th><i class="fa fa-comments"></i></th>
                                     <th>Date</th>
                                     <th>Actions</th>
 
@@ -109,7 +135,6 @@
                             <ul class="pagination pagination-sm no-margin pull-right">
                                 <li><a href="#">«</a></li>
                                 <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
                                 <li><a href="#">»</a></li>
                             </ul>
                         </div>

@@ -13,7 +13,7 @@
  */
 function all( $table ){
 
-//pull in connection
+    //pull in connection
     $conn = require DBPATH . '/connection.php';
 
     // Require database configuration file
@@ -62,12 +62,7 @@ function get($table, $key ){
     $table = $db['TB_PREFIX'] . $table;
 
     //Create SQL statement
-    $sql = sprintf(
-
-        'SELECT * FROM %s WHERE id = %s',
-        $key
-
-    );
+    $sql = "SELECT * FROM {$table} WHERE id = {$key}";
 
     $statement = $conn->prepare( $sql );
 
@@ -156,6 +151,77 @@ function atleast( $table, $limit){
     }
 
 }
+
+/**
+ * Return only the resources that are not deleted
+ *
+ * @param $table
+ * @return mixed
+ */
+function allWithoutTrash( $table ){
+    //pull in connection
+    $conn = require DBPATH . '/connection.php';
+
+    // Require database configuration file
+    $db = require CONFIGPATH.'/database.php';
+
+    //create table instance
+    $table = $db['TB_PREFIX'] . $table;
+
+    $sql = "SELECT * FROM {$table} WHERE is_delete=0";
+
+    $statement = $conn->prepare( $sql );
+
+    try {
+
+        $statement->execute();
+
+        return $statement->fetchAll();
+
+    }
+    catch( PDOException $e ) {
+        throw new PDOException($e->getMessage());
+    }
+}
+
+
+/**
+ * Return all trashed resources
+ *
+ * @param $table
+ * @param string $id
+ * @return mixed
+ */
+function trashed( $table, $id="" ){
+    //pull in connection
+    $conn = require DBPATH . '/connection.php';
+
+    // Require database configuration file
+    $db = require CONFIGPATH.'/database.php';
+
+    //create table instance
+    $table = $db['TB_PREFIX'] . $table;
+
+    //Create SQL statement
+    $sql = "SELECT * FROM {$table} WHERE is_delete=1";
+
+
+    if($id <> ""){
+        $sql .= "AND id={$id}";
+    }
+
+    $statement = $conn->prepare( $sql );
+
+    try {
+        $statement->execute();
+
+        return $statement->fetchAll();
+    }
+    catch( PDOException $e ) {
+        throw new PDOException($e->getMessage());
+    }
+}
+
 
 /**
  * Get the first record that matches the given attributes or create it
