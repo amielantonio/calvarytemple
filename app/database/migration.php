@@ -51,8 +51,7 @@ $migration['users'] = [
         'key' => 'UNIQUE'
     ],
     'password' => [
-        'field_type' => 'VARCHAR(100)',
-        'is_null' => true
+        'field_type' => 'VARCHAR(100)'
     ],
     'salt' =>[
         'field_type' => 'DATETIME',
@@ -64,7 +63,8 @@ $migration['users'] = [
         'field_type' => 'VARCHAR(200)'
     ],
     'profile_summary' =>[
-        'field_type' => 'TEXT'
+        'field_type' => 'TEXT',
+        'is_null' => true
     ],
     'created_at' =>[
         'field_type' => 'DATETIME',
@@ -158,7 +158,8 @@ $migration['reservation_categories'] = [
         'key' => 'UNIQUE'
     ],
     'category_description' => [
-        'field_type' => 'TEXT'
+        'field_type' => 'TEXT',
+        'is_null' => true
     ]
 ];
 
@@ -230,10 +231,13 @@ $migration['posts'] = [
         'field_type' => 'TEXT'
     ],
     'category' =>[
-        'field_type' => 'VARCHAR(100)'
+        'field_type' => 'VARCHAR(100)',
+        'is_null' => true
+
     ],
     'tags' =>[
-        'field_type' => 'VARCHAR(200)'
+        'field_type' => 'VARCHAR(200)',
+        'is_null' => true
     ],
     'featured_image' =>[
         'field_type' => 'TEXT',
