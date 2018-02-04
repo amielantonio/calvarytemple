@@ -118,10 +118,13 @@ $migration['reservations'] = [
     'reservation' => [
         'field_type' => 'VARCHAR(100)'
     ],
-    'reservation_date' => [
+    'reservation_startdate' => [
         'field_type' => 'DATETIME',
     ],
-    'pastor' => [
+    'reservation_enddate' => [
+        'field_type' => 'DATETIME',
+    ],
+    'facilitator' => [
         'field_type' => 'VARCHAR(100)',
         'is_null' => true
     ],
@@ -159,19 +162,22 @@ $migration['reservation_categories'] = [
     ]
 ];
 
-$migration['pastors'] =[
+$migration['facilitators'] =[
     'id' => [
         'field_type' => 'INT',
         'key' => 'PRIMARY KEY AUTO_INCREMENT'
     ],
-    'pastor_firstname' => [
+    'first_name' => [
         'field_type' => 'VARCHAR(50)'
     ],
-    'pastor_lastname' => [
+    'last_name' => [
         'field_type' => 'VARCHAR(50)'
     ],
     'phone_number' => [
         'field_type' => 'VARCHAR(15)'
+    ],
+    'position' => [
+        'field_type' => 'VARCHAR(50)'
     ]
 ];
 
@@ -186,7 +192,10 @@ $migration['events'] = [
     'event_description' => [
         'field_type' => 'TEXT'
     ],
-    'event_date' => [
+    'event_startdate' => [
+        'field_type' => 'DATETIME'
+    ],
+    'event_enddate' => [
         'field_type' => 'DATETIME'
     ],
     'event_details' => [
@@ -211,26 +220,36 @@ $migration['posts'] = [
         'field_type' => 'INT',
         'key' => 'PRIMARY KEY AUTO_INCREMENT'
     ],
-    'post_name' =>[
+    'post_title' =>[
         'field_type' => "VARCHAR(100)"
     ],
-    'post_text' => [
+    'post_body' => [
+        'field_type' => 'TEXT'
+    ],
+    'post_excerpt' => [
         'field_type' => 'TEXT'
     ],
     'categories' =>[
-        'field_type' => 'TEXT'
+        'field_type' => 'VARCHAR(100)'
     ],
     'tag' =>[
-        'field_type' => 'TEXT'
+        'field_type' => 'VARCHAR(200)'
     ],
     'featured_image' =>[
-        'field_type' => 'TEXT'
+        'field_type' => 'TEXT',
+        'is_null' => true
     ],
     'post_date' =>[
         'field_type' => 'DATETIME'
     ],
     'author' => [
         'field_type' => 'VARCHAR(100)'
+    ],
+    'post_status' =>[
+           'field_type' => 'VARCHAR(50)'
+    ],
+    'post_likes' => [           // we will only save the number of likes, and not the number of people
+        'field_type' => 'INT'   // who pressed the like button
     ],
     'created_at' =>[
         'field_type' => 'DATETIME',
@@ -254,6 +273,30 @@ $migration['posts_categories'] = [
     ]
 ];
 
+// Future Enhancement
+// Saving the table Schema for future purposes
+$migration['post_comments'] = [
+    'id' =>[
+        'field_type' => 'INT',
+        'key' => 'PRIMARY KEY AUTO_INCREMENT'
+    ],
+    'commenter' => [
+        'field_type' => 'VARCHAR(100)'
+    ],
+    'comment' => [
+        'field_type' => 'TEXT'
+    ],
+    'comment_date' => [
+        'field_type' => 'DATE'
+    ],
+    'post_id' => [
+        'field_type' => 'INT'
+    ],
+    'comment_id' => [
+        'field_type' => 'INT',
+        'is_null' => true
+    ]
+];
 
 
 

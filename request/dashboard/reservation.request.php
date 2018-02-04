@@ -1,12 +1,43 @@
 <?php
 
-
+/**
+ * Show the index page of the reservation module
+ *
+ * @return mixed
+ */
 function index(){
 
+
+    $where = "MONTH( reservation_startdate ) = MONTH( NOW() ) AND reservation_status = 'Approved'";
+
+    $reservation = where( 'reservations', $where );
+
+    return view('admin', 'reservation/reservation', compact( 'reservation' ));
 }
+
 
 function show(){
 
+
+    $where = "reservation_status <> 'Pending' ";
+    $reservations = where( 'reservations', $where );
+
+    echo json_encode( $reservations );
+    exit;
+
+}
+
+/**
+ * Show this month's reservation
+ */
+function thismonth(){
+
+    $where = "MONTH( reservation_startdate ) = MONTH( NOW() )";
+
+    $reservation = where( 'reservations', $where );
+
+    echo json_encode( $reservation );
+    exit;
 }
 
 /**
@@ -26,13 +57,13 @@ function create(){
  */
 function store(){
 
-    $reservation_date = date('Y-m-d h:i:s', strtotime($_POST['reservation_date'] . " " . $_POST['time']));
+    $reservation_date = date('Y-m-d h:i:s', strtotime($_POST['reservation_startdate'] . " " . $_POST['time']));
 
     $data = [
 
         'reserver_name' => $_POST['reserver_name'],
         'reservation' => $_POST['reservation'],
-        'reservation_date' => $reservation_date,
+        'reservation_startdate' => $reservation_date,
         'pastor' => $_POST['pastor'],
         'personnel' => $_POST['personnel'],
         'reservation_status' => '',
@@ -45,23 +76,9 @@ function store(){
 
     insert('reservations', $data );
 
-
-//    redirect( direct_admin_url( 'dashboard/reservation' ) );
-
     header("Location: reservation");
 }
 
-function edit(){
-    echo "test edit";
-}
-
-function destroy(){
-    echo "test destroy";
-}
-
-function update(){
-    echo "test update";
-}
 
 /**
  * Save Categoriees to Reservation category database
@@ -75,11 +92,8 @@ function savecat(){
 
     ];
 
-    var_dump($data);
-
     insert( 'reservation_categories', $data );
 
     header('Location: reservation/categories');
-
 }
 

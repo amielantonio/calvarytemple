@@ -56,15 +56,20 @@ $Route['dashboard'] = [
     'resource' => true
 ];
 
+/**
+ * Reservation Routes
+ * ----------------------------------------------------------------
+ */
 $Route['dashboard/reservation'] = [
-    'endpoint' => 'admin',
-    'view' => 'reservation/reservation',
     'request' => 'dashboard/reservation',
     'resource' => true
 ];
 $Route['dashboard/reservation/pending'] = [
-    'endpoint' => 'admin',
     'request' => 'dashboard/pending_reservation',
+    'resource' => true
+];
+$Route['dashboard/reservation/archive'] = [
+    'request' => 'dashboard/archive_reservation',
     'resource' => true
 ];
 
@@ -74,6 +79,8 @@ $Route['dashboard/reservation/categories'] = [
     'request' => 'dashboard/reservation',
     'resource' => true
 ];
+
+/** End Reservation routes */
 
 $Route['dashboard/security'] = [
     'endpoint' => 'admin',
@@ -86,12 +93,27 @@ $Route['dashboard/events'] = [
     'request' => 'dashboard/dashboard',
     'resource' => true
 ];
+
+/**
+ * Posts Routes
+ * --------------------------------------------------------------------
+ */
 $Route['dashboard/post'] = [
-    'endpoint' => 'admin',
-    'view' => 'post/post',
     'request' => 'dashboard/post',
     'resource' => true
 ];
+
+$Route['dashboard/post/categories'] = [
+    'endpoint' => 'admin',
+    'view' => 'post/categories',
+    'request' => 'dashboard/post',
+    'resource' => true
+];
+
+
+/** End Posts routes */
+
+
 $Route['dashboard/user'] = [
     'endpoint' => 'admin',
     'view' => 'user/user',

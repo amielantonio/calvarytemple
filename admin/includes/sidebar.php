@@ -56,22 +56,6 @@
 
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-calendar"></i>
-                    <span>Events</span>
-                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="<?= direct_admin_url('events') ?>"><i
-                                    class="fa fa-circle-o"></i> View Events</a></li>
-                    <li><a href="<?= direct_admin_url('events?action=create') ?>"><i
-                                    class="fa fa-circle-o"></i> Add New</a></li>
-                </ul>
-            </li>
-
-            <li class="treeview">
-                <a href="#">
                     <i class="fa fa-pencil-square-o"></i>
                     <span>Posts</span>
                     <span class="pull-right-container">
@@ -87,6 +71,23 @@
                                     class="fa fa-circle-o"></i> Categories</a></li>
                 </ul>
             </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-calendar"></i>
+                    <span>Events</span>
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="<?= direct_admin_url('events') ?>"><i
+                                    class="fa fa-circle-o"></i> View Events</a></li>
+                    <li><a href="<?= direct_admin_url('events?action=create') ?>"><i
+                                    class="fa fa-circle-o"></i> Add New</a></li>
+                </ul>
+            </li>
+
 
             <!--end author view-->
 

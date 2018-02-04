@@ -45,5 +45,6 @@ function run_control_function(){
 
     //If no action requested, run index
     index();
+//    run_control_index();
     return false;
 }

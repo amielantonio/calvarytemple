@@ -40,7 +40,7 @@
 
                                                 <?php echo $value['reserver_name'] ?>
 
-                                                <span class="pull-right"><i class="fa fa-clock-o"></i> <?php echo date('M d, Y', strtotime($value['reservation_date']))?></span>
+                                                <span class="pull-right"><i class="fa fa-clock-o"></i> <?php echo date('M d, Y', strtotime($value['reservation_startdate']))?></span>
                                             </a>
                                             <span class="product-description">
                                         <?php echo $value['reservation']?>
@@ -81,7 +81,7 @@
                                         <a href="#" class="product-title">
 
                                             <?php echo $value['reserver_name'] ?> <br />
-                                            <i class="fa fa-clock-o"></i> <?php echo date('M d, Y', strtotime($value['reservation_date']))?>
+                                            <i class="fa fa-clock-o"></i> <?php echo date('M d, Y', strtotime($value['reservation_startdate']))?>
 
                                         </a>
 
@@ -133,7 +133,7 @@
 
                                             <?php echo $value['reserver_name'] ?>
 
-                                            <span class="pull-right"><i class="fa fa-clock-o"></i> <?php echo date('M d, Y', strtotime($value['reservation_date']))?></span>
+                                            <span class="pull-right"><i class="fa fa-clock-o"></i> <?php echo date('M d, Y', strtotime($value['reservation_startdate']))?></span>
                                         </a>
                                         <span class="product-description">
                                         <?php echo $value['reservation']?>

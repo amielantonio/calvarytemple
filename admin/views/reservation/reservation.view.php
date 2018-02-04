@@ -16,49 +16,47 @@
         <!-- Main content -->
         <section class="content">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="box">
                         <div class="box-header">
                             <h3 class="box-title">Reservations this month</h3>
                         </div>
                         <div class="box-body">
                             <ul class="products-list product-list-in-box">
+
+                                <?php if( empty( $reservation ) ) : ?>
+                                    <h3 class="box-title">No Reservations</h3>
+                                <?php endif; ?>
+
+                                <?php foreach( $reservation as $key => $value ) : ?>
                                 <li class="item">
                                     <div class="product-info no-margin">
                                         <a href="#" class="product-title">
-                                            Peter Parker
+                                            <?php echo $value['reserver_name']; ?>
 
-                                            <span class="pull-right"><i class="fa fa-clock-o"></i> Jan 20, 2018</span>
+                                            <span class="pull-right"><i class="fa fa-clock-o"></i> <?= date('M d, Y', strtotime( $value['reservation_startdate'] ) )?></span>
                                         </a>
                                     <span class="product-description">
-                                        Wedding
+                                        <?php echo  $value['reservation'] ?>
                                     </span>
                                     </div>
                                 </li>
 
-                                <li class="item">
-                                    <div class="product-info no-margin">
-                                        <a href="#" class="product-title">
-                                            Bruce Wayne
+                                <?php endforeach; ?>
 
-                                            <span class="pull-right"><i class="fa fa-clock-o"></i> Jan 21, 2018</span>
-                                        </a>
-                                    <span class="product-description">
-                                        Wedding
-                                    </span>
-                                    </div>
-                                </li>
                             </ul>
                             <!--END PRODUCT-->
                         </div>
                     </div>
                 </div>
                 <!-- /.col -->
-                <div class="col-md-9">
+                <div class="col-md-8">
                     <div class="box box-primary">
                         <div class="box-body no-padding">
+
                             <!-- THE CALENDAR -->
                             <div id="calendar"></div>
+
                         </div>
                         <!-- /.box-body -->
                     </div>
@@ -96,17 +94,12 @@
                     // store the Event Object in the DOM element so we can get to it later
                     $(this).data('eventObject', eventObject)
 
-                    // make the event draggable using jQuery UI
-                    $(this).draggable({
-                        zIndex        : 1070,
-                        revert        : true, // will cause the event to go back to its
-                        revertDuration: 0  //  original position after the drag
-                    })
+
 
                 })
             }
 
-            init_events($('#external-events div.external-event'))
+            init_events($('#external-events div.external-event'));
 
             /* initialize the calendar
              -----------------------------------------------------------------*/
@@ -127,92 +120,36 @@
                     week : 'week',
                     day  : 'day'
                 },
-                //Random default events
-                events    : [
 
-                    {
-                        title          : 'Peter Parker',
-                        start          : new Date(y, m, d + 5, 13, 0),
-                        end            : new Date(y, m, d + 5, 15, 0),
-                        allDay         : false,
-                        backgroundColor: '#00a65a', //Success (green)
-                        borderColor    : '#00a65a' //Success (green)
-                    },
-                    {
-                        title          : 'Bruce Wayne',
-                        start          : new Date(y, m, d + 6, 13, 0),
-                        end            : new Date(y, m, d + 6, 15, 30),
-                        allDay         : false,
-                        backgroundColor: '#00a65a', //Success (green)
-                        borderColor    : '#00a65a' //Success (green)
-                    }
+                events    : function( start, end, timezone, callback){
+                    $.ajax({
+                        url: '<?php echo direct_admin_url('reservation?action=show') ?>',
+                        method: 'GET',
+                        success: function ( data ){
+                            var data = JSON.parse( data );
+
+                            var events = [];
+
+                            $.each( data, function( key, value ){
+                                events.push({
+                                    title: value['reserver_name'],
+                                    start: value['reservation_startdate'],
+                                    end: value['reservation_enddate']
+                                });
+                            });
 
 
-                ],
+
+                            callback( events );
+                        }
+                    });
+                },
                 editable  : true,
-                droppable : true, // this allows things to be dropped onto the calendar !!!
-                drop      : function (date, allDay) { // this function is called when something is dropped
+                droppable : false // this allows things to be dropped onto the calendar !!!
 
-                    // retrieve the dropped element's stored Event Object
-                    var originalEventObject = $(this).data('eventObject')
+            });
 
-                    // we need to copy it, so that multiple events don't have a reference to the same object
-                    var copiedEventObject = $.extend({}, originalEventObject)
 
-                    // assign it the date that was reported
-                    copiedEventObject.start           = date
-                    copiedEventObject.allDay          = allDay
-                    copiedEventObject.backgroundColor = $(this).css('background-color')
-                    copiedEventObject.borderColor     = $(this).css('border-color')
-
-                    // render the event on the calendar
-                    // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
-                    $('#calendar').fullCalendar('renderEvent', copiedEventObject, true)
-
-                    // is the "remove after drop" checkbox checked?
-                    if ($('#drop-remove').is(':checked')) {
-                        // if so, remove the element from the "Draggable Events" list
-                        $(this).remove()
-                    }
-
-                }
-            })
-
-            /* ADDING EVENTS */
-            var currColor = '#3c8dbc' //Red by default
-            //Color chooser button
-            var colorChooser = $('#color-chooser-btn')
-            $('#color-chooser > li > a').click(function (e) {
-                e.preventDefault()
-                //Save color
-                currColor = $(this).css('color')
-                //Add color effect to button
-                $('#add-new-event').css({ 'background-color': currColor, 'border-color': currColor })
-            })
-            $('#add-new-event').click(function (e) {
-                e.preventDefault()
-                //Get value and make sure it is not null
-                var val = $('#new-event').val()
-                if (val.length == 0) {
-                    return
-                }
-
-                //Create events
-                var event = $('<div />')
-                event.css({
-                    'background-color': currColor,
-                    'border-color'    : currColor,
-                    'color'           : '#fff'
-                }).addClass('external-event')
-                event.html(val)
-                $('#external-events').prepend(event)
-
-                //Add draggable funtionality
-                init_events(event)
-
-                //Remove event from text input
-                $('#new-event').val('')
-            })
         })
     </script>
 
