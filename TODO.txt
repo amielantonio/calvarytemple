@@ -1,0 +1,10 @@
+Todo
+
+
+1) Rewrite Route function to accept 'Action' key.
+2) Rewrite Routing for a cleaner URI
+3) Remove Endpoint, create a View folder for all admin/public files instead
+4) Add middleware
+5) Create documentation for Route -> Request -> Controller -> View
+
+

@@ -64,9 +64,12 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="categorcategoryies">Category</label>
+                                    <label for="category">Category</label>
                                     <select name="category" id="category" class="form-control">
-                                        <option>Hellow</option>
+                                        <option>Uncategorized</option>
+                                        <?php if( isset( $cat_list) ) : foreach( $cat_list as $list ) :?>
+                                            <option><?php echo $list['posts_category']?></option>
+                                        <?php endforeach; endif;?>
                                     </select>
                                 </div>
 

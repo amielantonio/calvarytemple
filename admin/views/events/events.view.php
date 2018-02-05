@@ -21,10 +21,11 @@
 
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title"></h3>
+                            <a href="" class="btn btn-primary">View All</a>
+                            <a href="" class="btn btn-danger">View Archived <span class="badge"></span></a>
 
                             <div class="box-tools">
-                                <div class="input-group input-group-sm" style="width: 150px;">
+                                <div class="input-group input-group-sm" style="width: 250px;">
                                     <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
 
                                     <div class="input-group-btn">
@@ -34,6 +35,7 @@
                             </div>
                         </div>
                         <!-- /.box-header -->
+
                         <div class="box-body table-responsive no-padding">
                             <table class="table table-hover">
                                 <tbody><tr>
@@ -43,19 +45,48 @@
                                     <th>Tag</th>
                                     <th>Actions</th>
                                 </tr>
+
+                                <?php if( !empty( $events ) ) : foreach( $events as $key => $event ) : ?>
+
+                                    <tr>
+                                        <td>1</td>
+                                        <td>The Lorem Ipsum</td>
+                                        <td>Jan 20, 2018</td>
+                                        <td>#youthcamp</td>
+                                        <td>
+                                            <div class="action-toolbar">
+                                                <a href="<?php echo direct_admin_url('post?action=preview&id='.$value['id'] )?>" class="text-info tools">
+                                                    <i class="fa fa-eye"></i>
+                                                </a>
+
+                                                <a href="<?php echo direct_admin_url('post?action=edit&id='.$value['id'] )?>" class="text-info tools">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+
+                                                <a href="<?php echo direct_admin_url('post?action=destroy&id='.$value['id'] )?>" class="text-danger tools">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                <?php endforeach; else : ?>
+
+                                    <tr>
+                                        <td colspan="5">
+                                            <h3 class="text-center">No Events. </h3>
+                                        </td>
+
+                                    </tr>
+
+                                <?php endif; ?>
+
                                 <tr>
-                                    <td>1</td>
-                                    <td>The Lorem Ipsum</td>
-                                    <td>Jan 20, 2018</td>
-                                    <td>#youthcamp</td>
-                                    <td>View</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>The Dolor Sit Amet</td>
-                                    <td>Jan 20, 2018</td>
-                                    <td>#ydc</td>
-                                    <td>View</td>
+                                    <th>ID</th>
+                                    <th>Event</th>
+                                    <th>Date</th>
+                                    <th>Tag</th>
+                                    <th>Actions</th>
                                 </tr>
                                 </tbody></table>
                         </div>
@@ -64,7 +95,6 @@
                             <ul class="pagination pagination-sm no-margin pull-right">
                                 <li><a href="#">«</a></li>
                                 <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
                                 <li><a href="#">»</a></li>
                             </ul>
                         </div>

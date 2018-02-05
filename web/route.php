@@ -87,12 +87,6 @@ $Route['dashboard/security'] = [
     'view' => 'security/security',
     'request' => 'dashboard/dashboard',
 ];
-$Route['dashboard/events'] = [
-    'endpoint' => 'admin',
-    'view' => 'events/events',
-    'request' => 'dashboard/dashboard',
-    'resource' => true
-];
 
 /**
  * Posts Routes
@@ -110,8 +104,19 @@ $Route['dashboard/post/categories'] = [
     'resource' => true
 ];
 
+$Route['preview/post'] = [
+    'request' => 'dashboard/post',
+    'resource' => true
+];
+
 
 /** End Posts routes */
+
+$Route['dashboard/events'] = [
+    'request' => 'dashboard/event',
+    'resource' => true
+];
+
 
 
 $Route['dashboard/user'] = [

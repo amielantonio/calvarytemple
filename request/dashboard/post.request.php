@@ -15,6 +15,11 @@ function index(){
     return view( 'admin', 'post/post', compact( 'posts' ));
 }
 
+
+function show(){
+
+}
+
 /**
  * Show the form for creating a Post
  *
@@ -23,7 +28,10 @@ function index(){
  */
 function create(){
 
-    return view( 'admin', 'post/add_post');
+
+    $cat_list = all( 'posts_categories');
+
+    return view( 'admin', 'post/add_post', compact('cat_list' ));
 
 }
 
@@ -93,7 +101,9 @@ function edit(){
 
     $post = get('posts', $id );
 
-    return view( 'admin', 'post/add_post', compact( 'post' ));
+    $cat_list = all( 'posts_categories');
+
+    return view( 'admin', 'post/add_post', compact( 'post', 'cat_list' ));
 }
 
 function destroy(){
@@ -154,4 +164,23 @@ function update(){
     $post = get('posts', $id );
 
     return view( 'admin', 'post/add_post', compact( 'post', 'alert' ));
+}
+
+
+
+/**
+ * Save Categoriees to Reservation category database
+ */
+function savecat(){
+
+    $data =[
+
+        'posts_category' => $_POST['posts_category'],
+        'category_description' => $_POST['category_description']
+
+    ];
+
+    insert( 'posts_categories', $data );
+
+    header('Location: post/categories');
 }

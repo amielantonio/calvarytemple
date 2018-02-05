@@ -190,6 +190,10 @@ $migration['events'] = [
     'event' =>[
         'field_type' => "VARCHAR(100)"
     ],
+    'event_image' =>[
+        'field_type' => 'TEXT',
+        'is_null' => true
+    ],
     'event_description' => [
         'field_type' => 'TEXT'
     ],
