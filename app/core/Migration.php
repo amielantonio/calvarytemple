@@ -22,9 +22,12 @@ function migrate(){
 
 function drop_migrate(){
 
+    drop_tables();
 }
 
 function refresh_migrate(){
+
+    refresh_tables();
 
 }
 
@@ -41,8 +44,6 @@ function create_table(){
 
     // Require database configuration file
     $db = require CONFIGPATH.'/database.php';
-
-//    var_dump($migration);
 
     foreach($migration as $key => $value){
 
@@ -121,8 +122,38 @@ function save_migration_tables(){
 
 function drop_tables(){
 
+    $sql = '';
+    $fields = [];
+    //include migration
+    $migration = require DBPATH . '/migration.php';
+
+    //include connection
+    $conn = require DBPATH . '/connection.php';
+
+    // Require database configuration file
+    $db = require CONFIGPATH.'/database.php';
+
+    $tables = cherryPick( 'migration ', '',['tables']);
+
+    foreach($tables as $key => $value){
+        $fields[] = $value['tables'];
+    }
+
+    $fields = implode(', ', $fields);
+
+    $sql = "DROP TABLES {$fields}";
+
+    try{
+        $conn->exec( $sql );
+    }
+    catch (PDOException $e){
+        echo $e->getMessage();
+    }
 }
 
 function refresh_tables(){
+
+    drop_tables();
+    create_table();
 
 }

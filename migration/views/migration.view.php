@@ -11,7 +11,7 @@ if( isset($_POST['drop'])){
 }
 
 if( isset($_POST['refresh'])){
-    drop_refresh();
+    refresh_migrate();
 }
 
 ?>

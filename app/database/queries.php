@@ -78,6 +78,48 @@ function get($table, $key ){
 }
 
 /**
+ * Pick a field of the specified resource or
+ * pick a specified field of all resources
+ *
+ * @param $table
+ * @param array $key
+ * @param array $fields
+ * @return mixed
+ */
+function cherryPick( $table, $key = "", $fields = []){
+    //pull in connection
+    $conn = require DBPATH . '/connection.php';
+
+    // Require database configuration file
+    $db = require CONFIGPATH.'/database.php';
+
+    //create table instance
+    $table = $db['TB_PREFIX'] . $table;
+
+    $fields = empty($fields) ? "*" : implode(', ', $fields);
+
+    //Create SQL statement
+    $sql = "SELECT {$fields} FROM {$table} ";
+
+    if($key<> ""){
+        $sql.="WHERE id={$key}";
+    }
+
+    $statement = $conn->prepare( $sql );
+
+    try {
+        $statement->execute();
+
+        return $statement->fetchAll();
+    }
+    catch( PDOException $e ) {
+        throw new PDOException($e->getMessage());
+    }
+
+}
+
+
+/**
  * Fetch first instance of the database
  *
  * @param $table
