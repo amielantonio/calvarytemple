@@ -13,7 +13,7 @@ function index(){
 
     $reservation = where( 'reservations', $where );
 
-    return view('admin', 'reservation/reservation', compact( 'reservation' ));
+    return view( 'admin/reservation/reservation', compact( 'reservation' ));
 }
 
 
@@ -51,7 +51,7 @@ function create(){
 
     $reservation_types = all('reservation_categories');
 
-    return view( 'admin', 'reservation/add_reservation', compact('reservation_types'));
+    return view( 'admin/reservation/add_reservation', compact('reservation_types'));
 
 }
 

@@ -4,24 +4,30 @@
 /**
  *
  * @return mixed
+ * @throws exception
  */
 function index(){
 
-    return view('admin', 'events/events');
+    return view( 'admin/events/events');
 
 }
 
 
 function store(){
 
-
-    redirect( direct_admin_url('events') );
+    redirect( route('dashboard/events') );
 
 }
 
+/**
+ * Show a form for saving an event resource
+ *
+ * @return mixed
+ * @throws exception
+ */
 function create(){
 
-    return view( 'admin', 'events/add_event');
+    return view( 'admin/events/add_event');
 }
 
 

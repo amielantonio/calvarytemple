@@ -68,7 +68,7 @@
                     <div class="box-body">
                         <ul class="products-list product-list-in-box">
 
-                        <?php if ( empty( $new_reservations ) ) : ?>
+                        <?php if ( empty( $pending ) ) : ?>
 
                             <h5>No reservations</h5>
 
@@ -119,7 +119,7 @@
                     <div class="box-body">
                         <ul class="products-list product-list-in-box">
 
-                        <?php if ( empty( $new_reservations ) ) : ?>
+                        <?php if ( empty( $upcoming ) ) : ?>
 
                             <h5>No reservations</h5>
 

@@ -26,6 +26,6 @@ function index(){
     $upcoming = where('reservations', $where );
 
 
-    return view('admin','dashboard/dashboard', compact('new_reservations', 'pending', 'upcoming'));
+    return view( 'admin/dashboard/dashboard', compact('new_reservations', 'pending', 'upcoming'));
 
 }

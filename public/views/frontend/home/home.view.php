@@ -128,7 +128,7 @@
                 <div id="" class="article-snippet">
 
                     <a href="#">
-                        <img src="<?= resource_dir()?>/img/hero.jpeg" class="article-snippet--image img-responsive">
+                        <img src="<?= asset( 'img/hero.jpeg' )?>" class="article-snippet--image img-responsive">
                     </a>
 
                     <article class="article-snippet--information">
@@ -160,7 +160,7 @@
                 <div id="" class="article-snippet">
 
                     <a href="#">
-                        <img src="<?= resource_dir()?>/img/hero.jpeg" class="article-snippet--image img-responsive">
+                        <img src="<?= asset(  'img/hero.jpeg' )?>" class="article-snippet--image img-responsive">
                     </a>
 
                     <article class="article-snippet--information">
@@ -192,7 +192,7 @@
                 <div id="" class="article-snippet">
 
                     <a href="#">
-                        <img src="<?= resource_dir()?>/img/hero.jpeg" class="article-snippet--image img-responsive">
+                        <img src="<?= asset( 'img/hero.jpeg' )?>" class="article-snippet--image img-responsive">
                     </a>
 
                     <article class="article-snippet--information">

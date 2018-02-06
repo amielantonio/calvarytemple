@@ -2,7 +2,7 @@
 <?php admin_get_nav(); ?>
 <?php admin_get_sidebar(); ?>
 
-    <link rel="stylesheet" href="<?php echo  resource_dir();?>/plugins/adminlte/bower_components/fullcalendar/dist/fullcalendar.css">
+    <link rel="stylesheet" href="<?php echo  asset( 'plugins/adminlte/bower_components/fullcalendar/dist/fullcalendar.css' );?>">
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -71,9 +71,9 @@
     <!-- /.content-wrapper -->
 
 
-    <script src="<?php echo resource_dir();?>/plugins/moment/js/moment.min.js"></script>
+    <script src="<?php echo asset( 'plugins/moment/js/moment.min.js' );?>"></script>
 
-    <script src="<?php echo resource_dir();?>/plugins/adminlte/bower_components/fullcalendar/dist/fullcalendar.js"></script>
+    <script src="<?php echo asset( 'plugins/adminlte/bower_components/fullcalendar/dist/fullcalendar.js' );?>"></script>
 
     <script>
         $ = jQuery;
@@ -123,7 +123,7 @@
 
                 events    : function( start, end, timezone, callback){
                     $.ajax({
-                        url: '<?php echo direct_admin_url('reservation?action=show') ?>',
+                        url: '<?php echo route('dashboard/reservation?action=show') ?>',
                         method: 'GET',
                         success: function ( data ){
                             var reservations = JSON.parse( data );
@@ -158,7 +158,7 @@
                                     start: startDate,
                                     end: endDate,
                                     allDay:  allday,
-                                    url: '<?php echo direct_admin_url('reservation?action=getInfo&id=') ?>'+value["id"],
+                                    url: '<?php echo route('dashboard/reservation?action=getInfo&id=') ?>'+value["id"],
                                     color: types[ value['reservation'] ]
                                 });
                             });

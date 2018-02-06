@@ -8,6 +8,8 @@
  * This function will direct the traffic of the web app and do
  * specific function based on the user request
  *
+ *
+ *
  * Todo: add middleware if middleware config in the $Route is specified
  * or if accessing admin side auth.
  *
@@ -23,12 +25,11 @@ function direct_route( $uri ){
     $base_url = $config['APP_BASE_URL'];
     $home_dir = '/'. $base_url;
 
-    // Get controls
+    // Get Routes
     $routes = require ROUTESPATH .'/route.php';
 
-    // if not self served
     // add base URI
-    if( self_serve() ){
+    if( is_self_served() ){
         $uri = '/'. $base_url .$uri;
     }
 
@@ -54,13 +55,9 @@ function direct_route( $uri ){
 
     // check if there is a request action
     if( !has_requested_action() &&  has_view( $currentRoute )) {
-        return view($currentRoute['endpoint'], $currentRoute['view']);
+        return view( $currentRoute['view'] );
     }
 
-    // Check if the route configuration is there
-    if( !is_resource_route( $currentRoute )){
-        throw new exception ('Routing Configuration Error');
-    }
 
 
     // Run requested action
@@ -94,7 +91,6 @@ function clean_uri( $uri, $home_dir ){
  *
  * @param $uri
  * @param $routes
- * @param $home_dir
  * @return bool
  */
 function verify_routes( $uri, $routes ){
@@ -114,26 +110,6 @@ function verify_routes( $uri, $routes ){
 
     }
 
-    return false;
-}
-
-/**
- * Check if the URI is a resource Route
- *
- * @param $route
- * @return bool
- */
-function is_resource_route( $route ){
-
-    //Check if resource setting is defined
-    if( array_key_exists( 'resource', $route )){
-
-        //if resource setting is defined to true
-        // return true
-        if( $route['resource'] ){
-            return true;
-        }
-    }
     return false;
 }
 
@@ -174,11 +150,11 @@ function has_view( $route ){
 }
 
 /**
- * Check if the current application is being self served by the server
+ * To accommodate sites that uses localhost of XAMPP or virtual host
  *
  * @return bool
  */
-function self_serve(){
+function is_self_served(){
 
     $port = $_SERVER['SERVER_PORT'];
 

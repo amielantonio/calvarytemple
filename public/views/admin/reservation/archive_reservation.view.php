@@ -2,12 +2,11 @@
 <?php admin_get_nav(); ?>
 <?php admin_get_sidebar(); ?>
 
-    <link rel="stylesheet" href="<?= resource_dir()?>/plugins/adminlte/bower_components/select2/dist/css/select2.min.css">
-    <link rel="stylesheet" href="<?= resource_dir()?>/plugins/timepicker/bootstrap-timepicker.min.css">
-    <link rel="stylesheet" href="<?= resource_dir()?>/plugins/adminlte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="<?= asset('plugins/adminlte/bower_components/select2/dist/css/select2.min.css' )?>">
+    <link rel="stylesheet" href="<?= asset( 'plugins/timepicker/bootstrap-timepicker.min.css' )?>">
+    <link rel="stylesheet" href="<?= asset( 'plugins/adminlte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css' )?>">
 
     <!-- JQUERYUI -->
-    <!--    <link rel="stylesheet" href="--><?php //echo resource_dir() ?><!--/plugins/adminlte/bower_components/jquery-ui/themes/base/datepicker.css">-->
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->

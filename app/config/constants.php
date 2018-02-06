@@ -63,12 +63,12 @@ defined( 'PUBLICPATH') OR define( 'PUBLICPATH', BASEPATH . '/public');
 
 
 /**
- * Define admin path
+ * Define View path
  *
- * The Admin directory contains all the backend of the website.
+ * The View directory contains all the views of the website.
  */
 
-defined('ADMINPATH' ) OR define( 'ADMINPATH', BASEPATH . '/admin');
+defined('VIEWPATH' ) OR define( 'VIEWPATH', BASEPATH . '/public/views');
 
 
 /**

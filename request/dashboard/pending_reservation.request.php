@@ -12,7 +12,7 @@ function index(){
 
     $pending = where('reservations', $where);
 
-    return view('admin','reservation/pending_reservation', compact('pending'));
+    return view( 'admin/reservation/pending_reservation', compact('pending'));
 }
 
 /**
@@ -47,12 +47,13 @@ function approve(){
 
     $pending = where('reservations', $where);
 
-    return view('admin','reservation/pending_reservation', compact('pending', 'alert'));
+    return view( 'admin/reservation/pending_reservation', compact('pending', 'alert'));
 }
 
 
 /**
- *  Delete the specified resources
+ * Delete the specified resources
+ * @throws exception
  */
 function destroy(){
     // Return if no resource has been specified
@@ -61,7 +62,7 @@ function destroy(){
             'alertable' => 'warning',
             'message' => 'No Resources specified'
         ];
-        return view( 'admin', 'reservation/pending_reservation', compact( 'alert' ));
+        return view( 'admin/reservation/pending_reservation', compact( 'alert' ));
     }
 
     $id = $_GET['id'];
@@ -78,6 +79,6 @@ function destroy(){
 
     $pending = where('reservations', $where);
 
-    return view('admin','reservation/pending_reservation', compact('pending', 'alert'));
+    return view( 'admin/reservation/pending_reservation', compact('pending', 'alert'));
 
 }

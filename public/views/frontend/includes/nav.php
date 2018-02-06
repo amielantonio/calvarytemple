@@ -25,7 +25,7 @@
                             </li>
 
                             <li>
-                                <a href="<?= direct_admin_url()?>">
+                                <a href="<?= route( 'dashboard' )?>">
                                     Login
                                 </a>
                             </li>
@@ -48,23 +48,23 @@
 
                         <ul class="nav nav-end">
                             <li class="">
-                                <a class="nav-link" href="<?= direct_public_url(); ?>">Home</a>
+                                <a class="nav-link" href="<?= route(); ?>">Home</a>
                             </li>
 
                             <li class="">
-                                <a class="nav-link" href="<?= direct_public_url( 'about' ) ?>">About us</a>
+                                <a class="nav-link" href="<?= route( 'about' ) ?>">About us</a>
                             </li>
 
                             <li class="">
-                                <a class="nav-link" href="<?= direct_public_url( 'blog' ) ?>">Blog</a>
+                                <a class="nav-link" href="<?= route( 'blog' ) ?>">Blog</a>
                             </li>
 
                             <li class="">
-                                <a class="nav-link" href="<?= direct_public_url( 'events' ) ?>">Events</a>
+                                <a class="nav-link" href="<?= route( 'events' ) ?>">Events</a>
                             </li>
 
                             <li class="">
-                                <a class="nav-link" href="<?= direct_public_url( 'reservations' ) ?>">Reservations</a>
+                                <a class="nav-link" href="<?= route( 'reservations' ) ?>">Reservations</a>
                             </li>
                         </ul>
 

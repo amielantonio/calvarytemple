@@ -4,6 +4,13 @@
  * Web application Router. This is where all protocols will be located
  */
 
+/**
+ * Route Arguments
+ * - view: Returns a view
+ * - request: Returns a request controller
+ * - action: Define an action for the request, if not defined. push index()
+ */
+
 
 $Route['run_migrate'] = [
     'endpoint' => 'migration',
@@ -14,34 +21,26 @@ $Route['run_migrate'] = [
  * Public Router
  */
 $Route['/'] = [
-    'endpoint' => 'public',
-    'view' => 'home/home',
+    'view' => 'frontend/home/home',
 ];
 $Route['about'] = [
-    'endpoint' => 'public',
-    'view' => 'home/about',
-    'resource' => true,
+    'view' => 'frontend/home/about',
     'request' => 'home/home'
 ];
-$Route['post'] = [
-    'endpoint' => 'public',
-    'view' => 'post/post'
+$Route['blog'] = [
+    'view' => 'frontend/blog/blog'
 ];
 $Route['events'] = [
-    'endpoint' => 'public',
-    'view' => 'events/events'
+    'view' => 'frontend/events/events'
 ];
 $Route['reservations'] = [
-    'endpoint' => 'public',
-    'view' => 'home/reservations'
+    'view' => 'frontend/home/reservations'
 ];
 $Route['login'] = [
-    'endpoint' => 'public',
-    'view' => 'login/login'
+    'view' => 'frontend/login/login'
 ];
 $Route['track'] = [
-    'endpoint' => 'public',
-    'view' => 'track/track'
+    'view' => 'frontend/track/track'
 ];
 
 
@@ -49,11 +48,8 @@ $Route['track'] = [
  * Admin Router
  */
 
-
 $Route['dashboard'] = [
-    'endpoint' => 'admin',
     'request' => 'dashboard/dashboard',
-    'resource' => true
 ];
 
 /**
@@ -62,29 +58,23 @@ $Route['dashboard'] = [
  */
 $Route['dashboard/reservation'] = [
     'request' => 'dashboard/reservation',
-    'resource' => true
 ];
 $Route['dashboard/reservation/pending'] = [
     'request' => 'dashboard/pending_reservation',
-    'resource' => true
 ];
 $Route['dashboard/reservation/archive'] = [
     'request' => 'dashboard/archive_reservation',
-    'resource' => true
 ];
 
 $Route['dashboard/reservation/categories'] = [
-    'endpoint' => 'admin',
-    'view' => 'reservation/reservation_categories',
+    'view' => 'admin/reservation/reservation_categories',
     'request' => 'dashboard/reservation',
-    'resource' => true
 ];
 
 /** End Reservation routes */
 
 $Route['dashboard/security'] = [
-    'endpoint' => 'admin',
-    'view' => 'security/security',
+    'view' => 'admin/security/security',
     'request' => 'dashboard/dashboard',
 ];
 
@@ -94,19 +84,15 @@ $Route['dashboard/security'] = [
  */
 $Route['dashboard/post'] = [
     'request' => 'dashboard/post',
-    'resource' => true
 ];
 
 $Route['dashboard/post/categories'] = [
-    'endpoint' => 'admin',
-    'view' => 'post/categories',
+    'view' => 'admin/post/categories',
     'request' => 'dashboard/post',
-    'resource' => true
 ];
 
 $Route['preview/post'] = [
     'request' => 'dashboard/post',
-    'resource' => true
 ];
 
 
@@ -114,23 +100,16 @@ $Route['preview/post'] = [
 
 $Route['dashboard/events'] = [
     'request' => 'dashboard/event',
-    'resource' => true
 ];
 
-
-
 $Route['dashboard/user'] = [
-    'endpoint' => 'admin',
-    'view' => 'user/user',
+    'view' => 'admin/user/user',
     'request' => 'dashboard/dashboard',
-    'resource' => true
 ];
 
 $Route['dashboard/settings'] = [
-    'endpoint' => 'admin',
-    'view' => 'dashboard/settings',
+    'view' => 'admin/dashboard/settings',
     'request' => 'dashboard/dashboard',
-    'resource' => true
 ];
 
 

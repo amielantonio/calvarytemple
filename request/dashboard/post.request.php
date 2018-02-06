@@ -12,7 +12,7 @@ function index(){
     $posts = allWithoutTrash( 'posts');
 
 
-    return view( 'admin', 'post/post', compact( 'posts' ));
+    return view( 'admin/post/post', compact( 'posts' ));
 }
 
 
@@ -31,7 +31,7 @@ function create(){
 
     $cat_list = all( 'posts_categories');
 
-    return view( 'admin', 'post/add_post', compact('cat_list' ));
+    return view( 'admin/post/add_post', compact('cat_list' ));
 
 }
 
@@ -103,7 +103,7 @@ function edit(){
 
     $cat_list = all( 'posts_categories');
 
-    return view( 'admin', 'post/add_post', compact( 'post', 'cat_list' ));
+    return view( 'admin/post/add_post', compact( 'post', 'cat_list' ));
 }
 
 function destroy(){
@@ -163,7 +163,7 @@ function update(){
 
     $post = get('posts', $id );
 
-    return view( 'admin', 'post/add_post', compact( 'post', 'alert' ));
+    return view( 'admin/post/add_post', compact( 'post', 'alert' ));
 }
 
 

@@ -9,7 +9,7 @@
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">NAVIGATION</li>
             <li>
-                <a href="<?= direct_admin_url() ?>">
+                <a href="<?= route() ?>">
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                 </a>
             </li>
@@ -25,19 +25,19 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="<?= direct_admin_url('reservation') ?>">
+                    <li><a href="<?= route('dashboard/reservation') ?>">
                             <i class="fa fa-circle-o"></i> View Reservations</a>
                     </li>
-                    <li><a href="<?= direct_admin_url('reservation/pending') ?>">
+                    <li><a href="<?= route('dashboard/reservation/pending') ?>">
                             <i class="fa fa-circle-o"></i> Pending Reservations</a>
                     </li>
-                    <li><a href="<?= direct_admin_url('reservation?action=create') ?>">
+                    <li><a href="<?= route('dashboard/reservation?action=create') ?>">
                             <i class="fa fa-circle-o"></i> Add New</a>
                     </li>
-                    <li><a href="<?= direct_admin_url('reservation/categories') ?>">
+                    <li><a href="<?= route('dashboard/reservation/categories') ?>">
                             <i class="fa fa-circle-o"></i> Categories</a>
                     </li>
-                    <li><a href="<?= direct_admin_url('reservation/archive') ?>">
+                    <li><a href="<?= route('dashboard/reservation/archive') ?>">
                             <i class="fa fa-circle-o"></i> Archives</a>
                     </li>
 
@@ -45,7 +45,7 @@
             </li>
 
             <li>
-                <a href="<?= direct_admin_url('reservation/pending?action=create') ?>">
+                <a href="<?= route('dashboard/reservation/pending?action=create') ?>">
                     <i class="fa fa-shield"></i> <span>Security</span>
                 </a>
             </li>
@@ -63,11 +63,11 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="<?= direct_admin_url('post') ?>"><i
+                    <li><a href="<?= route('dashboard/post') ?>"><i
                                     class="fa fa-circle-o"></i> View Posts</a></li>
-                    <li><a href="<?= direct_admin_url('post?action=create') ?>"><i
+                    <li><a href="<?= route('dashboard/post?action=create') ?>"><i
                                     class="fa fa-circle-o"></i> Add New</a></li>
-                    <li><a href="<?= direct_admin_url('post/categories') ?>"><i
+                    <li><a href="<?= route('dashboard/post/categories') ?>"><i
                                     class="fa fa-circle-o"></i> Categories</a></li>
                 </ul>
             </li>
@@ -81,9 +81,9 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="<?= direct_admin_url('events') ?>"><i
+                    <li><a href="<?= route('dashboard/events') ?>"><i
                                     class="fa fa-circle-o"></i> View Events</a></li>
-                    <li><a href="<?= direct_admin_url('events?action=create') ?>"><i
+                    <li><a href="<?= route('dashboard/events?action=create') ?>"><i
                                     class="fa fa-circle-o"></i> Add New</a></li>
                 </ul>
             </li>
@@ -100,15 +100,15 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="<?= direct_admin_url('user') ?>"><i
+                    <li><a href="<?= route('dashboard/user') ?>"><i
                                     class="fa fa-circle-o"></i> View User</a></li>
-                    <li><a href="<?= direct_admin_url('user?action=create') ?>"><i
+                    <li><a href="<?= route('dashboard/user?action=create') ?>"><i
                                     class="fa fa-circle-o"></i> Add New</a></li>
                 </ul>
             </li>
 
             <li>
-                <a href="<?= direct_admin_url('settings') ?>">
+                <a href="<?= route('dashboard/settings') ?>">
                     <i class="fa fa-wrench"></i> <span>Settings</span>
                 </a>
             </li>

@@ -2,12 +2,10 @@
 <?php admin_get_nav(); ?>
 <?php admin_get_sidebar(); ?>
 
-    <link rel="stylesheet" href="<?= resource_dir()?>/plugins/adminlte/bower_components/select2/dist/css/select2.min.css">
-    <link rel="stylesheet" href="<?= resource_dir()?>/plugins/timepicker/bootstrap-timepicker.min.css">
-    <link rel="stylesheet" href="<?= resource_dir()?>/plugins/adminlte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="<?= asset( 'plugins/adminlte/bower_components/select2/dist/css/select2.min.css' )?>">
+    <link rel="stylesheet" href="<?= asset( 'plugins/timepicker/bootstrap-timepicker.min.css' )?>">
+    <link rel="stylesheet" href="<?= asset( 'plugins/adminlte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css' )?>">
 
-    <!-- JQUERYUI -->
-    <!--    <link rel="stylesheet" href="--><?php //echo resource_dir() ?><!--/plugins/adminlte/bower_components/jquery-ui/themes/base/datepicker.css">-->
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -82,13 +80,13 @@
                                     <td><?php echo date('M d, Y - g:i A', strtotime( $value[ 'reservation_startdate' ] ) ); ?></td>
                                     <td><?php echo date('M d, Y - g:i A', strtotime( $value[ 'created_at' ] ) ); ?></td>
                                     <td>
-                                        <a href="<?php echo direct_admin_url( 'reservation/pending?action=approve&id='. $value['id'] ); ?>">
+                                        <a href="<?php echo route( 'dashboard/reservation/pending?action=approve&id='. $value['id'] ); ?>">
                                             <button type="button" class="btn btn-primary">
                                                 Approve
                                             </button>
                                         </a>
 
-                                        <a href="<?php echo direct_admin_url( 'reservation/pending?action=destroy&id='. $value['id'] );?>">
+                                        <a href="<?php echo route( 'dashboard/reservation/pending?action=destroy&id='. $value['id'] );?>">
                                             <button type="button" class="btn btn-danger">
                                                 Cancel
                                             </button>

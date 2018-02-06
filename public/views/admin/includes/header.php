@@ -13,7 +13,7 @@
 
 
     <!-- jQuery 3 -->
-    <script src="<?= resource_dir()?>/plugins/adminlte/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="<?= asset( 'plugins/adminlte/bower_components/jquery/dist/jquery.min.js' )?>"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

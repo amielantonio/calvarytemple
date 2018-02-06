@@ -2,9 +2,9 @@
 <?php admin_get_nav(); ?>
 <?php admin_get_sidebar(); ?>
 
-    <link rel="stylesheet" href="<?= resource_dir()?>/plugins/adminlte/bower_components/select2/dist/css/select2.min.css">
-    <link rel="stylesheet" href="<?= resource_dir()?>/plugins/timepicker/bootstrap-timepicker.min.css">
-    <link rel="stylesheet" href="<?= resource_dir()?>/plugins/adminlte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="<?= asset( 'plugins/adminlte/bower_components/select2/dist/css/select2.min.css' )?>">
+    <link rel="stylesheet" href="<?= asset( 'plugins/timepicker/bootstrap-timepicker.min.css' )?>">
+    <link rel="stylesheet" href="<?= asset( 'plugins/adminlte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css' )?>">
 
     <!-- JQUERYUI -->
     <!--    <link rel="stylesheet" href="--><?php //echo resource_dir() ?><!--/plugins/adminlte/bower_components/jquery-ui/themes/base/datepicker.css">-->
@@ -31,25 +31,25 @@
 
                             <?php
 
-                            $listing = all( 'posts_categories' );
+                            $listing = all( 'reservation_categories' );
 
                             ?>
 
                             <table class="table table-hover">
                                 <tbody><tr>
                                     <th>ID</th>
-                                    <th>Category Name</th>
-                                    <th>Description</th>
+                                    <th>Reserver Name</th>
+                                    <th>Reservation Type</th>
                                 </tr>
 
                                 <?php $x = 1; foreach( $listing as $key => $value ) : ?>
-                                    <tr>
-                                        <td><?= $x ?></td>
-                                        <td><?= $value['posts_category'] ?></td>
-                                        <td><?= $value['category_description'] ?></td>
-                                    </tr>
+                                <tr>
+                                    <td><?= $x ?></td>
+                                    <td><?= $value['reservation_category'] ?></td>
+                                    <td><?= $value['category_description'] ?></td>
+                                </tr>
 
-                                    <?php $x++; endforeach; ?>
+                                <?php $x++; endforeach; ?>
 
                                 </tbody>
                             </table>
@@ -68,11 +68,11 @@
                         </div>
 
                         <div class="box-body">
-                            <form method="POST" action="<?php echo direct_admin_url( 'post?action=savecat' )?>" class="">
+                            <form method="POST" action="<?php echo route( 'dashboard/reservation?action=savecat' )?>" class="">
 
                                 <div class="form-group">
                                     <label for="reservation_category">Category</label>
-                                    <input type="text" name="posts_category" id="reservation_category" class="form-control">
+                                    <input type="text" name="reservation_category" id="reservation_category" class="form-control">
                                 </div>
 
                                 <div class="form-group">

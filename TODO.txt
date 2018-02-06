@@ -8,3 +8,8 @@ Todo
 5) Create documentation for Route -> Request -> Controller -> View
 
 
+Implement a new Routing
+- Removing endpoints, endpoint should be defined in the views instead.
+- Add middleware checking
+- add resource checking, each routes are resource routes already
+- Implement a new way of routing

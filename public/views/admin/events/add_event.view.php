@@ -36,7 +36,7 @@
                 <div class="col-sm-12">
                     <div class="box">
 
-                        <form action="<?php echo isset($post)? direct_admin_url( 'event?action=update&id='.$post['0']['id'] ) : direct_admin_url( 'event?action=store' ) ?>" method="post" enctype="multipart/form-data">
+                        <form action="<?php echo isset($post)? route( 'dashboard/event?action=update&id='.$post['0']['id'] ) : route( 'dashboard/event?action=store' ) ?>" method="post" enctype="multipart/form-data">
                             <div class="box-body pad">
 
                                 <div class="form-group">
@@ -123,7 +123,7 @@
 
 
     <!-- CK Editor -->
-    <script src="<?php echo resource_dir()?>/plugins/adminlte/bower_components/ckeditor/ckeditor.js"></script>
+    <script src="<?php echo asset( 'plugins/adminlte/bower_components/ckeditor/ckeditor.js' )?>"></script>
     <script>
         $(function () {
             // Replace the <textarea id="editor1"> with a CKEditor

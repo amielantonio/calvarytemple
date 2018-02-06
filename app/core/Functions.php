@@ -13,21 +13,21 @@
  * Get Public header
  */
 function get_header(){
-   return include PUBLICPATH. '/includes/header.php';
+   return include VIEWPATH. '/frontend/includes/header.php';
 }
 
 /**
  * Get Public footer
  */
 function get_footer(){
-    return include PUBLICPATH. '/includes/footer.php';
+    return include VIEWPATH. '/frontend/includes/footer.php';
 }
 
 /**
  * Get Public Sidebar
  */
 function get_sidebar(){
-    return include PUBLICPATH. '/includes/sidebar.php';
+    return include VIEWPATH. '/frontend/includes/sidebar.php';
 }
 
 /**
@@ -36,48 +36,16 @@ function get_sidebar(){
  * @return mixed
  */
 function get_nav(){
-    return include PUBLICPATH. '/includes/nav.php';
+    return include VIEWPATH. '/frontend/includes/nav.php';
 }
 
+
 /**
- * Return base url of admin
+ * Return base url
  *
  * @return string
  */
-function admin_base_url(){
-    // Get config file
-    $base_url = require CONFIGPATH . '/config.php';
-
-    $base_url = $base_url['APP_HOST'] . $base_url['APP_BASE_URL'];
-
-    $route = $base_url.'/dashboard';
-
-
-    return $route;
-}
-
-
-function direct_admin_url( $url='' ){
-    // Get config file
-    $base_url = require CONFIGPATH . '/config.php';
-
-    $base_url = $base_url['APP_HOST'] . $base_url['APP_BASE_URL'];
-
-    if( $url <> '' ){
-        $url = '/'.$url;
-    }
-
-    $route = $base_url.'/dashboard' . $url;
-
-    return $route;
-}
-
-/**
- * Return base url of frontend
- *
- * @return string
- */
-function public_base_url(){
+function base_url(){
 
     // Get config file
     $base_url = require CONFIGPATH . '/config.php';
@@ -91,19 +59,19 @@ function public_base_url(){
 }
 
 /**
- * Return URI string for accessing public pages
+ * Return URI string for accessing pages
  *
- * @param string $url
+ * @param string $uri
  * @return string
  */
-function direct_public_url( $url = ''){
+function route( $uri = '' ){
 
     // Get config file
     $base_url = require CONFIGPATH . '/config.php';
 
     $base_url = $base_url['APP_HOST'] . $base_url['APP_BASE_URL'];
 
-    $route = $base_url.'/' . $url;
+    $route = $base_url.'/' . $uri;
 
     return $route;
 
@@ -112,15 +80,16 @@ function direct_public_url( $url = ''){
 /**
  * Return base url of resources folder
  *
+ * @param $uri string
  * @return string
  */
-function resource_dir(){
+function asset( $uri = "" ){
     // Get config file
     $base_url = require CONFIGPATH . '/config.php';
 
     $base_url = $base_url['APP_BASE_URL'];
 
-    $route = '/'.$base_url.'/resources';
+    $route = "/{$base_url}/resources/{$uri}";
 
     //Return route
     return $route;
@@ -168,7 +137,7 @@ function upload_post_image( $image, $destination ){
  * @return mixed
  */
 function admin_get_header(){
-    return include ADMINPATH . '/includes/header.php';
+    return include VIEWPATH . '/admin/includes/header.php';
 }
 
 /**
@@ -177,7 +146,7 @@ function admin_get_header(){
  * @return mixed
  */
 function admin_get_nav(){
-    return include ADMINPATH . '/includes/nav.php';
+    return include VIEWPATH . '/admin/includes/nav.php';
 }
 
 /**
@@ -186,7 +155,7 @@ function admin_get_nav(){
  * @return mixed
  */
 function admin_get_footer(){
-    return include ADMINPATH . '/includes/footer.php';
+    return include VIEWPATH . '/admin/includes/footer.php';
 }
 
 
@@ -196,7 +165,7 @@ function admin_get_footer(){
  * @return mixed
  */
 function admin_get_sidebar(){
-    return include ADMINPATH . '/includes/sidebar.php';
+    return include VIEWPATH . '/admin/includes/sidebar.php';
 }
 
 
@@ -229,23 +198,21 @@ function is_page( $page ){
 /**
  * Returns the view
  *
- * @param $endpoint
  * @param $view
- * @param $data null
+ * @param $data array
  * @return mixed
  * @throws exception
  */
 
-function view($endpoint, $view, $data = []){
+function view( $view, $data = []){
 
-    if(!file_exists( BASEPATH."/{$endpoint}/views/{$view}.view.php" )){
+    if(!file_exists( BASEPATH."/public/views/{$view}.view.php" )){
         throw new exception('No View');
     }
 
-
     extract( $data );
 
-    return require BASEPATH."/{$endpoint}/views/{$view}.view.php";
+    return require VIEWPATH."/{$view}.view.php";
 }
 
 /**
@@ -253,13 +220,8 @@ function view($endpoint, $view, $data = []){
  *
  * @param $error
  * @return mixed
- * @throws exception
  */
-function view_error($error){
-
-    if( !file_exists( BASEPATH."/public/error/{$error}.view.php" )){
-        throw new exception('No View Error');
-    }
+function view_error( $error ){
 
     return require BASEPATH."/public/error/{$error}.view.php";
 }
@@ -272,22 +234,14 @@ function view_error($error){
  * @return mixed
  * @throws exception
  */
-function view_partial($endpoint, $partialView){
+function view_partial( $partialView ){
 
-    $partial = 'template/'. $partialView;
-
-    if(! file_exists($endpoint. $partial . '.view.php')){
-        throw new exception( 'No View' );
-    }
-
-    return include $endpoint. $partial . '.view.php';
+    return include VIEWPATH."/{$partialView}.view.php";
 }
 
 
 
 function redirect( $location, $response=302 ){
 
-
-
-    return header("Location: {$location}", true, $response);
+    header("Location: {$location}", true, $response);
 }

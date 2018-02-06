@@ -18,7 +18,7 @@
                         <h5 class="footer-headline">Information</h5>
                         <div class="ct-separator"></div>
                         <div class="">
-                            <img src="<?php echo resource_dir();?>/img/calvary_logo.jpg" alt="Logo" width="200">
+                            <img src="<?php echo asset( 'img/calvary_logo.jpg' );?>" alt="Logo" width="200">
                         </div>
                         <p>
                             At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias
@@ -32,31 +32,31 @@
                         <div class="ct-separator"></div>
                         <ul class="no-bullets">
                             <li class="mb-10">
-                                <a href="<?= public_base_url(); ?>" class="footer-link">
+                                <a href="<?= route(); ?>" class="footer-link">
                                     Home
                                 </a>
                             </li>
 
                             <li class="mb-10">
-                                <a href="<?= direct_public_url( 'events' ); ?>" class="footer-link">
+                                <a href="<?= route( 'events' ); ?>" class="footer-link">
                                     Events
                                 </a>
                             </li class="mb-10">
 
                             <li class="mb-10">
-                                <a href="<?= direct_public_url( 'events' ); ?>" class="footer-link">
+                                <a href="<?= route( 'events' ); ?>" class="footer-link">
 
                                     About Us</a>
                             </li>
 
                             <li class="mb-10">
-                                <a href="<?= direct_public_url( 'ministries' ); ?>" class="footer-link">
+                                <a href="<?= route( 'ministries' ); ?>" class="footer-link">
 
                                     Ministries</a>
                             </li>
 
                             <li class="mb-10">
-                                <a href="<?= direct_public_url( 'blog' ); ?>" class="footer-link">
+                                <a href="<?= route( 'blog' ); ?>" class="footer-link">
                                     Blog
                                 </a>
                             </li>
@@ -94,7 +94,7 @@
                         <h5 class="footer-headline">Find us</h5>
                         <div class="ct-separator mb-20"></div>
 
-                        <img src="<?= resource_dir()?>/img/map.png" width="330">
+                        <img src="<?= asset( 'img/map.png' )?>" width="330">
                     </div>
                 </div>
 
