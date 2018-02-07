@@ -10,7 +10,7 @@
 
 // EXAMPLE MIGRATION
 // ------------------------------------------
-// $migration['table_name'] = [
+// $Migration['table_name'] = [
 //
 //    'field_name' => [
 //        'field_type' => '',
@@ -27,7 +27,7 @@
 
 /** Migration tables */
 
-$migration['migration'] = [
+$Migration['migration'] = [
     'id' => [
         'field_type' => 'INT',
         'key' => 'PRIMARY KEY AUTO_INCREMENT'
@@ -41,7 +41,7 @@ $migration['migration'] = [
 
 
 
-$migration['users'] = [
+$Migration['users'] = [
     'id' => [
         'field_type' => 'INT',
         'key' => 'PRIMARY KEY AUTO_INCREMENT'
@@ -74,7 +74,7 @@ $migration['users'] = [
     ]
 ];
 
-$migration['accounts'] = [
+$Migration['accounts'] = [
     'id' => [
         'field_type' => 'INT',
         'key' => 'PRIMARY KEY AUTO_INCREMENT'
@@ -107,7 +107,7 @@ $migration['accounts'] = [
 
 
 
-$migration['reservations'] = [
+$Migration['reservations'] = [
     'id' => [
         'field_type' => 'INT',
         'key' => 'PRIMARY KEY AUTO_INCREMENT'
@@ -148,7 +148,7 @@ $migration['reservations'] = [
 
 ];
 
-$migration['reservation_categories'] = [
+$Migration['reservation_categories'] = [
     'id' => [
         'field_type' => 'INT',
         'key' => 'PRIMARY KEY AUTO_INCREMENT'
@@ -163,7 +163,7 @@ $migration['reservation_categories'] = [
     ]
 ];
 
-$migration['facilitators'] =[
+$Migration['facilitators'] =[
     'id' => [
         'field_type' => 'INT',
         'key' => 'PRIMARY KEY AUTO_INCREMENT'
@@ -182,7 +182,7 @@ $migration['facilitators'] =[
     ]
 ];
 
-$migration['events'] = [
+$Migration['events'] = [
     'id' => [
         'field_type' => 'INT',
         'key' => 'PRIMARY KEY AUTO_INCREMENT'
@@ -220,7 +220,7 @@ $migration['events'] = [
     ]
 ];
 
-$migration['posts'] = [
+$Migration['posts'] = [
     'id' => [
         'field_type' => 'INT',
         'key' => 'PRIMARY KEY AUTO_INCREMENT'
@@ -270,7 +270,7 @@ $migration['posts'] = [
     ]
 ];
 
-$migration['posts_categories'] = [
+$Migration['posts_categories'] = [
     'id' => [
         'field_type' => 'INT',
         'key' => 'PRIMARY KEY AUTO_INCREMENT'
@@ -286,7 +286,7 @@ $migration['posts_categories'] = [
 
 // Future Enhancement
 // Saving the table Schema for future purposes
-$migration['post_comments'] = [
+$Migration['post_comments'] = [
     'id' =>[
         'field_type' => 'INT',
         'key' => 'PRIMARY KEY AUTO_INCREMENT'
@@ -314,6 +314,6 @@ $migration['post_comments'] = [
 /**
  * Return the instance of migration
  *
- * @return $migration
+ * @return $Migration
  */
-return $migration;
+return $Migration;

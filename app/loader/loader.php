@@ -55,6 +55,6 @@ require COREPATH . '/Route.php';
 require COREPATH . '/Functions.php';
 
 /**
- * Load Application Control Functions
+ * Load Application Request Functions
  */
-require COREPATH . '/Control.php';
+require COREPATH . '/Request.php';

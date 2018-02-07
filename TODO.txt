@@ -9,7 +9,7 @@ Todo
 
 
 Implement a new Routing
-- Removing endpoints, endpoint should be defined in the views instead.
+\- Removing endpoints, endpoint should be defined in the views instead.
 - Add middleware checking
-- add resource checking, each routes are resource routes already
+- remove resource checking, each routes are resource routes already
 - Implement a new way of routing

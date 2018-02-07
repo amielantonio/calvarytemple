@@ -5,10 +5,12 @@
  */
 
 /**
- * Route Arguments
- * - view: Returns a view
+ * Route Keys
+ * - view: Returns a GET request for the view
  * - request: Returns a request controller
  * - action: Define an action for the request, if not defined. push index()
+ * - action => resource: defines the Request URI to handle HTTP methods.
+ * - middleware: An intermediary security between a route and a request
  */
 
 
@@ -25,7 +27,6 @@ $Route['/'] = [
 ];
 $Route['about'] = [
     'view' => 'frontend/home/about',
-    'request' => 'home/home'
 ];
 $Route['blog'] = [
     'view' => 'frontend/blog/blog'
@@ -49,7 +50,7 @@ $Route['track'] = [
  */
 
 $Route['dashboard'] = [
-    'request' => 'dashboard/dashboard',
+    'request' => 'dashboard/dashboard'
 ];
 
 /**
@@ -58,17 +59,22 @@ $Route['dashboard'] = [
  */
 $Route['dashboard/reservation'] = [
     'request' => 'dashboard/reservation',
+    'action' => 'resource'
 ];
 $Route['dashboard/reservation/pending'] = [
     'request' => 'dashboard/pending_reservation',
+    'action' => 'resource'
 ];
 $Route['dashboard/reservation/archive'] = [
     'request' => 'dashboard/archive_reservation',
+    'action' => 'resource'
 ];
 
 $Route['dashboard/reservation/categories'] = [
     'view' => 'admin/reservation/reservation_categories',
     'request' => 'dashboard/reservation',
+    'action' => 'resource'
+
 ];
 
 /** End Reservation routes */
@@ -76,6 +82,7 @@ $Route['dashboard/reservation/categories'] = [
 $Route['dashboard/security'] = [
     'view' => 'admin/security/security',
     'request' => 'dashboard/dashboard',
+    'action' => 'resource'
 ];
 
 /**
@@ -84,15 +91,17 @@ $Route['dashboard/security'] = [
  */
 $Route['dashboard/post'] = [
     'request' => 'dashboard/post',
+    'action' => 'resource'
 ];
 
 $Route['dashboard/post/categories'] = [
     'view' => 'admin/post/categories',
     'request' => 'dashboard/post',
+    'action' => 'resource'
 ];
 
-$Route['preview/post'] = [
-    'request' => 'dashboard/post',
+$Route['preview/{post}'] = [
+    'request' => 'dashboard/post'
 ];
 
 
@@ -100,16 +109,19 @@ $Route['preview/post'] = [
 
 $Route['dashboard/events'] = [
     'request' => 'dashboard/event',
+    'action' => 'resource'
 ];
 
 $Route['dashboard/user'] = [
     'view' => 'admin/user/user',
     'request' => 'dashboard/dashboard',
+    'action' => 'resource'
 ];
 
 $Route['dashboard/settings'] = [
     'view' => 'admin/dashboard/settings',
     'request' => 'dashboard/dashboard',
+    'action' => 'resource'
 ];
 
 

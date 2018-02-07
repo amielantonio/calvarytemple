@@ -19,49 +19,34 @@
  */
 function direct_route( $uri ){
 
-    // Get config
-
+    // Initialize Route Requirements
     $config = require CONFIGPATH . '/config.php';
-    $base_url = $config['APP_BASE_URL'];
-    $home_dir = '/'. $base_url;
+    $base_url = "/{$config['APP_BASE_URL']}";
 
-    // Get Routes
-    $routes = require ROUTESPATH .'/route.php';
 
     // add base URI
     if( is_self_served() ){
-        $uri = '/'. $base_url .$uri;
+        $uri = "/{$base_url}{$uri}";
     }
 
     // Clean URI before processing
-    $uri = clean_uri( $uri, $home_dir );
+    $request_uri = clean_uri( $uri, $base_url );
+
+
 
     // Verify if requested URI exists
-    if( ! verify_routes( $uri, $routes )){
-        return view_error('404');
-    }
-
-    // Save current Route Information to a variable
-    $currentRoute = $routes[ $uri ];
-
-    if( has_request_file( $currentRoute ) ){
-        if( file_exists( REQUESTPATH . '/' . $currentRoute['request'] . '.request.php' )){
-            include REQUESTPATH . '/' . $currentRoute['request'] . '.request.php';
-
-//            run_control_index();
-        }
-        // Assumes there is an index function in the request class;
-    }
-
-    // check if there is a request action
-    if( !has_requested_action() &&  has_view( $currentRoute )) {
-        return view( $currentRoute['view'] );
-    }
+//    if( ! verify_routes( $request_uri )){
+//        return view_error('404');
+//    }
+//
+//    // Save current Route Information to a variable
+//    $currentRoute = $routes[ $request_uri ];
+//
+//
+//    echo $request_uri;
 
 
-
-    // Run requested action
-    run_control_function();
+    echo verify_routes( $request_uri );
 
 
 
@@ -69,14 +54,14 @@ function direct_route( $uri ){
 }
 
 /**
- * Clean URI for usage along the direct_control pipeline
+ * Clean URI for usage along the direct_route pipeline
  *
  * @param $uri
- * @param $home_dir
+ * @param $base_uri
  * @return mixed|string
  */
-function clean_uri( $uri, $home_dir ){
-    $uri = str_replace( $home_dir.'/',"",  $uri);
+function clean_uri( $uri, $base_uri ){
+    $uri = str_replace( $base_uri.'/',"",  $uri);
 
     //  Check if URI is the home page
     if( $uri == ''){
@@ -85,6 +70,7 @@ function clean_uri( $uri, $home_dir ){
 
     return $uri;
 }
+//---------------------------------------------------------------
 
 /**
  * Verify that the routing exist
@@ -93,25 +79,97 @@ function clean_uri( $uri, $home_dir ){
  * @param $routes
  * @return bool
  */
-function verify_routes( $uri, $routes ){
-
+function verify_routes( $uri ){
+    $routes = route_builder();
 
     // Add Routing key to an array
     $routes = array_keys( $routes );
 
 
+//    $request_uri = preg_split("/[{_}]+/", $uri)[0];
+//    $request_uri_count = count( $request_uri );
+
+    echo 'url: '.$uri."<br />";
+
+
     // Verify across all keys in the routes array
     // if the requested URI exists
-    foreach( $routes as $key =>$value ){
+    foreach( $routes as $route ){
 
-        if( preg_match( "@".$uri."@", $value)  ){
+        // Return if root uri has been accepted
+        if( $uri == $route ){
             return true;
+        }
+
+        $arrURI = explode( '/', $uri);
+        $count = count($arrURI);
+        $response = array_pop( $arrURI );
+        $preg_route = implode('/', $arrURI);
+
+
+        if( preg_match("@{$preg_route}@", $route) ){
+            $resultRoute = explode('/', $route);
+            if($count == count($resultRoute)){
+                echo implode('/', $resultRoute)."<br />";
+            }
         }
 
     }
 
+
     return false;
 }
+
+function route_channel( $routes ){
+
+
+
+}
+
+function route_builder(){
+
+    $routes = require ROUTESPATH .'/route.php';
+
+    $resources = [
+        'store', 'create', 'destroy', 'show', 'update', 'edit'
+    ];
+
+    $route_list = [];
+
+    foreach ( $routes as $key => $value ){
+
+        $route_list[ $key ] = 'index';
+
+
+        if( array_key_exists( 'action', $value ) ){
+            if( $value[ 'action' ] == 'resource'){
+                if( array_key_exists( 'action', $value ) ){
+
+                    foreach( $resources as $resource){
+
+                        if( $resource == 'create' ){
+                            $route_list[ $key.'/create' ] = $resource;
+                        }
+                        elseif ( $resource == 'edit'){
+                            $route_list[ $key.'/{resource}/edit' ] = $resource;
+                        }
+                        else{
+                            $route_list[ $key.'/{resource}' ]= $resource;
+                        }
+                    }// End Foreach
+                }// End if
+            }// End if
+        }
+
+
+    }// End Foreach
+
+
+    return $route_list;
+
+}
+
+//---------------------------------------------------------------
 
 /**
  * Check if URI has a requested action
