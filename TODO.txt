@@ -13,3 +13,28 @@ Implement a new Routing
 - Add middleware checking
 - remove resource checking, each routes are resource routes already
 - Implement a new way of routing
+
+
+$arrURI = explode( '/', $uri);
+        $count = count($arrURI);
+        $response = array_pop( $arrURI );
+        $preg_route = implode('/', $arrURI);
+
+
+        if( preg_match("@{$preg_route}@", $route) ){
+            $resultRoute = explode('/', $route);
+            if($count == count($resultRoute)){
+
+                if( preg_match( "/[{_}]+/" , implode('/',$resultRoute) )){
+                    return true;
+                }
+
+            }
+        }
+
+
+
+
+^/users/[\w-]+/bookmarks/(.+)/$
+^/users/[\w-]+/bookmarks/$
+^/users/[\w-]+/$

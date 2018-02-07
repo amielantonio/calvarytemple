@@ -19,7 +19,8 @@
  */
 function direct_route( $uri ){
 
-    // Initialize Route Requirements
+    // Initialize Route Requirements0
+
     $config = require CONFIGPATH . '/config.php';
     $base_url = "/{$config['APP_BASE_URL']}";
 
@@ -89,8 +90,7 @@ function verify_routes( $uri ){
 //    $request_uri = preg_split("/[{_}]+/", $uri)[0];
 //    $request_uri_count = count( $request_uri );
 
-    echo 'url: '.$uri."<br />";
-
+//    echo 'url: '.$uri."<br />";
 
     // Verify across all keys in the routes array
     // if the requested URI exists
@@ -101,24 +101,24 @@ function verify_routes( $uri ){
             return true;
         }
 
-        $arrURI = explode( '/', $uri);
-        $count = count($arrURI);
-        $response = array_pop( $arrURI );
-        $preg_route = implode('/', $arrURI);
+        $regex = str_replace("/", '\/', $route);
+        $regex = preg_replace("/{[a-z0-9]*}/", '[a-z0-9]*', $regex);
 
+        $is_match = preg_match("/{$regex}/",$uri,$matches, PREG_OFFSET_CAPTURE);
 
-        if( preg_match("@{$preg_route}@", $route) ){
-            $resultRoute = explode('/', $route);
-            if($count == count($resultRoute)){
-                echo implode('/', $resultRoute)."<br />";
-            }
-        }
+       echo $regex."<br />";
 
     }
 
 
+
+
+
+
+
     return false;
 }
+
 
 function route_channel( $routes ){
 
@@ -163,7 +163,6 @@ function route_builder(){
 
 
     }// End Foreach
-
 
     return $route_list;
 
