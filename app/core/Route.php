@@ -63,14 +63,16 @@ function route_validator( $request_uri, $route_collection ){
     $routes_regex = route_replace_regex( $route_collection );
 
 
-    foreach ($routes_regex as $regex ){
+    var_dump($routes_regex);
 
-        if( preg_match( "/{$regex}/", $request_uri )){
-            echo $regex."<br />";
-        }
-
-    }
-
+//    foreach ($routes_regex as $regex ){
+//
+//        if( preg_match( "/^{$regex}$/", $request_uri )){
+//            echo $regex."<br />";
+//        }
+//
+//    }
+//
 
 
     return true;
