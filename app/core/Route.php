@@ -8,51 +8,195 @@
  * This function will direct the traffic of the web app and do
  * specific function based on the user request
  *
- *
- *
- * Todo: add middleware if middleware config in the $Route is specified
- * or if accessing admin side auth.
- *
  * @param $uri
  * @return mixed
  * @throws exception
  */
 function direct_route( $uri ){
 
-    // Initialize Route Requirements0
+    //Format the requested URI
+    $request_uri = route_uri( $uri );
+
+    //Build Route list
+    $route_collection = route_collection();
+
+    //Validate Requested Route
+    if( ! route_validator( $request_uri, $route_collection) ){
+        return view_error( '404' );
+    }
+
+    //Authenticate route to controller using middleware
+
+    //Parse Route views
+
+    //Parse Route actions
+
+
+}
+
+
+//---------------------------------------------------------------
+
+/**
+ * Return a formatted route to be used in the main function
+ *
+ * @param $uri
+ * @return mixed|string
+ */
+function route_uri( $uri ){
+    // Initialize Route Requirements
 
     $config = require CONFIGPATH . '/config.php';
     $base_url = "/{$config['APP_BASE_URL']}";
 
-
     // add base URI
-    if( is_self_served() ){
+    if( route_is_self_served() ){
         $uri = "/{$base_url}{$uri}";
     }
 
     // Clean URI before processing
-    $request_uri = clean_uri( $uri, $base_url );
+    return clean_uri( $uri, $base_url );
+}
+
+function route_validator( $request_uri, $route_collection ){
+
+    $routes_regex = route_replace_regex( $route_collection );
+
+
+    foreach ($routes_regex as $regex ){
+
+        if( preg_match( "/{$regex}/", $request_uri )){
+            echo $regex."<br />";
+        }
+
+    }
 
 
 
-    // Verify if requested URI exists
-//    if( ! verify_routes( $request_uri )){
-//        return view_error('404');
-//    }
-//
-//    // Save current Route Information to a variable
-//    $currentRoute = $routes[ $request_uri ];
-//
-//
-//    echo $request_uri;
+    return true;
+}
+
+function route_replace_regex( $route_collection ){
+
+    $allRoutes = $route_collection;
+
+    $regRoute = [];
+
+    foreach( $allRoutes as $route => $value ){
+
+        $regex = str_replace("/", '\/', $route);
+        $regex = preg_replace("/\{.*?\}/", '.*?', $regex);
+
+        $regRoute[] = $regex;
 
 
-    echo verify_routes( $request_uri );
+    }
 
-
+    return $regRoute;
 
 
 }
+
+
+/**
+ * Add all routes to lists and return a collection of all routes
+ *
+ * @return array
+ */
+function route_collection(){
+    $routes = require ROUTESPATH .'/route.php';
+    $resources = [
+        'store', 'create', 'destroy', 'show', 'update', 'edit'
+    ];
+    $allRoutes = [];
+
+
+
+    foreach ( $routes as $key => $value ){
+
+        //Check index level if it already contains a parameter,
+        //If it doesn't contain any, pass a string with and index action,
+        //else create an array with and index action and the parameters.
+        if( ! preg_match_all( '/\{.*?\}/', $key ) ){
+            $allRoutes[ $key ] = 'index';
+        }else{
+            $allRoutes[ $key ] = [
+
+                'action' => 'index',
+                'params' => route_add_params( $key )
+
+            ];
+        }
+
+
+        //Check all of the routes if they are a resource route,
+        //If they are a resource route start building the new URI
+        //With the action and parameters.
+
+        if( array_key_exists( 'action', $value ) ){
+            if( $value[ 'action' ] == 'resource'){
+                foreach( $resources as $resource){
+                    if( $resource == 'create' ){
+                        $allRoutes[ $key.'/create' ] = [
+                            "action" => $resource
+
+                        ];
+                    }
+                    elseif ( $resource == 'edit'){
+                        $allRoutes[ $key.'/{resource}/edit' ] = [
+                            'action' => $resource,
+                            'params' => route_add_params( $key.'/{resource}/edit' )
+                        ];
+
+
+                    }
+                    else{
+                        $allRoutes[ $key.'/{resource}' ] = [
+                            'action' => $resource,
+                            'params' => route_add_params( $key.'/{resource}/edit' )
+                        ];
+                    }
+                }// End Foreach
+            }// End if
+        }//End if
+    }// End Foreach
+
+    return $allRoutes;
+}
+
+function route_is_match(){
+
+}
+
+function route_run_request_action(){
+
+}
+
+/**
+ * Function to get Parameters from a given Route
+ *
+ * @param $path
+ * @return array
+ */
+function route_add_params( $path ){
+    $params = [];
+
+    preg_match_all( '/\{.*?\}/', $path, $matches );
+
+    foreach( $matches as $key => $match){
+        foreach($match as $value){
+
+            $params[] =  str_replace( ['{','}'], '', $value );
+
+
+        }
+    }
+
+    return $params;
+}
+
+//---------------------------------------------------------------
+
 
 /**
  * Clean URI for usage along the direct_route pipeline
@@ -71,111 +215,13 @@ function clean_uri( $uri, $base_uri ){
 
     return $uri;
 }
-//---------------------------------------------------------------
-
-/**
- * Verify that the routing exist
- *
- * @param $uri
- * @param $routes
- * @return bool
- */
-function verify_routes( $uri ){
-    $routes = route_builder();
-
-    // Add Routing key to an array
-    $routes = array_keys( $routes );
-
-
-//    $request_uri = preg_split("/[{_}]+/", $uri)[0];
-//    $request_uri_count = count( $request_uri );
-
-//    echo 'url: '.$uri."<br />";
-
-    // Verify across all keys in the routes array
-    // if the requested URI exists
-    foreach( $routes as $route ){
-
-        // Return if root uri has been accepted
-        if( $uri == $route ){
-            return true;
-        }
-
-        $regex = str_replace("/", '\/', $route);
-        $regex = preg_replace("/{[a-z0-9]*}/", '[a-z0-9]*', $regex);
-
-        $is_match = preg_match("/{$regex}/",$uri,$matches, PREG_OFFSET_CAPTURE);
-
-       echo $regex."<br />";
-
-    }
-
-
-
-
-
-
-
-    return false;
-}
-
-
-function route_channel( $routes ){
-
-
-
-}
-
-function route_builder(){
-
-    $routes = require ROUTESPATH .'/route.php';
-
-    $resources = [
-        'store', 'create', 'destroy', 'show', 'update', 'edit'
-    ];
-
-    $route_list = [];
-
-    foreach ( $routes as $key => $value ){
-
-        $route_list[ $key ] = 'index';
-
-
-        if( array_key_exists( 'action', $value ) ){
-            if( $value[ 'action' ] == 'resource'){
-                if( array_key_exists( 'action', $value ) ){
-
-                    foreach( $resources as $resource){
-
-                        if( $resource == 'create' ){
-                            $route_list[ $key.'/create' ] = $resource;
-                        }
-                        elseif ( $resource == 'edit'){
-                            $route_list[ $key.'/{resource}/edit' ] = $resource;
-                        }
-                        else{
-                            $route_list[ $key.'/{resource}' ]= $resource;
-                        }
-                    }// End Foreach
-                }// End if
-            }// End if
-        }
-
-
-    }// End Foreach
-
-    return $route_list;
-
-}
-
-//---------------------------------------------------------------
 
 /**
  * Check if URI has a requested action
  *
  * @return bool
  */
-function has_requested_action(){
+function route_has_requested_action(){
 
     if( isset($_GET['action']) || isset($_GET['id'])){
 
@@ -184,7 +230,7 @@ function has_requested_action(){
     return false;
 }
 
-function has_request_file( $route ){
+function route_has_request_file( $route ){
 
     if( array_key_exists( 'request', $route)){
         return true;
@@ -195,7 +241,7 @@ function has_request_file( $route ){
 
 }
 
-function has_view( $route ){
+function route_has_view( $route ){
 
     if( array_key_exists( 'view', $route)){
         return true;
@@ -211,7 +257,7 @@ function has_view( $route ){
  *
  * @return bool
  */
-function is_self_served(){
+function route_is_self_served(){
 
     $port = $_SERVER['SERVER_PORT'];
 

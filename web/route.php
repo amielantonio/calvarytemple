@@ -102,7 +102,6 @@ $Route['dashboard/post/categories'] = [
 
 $Route['preview/{post}'] = [
     'request' => 'dashboard/post',
-    'action' => 'resource'
 ];
 
 
