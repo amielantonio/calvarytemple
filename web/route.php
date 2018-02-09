@@ -15,7 +15,6 @@
 
 
 $Route['run_migrate'] = [
-    'endpoint' => 'migration',
     'view' => 'migration'
 ];
 

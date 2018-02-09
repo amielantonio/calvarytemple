@@ -20,18 +20,41 @@ function direct_route( $uri ){
     //Build Route list
     $route_collection = route_collection();
 
+    $valid_route = route_validator( $request_uri, $route_collection);
+
     //Validate Requested Route
-    if( ! route_validator( $request_uri, $route_collection) ){
+    if( $valid_route == false ){
         return view_error( '404' );
     }
 
     //Authenticate route to controller using middleware
+    // TODO: middleware
 
-    //Parse Route views
+    //Check if there is a view already available in the routes directory
+    if( route_hasView( $valid_route )){
+        return view( $valid_route['view'] );
+    }
 
-    //Parse Route actions
+
+    //If no view, check if there is a request file.
+    if( route_hasRequestFile( $valid_route ) ){
+
+        $action = isset( $valid_route['action'] ) ? $valid_route['action'] : "index" ;
+
+        $params = route_parameterBinding( $request_uri, $valid_route['regex'] );
 
 
+        //Parse Route actions
+        request_runAction( $valid_route['request'], $action, $params );
+        return true;
+    }
+
+    if( ! route_hasEcho( $valid_route )){
+        return view_error( '501' );
+    }
+
+    echo $valid_route['echo'];
+    return true;
 }
 
 
@@ -58,25 +81,72 @@ function route_uri( $uri ){
     return clean_uri( $uri, $base_url );
 }
 
+
+/**
+ * Validate if the Request URI is within the routes file
+ *
+ * @param $request_uri
+ * @param $route_collection
+ * @return bool
+ */
 function route_validator( $request_uri, $route_collection ){
 
-    $routes_regex = route_replace_regex( $route_collection );
+    $routes_regex = route_replaceRegex( $route_collection );
 
-
+    $match = [];
     foreach ($routes_regex as $regex ){
 
-        if( preg_match( "/{$regex}/", $request_uri )){
-            echo $regex."<br />";
+        if( preg_match( "/^{$regex}$/", $request_uri )){
+
+            $match[] = $regex;
+
         }
 
     }
 
+    return route_match( $match );
 
-
-    return true;
 }
 
-function route_replace_regex( $route_collection ){
+/**
+ * Return the information of the matching array
+ *
+ * @param $match
+ * @return mixed
+ */
+function route_get( $params ){
+
+    //Create haystack
+    $route_list = route_collection();
+
+    //Create needle
+    $needle = str_replace( '[a-zA-Z0-9-]*', '{[a-zA-Z0-9-]*}', $params);
+
+    $requested_route = [];
+
+    //Search in
+    foreach( $route_list as $key => $value ){
+
+        if( preg_match( "/^{$needle}$/", $key )){
+
+            $requested_route[] = $value;
+
+            $requested_route['0']['regex'] = $key;
+
+        }// End if
+
+    }// End foreach
+
+    return $requested_route[0];
+}
+
+/**
+ * Replace the route list to a regular expression routes
+ *
+ * @param $route_collection
+ * @return array
+ */
+function route_replaceRegex( $route_collection ){
 
     $allRoutes = $route_collection;
 
@@ -85,15 +155,13 @@ function route_replace_regex( $route_collection ){
     foreach( $allRoutes as $route => $value ){
 
         $regex = str_replace("/", '\/', $route);
-        $regex = preg_replace("/\{.*?\}/", '.*?', $regex);
+        $regex = preg_replace("/\{[a-zA-Z0-9-]*\}/", '[a-zA-Z0-9-]*', $regex);
 
         $regRoute[] = $regex;
-
 
     }
 
     return $regRoute;
-
 
 }
 
@@ -106,57 +174,95 @@ function route_replace_regex( $route_collection ){
 function route_collection(){
     $routes = require ROUTESPATH .'/route.php';
     $resources = [
-        'store', 'create', 'destroy', 'show', 'update', 'edit'
+        'index', 'store', 'create', 'destroy', 'show', 'update', 'edit'
     ];
     $allRoutes = [];
 
-
-
     foreach ( $routes as $key => $value ){
 
-        //Check index level if it already contains a parameter,
-        //If it doesn't contain any, pass a string with and index action,
-        //else create an array with and index action and the parameters.
-        if( ! preg_match_all( '/\{.*?\}/', $key ) ){
-            $allRoutes[ $key ] = 'index';
-        }else{
-            $allRoutes[ $key ] = [
 
-                'action' => 'index',
-                'params' => route_add_params( $key )
+        $allRoutes[ $key ] = $value;
 
-            ];
+        //Check index level if it already contains some parameter,
+        //add it to the Array
+
+        if( preg_match_all( '/\{.*?\}/', $key ) ){
+            $allRoutes[ $key ]['params'] = route_addParams( $key );
         }
 
 
-        //Check all of the routes if they are a resource route,
-        //If they are a resource route start building the new URI
-        //With the action and parameters.
-
+        // Check if the route contains an action
         if( array_key_exists( 'action', $value ) ){
-            if( $value[ 'action' ] == 'resource'){
+
+
+            //Check all of the routes if they are a resource route,
+            //If they are a resource route start building the new URI
+            //With the action and parameters.
+            if( $value[ 'action' ] == 'resource' ){
                 foreach( $resources as $resource){
-                    if( $resource == 'create' ){
-                        $allRoutes[ $key.'/create' ] = [
-                            "action" => $resource
+                    switch ( $resource ) {
 
-                        ];
-                    }
-                    elseif ( $resource == 'edit'){
-                        $allRoutes[ $key.'/{resource}/edit' ] = [
-                            'action' => $resource,
-                            'params' => route_add_params( $key.'/{resource}/edit' )
-                        ];
+                        case 'index' :
 
+                            $allRoutes[ $key ][ 'action' ] = 'index';
+                            break;
 
-                    }
-                    else{
-                        $allRoutes[ $key.'/{resource}' ] = [
-                            'action' => $resource,
-                            'params' => route_add_params( $key.'/{resource}/edit' )
-                        ];
-                    }
+                        case 'create' :
+
+                            $allRoutes[ $key.'/create' ] = [
+                                "action" => $resource,
+                                "request" => $value[ 'request' ]
+
+                            ];
+                            break;
+
+                        case 'destroy' :
+
+                            $allRoutes[ $key.'/{resource}/destroy' ] = [
+                                'action' => $resource,
+                                'params' => route_addParams( $key.'/{resource}' ),
+                                "request" => $value[ 'request' ]
+                            ];
+                            break;
+
+                        case 'show' :
+
+                            $allRoutes[ $key.'/{resource}' ] = [
+                                'action' => $resource,
+                                'params' => route_addParams( $key.'/{resource}' ),
+                                "request" => $value[ 'request' ]
+                            ];
+                            break;
+
+                        case 'update' :
+
+                            $allRoutes[ $key.'/{resource}/update' ] = [
+                                'action' => $resource,
+                                'params' => route_addParams( $key.'/{resource}' ),
+                                "request" => $value[ 'request' ]
+                            ];
+                            break;
+
+                        case 'edit' :
+
+                            $allRoutes[ $key.'/{resource}/edit' ] = [
+                                'action' => $resource,
+                                'params' => route_addParams(  $key.'/{resource}' ),
+                                "request" => $value[ 'request' ]
+                            ];
+                            break;
+
+                    }// End Switch
+
                 }// End Foreach
+
+
+                //If there is an action but its a resource route
+            } elseif( $value[ 'action' ] <> "resource" ) {
+
+                //Add the Action for a non-resource routes
+                $allRoutes[ $key ]['action'] = $value[ 'action' ];
+
             }// End if
         }//End if
     }// End Foreach
@@ -164,11 +270,16 @@ function route_collection(){
     return $allRoutes;
 }
 
-function route_is_match(){
+function route_match( $match ){
 
-}
+    if( count($match) > 1 ){
 
-function route_run_request_action(){
+        throw new Exception( 'Duplicate Route Found' );
+
+    }
+
+    return route_get( $match[0] );
+
 
 }
 
@@ -178,7 +289,7 @@ function route_run_request_action(){
  * @param $path
  * @return array
  */
-function route_add_params( $path ){
+function route_addParams( $path ){
     $params = [];
 
     preg_match_all( '/\{.*?\}/', $path, $matches );
@@ -197,6 +308,19 @@ function route_add_params( $path ){
 
 //---------------------------------------------------------------
 
+function route_parameterBinding( $request_uri, $route_regex ){
+
+    $request = explode('/', $request_uri );
+    $validity = explode('/', $route_regex );
+
+    $result = array_diff( $request, $validity );
+
+    return $result;
+
+}
+
+
+//---------------------------------------------------------------
 
 /**
  * Clean URI for usage along the direct_route pipeline
@@ -216,42 +340,42 @@ function clean_uri( $uri, $base_uri ){
     return $uri;
 }
 
+
 /**
- * Check if URI has a requested action
+ * Check fi the Request File has a view method
  *
+ * @param $route
  * @return bool
  */
-function route_has_requested_action(){
+function route_hasRequestFile( $route ){
 
-    if( isset($_GET['action']) || isset($_GET['id'])){
-
-        return true;
-    }
-    return false;
-}
-
-function route_has_request_file( $route ){
-
-    if( array_key_exists( 'request', $route)){
-        return true;
-    }
-    else{
-        return false;
-    }
+    return array_key_exists( 'request', $route ) ? true : false;
 
 }
 
-function route_has_view( $route ){
+/**
+ * Check if the Route has a view method
+ *
+ * @param $route
+ * @return bool
+ */
+function route_hasView( $route ){
 
-    if( array_key_exists( 'view', $route)){
-        return true;
-    }
-    else{
-        return false;
-    }
+    return array_key_exists( 'view', $route ) ? true : false;
 
 }
 
+/**
+ * Check if the Route has an Echo Method
+ *
+ * @param $route
+ * @return bool
+ */
+function route_hasEcho( $route ){
+
+    return array_key_exists( 'echo', $route ) ? true : false;
+
+}
 /**
  * To accommodate sites that uses localhost of XAMPP or virtual host
  *
@@ -268,3 +392,5 @@ function route_is_self_served(){
     return false;
 
 }
+
+
