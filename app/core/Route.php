@@ -39,10 +39,11 @@ function direct_route( $uri ){
     //If no view, check if there is a request file.
     if( route_hasRequestFile( $valid_route ) ){
 
+        //Pass Action
         $action = isset( $valid_route['action'] ) ? $valid_route['action'] : "index" ;
 
+        //Get action parameters.
         $params = route_parameterBinding( $request_uri, $valid_route['regex'] );
-
 
         //Parse Route actions
         request_runAction( $valid_route['request'], $action, $params );
@@ -88,6 +89,7 @@ function route_uri( $uri ){
  * @param $request_uri
  * @param $route_collection
  * @return bool
+ * @throws Exception
  */
 function route_validator( $request_uri, $route_collection ){
 
@@ -113,7 +115,7 @@ function route_validator( $request_uri, $route_collection ){
 /**
  * Return the information of the matching array
  *
- * @param $match
+ * @param $params
  * @return mixed
  */
 function route_get( $params ){
@@ -272,11 +274,17 @@ function route_collection(){
     return $allRoutes;
 }
 
+/**
+ * @param $match
+ * @return mixed
+ */
 function route_match( $match ){
 
     if( count($match) > 1 ){
 
-        throw new Exception( 'Duplicate Route Found' );
+        //Just return the last route.
+        //TODO: need to further investigate on this behaviour, might cause a problem in the future.
+        return route_get( $match[ count($match) - 1 ] );
 
     }
 
