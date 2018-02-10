@@ -19,7 +19,6 @@ function index(){
 
 function show(){
 
-
     $where = "reservation_status <> 'Pending' ";
     $reservations = where( 'reservations', $where );
 
