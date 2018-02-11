@@ -34,7 +34,8 @@ $Route['events'] = [
     'view' => 'frontend/events/events'
 ];
 $Route['reservations'] = [
-    'view' => 'frontend/home/reservations'
+    'request' => 'home/reservation',
+    'action' => 'resource'
 ];
 $Route['login'] = [
     'view' => 'frontend/login/login'

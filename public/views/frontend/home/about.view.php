@@ -10,8 +10,39 @@
             <div class="hero-headline">
 
                 <h2>
-                    Passion for God • Compassion for Men
+                    About Calvary Temple
                 </h2>
+
+            </div>
+
+        </section>
+
+        <section class="section-container" id="summary">
+
+            <div class="container">
+                <div class="row">
+
+                </div>
+            </div>
+
+        </section>
+
+        <section class="section-container" id="started">
+
+            <div class="container">
+                <div class="row">
+
+                </div>
+            </div>
+
+        </section>
+
+        <section class="section-container" id="pastors">
+
+            <div class="container">
+                <div class="row">
+
+                </div>
             </div>
 
         </section>

@@ -10,8 +10,19 @@
             <div class="hero-headline">
 
                 <h2>
-                    Passion for God • Compassion for Men
+                    Events
                 </h2>
+            </div>
+
+        </section>
+
+
+        <section class="section-container">
+
+            <div class="container">
+                <div class="row">
+
+                </div>
             </div>
 
         </section>

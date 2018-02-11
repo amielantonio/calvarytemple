@@ -15,11 +15,17 @@
             </li>
 
             <!--View for Admin only-->
+            <?php
+            //Pending Reservations
+            $where = "reservation_status = 'Pending'";
 
+            $pending_total = count( where( 'reservations', $where) );
+
+            ?>
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-calendar"></i>
-                    <span>Reservations</span>
+                    <span>Reservations</span> <?php if ($pending_total > 0) : ?><span class="badge"><?= $pending_total?></span> <?php endif; ?>
                     <span class="pull-right-container">
                       <i class="fa fa-angle-left pull-right"></i>
                     </span>
@@ -28,8 +34,9 @@
                     <li><a href="<?= route('dashboard/reservation') ?>">
                             <i class="fa fa-circle-o"></i> View Reservations</a>
                     </li>
+
                     <li><a href="<?= route('dashboard/reservation/pending') ?>">
-                            <i class="fa fa-circle-o"></i> Pending Reservations</a>
+                            <i class="fa fa-circle-o"></i> Pending Reservations <?php if ($pending_total > 0) : ?><span class="badge"><?= $pending_total?></span> <?php endif; ?></a>
                     </li>
                     <li><a href="<?= route('dashboard/reservation/create') ?>">
                             <i class="fa fa-circle-o"></i> Add New</a>

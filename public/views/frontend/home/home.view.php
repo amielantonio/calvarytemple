@@ -50,21 +50,27 @@
        <div class="container">
            <div class="row">
                <div class="col-sm-4">
-                   <div class="bg-devotions">
-                       <h3 class="event-header">Blog & Devotion</h3>
-                   </div>
+                   <a href="<?= route( 'blog' ); ?>">
+                       <div class="bg-devotions">
+                           <h3 class="event-header">Blog & Devotion</h3>
+                       </div>
+                   </a>
                </div>
 
                <div class="col-sm-4">
-                   <div class="bg-events">
-                       <h3 class="event-header">Events</h3>
-                   </div>
+                   <a href="<?= route( 'events' ); ?>">
+                       <div class="bg-events">
+                           <h3 class="event-header">Events</h3>
+                       </div>
+                   </a>
                </div>
 
                <div class="col-sm-4">
-                   <div class="bg-reservations">
-                       <h3 class="event-header">Reservations</h3>
-                   </div>
+                   <a href="<?= route( 'reservation' ); ?>">
+                       <div class="bg-reservations">
+                           <h3 class="event-header">Reservations</h3>
+                       </div>
+                   </a>
                </div>
            </div>
        </div>
@@ -161,12 +167,14 @@
 
                     <article class="article-snippet--information">
                         <header>
-                            <h3 class="article-snippet--headline">
-                                <a href="">Lorem Ipsum</a>
-                            </h3>
-                            <h4 class="article-snippet--subheadline">
-                                <a href="#">Dolor sit amet consectetur</a>
-                            </h4>
+                            <a href="">
+                                <h3 class="article-snippet--headline">
+                                    Lorem Ipsum
+                                </h3>
+                                <h4 class="article-snippet--subheadline">
+                                    Dolor sit amet consectetur
+                                </h4>
+                            </a>
                         </header>
 
                         <section class="article-snippet--body">
@@ -175,77 +183,6 @@
                             </p>
                         </section>
 
-                        <footer class="article-snipet--footer">
-                            <a href="#">
-                                <button type="button" class="">
-                                    <span>View</span>
-                                </button>
-                            </a>
-                        </footer>
-                    </article>
-                </div>
-
-                <div id="" class="article-snippet">
-
-                    <a href="#">
-                        <img src="<?= asset(  'img/hero.jpeg' )?>" class="article-snippet--image img-responsive">
-                    </a>
-
-                    <article class="article-snippet--information">
-                        <header>
-                            <h3 class="article-snippet--headline">
-                                <a href="">Lorem Ipsum</a>
-                            </h3>
-                            <h4 class="article-snippet--subheadline">
-                                <a href="#">Dolor sit amet consectetur</a>
-                            </h4>
-                        </header>
-
-                        <section class="article-snippet--body">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                            </p>
-                        </section>
-
-                        <footer class="article-snipet--footer">
-                            <a href="#">
-                                <button type="button" class="">
-                                    <span>View</span>
-                                </button>
-                            </a>
-                        </footer>
-                    </article>
-                </div>
-
-                <div id="" class="article-snippet">
-
-                    <a href="#">
-                        <img src="<?= asset( 'img/hero.jpeg' )?>" class="article-snippet--image img-responsive">
-                    </a>
-
-                    <article class="article-snippet--information">
-                        <header>
-                            <h3 class="article-snippet--headline">
-                                <a href="">Lorem Ipsum</a>
-                            </h3>
-                            <h4 class="article-snippet--subheadline">
-                                <a href="#">Dolor sit amet consectetur</a>
-                            </h4>
-                        </header>
-
-                        <section class="article-snippet--body">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                            </p>
-                        </section>
-
-                        <footer class="article-snipet--footer">
-                            <a href="#">
-                                <button type="button" class="">
-                                    <span>View</span>
-                                </button>
-                            </a>
-                        </footer>
                     </article>
                 </div>
 

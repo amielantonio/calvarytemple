@@ -55,9 +55,9 @@ function pending_approve( $resource ){
  * Delete the specified resources
  * @throws exception
  */
-function destroy(){
+function destroy( $resource ){
     // Return if no resource has been specified
-    if( ! isset($_GET['id'])){
+    if( $resource == "" ){
         $alert = [
             'alertable' => 'warning',
             'message' => 'No Resources specified'
@@ -65,7 +65,7 @@ function destroy(){
         return view( 'admin/reservation/pending_reservation', compact( 'alert' ));
     }
 
-    $id = $_GET['id'];
+    $id = $resource;
 
     if( delete('reservations', $id) ){
         $alert = [

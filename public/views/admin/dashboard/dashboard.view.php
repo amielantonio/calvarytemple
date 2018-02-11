@@ -62,6 +62,17 @@
                 <div class="box box-info">
                     <div class="box-header with-boarder ">
                         <h3 class="box-title">Pending Reservations</h3>
+
+                        <?php if( $pending_total > 2 ) : ?>
+                        <div class="box-tools">
+                            <a href="<?= route( 'dashboard/reservation/pending' ); ?>">
+                                <button type="button" class="btn btn-primary">
+                                    View All <span class="badge"><?= ($pending_total > 2) ? $pending_total : "" ?></span>
+                                </button>
+                            </a>
+                        </div>
+                        <?php endif; ?>
+
                     </div>
 
 
@@ -86,7 +97,14 @@
                                         </a>
 
                                         <div class="pull-right">
-                                            <button class="btn btn-primary">approve</button>
+                                            <a href="<?php echo route( "dashboard/reservation/pending/{$value['id']}/approve" ); ?>">
+                                                <button class="btn btn-info"><i class="fa fa-check"></i></button>
+                                            </a>
+
+                                            <a href=" <?php echo route( "dashboard/reservation/pending/{$value['id']}/destroy" );?> ">
+                                                <button class="btn btn-danger"><i class="fa fa-times"></i></button>
+                                            </a>
+
                                         </div>
 
                                         <span class="product-description">
@@ -164,10 +182,9 @@
                                 <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
                                     <i class="fa fa-bars"></i></button>
                                 <ul class="dropdown-menu pull-right" role="menu">
-                                    <li><a href="#">Add new Reservation</a></li>
-                                    <li><a href="#">Clear Reservation</a></li>
+                                    <li><a href="<?= route('dashboard/reservation/create'); ?>">Add new Reservation</a></li>
                                     <li class="divider"></li>
-                                    <li><a href="#">View calendar</a></li>
+                                    <li><a href="<?= route('dashboard/reservation'); ?>">View calendar</a></li>
                                 </ul>
                             </div>
                         </div>

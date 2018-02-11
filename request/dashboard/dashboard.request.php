@@ -20,12 +20,14 @@ function index(){
 
     $pending = where('reservations', $where, 3);
 
+    $pending_total = count( where( 'reservations', $where) );
+
 
     //Upcoming Reservations
     $where =  'DATEDIFF(NOW(), reservation_startdate) <= 30 AND reservation_startdate > NOW() AND reservation_status = "Approved"';
     $upcoming = where('reservations', $where );
 
 
-    return view( 'admin/dashboard/dashboard', compact('new_reservations', 'pending', 'upcoming'));
+    return view( 'admin/dashboard/dashboard', compact('new_reservations', 'pending', 'upcoming', 'pending_total'));
 
 }

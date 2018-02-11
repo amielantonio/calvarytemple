@@ -22,8 +22,12 @@ html{
 
 
 body{
-    font-family: "Muli", "Helvetica Neue", Sans-Serif;
+    font-family: "Muli", "Helvetica Neue", "Arial", Sans-Serif;
     font-size: 14px;
+}
+
+.app{
+    margin-top: 191px;
 }
 /*---------------------------
 | NAVIGATION
@@ -105,7 +109,7 @@ body{
 
 .section-hero{
     padding: 0;
-    margin: 191px 0 0;
+    margin: 0;
 
     background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/hero.jpeg') center center no-repeat fixed;
     background-size: cover;
