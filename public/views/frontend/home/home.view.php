@@ -8,56 +8,69 @@
     <section id="section-hero" class="section-hero">
 
         <div class="hero-headline">
-            <h1 class="hero-title">
-                Lorem Ipsum
-            </h1>
+
             <h2>
-                Lorem Ipsum Dolor Sit Amet
+                Passion for God • Compassion for Men
             </h2>
         </div>
 
     </section>
 
-    <section id="section-mission" class="section-container section-dark">
+    <section id="section-mission" class="section-container">
 
         <div class="container">
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-12">
                     <div class="ct-headline">
                         <h2 class="section-title">Mission and Vision</h2>
                         <div class="background"></div>
                     </div>
                 </div>
 
+            </div>
+
+            <div class="row">
                 <div class="col-sm-6">
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                     </p>
                 </div>
-
+                <div class="col-sm-6">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                </div>
             </div>
 
         </div>
 
     </section>
 
-    <section id="section-functionality" class="">
-       <div class="row">
-           <div class="col-sm-4 bg-devotions">
-               <h3 class="event-header">Blog & Devotion</h3>
-           </div>
+    <section id="section-functionality" class="section-container section-dark section-less-padding">
+       <div class="container">
+           <div class="row">
+               <div class="col-sm-4">
+                   <div class="bg-devotions">
+                       <h3 class="event-header">Blog & Devotion</h3>
+                   </div>
+               </div>
 
-           <div class="col-sm-4 bg-events">
-               <h3 class="event-header">Events</h3>
-           </div>
+               <div class="col-sm-4">
+                   <div class="bg-events">
+                       <h3 class="event-header">Events</h3>
+                   </div>
+               </div>
 
-           <div class="col-sm-4 bg-reservations">
-               <h3 class="event-header">Reservations</h3>
+               <div class="col-sm-4">
+                   <div class="bg-reservations">
+                       <h3 class="event-header">Reservations</h3>
+                   </div>
+               </div>
            </div>
        </div>
     </section>
 
-    <section id="section-events" class="section-container section-dark">
+    <section id="section-events" class="section-container">
 
         <div class="container">
             <div class="row">
@@ -70,21 +83,26 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-    </section>
-
-    <section id="events-list" class="section-continuation">
-        <div class="container">
             <div class="row">
 
                 <div class="col-sm-6">
 
                     <h3>Recent Events</h3>
 
-                    <div class="card">
+                    <ul>
+                        <li>
+                            <a href="#">Events events</a>
+                        </li>
 
-                    </div>
+                        <li>
+                            <a href="#">Events events</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Events events</a>
+                        </li>
+                    </ul>
 
                 </div>
 
@@ -92,16 +110,26 @@
 
                     <h3>Upcoming Events</h3>
 
-                    <div class="card">
+                    <ul>
+                        <li>
+                            <a href="#">Events events</a>
+                        </li>
 
-                    </div>
+                        <li>
+                            <a href="#">Events events</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Events events</a>
+                        </li>
+                    </ul>
 
                 </div>
 
             </div>
         </div>
-    </section>
 
+    </section>
 
     <section id="section-blog" class="section-container section-light">
 

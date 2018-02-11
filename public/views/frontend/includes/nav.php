@@ -5,31 +5,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <ul class="nav nav-end">
-                            <li>
-                                <a href="#">
-                                    <span><i class="fa fa-facebook"></i></span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="#">
-                                    <span><i class="fa fa-twitter"></i></span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="#">
-                                    <span><i class="fa fa-instagram"></i></span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="<?= route( 'dashboard' )?>">
-                                    Login
-                                </a>
-                            </li>
-                        </ul>
+                        <div class="ct-nav-logo">
+                            <img src="<?= asset( 'img/logo.png' )?>" width="300" alt="Calvary Temple Logo">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -40,13 +18,9 @@
             <div class="container">
                 <div class="row">
 
-                    <div class="col-sm-4">
-                        Calvary Temple
-                    </div>
+                    <div class="col-sm-12">
 
-                    <div class="col-sm-8">
-
-                        <ul class="nav nav-end">
+                        <ul class="nav nav-center">
                             <li class="">
                                 <a class="nav-link" href="<?= route(); ?>">Home</a>
                             </li>
@@ -66,6 +40,22 @@
                             <li class="">
                                 <a class="nav-link" href="<?= route( 'reservations' ) ?>">Reservations</a>
                             </li>
+                            <li>
+                                <a href="<?= route( 'dashboard' )?>">
+                                    Login
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.facebook.com/CTMANGELES">
+                                    <span><i class="fa fa-facebook"></i></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.instagram.com/calvary_temple/">
+                                    <span><i class="fa fa-instagram"></i></span>
+                                </a>
+                            </li>
+
                         </ul>
 
                     </div>

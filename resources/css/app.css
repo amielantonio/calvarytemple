@@ -20,6 +20,11 @@ html{
     text-align: center;
 }
 
+
+body{
+    font-family: "Muli", "Helvetica Neue", Sans-Serif;
+    font-size: 14px;
+}
 /*---------------------------
 | NAVIGATION
 -----------------------------*/
@@ -31,17 +36,18 @@ html{
     left: 0;
     right: 0;
     width: 100%;
-    background-color: rgba(255,255,255,0.8);
     z-index: 1000;
 }
 /*top*/
 .nav-top{
     font-size: 13px;
-    background: none;
+    background: white;
 }
 
 /*main*/
 .nav-main{
+    width: 100%;
+    background: rgba(0,0,0,0.5);
 
 }
 
@@ -54,13 +60,15 @@ html{
     width: 100%;
 
 }
-
+.nav-center{
+    justify-content: center !important;
+}
 .nav-end{
     justify-content: flex-end !important;
 }
 
 .nav >li a{
-    color: #000;
+    color: #fff;
     display: block;
     padding: 0.65em 1.2em;
     text-decoration: none;
@@ -68,6 +76,18 @@ html{
 
 .nav > li a:hover{
     color: #07BBFF;
+}
+
+
+.ct-nav-logo{
+    width: 100%;
+    margin-bottom: 10px;
+}
+.ct-nav-logo > img{
+    max-width: 350px;
+    width: 100%;
+    display: block;
+    margin: 0 auto;
 }
 
 
@@ -79,31 +99,33 @@ html{
     width: 100%;
     display: block;
     position: relative;
-    padding: 150px 0;
+    padding: 100px 0;
     margin: 0;
 }
 
 .section-hero{
     padding: 0;
-    margin: 0;
+    margin: 191px 0 0;
 
     background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/hero.jpeg') center center no-repeat fixed;
     background-size: cover;
 
-    height: 100vh;
+    height: 80vh;
     width: 100vw;
 }
 
 .section-dark{
-    background-color: #2d2d2d;
+    background-color: #2a166f;
     color: #FFF;
 }
 
-#events-list{
+.section-light{
+    background-color: #da251c;
     color: #fff;
 }
-.section-continuation{
-    margin-top: -60px;
+
+.section-less-padding{
+    padding: 40px;
 }
 
 /*---------------------------
@@ -111,12 +133,13 @@ html{
 -----------------------------*/
 
 .hero-headline{
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    color: white;
+    color: #fff;
+
 }
 
 .hero-title{
@@ -129,17 +152,23 @@ html{
 
 .ct-headline{
     text-transform: uppercase;
+    border-top: 1px solid #2d2d2d;
+    border-bottom: 1px solid #2d2d2d;
+
+    margin-bottom: 50px;
+}
+
+
+.section-light .ct-headline{
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
 }
 
 .section-title{
     font-size: 4em;
-    border-left: 5px solid #fff;
-    padding-left: 15px;
+    text-align: center;
 }
 
-.section-light .section-title{
-    border-left-color: #2d2d2d;
-}
 
 .section-title-sub{
     font-size: 50%;
@@ -149,7 +178,8 @@ html{
 .event-header{
     padding: 40px;
     background: rgba(255,255,255,0.9);
-    position: absolute;
+    font-weight: 300;
+    text-transform: uppercase;
 }
 
 
@@ -173,6 +203,7 @@ html{
     width: 100%;
     background-color: #2d2d2d;
     color: #fff;
+    position: relative;
 }
 
 .site-footer > .site-footer--links{
@@ -227,7 +258,8 @@ html{
 .bg-devotions,
 .bg-events,
 .bg-reservations{
-    padding: 120px 1em !important;
+    height: 500px;
+    width: 350px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -238,19 +270,16 @@ html{
 .bg-devotions{
     background: url('../img/ydc-youth.jpg') no-repeat center center;
     background-size: cover;
-    padding: 0;
 }
 
 .bg-events{
     background:  url('../img/fresh.jpg') no-repeat center center;
     background-size: cover;
-    padding: 0;
 }
 
 .bg-reservations{
     background: url('../img/bible-2.jpeg') no-repeat center center;
     background-size: cover;
-    padding: 0;
 }
 
 /*---------------------------

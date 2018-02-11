@@ -22,6 +22,16 @@
     <!-- Application -->
     <link rel="stylesheet" type="text/css" href="<?php echo asset( 'css/app.css' ) ?>">
 
+    <!-- jQuery 3 -->
+    <script src="<?= asset( 'plugins/adminlte/bower_components/jquery/dist/jquery.min.js' )?>"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
 
