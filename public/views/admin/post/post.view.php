@@ -68,7 +68,7 @@
                                     <?php foreach( $posts as $key => $value) : ?>
                                             <tr>
                                                 <td>
-                                                    <a href="#">
+                                                    <a href="<?php echo route("dashboard/post/{$value['id']}/edit" )?>">
                                                         <?php echo $value['post_title']?>
                                                     </a>
                                                 </td>
@@ -93,15 +93,15 @@
                                                 </td>
                                                 <td>
                                                     <div class="action-toolbar">
-                                                        <a href="<?php echo route('dashboard/post?action=preview&id='.$value['id'] )?>" class="text-info tools">
+                                                        <a href="<?php echo route("preview/{$value['id']}" )?>" class="text-info tools">
                                                             <i class="fa fa-eye"></i>
                                                         </a>
 
-                                                        <a href="<?php echo route('dashboard/post?action=edit&id='.$value['id'] )?>" class="text-info tools">
+                                                        <a href="<?php echo route("dashboard/post/{$value['id']}/edit" )?>" class="text-info tools">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
 
-                                                        <a href="<?php echo route('dashboard/post?action=destroy&id='.$value['id'] )?>" class="text-danger tools">
+                                                        <a href="<?php echo route("dashboard/post/{$value['id']}/trash" )?>" class="text-danger tools">
                                                             <i class="fa fa-trash"></i>
                                                         </a>
                                                     </div>

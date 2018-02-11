@@ -228,6 +228,9 @@ $Migration['posts'] = [
     'post_title' =>[
         'field_type' => "VARCHAR(100)"
     ],
+    'post_url' => [
+        'field_type' => 'VARCHAR(100)'
+    ],
     'post_body' => [
         'field_type' => 'TEXT'
     ],

@@ -80,13 +80,13 @@
                                     <td><?php echo date('M d, Y - g:i A', strtotime( $value[ 'reservation_startdate' ] ) ); ?></td>
                                     <td><?php echo date('M d, Y - g:i A', strtotime( $value[ 'created_at' ] ) ); ?></td>
                                     <td>
-                                        <a href="<?php echo route( 'dashboard/reservation/pending?action=approve&id='. $value['id'] ); ?>">
+                                        <a href="<?php echo route( "dashboard/reservation/pending/{$value['id']}/approve" ); ?>">
                                             <button type="button" class="btn btn-primary">
                                                 Approve
                                             </button>
                                         </a>
 
-                                        <a href="<?php echo route( 'dashboard/reservation/pending?action=destroy&id='. $value['id'] );?>">
+                                        <a href="<?php echo route( "dashboard/reservation/pending/{$value['id']}/destroy" );?>">
                                             <button type="button" class="btn btn-danger">
                                                 Cancel
                                             </button>
@@ -95,6 +95,15 @@
                                 </tr>
 
                                 <?php $x++; endforeach; ?>
+
+                                <tr>
+                                    <th>#</th>
+                                    <th>Reserver Name</th>
+                                    <th>Reservation</th>
+                                    <th>Date of Event</th>
+                                    <th>Date reserved</th>
+                                    <th>Actions</th>
+                                </tr>
 
                                 </tbody>
                             </table>

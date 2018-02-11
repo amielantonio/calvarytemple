@@ -18,6 +18,7 @@
  *
  * @param $request
  * @param string $action
+ * @param $params
  * @return bool
  */
 function request_runAction( $request, $action="", $params = [] ){
@@ -46,7 +47,7 @@ function request_parseAction( $action="", $params = [] ){
 
         }else{
 
-            $action( implode( ', ', $params ) );
+            ( !empty( $params )) ? $action( implode( ', ', $params ) ) : $action();
 
         }
 

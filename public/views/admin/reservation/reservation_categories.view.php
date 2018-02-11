@@ -68,7 +68,7 @@
                         </div>
 
                         <div class="box-body">
-                            <form method="POST" action="<?php echo route( 'dashboard/reservation?action=savecat' )?>" class="">
+                            <form method="POST" action="<?php echo route( 'dashboard/reservation/save_category' )?>" class="">
 
                                 <div class="form-group">
                                     <label for="reservation_category">Category</label>

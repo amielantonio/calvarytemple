@@ -9,7 +9,7 @@
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">NAVIGATION</li>
             <li>
-                <a href="<?= route() ?>">
+                <a href="<?= route( 'dashboard' ) ?>">
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                 </a>
             </li>
@@ -31,7 +31,7 @@
                     <li><a href="<?= route('dashboard/reservation/pending') ?>">
                             <i class="fa fa-circle-o"></i> Pending Reservations</a>
                     </li>
-                    <li><a href="<?= route('dashboard/reservation?action=create') ?>">
+                    <li><a href="<?= route('dashboard/reservation/create') ?>">
                             <i class="fa fa-circle-o"></i> Add New</a>
                     </li>
                     <li><a href="<?= route('dashboard/reservation/categories') ?>">
@@ -45,7 +45,7 @@
             </li>
 
             <li>
-                <a href="<?= route('dashboard/reservation/pending?action=create') ?>">
+                <a href="<?= route('dashboard/reservation/pending/create') ?>">
                     <i class="fa fa-shield"></i> <span>Security</span>
                 </a>
             </li>
@@ -65,7 +65,7 @@
                 <ul class="treeview-menu">
                     <li><a href="<?= route('dashboard/post') ?>"><i
                                     class="fa fa-circle-o"></i> View Posts</a></li>
-                    <li><a href="<?= route('dashboard/post?action=create') ?>"><i
+                    <li><a href="<?= route('dashboard/post/create') ?>"><i
                                     class="fa fa-circle-o"></i> Add New</a></li>
                     <li><a href="<?= route('dashboard/post/categories') ?>"><i
                                     class="fa fa-circle-o"></i> Categories</a></li>
@@ -83,7 +83,7 @@
                 <ul class="treeview-menu">
                     <li><a href="<?= route('dashboard/events') ?>"><i
                                     class="fa fa-circle-o"></i> View Events</a></li>
-                    <li><a href="<?= route('dashboard/events?action=create') ?>"><i
+                    <li><a href="<?= route('dashboard/events/create') ?>"><i
                                     class="fa fa-circle-o"></i> Add New</a></li>
                 </ul>
             </li>
@@ -102,7 +102,7 @@
                 <ul class="treeview-menu">
                     <li><a href="<?= route('dashboard/user') ?>"><i
                                     class="fa fa-circle-o"></i> View User</a></li>
-                    <li><a href="<?= route('dashboard/user?action=create') ?>"><i
+                    <li><a href="<?= route('dashboard/user/create') ?>"><i
                                     class="fa fa-circle-o"></i> Add New</a></li>
                 </ul>
             </li>

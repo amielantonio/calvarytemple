@@ -20,7 +20,7 @@ function direct_route( $uri ){
     //Build Route list
     $route_collection = route_collection();
 
-    $valid_route = route_validator( $request_uri, $route_collection);
+    $valid_route = route_validator( $request_uri, $route_collection );
 
     //Validate Requested Route
     if( $valid_route == false ){
@@ -220,6 +220,15 @@ function route_collection(){
                             ];
                             break;
 
+                        case 'store' :
+
+                            $allRoutes[ $key.'/store' ] = [
+                                "action" => $resource,
+                                "request" => $value[ 'request' ]
+
+                            ];
+                            break;
+
                         case 'destroy' :
 
                             $allRoutes[ $key.'/{resource}/destroy' ] = [
@@ -279,16 +288,38 @@ function route_collection(){
  * @return mixed
  */
 function route_match( $match ){
+    //Create haystack
+    $route_list = route_collection();
+
+    //If multiple match was found.
+    //loop the match then return the absolute match
 
     if( count($match) > 1 ){
 
-        //Just return the last route.
-        //TODO: need to further investigate on this behaviour, might cause a problem in the future.
-        return route_get( $match[ count($match) - 1 ] );
+        foreach( $match as $a_match ){
+
+            $uri = str_replace( '\/', '/', $a_match );
+
+
+            if( in_array( $uri, array_keys( $route_list ) ) ){
+
+                return route_get( $a_match );
+
+            }
+
+
+        }
+
 
     }
 
+    if( empty($match) ){
+        return false;
+    }
+
+
     return route_get( $match[0] );
+
 
 
 }
@@ -324,6 +355,7 @@ function route_parameterBinding( $request_uri, $route_regex ){
     $validity = explode('/', $route_regex );
 
     $result = array_diff( $request, $validity );
+
 
     return $result;
 

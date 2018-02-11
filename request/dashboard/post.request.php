@@ -21,6 +21,19 @@ function show(){
 }
 
 /**
+ * Preview the post
+ *
+ * @param $post
+ * @return mixed
+ * @throws exception
+ */
+function preview( $post ){
+
+    return view( 'frontend/blog/preview', compact( $post ));
+
+}
+
+/**
  * Show the form for creating a Post
  *
  * @return mixed
@@ -88,16 +101,13 @@ function trash(){
 /**
  * Show for editing a specific post
  *
+ * @param $resource
  * @return mixed
  * @throws exception
  */
-function edit(){
-    if( !isset($_GET['id'])){
-        redirect( 'posts' );
-    }
+function edit( $resource ){
 
-    $id = $_GET['id'];
-
+    $id = $resource;
 
     $post = get('posts', $id );
 

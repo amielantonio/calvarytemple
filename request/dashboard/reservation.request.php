@@ -16,15 +16,20 @@ function index(){
     return view( 'admin/reservation/reservation', compact( 'reservation' ));
 }
 
+/**
+ * Show a certain reservation resource
+ *
+ * @param $resource
+ * @return mixed
+ * @throws exception
+ */
+function show( $resource ){
 
-function show(){
+    $where = "reservation_status <> 'Pending' AND id = {$resource}";
+    $reservation = where( 'reservations', $where );
+    $reservation = $reservation[0];
 
-    $where = "reservation_status <> 'Pending' ";
-    $reservations = where( 'reservations', $where );
-
-    echo json_encode( $reservations );
-    exit;
-
+    return view('admin/reservation/preview_reservation', compact( 'reservation' ));
 }
 
 /**
@@ -37,6 +42,18 @@ function thismonth(){
     $reservation = where( 'reservations', $where );
 
     echo json_encode( $reservation );
+    exit;
+}
+
+
+/**
+ * Get all resources from the reservation
+ */
+function get_all(){
+    $where = "reservation_status <> 'Pending'";
+    $reservations = where( 'reservations', $where );
+
+    echo json_encode( $reservations );
     exit;
 }
 
@@ -98,6 +115,6 @@ function savecat(){
 
     insert( 'reservation_categories', $data );
 
-    header('Location: reservation/categories');
+    redirect( route('dashboard/reservation/categories') );
 }
 

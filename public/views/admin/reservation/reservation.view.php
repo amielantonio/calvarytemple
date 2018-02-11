@@ -31,7 +31,7 @@
                                 <?php foreach( $reservation as $key => $value ) : ?>
                                 <li class="item">
                                     <div class="product-info no-margin">
-                                        <a href="#" class="product-title">
+                                        <a href="<?= route( "dashboard/reservation/{$value[ 'id' ]}" )?>" class="product-title">
                                             <?php echo $value['reserver_name']; ?>
 
                                             <span class="pull-right"><i class="fa fa-clock-o"></i> <?= date('M d, Y', strtotime( $value['reservation_startdate'] ) )?></span>
@@ -123,7 +123,7 @@
 
                 events    : function( start, end, timezone, callback){
                     $.ajax({
-                        url: '<?php echo route('dashboard/reservation?action=show') ?>',
+                        url: '<?php echo route('dashboard/reservation/all') ?>',
                         method: 'GET',
                         success: function ( data ){
                             var reservations = JSON.parse( data );
@@ -158,7 +158,7 @@
                                     start: startDate,
                                     end: endDate,
                                     allDay:  allday,
-                                    url: '<?php echo route('dashboard/reservation?action=getInfo&id=') ?>'+value["id"],
+                                    url: '<?php echo route('dashboard/reservation/' ) ?>'+value["id"],
                                     color: types[ value['reservation'] ]
                                 });
                             });

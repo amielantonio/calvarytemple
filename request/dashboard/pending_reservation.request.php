@@ -18,13 +18,13 @@ function index(){
 /**
  * Update the reservation_status of a certain reservation listing
  *
+ * @param $resource
  * @return mixed
  * @throws exception
  */
-function approve(){
-    if( isset($_GET['id'])){
-        $id = $_GET['id'];
-    }
+function pending_approve( $resource ){
+
+    $id = $resource;
 
     $data = [
         "reservation_status = 'Approved'",

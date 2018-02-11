@@ -27,7 +27,7 @@
                         </div>
 
                         <div class="box-body">
-                            <form method="post" action="<?php echo route( 'dashboard/reservation?action=store' )?>">
+                            <form method="post" action="<?php echo route( 'dashboard/reservation/store' )?>">
 
                                 <input type="hidden" name="personnel" value="This someone">
                                 <input type="hidden" name="reservation_status" value="Approved">
@@ -63,7 +63,7 @@
                                         <div class="input-group-addon">
                                             <i class="fa fa-clock-o"></i>
                                         </div>
-                                        <input type="text" class="form-control pull-right" id="startDate" name="reservation_startdate" >
+                                        <input type="text" class="form-control pull-right" id="startDate" name="reservation_startdate" value="<?= date('m/d/Y') ?>">
                                     </div>
                                     <!-- /.input group -->
 
@@ -89,13 +89,13 @@
 
                                 <div class="form-group">
 
-                                    <label for="endDate">End Date</label>
+                                    <label fm/d/or="endDate">End Date</label>
 
                                     <div class="input-group date">
                                         <div class="input-group-addon">
                                             <i class="fa fa-clock-o"></i>
                                         </div>
-                                        <input type="text" class="form-control pull-right" id="endDate" name="reservation_enddate" >
+                                        <input type="text" class="form-control pull-right" id="endDate" name="reservation_enddate" value="<?= date('m/d/Y') ?>" >
                                     </div>
                                     <!-- /.input group -->
 
@@ -193,6 +193,9 @@
             $('.timepicker').timepicker({
                 showInputs: false
             })
+
+
+
 
         });
     </script>

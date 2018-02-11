@@ -60,10 +60,19 @@ $Route['dashboard/reservation'] = [
     'request' => 'dashboard/reservation',
     'action' => 'resource'
 ];
+$Route['dashboard/reservation/all'] = [
+    'request' => 'dashboard/reservation',
+    'action' => 'get_all'
+];
 $Route['dashboard/reservation/pending'] = [
     'request' => 'dashboard/pending_reservation',
     'action' => 'resource'
 ];
+$Route['dashboard/reservation/pending/{resource}/approve'] = [
+    'request' => 'dashboard/pending_reservation',
+    'action' => 'pending_approve'
+];
+
 $Route['dashboard/reservation/archive'] = [
     'request' => 'dashboard/archive_reservation',
     'action' => 'resource'
@@ -73,7 +82,10 @@ $Route['dashboard/reservation/categories'] = [
     'view' => 'admin/reservation/reservation_categories',
     'request' => 'dashboard/reservation',
     'action' => 'resource'
-
+];
+$Route['dashboard/reservation/save_category'] = [
+    'request' => 'dashboard/reservation',
+    'action' => 'savecat'
 ];
 
 /** End Reservation routes */
@@ -101,6 +113,7 @@ $Route['dashboard/post/categories'] = [
 
 $Route['preview/{post}'] = [
     'request' => 'dashboard/post',
+    'action' => 'preview'
 ];
 
 

@@ -59,13 +59,22 @@
                                         <td><?php echo $x ?></td>
                                         <td><?php echo $value['reserver_name']?></td>
                                         <td><?php echo $value['reservation']?></td>
-                                        <td><?php echo  $value['pastor']?></td>
+                                        <td><?php echo  $value['facilitator']?></td>
                                         <td><?php echo date('M d, Y - g:i A', strtotime( $value[ 'reservation_startdate' ] ) ); ?></td>
                                     </tr>
 
                                     <?php $x++; endforeach; ?>
 
+                                <tr>
+                                    <th>#</th>
+                                    <th>Reserver Name</th>
+                                    <th>Reservation</th>
+                                    <th>Facilitator</th>
+                                    <th>Date of Event</th>
+                                </tr>
+
                                 </tbody>
+
                             </table>
                         </div>
                         <!--END BODY-->
@@ -74,7 +83,6 @@
                             <ul class="pagination pagination-sm no-margin pull-right">
                                 <li><a href="#">«</a></li>
                                 <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
                                 <li><a href="#">»</a></li>
                             </ul>
                         </div>

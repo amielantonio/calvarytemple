@@ -45,6 +45,11 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="post_url">Link</label>
+                                    <input type="text" name="post_link" class="form-control" id="post_url" value="<?php echo isset($post) ? $post['0']['post_url'] : ""?>" readonly="readonly">
+                                </div>
+
+                                <div class="form-group">
                                     <label for="featured_image">Featured Image</label>
                                     <input type="file" name="featured_image" class="form-control" id="featured_image" accept="image/*">
                                     <?php if(isset($post)) : ?>

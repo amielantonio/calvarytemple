@@ -11,7 +11,7 @@ function index(){
     //New Reservations
 
     $now = date('Y-m-d');
-    $where = "created_at >={$now} AND reservation_status = 'Approved'";
+    $where = "DATEDIFF(NOW(), created_at) <= 5 AND reservation_status = 'Approved'";
     $new_reservations = where('reservations', $where );
 
 
