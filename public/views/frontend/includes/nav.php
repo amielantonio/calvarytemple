@@ -45,6 +45,9 @@
                                     Login
                                 </a>
                             </li>
+                            <li style="color: #fff">
+                                |
+                            </li>
                             <li>
                                 <a href="https://www.facebook.com/CTMANGELES">
                                     <span><i class="fa fa-facebook"></i></span>
@@ -53,6 +56,11 @@
                             <li>
                                 <a href="https://www.instagram.com/calvary_temple/">
                                     <span><i class="fa fa-instagram"></i></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span><i class="fa fa-search"></i></span>
                                 </a>
                             </li>
 

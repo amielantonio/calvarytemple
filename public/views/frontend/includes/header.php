@@ -32,9 +32,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-
-
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700|Open+Sans:300,400,700,700i" rel="stylesheet">
 </head>
 <body>

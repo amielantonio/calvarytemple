@@ -51,7 +51,7 @@ body{
 /*main*/
 .nav-main{
     width: 100%;
-    background: rgba(0,0,0,0.5);
+    background: #2d2d2d;
 
 }
 
@@ -110,8 +110,9 @@ body{
 .section-hero{
     padding: 0;
     margin: 0;
+    position: relative;
 
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/hero.jpeg') center center no-repeat fixed;
+    background: linear-gradient(120deg, rgba(42, 22, 111, 0.5), rgba(218, 37, 28, 0.5)), url('../img/hero.jpeg') center center no-repeat fixed;
     background-size: cover;
 
     height: 80vh;
@@ -138,7 +139,7 @@ body{
 
 .hero-headline{
     position: fixed;
-    top: 50%;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
@@ -350,21 +351,24 @@ body{
 | Patch Class
 -----------------------------*/
 
-.nav-calvary{
-    background: transparent;
-    position: absolute;
-}
-
-
 .--text-shadow{
     text-shadow: 1px 1px 1px rgba(0,0,0,0.8);
 }
 small{
     font-weight: 300;
 }
-.light{
+.font-weight-light{
     font-weight: 300;
 }
+
+.font-marker{
+    font-family: 'Permanent Marker', cursive;
+}
+
+
+
+
+
 
 /* Helper Class
  ******************************************/
@@ -533,3 +537,6 @@ textarea{
 .tools ~ .tools{
     margin-left: 5px;
 }
+
+
+
