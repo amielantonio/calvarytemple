@@ -6,7 +6,21 @@
 * and user process
 */
 
-function login( $username, $password){
+
+/**
+ * Check if the user can login
+ *
+ * @param $username
+ * @param $password
+ * @return bool
+ */
+function login( $username, $password ){
+
+    $where = "username = {$username} AND password = {$password}";
+
+    $user = where( 'users', $where );
+
+    return empty($user) ? false : true;
 
 }
 
@@ -16,10 +30,12 @@ function auth( $user ){
 
 function current_user(){
 
-    return "";
+    return $_SESSION['calvary_sessioned_user'];
 }
 
 function access_level( $user=""  ){
+
+
 	
 }
 
@@ -42,7 +58,13 @@ function user_id( $user="" ){
 
 /** helper functions*/
 
-function add_user_session( $user ){
+function add_user_session( $user = [] ){
+
+    if( empty( $user ) ){
+        return false;
+    }
+
+    $_SESSION['calvary_sessioned_user'] = $user;
 
 }
 

@@ -50,6 +50,12 @@ require COREPATH . '/Migration.php';
 require COREPATH . '/Route.php';
 
 /**
+ * Load Auth functions
+ */
+
+require COREPATH . '/Auth.php';
+
+/**
  * Load Application functions
  */
 require COREPATH . '/Functions.php';

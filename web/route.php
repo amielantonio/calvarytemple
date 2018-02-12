@@ -44,6 +44,11 @@ $Route['track'] = [
     'view' => 'frontend/track/track'
 ];
 
+$Route['auth'] = [
+    'request' => 'home/login',
+    'action' => 'auth'
+];
+
 
 /**
  * Admin Router
