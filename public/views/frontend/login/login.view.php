@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-
+<?php get_nav(); ?>
 
 <main class="app">
 
@@ -8,34 +8,29 @@
         <div class="container">
             <div class="row">
 
-                <div class="col-sm-12">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8">
+                    <h4 class="text-center mb-40">Login to start session</h4>
+
                     <div class="login-box">
-                        <div class="login-box-head">
-                            <div class="logo">
-                                <img src="" alt="Logo">
-                            </div>
-
-                        </div>
-
 
                         <form action="<?= route( 'auth' ); ?>" method="post">
 
                             <div class="login-box-body">
 
                                 <div class="form-group">
-                                    <label for="username">Username / Email</label>
-                                    <input type="text" name="username" id="username">
+                                    <input type="text" name="username" id="username" class="form-control" required placeholder="Username / Email">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="password">Password</label>
-                                    <input type="password" name="password" id="password">
+                                    <input type="password" name="password" id="password"  class="form-control" required placeholder="Password">
                                 </div>
 
                             </div>
 
                             <div class="login-box-footer">
-                                <button type="submit" class="btn btn-primary">Login</button>
+                                <button type="submit" class="btn btn-primary mr-auto">Login</button> <br /><br />
+                                <a href="#" class="ml-auto">I forgot my password</a>
                             </div>
 
                         </form>

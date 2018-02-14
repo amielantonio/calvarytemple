@@ -466,6 +466,46 @@ small{
 .text-justify{text-align: justify}
 
 
+/*---------------------------
+| Login-box
+-----------------------------*/
+
+.login-box{
+    position: relative;
+    border-radius: 3px;
+    background: #ffffff;
+    border-top: 1px solid #d2d6de;
+    margin-bottom: 20px;
+    width: 100%;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.5);
+}
+
+.login-box .login-box-head{
+    color: #444;
+    display: block;
+    padding: 40px;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.login-box .login-box-body{
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    padding: 40px;
+}
+
+.login-box .login-box-footer{
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-top: 1px solid #f4f4f4;
+    padding: 20px 40px;
+    background-color: #fff;
+}
+
 
 
 /*-------------------------------------------------------------------------------
