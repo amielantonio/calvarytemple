@@ -52,7 +52,7 @@
             </li>
 
             <li>
-                <a href="<?= route('dashboard/reservation/pending/create') ?>">
+                <a href="<?= route('dashboard/security') ?>">
                     <i class="fa fa-shield"></i> <span>Security</span>
                 </a>
             </li>

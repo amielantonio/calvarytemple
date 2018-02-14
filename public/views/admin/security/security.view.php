@@ -1,6 +1,4 @@
 <?php admin_get_header(); ?>
-<?php admin_get_nav(); ?>
-<?php admin_get_sidebar(); ?>
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -21,5 +19,9 @@
     </div>
     <!-- /.content-wrapper -->
 
+<?php
+
+
+?>
 
 <?php admin_get_footer(); ?>

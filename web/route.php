@@ -55,7 +55,8 @@ $Route['auth'] = [
  */
 
 $Route['dashboard'] = [
-    'request' => 'dashboard/dashboard'
+    'request' => 'dashboard/dashboard',
+    'middleware' => 'auth'
 ];
 
 /**
@@ -97,9 +98,7 @@ $Route['dashboard/reservation/save_category'] = [
 /** End Reservation routes */
 
 $Route['dashboard/security'] = [
-    'view' => 'admin/security/security',
-    'request' => 'dashboard/dashboard',
-    'action' => 'resource'
+    'view' => 'admin/security/security'
 ];
 
 /**
