@@ -129,9 +129,10 @@ $Route['dashboard/events'] = [
     'action' => 'resource'
 ];
 
+
+
 $Route['dashboard/user'] = [
-    'view' => 'admin/user/user',
-    'request' => 'dashboard/dashboard',
+    'request' => 'dashboard/user',
     'action' => 'resource'
 ];
 

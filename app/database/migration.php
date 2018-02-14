@@ -42,6 +42,38 @@ $Migration['migration'] = [
 
 
 $Migration['users'] = [
+
+    'id' => [
+        'field_type' => 'INT',
+        'key' => 'PRIMARY KEY AUTO_INCREMENT'
+    ],
+        'firstname' => [
+        'field_type' => 'VARCHAR(50)'
+    ],
+        'middlename' =>[
+        'field_type' => 'VARCHAR(50)'
+    ],
+        'lastname' => [
+        'field_type' => 'VARCHAR(50)'
+    ],
+        'date_of_birth' => [
+        'field_type' => 'DATE'
+    ],
+        'email' => [
+        'field_type' => 'VARCHAR(50)'
+    ],
+        'phone_number' => [
+        'field_type' => 'VARCHAR(20)'
+    ],
+        'created_at' =>[
+        'field_type' => 'DATETIME',
+    ],
+        'updated_at' => [
+        'field_type' => 'DATETIME'
+    ]
+];
+
+$Migration['accounts'] = [
     'id' => [
         'field_type' => 'INT',
         'key' => 'PRIMARY KEY AUTO_INCREMENT'
@@ -60,42 +92,12 @@ $Migration['users'] = [
         'field_type' => 'VARCHAR(100)',
     ],
     'profile_picture'=> [
-        'field_type' => 'VARCHAR(200)'
+        'field_type' => 'VARCHAR(200)',
+        'is_null' => true
     ],
     'profile_summary' =>[
         'field_type' => 'TEXT',
         'is_null' => true
-    ],
-    'created_at' =>[
-        'field_type' => 'DATETIME',
-    ],
-    'updated_at' => [
-        'field_type' => 'DATETIME'
-    ]
-];
-
-$Migration['accounts'] = [
-    'id' => [
-        'field_type' => 'INT',
-        'key' => 'PRIMARY KEY AUTO_INCREMENT'
-    ],
-    'firstname' => [
-        'field_type' => 'VARCHAR(50)'
-    ],
-    'middlename' =>[
-        'field_type' => 'VARCHAR(50)'
-    ],
-    'lastname' => [
-        'field_type' => 'VARCHAR(50)'
-    ],
-    'date_of_birth' => [
-        'field_type' => 'DATE'
-    ],
-    'email' => [
-        'field_type' => 'VARCHAR(50)'
-    ],
-    'phone_number' => [
-        'field_type' => 'VARCHAR(20)'
     ],
     'created_at' =>[
         'field_type' => 'DATETIME',

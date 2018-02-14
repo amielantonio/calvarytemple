@@ -93,7 +93,7 @@
 
                                 <div class="form-group">
 
-                                    <label fm/d/or="endDate">End Date</label>
+                                    <label for="endDate">End Date</label>
 
                                     <div class="input-group date">
                                         <div class="input-group-addon">

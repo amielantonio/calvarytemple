@@ -43,27 +43,38 @@
                                     <th>Phone</th>
                                     <th>Access Level</th>
                                 </tr>
+
+                                <?php if( isset($users) ) : ?>
+
+                                    <?php $x = 1; foreach( $users as $key => $user) : ?>
+
+                                    <tr>
+                                        <td><?= $x; ?></td>
+                                        <td>Rommer Tiangco</td>
+                                        <td>something@gmail.com</td>
+                                        <td>0975-222-1234</td>
+                                        <td><span class="label label-success">Admin</span></td>
+                                    </tr>
+
+                                    <?php $x++; endforeach;?>
+
+                                <?php else: ?>
+
+                                    <td colspan="5">
+                                        <h3 class="text-center">No Pending Reservations</h3>
+                                    </td>
+
+
+                                <?php endif; ?>
+
                                 <tr>
-                                    <td>1</td>
-                                    <td>Rommer Tiangco</td>
-                                    <td>something@gmail.com</td>
-                                    <td>0975-222-1234</td>
-                                    <td><span class="label label-primary">Super Admin</span></td>
+                                    <th>#</th>
+                                    <th>User</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Access Level</th>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Rommer Tiangco</td>
-                                    <td>something@gmail.com</td>
-                                    <td>0975-222-1234</td>
-                                    <td><span class="label label-success">Admin</span></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Rommer Tiangco</td>
-                                    <td>something@gmail.com</td>
-                                    <td>0975-222-1234</td>
-                                    <td><span class="label label-info">Author</span></td>
-                                </tr>
+
                                 </tbody></table>
                         </div>
 
@@ -71,7 +82,6 @@
                             <ul class="pagination pagination-sm no-margin pull-right">
                                 <li><a href="#">«</a></li>
                                 <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
                                 <li><a href="#">»</a></li>
                             </ul>
                         </div>
