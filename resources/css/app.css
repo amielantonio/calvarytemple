@@ -22,8 +22,11 @@ html{
 
 
 body{
-    font-family: "Muli", "Helvetica Neue", "Arial", Sans-Serif;
     font-size: 14px;
+}
+
+body.frontend{
+    font-family: "Muli", "Helvetica Neue", "Arial", Sans-Serif;
 }
 
 .app{

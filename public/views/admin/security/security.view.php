@@ -1,4 +1,6 @@
 <?php admin_get_header(); ?>
+<?php admin_get_nav(); ?>
+<?php admin_get_sidebar(); ?>
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -12,16 +14,17 @@
 
         <!-- Main content -->
         <section class="content">
-
-
+<!--            <iframe src="https://webrtcweb.com/screen?s=amielantonio&p=dev101" frameborder="0" width="400"></iframe>-->
         </section>
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
 
-<?php
 
 
-?>
+
+
+
+<!---->
 
 <?php admin_get_footer(); ?>

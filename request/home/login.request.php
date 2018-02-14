@@ -11,7 +11,7 @@ function auth(){
     }
 
 
-    if( ! login( $_POST['username'], $_POST['password'])){
+    if( ! auth_login( $_POST['username'], $_POST['password'])){
 
 
         $alert = [

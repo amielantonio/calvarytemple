@@ -1,4 +1,8 @@
-<!doctype html>
+<?php
+// Start the session
+session_start();
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -35,4 +39,4 @@
     <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700|Open+Sans:300,400,700,700i" rel="stylesheet">
 </head>
-<body>
+<body class="frontend">

@@ -14,51 +14,105 @@
  * @param $password
  * @return bool
  */
-function login( $username, $password ){
+function auth_login( $username, $password ){
 
     $where = "username = {$username} AND password = {$password}";
 
     $user = where( 'users', $where );
 
+    //Add Session to user
+    auth_addUserSession( $user );
+
+    // Return if user is logged in
     return empty($user) ? false : true;
 
 }
 
-function auth( $user ){
-	
+function auth_logout(){
+    // remove all session variables
+    session_unset();
+
+    // destroy the session
+    session_destroy();
+
+    //Redirect to Login Route
+    redirect( 'login' );
 }
 
-function current_user(){
 
-    return $_SESSION['calvary_sessioned_user'];
-}
+function auth_user(){
 
-function access_level( $user=""  ){
-
-
-	
-}
-
-function is_admin( $user="" ){
-
-}
-
-function is_author( $user="" ){
+    return $_SESSION['calvary_sessioned_user']['username'];
 
 }
 
-function user_settings( $user="" ){
-	
+/**
+ * Return the access level of a user
+ *
+ * @param string $user
+ * @return string
+ */
+function auth_access_level( $user=""  ){
+    $access = "";
+
+	return $access;
 }
 
-function user_id( $user="" ){
+/**
+ * Return the Authorization of the current logged in user if it's an admin
+ *
+ * @return string
+ */
+function auth_is_admin(){
+    $is_admin = "";
 
+    return $is_admin;
+}
+
+
+/**
+ * Return the Authorization of the current logged in user if it's an author
+ *
+ * @return string
+ */
+function auth_is_author(){
+    $is_author = "";
+
+
+    return $is_author;
+}
+
+
+/**
+ * Get the settings of the current logged in user
+ *
+ * @return string
+ */
+function auth_user_settings(){
+	$settings = "";
+
+
+	return $settings;
+}
+
+/**
+ * Get the ID of the current logged in user
+ *
+ * @param string $user
+ * @return string
+ */
+function auth_user_id( $user="" ){
+
+    $id = "";
+
+
+    return $id;
 }
 
 
 /** helper functions*/
 
-function add_user_session( $user = [] ){
+function auth_addUserSession( $user = [] ){
 
     if( empty( $user ) ){
         return false;
