@@ -109,7 +109,8 @@ function savecat(){
     $data =[
 
         'reservation_category' => $_POST['reservation_category'],
-        'category_description' => $_POST['category_description']
+        'category_description' => $_POST['category_description'],
+        'reservation_duration' => $_POST['reservation_duration']
 
     ];
 

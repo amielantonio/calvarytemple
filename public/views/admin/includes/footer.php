@@ -23,6 +23,8 @@
 <!-- AdminLTE for demo purposes -->
 <script src="<?= asset( 'plugins/adminlte/dist/js/demo.js' )?>"></script>
 
+<script src="<?= asset( 'js/admin/admin.js' )?>"></script>
+
 <script>
     $(document).ready(function () {
         $('.sidebar-menu').tree()

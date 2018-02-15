@@ -75,7 +75,7 @@
                                 <?php else: ?>
 
                                     <td colspan="5">
-                                        <h3 class="text-center">No Pending Reservations</h3>
+                                        <h3 class="text-center">No Users</h3>
                                     </td>
 
 

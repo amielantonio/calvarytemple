@@ -165,6 +165,9 @@ $Migration['reservation_categories'] = [
     'category_description' => [
         'field_type' => 'TEXT',
         'is_null' => true
+    ],
+    'reservation_duration' => [
+        'field_type' => 'VARCHAR(50)'
     ]
 ];
 

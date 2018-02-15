@@ -52,6 +52,7 @@
                                         <?php if( !empty($reservation_types )) : ?>
                                         <?php foreach($reservation_types as $key=>$val) : ?>
                                             <option><?php echo $val['reservation_category']?></option>
+
                                         <?php endforeach;?>
                                         <?php endif; ?>
                                     </select>
@@ -65,7 +66,7 @@
 
                                     <div class="input-group date">
                                         <div class="input-group-addon">
-                                            <i class="fa fa-clock-o"></i>
+                                            <i class="fa fa-calendar"></i>
                                         </div>
                                         <input type="text" class="form-control pull-right" id="startDate" name="reservation_startdate" value="<?= date('m/d/Y') ?>">
                                     </div>
@@ -80,16 +81,17 @@
                                         <label>Start Time</label>
 
                                         <div class="input-group">
-                                            <input type="text" class="form-control timepicker" name="startTime">
-
                                             <div class="input-group-addon">
                                                 <i class="fa fa-clock-o"></i>
                                             </div>
+                                            <input type="text" class="form-control timepicker" name="startTime">
                                         </div>
                                         <!-- /.input group -->
                                     </div>
                                     <!-- /.form group -->
                                 </div>
+
+
 
                                 <div class="form-group">
 
@@ -97,7 +99,7 @@
 
                                     <div class="input-group date">
                                         <div class="input-group-addon">
-                                            <i class="fa fa-clock-o"></i>
+                                            <i class="fa fa-calendar"></i>
                                         </div>
                                         <input type="text" class="form-control pull-right" id="endDate" name="reservation_enddate" value="<?= date('m/d/Y') ?>" >
                                     </div>
@@ -112,17 +114,15 @@
                                         <label>End Time</label>
 
                                         <div class="input-group">
-                                            <input type="text" class="form-control timepicker" name="endTime">
-
                                             <div class="input-group-addon">
                                                 <i class="fa fa-clock-o"></i>
                                             </div>
+                                            <input type="text" class="form-control timepicker" name="endTime">
                                         </div>
                                         <!-- /.input group -->
                                     </div>
                                     <!-- /.form group -->
                                 </div>
-
 
                                 <div class="form-group">
                                     <label for="reservation">Facilitator</label>

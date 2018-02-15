@@ -81,6 +81,17 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="reservation_duration">Duration</label>
+                                    <select id="reservation_duration" name="reservation_duration" class="form-control">
+                                        <option>No Duration</option>
+                                        <option>2 hours</option>
+                                        <option>3 hours</option>
+                                        <option>Half Day</option>
+                                        <option>Whole Day</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
 
