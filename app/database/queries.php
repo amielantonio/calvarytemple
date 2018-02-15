@@ -322,6 +322,39 @@ function firstOrCreate($_table, $attribute, $value = ""){
 
 
 
+function innerJoin( $tables = [], $fields = [], $keys, $where = ""){
+
+    //pull in connection
+    $conn = require DBPATH . '/connection.php';
+
+    // Require database configuration file
+    $db = require CONFIGPATH.'/database.php';
+
+    //create table instance
+
+    $fields = empty($fields) ? "*" : implode(', ', $fields);
+
+    //Create SQL statement
+    $sql = "SELECT {$fields} FROM {$db['TB_PREFIX']}{$tables[0]} INNER JOIN {$db['TB_PREFIX']}{$tables[1]} ON {$db['TB_PREFIX']}{$tables[0]}.{$keys[0]} = {$db['TB_PREFIX']}{$tables[1]}.{$keys[1]}";
+
+
+    $where <> "" ? $sql.= " WHERE ".$where : "";
+
+    $statement = $conn->prepare( $sql );
+
+    try {
+        $statement->execute();
+
+        return $statement->fetchAll();
+    }
+    catch( PDOException $e ) {
+        throw new PDOException($e->getMessage());
+    }
+
+}
+
+
+
 /**
  * Fetch all records that corresponds
  * to the where clause

@@ -32,6 +32,9 @@
                             <p>
                                 Rommer Tiangco - <span><em>Super Admin</em></span>
                             </p>
+                            <p>
+                                <?= auth_user(); ?>
+                            </p>
                         </li>
 
                         <li class="user-settings">

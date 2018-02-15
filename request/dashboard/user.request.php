@@ -9,11 +9,9 @@
  */
 function index(){
 
-    $user = [
+    $users = innerJoin(['users', 'accounts'], '', ['username', 'username']);
 
-    ];
-
-    return view( 'admin/user/user', compact( 'user' ) );
+    return view( 'admin/user/user', compact( 'users' ) );
 }
 
 
@@ -47,17 +45,13 @@ function store(){
     }
 
     // INSERT TO ACCOUNTS TABLE
-    $salt = date( 'Ymdhis' );
+    $salt = date( 'Y-m-d h:i:s' );
 
-
-    $options = [
-        'cost' => '10'
-    ];
 
     $accounts = [
 
         'username'      => $_POST['username'],
-        'password'      => password_hash( $_POST['password'].$salt, PASSWORD_BCRYPT, $options ),
+        'password'      => md5( $_POST['password'].$salt ),
         'salt'          => $salt,
         'access_level'  => $_POST['username'],
         'created_at'    => date( 'Y-m-d h:i:s' ),
@@ -79,10 +73,11 @@ function store(){
     // INSERT TO USERS TABLE
     $user = [
 
+        'username'      => $_POST['username'],
         'firstname'         => $_POST['firstname'],
         'middlename'        => $_POST['middlename'],
         'lastname'          => $_POST['lastname'],
-        'date_of_birth'     => $_POST['date_of_birth'],
+        'date_of_birth'     => date( 'Y-m-d', strtotime($_POST['date_of_birth']) ),
         'email'             => $_POST['email'],
         'phone_number'      => $_POST['phone_number'],
         'created_at'        => date( 'Y-m-d h:i:s' ),

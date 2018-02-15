@@ -40,8 +40,9 @@
                                     <th>#</th>
                                     <th>User</th>
                                     <th>Email</th>
-                                    <th>Phone</th>
+                                    <th>Phone Number</th>
                                     <th>Access Level</th>
+                                    <th>Actions</th>
                                 </tr>
 
                                 <?php if( isset($users) ) : ?>
@@ -50,10 +51,23 @@
 
                                     <tr>
                                         <td><?= $x; ?></td>
-                                        <td>Rommer Tiangco</td>
-                                        <td>something@gmail.com</td>
-                                        <td>0975-222-1234</td>
-                                        <td><span class="label label-success">Admin</span></td>
+                                        <td><?= $user['firstname']." ".$user['lastname'] ?></td>
+                                        <td><?= $user['email'] ?></td>
+                                        <td><?= $user['phone_number']?></td>
+                                        <td><span class="label <?= $user['access_level'] == 'admin'? "label-primary" : "label-success"?>"><?= $user['access_level']?></span></td>
+                                        <td>
+                                            <a href="#">
+                                                <button type="button" class="btn btn-primary">
+                                                    View
+                                                </button>
+                                            </a>
+
+                                            <a href="#">
+                                                <button type="button" class="btn btn-danger">
+                                                    Delete
+                                                </button>
+                                            </a>
+                                        </td>
                                     </tr>
 
                                     <?php $x++; endforeach;?>
@@ -73,6 +87,7 @@
                                     <th>Email</th>
                                     <th>Phone</th>
                                     <th>Access Level</th>
+                                    <th>Actions</th>
                                 </tr>
 
                                 </tbody></table>

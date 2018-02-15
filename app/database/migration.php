@@ -47,6 +47,9 @@ $Migration['users'] = [
         'field_type' => 'INT',
         'key' => 'PRIMARY KEY AUTO_INCREMENT'
     ],
+        'username' => [
+        'field_type' => 'VARCHAR(50)'
+    ],
         'firstname' => [
         'field_type' => 'VARCHAR(50)'
     ],

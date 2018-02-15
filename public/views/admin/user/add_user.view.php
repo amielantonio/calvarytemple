@@ -104,7 +104,7 @@
 
                                 <div class="form-group">
                                     <label for="phone_number">Phone Number *</label>
-                                    <input type="text" class="form-control" name="phone_number" id="phone_number" placeholder="Example: 0921-234-5678" pattern="09[0-9-]*" required="required">
+                                    <input type="text" class="form-control" name="phone_number" id="phone_number" placeholder="Example: 09212345678" pattern="09[0-9]*" required="required">
                                 </div>
                                 <!--END FORM GROUP-->
 
@@ -137,6 +137,11 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+
+    <!-- bootstrap datepicker -->
+    <script src="<?php echo asset( 'plugins/adminlte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js' ) ?>"></script>
+    <!-- Select2 -->
+    <script src="<?php echo asset( 'plugins/adminlte/bower_components/select2/dist/js/select2.full.min.js' ) ?>"></script>
 
     <script>
         $ = jQuery;

@@ -19,7 +19,7 @@ function auth(){
             'message' => 'Login Failed, '
         ];
 
-        return view( '', compact( 'alert' ) ) ;
+        return view( 'frontend/login/login', compact( 'alert' ) ) ;
     }
 
     redirect( 'dashboard' );

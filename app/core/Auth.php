@@ -16,9 +16,13 @@
  */
 function auth_login( $username, $password ){
 
-    $where = "username = {$username} AND password = {$password}";
+    $salt = auth_get_salt( $username );
 
-    $user = where( 'users', $where );
+    $password = md5( $password.$salt[0]['salt'] );
+
+    $where = "tbl_accounts.username = '{$username}' AND password = '{$password}'";
+
+    $user = innerJoin(['users', 'accounts'], '', ['username', 'username'], $where);
 
     //Add Session to user
     auth_addUserSession( $user );
@@ -47,12 +51,29 @@ function auth_user(){
 }
 
 /**
+ * Get Salt from username
+ *
+ * @param $user
+ * @return mixed
+ */
+function auth_get_salt( $user ){
+
+    $where = "username = '{$user}'";
+
+
+    $salt = where('accounts', $where);
+
+    return $salt;
+
+}
+
+/**
  * Return the access level of a user
  *
  * @param string $user
  * @return string
  */
-function auth_access_level( $user=""  ){
+function auth_access_level( $user = ""  ){
     $access = "";
 
 	return $access;
@@ -117,6 +138,7 @@ function auth_addUserSession( $user = [] ){
     if( empty( $user ) ){
         return false;
     }
+    session_start();
 
     $_SESSION['calvary_sessioned_user'] = $user;
 
