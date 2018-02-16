@@ -114,10 +114,16 @@
                 </ul>
             </li>
 
-            <li>
+            <li class="treeview">
                 <a href="<?= route('dashboard/settings') ?>">
                     <i class="fa fa-wrench"></i> <span>Settings</span>
                 </a>
+                <ul class="treeview-menu">
+                    <li><a href="<?= route('') ?>"><i
+                                    class="fa fa-circle-o"></i> SMS </a></li>
+                    <li><a href="<?= route('') ?>"><i
+                                    class="fa fa-circle-o"></i> Security</a></li>
+                </ul>
             </li>
 
         </ul>
