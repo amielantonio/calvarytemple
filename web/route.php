@@ -40,6 +40,10 @@ $Route['reservations'] = [
 $Route['login'] = [
     'view' => 'frontend/login/login'
 ];
+$Route['logout'] = [
+    'request' => 'home/login',
+    'action' => 'logout'
+];
 $Route['track'] = [
     'view' => 'frontend/track/track'
 ];

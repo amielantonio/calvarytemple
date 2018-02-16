@@ -27,9 +27,6 @@ function direct_route( $uri ){
         return view_error( '404' );
     }
 
-    //Authenticate route to controller using middleware
-    // TODO: middleware
-
     //Check if there is a view already available in the routes directory
     if( route_hasView( $valid_route )){
         return view( $valid_route['view'] );
@@ -47,6 +44,12 @@ function direct_route( $uri ){
 
         //Parse Route actions
         request_runAction( $valid_route['request'], $action, $params );
+
+        //Authenticate route to controller using middleware
+        if(route_hasMiddleware( $valid_route)){
+            include APPPATH . "/middleware/{$valid_route['middleware']}.php";
+        }
+
         return true;
     }
 
@@ -384,7 +387,7 @@ function clean_uri( $uri, $base_uri ){
 
 
 /**
- * Check fi the Request File has a view method
+ * Check if the Request File has a view method
  *
  * @param $route
  * @return bool
@@ -393,6 +396,17 @@ function route_hasRequestFile( $route ){
 
     return array_key_exists( 'request', $route ) ? true : false;
 
+}
+
+/**
+ * Check if the user has a middleware
+ *
+ * @param $route
+ * @return bool
+ */
+function route_hasMiddleware( $route ){
+
+    return array_key_exists( 'middleware', $route ) ? true : false;
 }
 
 /**

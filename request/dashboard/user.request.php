@@ -10,7 +10,7 @@
 function index(){
 
     $users = innerJoin(['users', 'accounts'], '', ['username', 'username']);
-    
+
     return view( 'admin/user/user', compact( 'users' ) );
 }
 

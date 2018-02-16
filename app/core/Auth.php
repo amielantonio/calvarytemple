@@ -18,7 +18,12 @@ function auth_login( $username, $password ){
 
     $salt = auth_get_salt( $username );
 
-    $password = md5( $password.$salt[0]['salt'] );
+    if( empty($salt) ){
+
+        return "No User";
+    }
+
+    $password = !empty($salt)? md5( $password.$salt[0]['salt'] ) : "";
 
     $where = "tbl_accounts.username = '{$username}' AND password = '{$password}'";
 
@@ -32,26 +37,73 @@ function auth_login( $username, $password ){
 
 }
 
+/**
+ * Destroy the current session
+ */
 function auth_logout(){
     // remove all session variables
+
+    session_start();
+
+    $_SESSION = array();
     session_unset();
+
+
+    // If it's desired to kill the session, also delete the session cookie.
+    // Note: This will destroy the session, and not just the session data!
+    if (ini_get("session.use_cookies")) {
+        $params = session_get_cookie_params();
+        setcookie(session_name(), '', time() - 42000,
+            $params["path"], $params["domain"],
+            $params["secure"], $params["httponly"]
+        );
+    }
+
 
     // destroy the session
     session_destroy();
 
     //Redirect to Login Route
-    redirect( 'login' );
+    redirect( route( 'login' ) );
 }
 
 
-function auth_user(){
+/**
+ * Check if there is a user logged in;
+ *
+ * @return bool
+ */
+function authenticate(){
+    $user = auth_user();
 
-    return $_SESSION['calvary_sessioned_user']['username'];
+    return !empty( $user ) ? true : false ;
 
 }
 
 /**
- * Get Salt from username
+ * Return the current user
+ *
+ * @param $destroy false
+ * @return mixed
+ */
+function auth_user()
+{
+
+    $user = "";
+
+    if( !isset($_SESSION['calvary_sessioned_user'])){
+        redirect( route( 'login' ) );
+    }
+
+
+    $user = $_SESSION['calvary_sessioned_user'];
+
+
+    return $user;
+
+}
+/**
+ * Helper function to get Salt from specified username
  *
  * @param $user
  * @return mixed
@@ -73,8 +125,14 @@ function auth_get_salt( $user ){
  * @param string $user
  * @return string
  */
-function auth_access_level( $user = ""  ){
-    $access = "";
+function auth_getAccessLevel(){
+    $access = auth_user()['access_level'];
+
+    if( empty($access) ){
+
+        redirect( route( 'login' ) );
+
+    }
 
 	return $access;
 }
@@ -85,9 +143,16 @@ function auth_access_level( $user = ""  ){
  * @return string
  */
 function auth_is_admin(){
-    $is_admin = "";
+    $is_admin = auth_user()['access_level'];
 
-    return $is_admin;
+    if( empty($is_admin) ){
+
+        redirect( route( 'login' ) );
+
+    }
+
+
+    return $is_admin == 'admin' ? true : false;
 }
 
 
@@ -97,23 +162,27 @@ function auth_is_admin(){
  * @return string
  */
 function auth_is_author(){
-    $is_author = "";
+    $is_author = auth_user()['access_level'];
+
+    if( empty($is_author) ){
+
+        redirect( route( 'login' ) );
+
+    }
 
 
-    return $is_author;
+    return $is_author == 'author' ? true : false;
 }
 
-
 /**
- * Get the settings of the current logged in user
+ * Get the username of the current logged in user
  *
- * @return string
+ * @return mixed
  */
-function auth_user_settings(){
-	$settings = "";
+function auth_getUsername(){
+    $username = auth_user()['username'];
 
-
-	return $settings;
+    return $username;
 }
 
 /**
@@ -122,12 +191,18 @@ function auth_user_settings(){
  * @param string $user
  * @return string
  */
-function auth_user_id( $user="" ){
-
-    $id = "";
+function auth_getUserId(){
 
 
-    return $id;
+    $user = auth_user();
+
+    if( empty($user) ){
+
+        redirect( route( 'login' ) );
+
+    }
+
+    return $user['id'];
 }
 
 
@@ -138,9 +213,10 @@ function auth_addUserSession( $user = [] ){
     if( empty( $user ) ){
         return false;
     }
+
     session_start();
 
-    $_SESSION['calvary_sessioned_user'] = $user;
+    $_SESSION['calvary_sessioned_user'] = $user['0'];
 
 }
 

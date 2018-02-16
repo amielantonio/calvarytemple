@@ -45,7 +45,7 @@
                                     <th>Actions</th>
                                 </tr>
 
-                                <?php if( isset($users) ) : ?>
+                                <?php if( isset($users) or !empty($users) ) : ?>
 
                                     <?php $x = 1; foreach( $users as $key => $user) : ?>
 
@@ -74,9 +74,13 @@
 
                                 <?php else: ?>
 
-                                    <td colspan="5">
-                                        <h3 class="text-center">No Users</h3>
-                                    </td>
+                                    <tr>
+                                        <td colspan="5">
+                                            <h3 class="text-center">No Users</h3>
+                                        </td>
+                                    </tr>
+
+
 
 
                                 <?php endif; ?>

@@ -24,32 +24,23 @@
 
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <span class="hidden-xs">Logged in as</span>
-                        <span class="hidden-xs">Rommer Tiangco</span>
+                        <span class="hidden-xs"><?= auth_user()['firstname']." ".auth_user()['lastname']?></span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
                             <p>
-                                Rommer Tiangco - <span><em>Super Admin</em></span>
+                                <?= auth_user()['firstname']." ".auth_user()['lastname']?> <span>@<?= auth_getUsername(); ?></span>
                             </p>
                             <p>
-                                <?= auth_user(); ?>
+                                <?= auth_getAccessLevel(); ?>
                             </p>
-                        </li>
-
-                        <li class="user-settings">
-                            <a href="">
-                                Profile
-                            </a>
-                            <a href="">
-                                Activity Log
-                            </a>
                         </li>
 
                         <!-- Menu Footer-->
                         <li class="user-footer">
-                            <div class="pull-right">
-                                <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                            <div class="">
+                                <a href="<?= route( 'logout' ); ?>" class="btn btn-default btn-flat">Sign out</a>
                             </div>
                         </li>
                     </ul>
