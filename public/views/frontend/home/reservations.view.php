@@ -70,6 +70,13 @@
 
                             <div class="form-group">
 
+                                <label for="reserver_contact"> Contact number</label>
+                                <input type="text" placeholder="" name="reserver_contact" class="form-control" required="required" id="reserver_contact">
+
+                            </div>
+
+                            <div class="form-group">
+
                                 <label for="reservation">Reservation</label>
 
 

@@ -67,11 +67,15 @@ function store(){
         return false;
     }
 
+    //END OF CHECKING,
+    //ACTUAL RESERVATION STARTS HERE
+
 
 
     $data = [
 
         'reserver_name' => $_POST['reserver_name'],
+        'reserver_contact' => $_POST['reserver_contact'],
         'reservation' => $_POST['reservation'],
         'reservation_startdate' => $request_start,
         'reservation_enddate' => $request_end,
@@ -80,9 +84,9 @@ function store(){
         'created_at' => date('Y-m-d H:i:s'),
         'updated_at' => date('Y-m-d H:i:s'),
 
-
     ];
 
+    $settings = get( 'settings', 1);
 
     if( insert('reservations', $data ) ){
         $alert = [
@@ -90,38 +94,25 @@ function store(){
             'message' => 'The Reservation has been sent.'
         ];
 
-        $number = '09756660209';
-        $message = "New {$_POST['reservation']} reservation scheduled, date:{$startDate}";
-        $apicode = "TR-AMIEL660209_EAYFS";
+        $number = $settings[0]['phone_number'];
+        $message = $settings[0]['notification_message'];
+        $apicode = $settings[0]['sms_key'];
 
         $result = itexmo( $number, $message, $apicode );
 
-        if ($result == ""){
-            echo "iTexMo: No response from server!!!
-                Please check the METHOD used (CURL or CURL-LESS). If you are using CURL then try CURL-LESS and vice versa.	
-                Please CONTACT US for help. ";
-        }else if ($result == 0){
-            echo "Message Sent!";
-        }
-        else{
-            echo "Error Num ". $result . " was encountered!";
-        }
+//        if ($result == ""){
+//            echo "iTexMo: No response from server!!!
+//                Please check the METHOD used (CURL or CURL-LESS). If you are using CURL then try CURL-LESS and vice versa.
+//                Please CONTACT US for help. ";
+//        }else if ($result == 0){
+//            echo "Message Sent!";
+//        }
+//        else{
+//            echo "Error Num ". $result . " was encountered!";
+//        }
     }
 
 
     return view( 'frontend/home/reservations', compact( 'alert' ) );
 }
 
-function itexmo($number,$message,$apicode){
-    $url = 'https://www.itexmo.com/php_api/api.php';
-    $itexmo = array('1' => $number, '2' => $message, '3' => $apicode);
-    $param = array(
-        'http' => array(
-            'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-            'method'  => 'POST',
-            'content' => http_build_query($itexmo),
-        ),
-    );
-    $context  = stream_context_create($param);
-    return file_get_contents($url, false, $context);
-}

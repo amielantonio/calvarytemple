@@ -141,8 +141,7 @@ $Route['dashboard/user'] = [
 ];
 
 $Route['dashboard/settings'] = [
-    'view' => 'admin/dashboard/settings',
-    'request' => 'dashboard/dashboard',
+    'request' => 'dashboard/settings',
     'action' => 'resource'
 ];
 

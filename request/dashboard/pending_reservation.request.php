@@ -37,7 +37,7 @@ function pending_approve( $resource ){
     //Check if the request is successful
     if( patch('reservations', $id, $data ) ){
         $alert = [
-             'alertable'=> 'success',
+            'alertable'=> 'success',
             'message' => 'The Reservation has been approved.'
         ];
     }
@@ -46,6 +46,22 @@ function pending_approve( $resource ){
     $where = "reservation_status = 'Pending'";
 
     $pending = where('reservations', $where);
+
+
+
+    //Notification
+    if( !empty($pending)){
+        $settings = get( 'settings', 1);
+        $phone_number = cherryPick( 'reservations', $id, ['reserver_contact'] );
+
+        $number = $phone_number[0]['reserver_contact'];
+        $message = $settings[0]['approved_message'];
+        $apicode = $settings[0]['sms_key'];
+
+        itexmo( $number, $message, $apicode );
+    }
+
+
 
     return view( 'admin/reservation/pending_reservation', compact('pending', 'alert'));
 }
@@ -80,6 +96,18 @@ function destroy( $resource ){
     $where = "reservation_status = 'Pending'";
 
     $pending = where('reservations', $where);
+
+    //Notification
+    if( !empty($pending)){
+        $settings = get( 'settings', 1);
+        $phone_number = cherryPick( 'reservations', $id, ['reserver_contact'] );
+
+        $number = $phone_number[0]['reserver_contact'];
+        $message = $settings[0]['declined_message'];
+        $apicode = $settings[0]['sms_key'];
+
+        itexmo( $number, $message, $apicode );
+    }
 
     return view( 'admin/reservation/pending_reservation', compact('pending', 'alert'));
 

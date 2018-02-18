@@ -470,7 +470,16 @@ function patch( $table, $id, $data = [], $where = "" ){
     $table = $db['TB_PREFIX'] . $table;
 
     //Get data to update
-    $updates = implode(', ', $data);
+    $updates = "";
+
+    $d = "";
+    foreach( $data as $key => $value){
+
+        $updates .= $d . "{$key}='{$value}'";
+        $d = ", ";
+
+
+    }
 
     $sql = sprintf(
 
@@ -486,6 +495,8 @@ function patch( $table, $id, $data = [], $where = "" ){
     //Prepare and bind
     $statement = $conn->prepare( $sql );
 
+    echo $sql;
+
     try {
         $statement->execute( $data );
 
@@ -498,10 +509,26 @@ function patch( $table, $id, $data = [], $where = "" ){
 }
 
 /**
+ * Update a specific resource if the resource is available, Create it if is not.
  *
+ * @param $table
+ * @param $data
+ * @param string $where
+ * @return bool
  */
-function updateOrCreate(){
+function updateOrCreate( $table, $data, $where = ""){
 
+    $result = where( $table, $where );
+
+    if( empty( $result ) ){
+
+        insert( $table, $data );
+        return true;
+    }
+
+    $id = $result[0]['id'];
+
+    patch( $table, $id, $data );
 }
 
 

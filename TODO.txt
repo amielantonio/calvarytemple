@@ -1,29 +1,15 @@
 Todo
 
-
-Let:
-dbs	= ?
-dbe	= ? (2018-02-23 02:00:00)
-d	= 2 hours
-b 	= 2 hours
-
-rqs	= 2018-02-23 04:00:00
-rqe	= rqs + d
-
-
+//Backend
+1) Dashboard Calendar
+2) Security
+3) All Search must work
+4) Posts - buttons must work
+5) Same with the events
+6) Deletion of user
+7) Settings - Settings view
+8) Reservation notifications
 
 
-Prob: solve if the requested start date has a conflict in schedule
-
-buffer - events should be atleast 2 hours apart
-
-dbe = rqs - b
-end of event should not be in between rqs dbe
-
-query = endtime > dbe && endtime < rqe
-
-endtime > 2018-02-23 02:00:00 && endtime < 2018-02-23 06:00:00
-
-
-test case
-2018-02-23 03:45:00 > 2018-02-23 02:00:00   True
+//Frontend
+Fix frontend

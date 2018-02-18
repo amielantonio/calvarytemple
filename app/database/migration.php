@@ -120,6 +120,9 @@ $Migration['reservations'] = [
     'reserver_name' => [
         'field_type' => 'VARCHAR(100)',
     ],
+    'reserver_contact' => [
+        'field_type' => 'VARCHAR(100)',
+    ],
     'reservation' => [
         'field_type' => 'VARCHAR(100)'
     ],
@@ -320,6 +323,29 @@ $Migration['post_comments'] = [
     ]
 ];
 
+$Migration['settings'] = [
+
+    'id'=> [
+        'field_type' => 'INT',
+        'key' => 'PRIMARY KEY AUTO_INCREMENT'
+    ],
+    'sms_key' => [
+        'field_type' => 'VARCHAR(100)'
+    ],
+    'phone_number' => [
+        'field_type' => 'VARCHAR(100)'
+    ],
+    'notification_message' => [
+        'field_type' => 'VARCHAR(100)'
+    ],
+    'approved_message' => [
+        'field_type' => 'VARCHAR(100)'
+    ],
+    'declined_message' => [
+        'field_type' => 'VARCHAR(100)'
+    ]
+
+];
 
 
 /**

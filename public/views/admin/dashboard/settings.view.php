@@ -25,7 +25,7 @@
                         </div>
 
 
-                        <form action="#" method="post">
+                        <form action="<?= route( 'dashboard/settings/store' ); ?>" method="post">
                            <div class="box-body">
 
                                <h4>Please refer to this for dynamic values</h4>
@@ -33,37 +33,35 @@
                                    <li>{name} = User to notify</li>
                                    <li>{reservation} = Kind of reservation</li>
                                    <li>{reserver_name} = Name of the Person who reserved an event</li>
-                                   <li>{reserer_event} = Event of the Reserver</li>
+                                   <li>{reserver_event} = Event of the Reserver</li>
                                </ul>
 
 
                                <div class="form-group">
-                                   <label for="keys">SMS key</label>
-                                   <input type="text" name="sms_api_key" id="keys" class="form-control">
+                                   <label for="sms_key">SMS key</label>
+                                   <input type="text" name="sms_key" id="sms_key" class="form-control"
+                                          value="<?= !empty( $settings )? $settings[0]['sms_key'] : "" ?>" >
                                </div>
 
                                <div class="form-group">
-                                   <label for="keys">Phone Number to Notify</label>
-                                   <input type="text" name="sms_api_key" id="keys" class="form-control">
+                                   <label for="phone_number">Phone Number to Notify</label>
+                                   <input type="text" name="phone_number" id="phone_number" class="form-control"
+                                    value="<?= !empty( $settings )? $settings[0]['phone_number'] : "" ?>" >
                                </div>
 
                                <div class="form-group">
                                    <label for="notification_message">Message</label>
-                                   <textarea name="notification_message" id="notification_message" cols="30" rows="10" class="form-control"></textarea>
+                                   <textarea name="notification_message" id="notification_message" cols="30" rows="10" class="form-control"><?= !empty( $settings )? $settings[0]['notification_message'] : "" ?></textarea>
                                </div>
 
                                <div class="form-group">
-                                   <input type="checkbox" name="replyto_enabled" id="replyto_enabled" > <label for="replyto_enabled">Enable Automatic Response</label>
+                                   <label for="approved_message">Approved Reservation Response</label>
+                                   <textarea name="approved_message" id="approved_message" cols="30" rows="10" class="form-control"><?= !empty( $settings )? $settings[0]['approved_message'] : "" ?></textarea>
                                </div>
 
                                <div class="form-group">
-                                   <label for="approve_message">Approved Reservation Response</label>
-                                   <textarea name="approve_message" id="approve_message" cols="30" rows="10" class="form-control"></textarea>
-                               </div>
-
-                               <div class="form-group">
-                                   <label for="decline_message" class="text-danger">Declined Reservation Response</label>
-                                   <textarea name="decline_message" id="decline_message" cols="30" rows="10" class="form-control"></textarea>
+                                   <label for="declined_message" class="text-danger">Declined Reservation Response</label>
+                                   <textarea name="declined_message" id="declined_message" cols="30" rows="10" class="form-control"><?= !empty( $settings )? $settings[0]['declined_message'] : "" ?></textarea>
                                </div>
 
                            </div>

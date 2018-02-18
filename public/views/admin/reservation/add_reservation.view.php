@@ -53,7 +53,14 @@
                                 <div class="form-group">
 
                                     <label for="reserver_name"> Reserver Name</label>
-                                    <input type="text" placeholder="" name="reserver_name" class="form-control" required="required">
+                                    <input type="text" placeholder="" name="reserver_name" class="form-control" required="required" id="reserver_contact">
+
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label for="reserver_contact"> Reserver Contact Number</label>
+                                    <input type="text" placeholder="" name="reserver_contact" class="form-control" required="required" id="reserver_contact">
 
                                 </div>
 

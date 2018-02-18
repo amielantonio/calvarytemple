@@ -125,8 +125,9 @@ function store(){
     $data = [
 
         'reserver_name' => $_POST['reserver_name'],
+        'reserver_contact' => $_POST['reserver_contact'],
         'reservation' => $_POST['reservation'],
-        'reservation_startdate' => $request_end,
+        'reservation_startdate' => $request_start,
         'reservation_enddate' => $request_end,
         'facilitator' => $_POST['facilitator'],
         'approved_by' => $_POST['approved_by'],
