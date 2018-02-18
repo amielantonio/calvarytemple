@@ -1,8 +1,7 @@
 <?php get_header(); ?>
 <?php get_nav(); ?>
 
-<main class="app">
-
+<main class="app login-home">
 
     <section class="section-container">
         <div class="container">
@@ -30,7 +29,6 @@
 
                             <div class="login-box-footer">
                                 <button type="submit" class="btn btn-primary mr-auto">Login</button> <br /><br />
-                                <a href="#" class="ml-auto">I forgot my password</a>
                             </div>
 
                         </form>

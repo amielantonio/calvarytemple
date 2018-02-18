@@ -45,7 +45,7 @@ function store(){
     }
 
     // INSERT TO ACCOUNTS TABLE
-    $salt = date( 'Y-m-d h:i:s' );
+    $salt = date( 'Y-m-d H:i:s' );
 
 
     $accounts = [
@@ -54,8 +54,8 @@ function store(){
         'password'      => md5( $_POST['password'].$salt ),
         'salt'          => $salt,
         'access_level'  => $_POST['access_level'],
-        'created_at'    => date( 'Y-m-d h:i:s' ),
-        'updated_at'    => date( 'Y-m-d h:i:s' ),
+        'created_at'    => date( 'Y-m-d H:i:s' ),
+        'updated_at'    => date( 'Y-m-d H:i:s' ),
 
     ];
 
@@ -80,8 +80,8 @@ function store(){
         'date_of_birth'     => date( 'Y-m-d', strtotime($_POST['date_of_birth']) ),
         'email'             => $_POST['email'],
         'phone_number'      => $_POST['phone_number'],
-        'created_at'        => date( 'Y-m-d h:i:s' ),
-        'updated_at'        => date( 'Y-m-d h:i:s' ),
+        'created_at'        => date( 'Y-m-d H:i:s' ),
+        'updated_at'        => date( 'Y-m-d H:i:s' ),
 
     ];
 

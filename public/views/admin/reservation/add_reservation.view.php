@@ -21,6 +21,22 @@
 
         <!-- Main content -->
         <section class="content">
+
+            <?php if( isset( $_GET['alert'] ) and $_GET['alert'] == 1 ) : ?>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                            <b>Reservation Failed</b>, There is already an existing reservation during that time.
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            <?php  endif;?>
+
             <div class="row">
 
                 <div class="col-sm-12">
@@ -32,13 +48,12 @@
                         <div class="box-body">
                             <form method="post" action="<?php echo route( 'dashboard/reservation/store' )?>">
 
-                                <input type="hidden" name="personnel" value="This someone">
-                                <input type="hidden" name="reservation_status" value="Approved">
+                                <input type="hidden" name="approved_by" value="<?= auth_user()['firstname']." ".auth_user()['lastname']?>">
 
                                 <div class="form-group">
 
                                     <label for="reserver_name"> Reserver Name</label>
-                                    <input type="text" placeholder="" name="reserver_name" class="form-control">
+                                    <input type="text" placeholder="" name="reserver_name" class="form-control" required="required">
 
                                 </div>
 
@@ -47,11 +62,10 @@
                                     <label for="reservation">Reservation</label>
 
 
-                                    <select class="form-control select2" style="width: 100%;" id="reservation" name="reservation">
+                                    <select class="form-control select2" style="width: 100%;" id="reservation" name="reservation" required="required">
                                         <?php if( !empty($reservation_types )) : ?>
                                         <?php foreach($reservation_types as $key=>$val) : ?>
                                             <option><?php echo $val['reservation_category']?></option>
-
                                         <?php endforeach;?>
                                         <?php endif; ?>
                                     </select>
@@ -67,7 +81,7 @@
                                         <div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                         </div>
-                                        <input type="text" class="form-control pull-right" id="startDate" name="reservation_startdate" value="<?= date('m/d/Y') ?>">
+                                        <input type="text" class="form-control pull-right" id="startDate" name="reservation_startdate" value="<?= date('m/d/Y') ?>"  required="required">
                                     </div>
                                     <!-- /.input group -->
 
@@ -83,40 +97,7 @@
                                             <div class="input-group-addon">
                                                 <i class="fa fa-clock-o"></i>
                                             </div>
-                                            <input type="text" class="form-control timepicker" name="startTime">
-                                        </div>
-                                        <!-- /.input group -->
-                                    </div>
-                                    <!-- /.form group -->
-                                </div>
-
-
-
-                                <div class="form-group">
-
-                                    <label for="endDate">End Date</label>
-
-                                    <div class="input-group date">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-calendar"></i>
-                                        </div>
-                                        <input type="text" class="form-control pull-right" id="endDate" name="reservation_enddate" value="<?= date('m/d/Y') ?>" >
-                                    </div>
-                                    <!-- /.input group -->
-
-                                </div>
-                                <!-- /.form group -->
-
-                                <!-- time Picker -->
-                                <div class="bootstrap-timepicker">
-                                    <div class="form-group">
-                                        <label>End Time</label>
-
-                                        <div class="input-group">
-                                            <div class="input-group-addon">
-                                                <i class="fa fa-clock-o"></i>
-                                            </div>
-                                            <input type="text" class="form-control timepicker" name="endTime">
+                                            <input type="text" class="form-control timepicker" name="startTime"  required="required">
                                         </div>
                                         <!-- /.input group -->
                                     </div>
@@ -125,7 +106,7 @@
 
                                 <div class="form-group">
                                     <label for="reservation">Facilitator</label>
-                                    <select class="form-control select2" style="width: 100%;" id="reservation" name="facilitator">
+                                    <select class="form-control select2" style="width: 100%;" id="reservation" name="facilitator" required="required">
                                         <option selected="selected">Ptr. A</option>
                                         <option>Ptr. B</option>
                                         <option>Ptr. C</option>
@@ -142,11 +123,6 @@
                         </div>
 
                     </div>
-                </div>
-                <!--END COLUMN-->
-
-                <div class="col-sm-4">
-
                 </div>
                 <!--END COLUMN-->
 

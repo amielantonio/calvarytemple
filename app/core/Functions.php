@@ -229,19 +229,19 @@ function view_error( $error ){
 /**
  * Return a template within the current layout
  *
- * @param $endpoint
  * @param $partialView
  * @return mixed
  * @throws exception
  */
 function view_partial( $partialView ){
 
-    return include VIEWPATH."/{$partialView}.view.php";
+    return require VIEWPATH."/{$partialView}.view.php";
+
 }
 
 
 
-function redirect( $location, $response=302 ){
+function redirect( $location, $response = 302 ){
 
     header("Location: {$location}", true, $response);
 }

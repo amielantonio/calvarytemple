@@ -29,8 +29,8 @@ function pending_approve( $resource ){
     $data = [
         "reservation_status = 'Approved'",
         'approved_by = "This Person"',
-        "approved_date = '".date('Y-m-d h:i:s')."'" ,
-        "updated_at = '".date('Y-m-d h:i:s')."'"
+        "approved_date = '".date('Y-m-d H:i:s')."'" ,
+        "updated_at = '".date('Y-m-d H:i:s')."'"
 
     ];
 

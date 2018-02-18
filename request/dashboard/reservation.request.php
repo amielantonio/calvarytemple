@@ -73,64 +73,76 @@ function create(){
 
 /**
  * Save a specific record to the database
+ *
+ * @return mixed
+ * @throws exception
  */
 function store(){
 
     date_default_timezone_set( 'Asia/Manila' );
 
-//    $startDate = date('Y-m-d h:i:s', strtotime($_POST['reservation_startdate'] . " " . $_POST['startTime']));
-//    $endDate = date('Y-m-d h:i:s', strtotime($_POST['reservation_enddate'] . " " . $_POST['endTime']));
+
+    $buffer = '2 Hours';
+
+    $request_start = date( 'Y-m-d H:i:s', strtotime( $_POST['reservation_startdate']." ".$_POST['startTime'] ) );
+    $duration = '2 Hours';
+
+    //Get End of Requested event
+    $request_end = date_add(
+        date_create( $request_start ),
+        date_interval_create_from_date_string( $duration ));
+
+    $request_end = date_format( $request_end, 'Y-m-d H:i:s' );
+    //END
+
+    $request_buffered = date_sub(
+        date_create( $request_start ),
+        date_interval_create_from_date_string( $buffer )
+    );
+
+    $request_buffered = date_format( $request_buffered, 'Y-m-d H:i:s' );
 
 
-    $where = "";
-
-    /*
-     * Logical Question: How to identify if the requested date is already booked or not
-     * - Get duration of event
-     * - Add duration to start time to get the end time
-     * - check if the requested date is between the start time and the end time.
-     */
+    $first_check = where( 'reservations', "'{$request_buffered}' < reservation_enddate  AND reservation_enddate < '{$request_end}'" );
 
 
+    if( !empty( $first_check )){
 
-    $comparison_startDate = date( 'Y-m-d h:m:s', strtotime( '2018-02-23 01:45:00' ) );
-    $comparision_endDate = date_add(
-        date_create( $comparison_startDate ),
-        date_interval_create_from_date_string( '2 hours' ));
+        redirect( route( 'dashboard/reservation/create?alert=1' ) );
+        return false;
+    }
 
+    $second_check = where( 'reservations', "'{$request_buffered}' < reservation_startdate  AND reservation_startdate < '{$request_end}'" );
 
+    if( !empty( $second_check ) ){
 
-    $date = date_format($comparision_endDate, 'Y-m-d h:m:s');
-
-    echo date( 'Y-m-d h', (strtotime( $date ) - strtotime( '2 hours' ) ));
-
-    $inbetween = where( 'reservations', "'DATE({$date})' < reservation_enddate" );
-
-//    var_dump($inbetween);
+        redirect( route( 'dashboard/reservation/create?alert=1' ) );
+        return false;
+    }
 
 
 
+    $data = [
+
+        'reserver_name' => $_POST['reserver_name'],
+        'reservation' => $_POST['reservation'],
+        'reservation_startdate' => $request_end,
+        'reservation_enddate' => $request_end,
+        'facilitator' => $_POST['facilitator'],
+        'approved_by' => $_POST['approved_by'],
+        'approved_date' => date( 'Y-m-d H:i:s' ),
+        'reservation_status' => 'Approved',
+        'created_at' => date('Y-m-d H:i:s'),
+        'updated_at' => date('Y-m-d H:i:s'),
 
 
-//    $data = [
-//
-//        'reserver_name' => $_POST['reserver_name'],
-//        'reservation' => $_POST['reservation'],
-//        'reservation_startdate' => $startDate,
-//        'reservation_enddate' => $endDate,
-//        'facilitator' => $_POST['facilitator'],
-//        'approved_by' => $_POST['personnel'],
-//        'reservation_status' => 'Approved',
-//        'created_at' => date('Y-m-d h:i:s'),
-//        'updated_at' => date('Y-m-d h:i:s'),
-//
-//
-//    ];
-//
-//
-//    insert('reservations', $data );
-//
-//    redirect( route( 'dashboard/reservation' ) );
+    ];
+
+
+    insert('reservations', $data );
+
+    redirect( route( 'dashboard/reservation' ) );
+    return true;
 }
 
 

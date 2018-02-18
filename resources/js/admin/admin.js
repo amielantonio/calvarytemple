@@ -6,9 +6,9 @@
     //Reservation
     var reservation = $( '#reservation' );
 
-    reservation.on( 'change', function(){
-        alert( 'yes' );
-    });
+    // reservation.on( 'change', function(){
+    //     alert( 'yes' );
+    // });
 
 
 })(jQuery);

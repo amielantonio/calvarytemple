@@ -31,7 +31,7 @@
                             </div>
 
                             <div class="col-sm-10">
-                                <?= isset($reservation)? $reservation['reservation_startdate'] : ""?>
+                                <?= isset($reservation)? date( 'M d, Y g:i A', strtotime($reservation['reservation_startdate'] ) ) : ""?>
                             </div>
                         </div>
 
@@ -42,7 +42,7 @@
                             </div>
 
                             <div class="col-sm-10">
-                                <?= isset($reservation)? $reservation['reservation_enddate'] : ""?>
+                                <?= isset($reservation)? date( 'M d, Y g:i A', strtotime($reservation['reservation_enddate'] ) ) : ""?>
                             </div>
                         </div>
 
@@ -72,7 +72,7 @@
                             </div>
 
                             <div class="col-sm-10">
-                                <?= isset($reservation)? $reservation['approved_date'] : ""?>
+                                <?= isset($reservation)? date( 'M d, Y g:i A', strtotime($reservation['approved_date'] ) ) : ""?>
                             </div>
                         </div>
 

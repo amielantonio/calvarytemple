@@ -1,15 +1,29 @@
 Todo
 
 
-1) Rewrite Route function to accept 'Action' key.
-2) Rewrite Routing for a cleaner URI
-3) Remove Endpoint, create a View folder for all admin/public files instead
-4) Add middleware
-5) Create documentation for Route -> Request -> Controller -> View
+Let:
+dbs	= ?
+dbe	= ? (2018-02-23 02:00:00)
+d	= 2 hours
+b 	= 2 hours
+
+rqs	= 2018-02-23 04:00:00
+rqe	= rqs + d
 
 
-Implement a new Routing
-\- Removing endpoints, endpoint should be defined in the views instead.
-- Add middleware checking
-- remove resource checking, each routes are resource routes already
-- Implement a new way of routing
+
+
+Prob: solve if the requested start date has a conflict in schedule
+
+buffer - events should be atleast 2 hours apart
+
+dbe = rqs - b
+end of event should not be in between rqs dbe
+
+query = endtime > dbe && endtime < rqe
+
+endtime > 2018-02-23 02:00:00 && endtime < 2018-02-23 06:00:00
+
+
+test case
+2018-02-23 03:45:00 > 2018-02-23 02:00:00   True

@@ -21,6 +21,10 @@
                 <h2>
                     Reservations
                 </h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+                <i class="fa fa-arrow-down fa-2x"></i>
             </div>
 
         </section>
@@ -30,12 +34,12 @@
         <section class="section-container">
             <div class="container">
 
-                <?php if( isset( $alert ) ) : ?>
+                <?php if( isset( $_GET['alert'] ) and $_GET['alert'] == 1 ) : ?>
 
                     <div class="row">
                         <div class="col-sm-12">
-                            <div class="alert alert-<?= $alert['alertable'] ?> alert-dismissible fade show" role="alert">
-                                <?= $alert['message'] ?>
+                            <div class="alert alert-danger alert-dismissible" role="alert">
+                                <b>Reservation Failed</b>, There is already an existing reservation during that time.
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -49,121 +53,86 @@
                 <div class="row">
 
                     <div class="col-sm-12">
-                        <div class="box">
-                            <div class="box-header">
+                        <p>
+                            <b>For more information: </b><br /> Please send us a message thru Globe: 0917-123-1234 / Smart: 0917-321-1234
+                        </p>
+
+                        <hr>
+
+                        <form method="post" action="<?php echo route( 'reservations/store' )?>">
+
+                            <div class="form-group">
+
+                                <label for="reserver_name"> Reserver Name</label>
+                                <input type="text" placeholder="" name="reserver_name" class="form-control" required="required">
 
                             </div>
 
-                            <div class="box-body">
-                                <form method="post" action="<?php echo route( 'reservations/store' )?>">
+                            <div class="form-group">
 
-                                    <div class="form-group">
-
-                                        <label for="reserver_name"> Reserver Name</label>
-                                        <input type="text" placeholder="" name="reserver_name" class="form-control">
-
-                                    </div>
-
-                                    <div class="form-group">
-
-                                        <label for="reservation">Reservation</label>
+                                <label for="reservation">Reservation</label>
 
 
-                                        <select class="form-control select2" style="width: 100%;" id="reservation" name="reservation">
-                                            <?php if( !empty($reservation_types )) : ?>
-                                                <?php foreach($reservation_types as $key=>$val) : ?>
-                                                    <option><?php echo $val['reservation_category']?></option>
-                                                <?php endforeach;?>
-                                            <?php endif; ?>
-                                        </select>
+                                <select class="form-control select2" style="width: 100%;" id="reservation" name="reservation">
+                                    <?php if( !empty($reservation_types )) : ?>
+                                        <?php foreach($reservation_types as $key=>$val) : ?>
+                                            <option><?php echo $val['reservation_category']?></option>
+                                        <?php endforeach;?>
+                                    <?php endif; ?>
+                                </select>
 
 
-                                    </div>
-
-                                    <div class="form-group">
-
-                                        <label for="startDate">Start Date</label>
-
-                                        <div class="input-group date">
-                                            <div class="input-group-addon">
-                                                <i class="fa fa-clock-o"></i>
-                                            </div>
-                                            <input type="text" class="form-control pull-right" id="startDate" name="reservation_startdate" value="<?= date('m/d/Y') ?>">
-                                        </div>
-                                        <!-- /.input group -->
-
-                                    </div>
-                                    <!-- /.form group -->
-
-                                    <!-- time Picker -->
-                                    <div class="bootstrap-timepicker">
-                                        <div class="form-group">
-                                            <label>Start Time</label>
-
-                                            <div class="input-group">
-                                                <input type="text" class="form-control timepicker" name="startTime">
-
-                                                <div class="input-group-addon">
-                                                    <i class="fa fa-clock-o"></i>
-                                                </div>
-                                            </div>
-                                            <!-- /.input group -->
-                                        </div>
-                                        <!-- /.form group -->
-                                    </div>
-
-                                    <div class="form-group">
-
-                                        <label fm/d/or="endDate">End Date</label>
-
-                                        <div class="input-group date">
-                                            <div class="input-group-addon">
-                                                <i class="fa fa-clock-o"></i>
-                                            </div>
-                                            <input type="text" class="form-control pull-right" id="endDate" name="reservation_enddate" value="<?= date('m/d/Y') ?>" >
-                                        </div>
-                                        <!-- /.input group -->
-
-                                    </div>
-                                    <!-- /.form group -->
-
-                                    <!-- time Picker -->
-                                    <div class="bootstrap-timepicker">
-                                        <div class="form-group">
-                                            <label>End Time</label>
-
-                                            <div class="input-group">
-                                                <input type="text" class="form-control timepicker" name="endTime">
-
-                                                <div class="input-group-addon">
-                                                    <i class="fa fa-clock-o"></i>
-                                                </div>
-                                            </div>
-                                            <!-- /.input group -->
-                                        </div>
-                                        <!-- /.form group -->
-                                    </div>
-
-
-                                    <div class="form-group">
-                                        <label for="reservation">Facilitator</label>
-                                        <select class="form-control select2" style="width: 100%;" id="reservation" name="facilitator">
-                                            <option selected="selected">Ptr. A</option>
-                                            <option>Ptr. B</option>
-                                            <option>Ptr. C</option>
-                                            <option>Ptr. D</option>
-                                        </select>
-                                    </div>
-
-
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-primary">Submit Reservation</button>
-                                    </div>
-
-                                </form>
                             </div>
 
-                        </div>
+                            <div class="form-group">
+
+                                <label for="startDate">Start Date</label>
+
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="text" class="form-control pull-right" id="startDate" name="reservation_startdate" value="<?= date('m/d/Y') ?>">
+                                </div>
+                                <!-- /.input group -->
+
+                            </div>
+                            <!-- /.form group -->
+
+                            <!-- time Picker -->
+                            <div class="bootstrap-timepicker">
+                                <div class="form-group">
+                                    <label>Start Time</label>
+
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-clock-o"></i>
+                                        </div>
+                                        <input type="text" class="form-control timepicker" name="startTime">
+                                    </div>
+                                    <!-- /.input group -->
+                                </div>
+                                <!-- /.form group -->
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label for="reservation">Facilitator</label>
+                                <select class="form-control select2" style="width: 100%;" id="reservation" name="facilitator">
+                                    <option selected="selected">Ptr. A</option>
+                                    <option>Ptr. B</option>
+                                    <option>Ptr. C</option>
+                                    <option>Ptr. D</option>
+                                </select>
+                            </div>
+
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Submit Reservation</button>
+                            </div>
+
+                        </form>
                     </div>
                     <!--END COLUMN-->
 

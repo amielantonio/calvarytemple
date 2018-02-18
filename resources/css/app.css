@@ -30,6 +30,13 @@ body.frontend{
 }
 
 .app{
+
+    /*position: relative;*/
+    /*margin-top: 191px;*/
+}
+
+.login-home{
+    position: relative;
     margin-top: 191px;
 }
 /*---------------------------
@@ -95,8 +102,18 @@ body.frontend{
     width: 100%;
     display: block;
     margin: 0 auto;
+
+    transition: 0.3s all;
 }
 
+
+.sticky-nav{
+
+}
+
+.sticky-nav .ct-nav-logo img{
+    max-width: 100px;
+}
 
 /*---------------------------
 | Section Class

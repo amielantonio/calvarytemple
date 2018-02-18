@@ -75,12 +75,12 @@ function store(){
         'category'          => $_POST['category'],
         'tags'              => $_POST['tags'],
         'featured_image'    => resource_dir()."/uploads/{$year}/{$month}/" . $_FILES['featured_image']['name'],
-        'published_date'    => date('Y-m-d h:i:s'),
+        'published_date'    => date('Y-m-d H:i:s'),
         'author'            => "Rommer Tiangco",
         'post_status'       => $post_status,
         'post_likes'        => 0,
-        'created_at'        => date('Y-m-d h:i:s'),
-        'updated_at'        => date('Y-m-d h:i:s'),
+        'created_at'        => date('Y-m-d H:i:s'),
+        'updated_at'        => date('Y-m-d H:i:s'),
 
     ];
 
@@ -144,7 +144,7 @@ function update(){
         'category'          => $_POST['category'],
         'tags'              => $_POST['tags'],
         'post_status'       => $post_status,
-        'updated_at'        => date('Y-m-d h:i:s'),
+        'updated_at'        => date('Y-m-d H:i:s'),
     ];
 
     if( $_FILES['featured_image']['error'] <> 4 && $_FILES['featured_image']['error'] > 0){

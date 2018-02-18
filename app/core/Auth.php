@@ -90,8 +90,11 @@ function authenticate(){
 function auth_user()
 {
 
-    $user = $_SESSION['calvary_sessioned_user'];
+    if( !isset($_SESSION['calvary_sessioned_user']) ){
+        return false;
+    }
 
+    $user = $_SESSION['calvary_sessioned_user'];
 
     return $user;
 
@@ -169,9 +172,9 @@ function auth_getUsername(){
 function auth_getUserId(){
 
 
-    $user = auth_user();
+    $user = auth_user()['id'];
 
-    return $user['id'];
+    return $user;
 }
 
 
