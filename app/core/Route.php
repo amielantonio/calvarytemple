@@ -46,9 +46,9 @@ function direct_route( $uri ){
         request_runAction( $valid_route['request'], $action, $params );
 
         //Authenticate route to controller using middleware
-        if(route_hasMiddleware( $valid_route)){
-            include APPPATH . "/middleware/{$valid_route['middleware']}.php";
-        }
+//        if(route_hasMiddleware( $valid_route)){
+//            include APPPATH . "/middleware/{$valid_route['middleware']}.php";
+//        }
 
         return true;
     }

@@ -2,7 +2,6 @@
 <?php admin_get_nav(); ?>
 <?php admin_get_sidebar(); ?>
 
-    <link rel="stylesheet" href="<?php echo asset( 'plugins/adminlte/bower_components/bootstrap-daterangepicker/daterangepicker.css' ) ?>">
     <!-- bootstrap datepicker -->
     <link rel="stylesheet" href="<?php echo asset( 'plugins/adminlte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css' ) ?>">
     <!-- Bootstrap time Picker -->
@@ -159,13 +158,8 @@
     <!-- /.content-wrapper -->
 
 
-    <!-- InputMask -->
-    <script src="<?php echo asset( 'plugins/input-mask/jquery.inputmask.js' ) ?>"></script>
-    <script src="<?php echo asset( 'plugins/input-mask/jquery.inputmask.date.extensions.js' ) ?>"></script>
-    <script src="<?php echo asset( 'plugins/input-mask/jquery.inputmask.extensions.js' ) ?>"></script>
     <!-- date-range-picker -->
     <script src="<?php echo asset( 'plugins/adminlte/bower_components/moment/min/moment.min.js' ) ?>"></script>
-<!--    <script src="--><?php //echo resource_dir() ?><!--/plugins/adminlte/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>-->
     <!-- bootstrap datepicker -->
     <script src="<?php echo asset( 'plugins/adminlte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js' ) ?>"></script>
     <!-- bootstrap time picker -->
@@ -186,10 +180,16 @@
 
             //Date picker
             $('#startDate').datepicker({
-                autoclose: true
+                autoclose: true,
+                todayBtn: true,
+                startDate: '<?= date('m-d-Y')?>',
+                format: 'mm/dd/yyyy'
             })
             $('#endDate').datepicker({
-                autoclose: true
+                autoclose: true,
+                todayBtn: true,
+                startDate: '<?= date('m-d-Y')?>',
+                format: 'mm/dd/yyyy'
             })
 
 

@@ -41,7 +41,7 @@
                                 <a class="nav-link" href="<?= route( 'reservations' ) ?>">Reservations</a>
                             </li>
                             <li>
-                                <a href="<?= route( 'login' )?>">
+                                <a href="<?= route( 'login  ' )?>">
                                     Login
                                 </a>
                             </li>

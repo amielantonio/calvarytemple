@@ -53,7 +53,9 @@ function pending_approve( $resource ){
 
 /**
  * Delete the specified resources
+ * @param $resource
  * @throws exception
+ * @return mixed
  */
 function destroy( $resource ){
     // Return if no resource has been specified

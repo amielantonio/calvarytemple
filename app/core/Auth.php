@@ -74,27 +74,21 @@ function auth_logout(){
  * @return bool
  */
 function authenticate(){
-    $user = auth_user();
+//    $user = auth_user();
+//
+//    return !empty( $user ) ? true : false ;
 
-    return !empty( $user ) ? true : false ;
+    return true;
 
 }
 
 /**
  * Return the current user
  *
- * @param $destroy false
  * @return mixed
  */
 function auth_user()
 {
-
-    $user = "";
-
-    if( !isset($_SESSION['calvary_sessioned_user'])){
-        redirect( route( 'login' ) );
-    }
-
 
     $user = $_SESSION['calvary_sessioned_user'];
 
@@ -128,12 +122,6 @@ function auth_get_salt( $user ){
 function auth_getAccessLevel(){
     $access = auth_user()['access_level'];
 
-    if( empty($access) ){
-
-        redirect( route( 'login' ) );
-
-    }
-
 	return $access;
 }
 
@@ -144,12 +132,6 @@ function auth_getAccessLevel(){
  */
 function auth_is_admin(){
     $is_admin = auth_user()['access_level'];
-
-    if( empty($is_admin) ){
-
-        redirect( route( 'login' ) );
-
-    }
 
 
     return $is_admin == 'admin' ? true : false;
@@ -163,12 +145,6 @@ function auth_is_admin(){
  */
 function auth_is_author(){
     $is_author = auth_user()['access_level'];
-
-    if( empty($is_author) ){
-
-        redirect( route( 'login' ) );
-
-    }
 
 
     return $is_author == 'author' ? true : false;
@@ -188,7 +164,6 @@ function auth_getUsername(){
 /**
  * Get the ID of the current logged in user
  *
- * @param string $user
  * @return string
  */
 function auth_getUserId(){
@@ -196,18 +171,17 @@ function auth_getUserId(){
 
     $user = auth_user();
 
-    if( empty($user) ){
-
-        redirect( route( 'login' ) );
-
-    }
-
     return $user['id'];
 }
 
 
 /** helper functions*/
-
+/**
+ * Add user to session
+ *
+ * @param array $user
+ * @return bool
+ */
 function auth_addUserSession( $user = [] ){
 
     if( empty( $user ) ){
@@ -217,6 +191,8 @@ function auth_addUserSession( $user = [] ){
     session_start();
 
     $_SESSION['calvary_sessioned_user'] = $user['0'];
+
+    return true;
 
 }
 

@@ -53,7 +53,7 @@ function store(){
         'username'      => $_POST['username'],
         'password'      => md5( $_POST['password'].$salt ),
         'salt'          => $salt,
-        'access_level'  => $_POST['username'],
+        'access_level'  => $_POST['access_level'],
         'created_at'    => date( 'Y-m-d h:i:s' ),
         'updated_at'    => date( 'Y-m-d h:i:s' ),
 

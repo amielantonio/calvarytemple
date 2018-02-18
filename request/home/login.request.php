@@ -3,7 +3,8 @@
 /**
  * Authenticate the user
  *
- * @return mixed
+ * @return bool|mixed
+ * @throws exception
  */
 function auth(){
     if( !isset($_POST) ){
@@ -15,7 +16,7 @@ function auth(){
     if( $result === true ){
 
         redirect( 'dashboard' );
-        return false;
+        return true;
 
     }
 
