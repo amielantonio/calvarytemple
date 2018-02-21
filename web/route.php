@@ -28,10 +28,10 @@ $Route['about'] = [
     'view' => 'frontend/home/about',
 ];
 $Route['blog'] = [
-    'view' => 'frontend/blog/blog'
+    'request' => 'frontend/blog/blog'
 ];
 $Route['events'] = [
-    'view' => 'frontend/events/events'
+    'request' => 'home/event'
 ];
 $Route['reservations'] = [
     'request' => 'home/reservation',
