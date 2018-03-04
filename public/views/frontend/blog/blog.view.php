@@ -25,7 +25,11 @@
                 <div class="row">
 
                     <div class="col-sm-9">
+                         <?php
 
+                         var_dump( $blog );
+
+                         ?>
                     </div>
 
 
