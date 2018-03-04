@@ -30,7 +30,7 @@
                             </li>
 
                             <li class="">
-                                <a class="nav-link" href="<?= route( 'blog' ) ?>">Blog</a>
+                                <a class="nav-link" href="<?= route( 'post' ) ?>">Blog</a>
                             </li>
 
                             <li class="">

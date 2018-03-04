@@ -65,53 +65,50 @@
                                 <?php if( !empty( $posts )) : ?>
 
                                     <?php foreach( $posts as $key => $value) : ?>
-                                            <tr>
-                                                <td>
-                                                    <a href="<?php echo route("dashboard/post/{$value['id']}/edit" )?>">
-                                                        <?php echo $value['post_title']?>
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <a href="#">
-                                                        <?php echo $value['author']?>
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['category']?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $value['tags']?>
-                                                </td>
-                                                <td>
-                                                    <span style="text-transform: capitalize"><?php echo $value['post_status']?></span><br />
-                                                    <?php echo date( 'M d, Y', strtotime( $value['published_date'] ) )?>
-                                                </td>
-                                                <td>
-                                                    <div class="action-toolbar">
-                                                        <a href="<?php echo route("post/{$value['post_url']}" )?>" class="text-info tools">
-                                                            <i class="fa fa-eye"></i>
-                                                        </a>
+                                        <tr>
+                                            <td>
+                                                <a href="<?php echo route("dashboard/post/{$value['id']}/edit" )?>">
+                                                    <?php echo $value['post_title']?>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="#">
+                                                    <?php echo $value['author']?>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <?php echo $value['category']?>
+                                            </td>
+                                            <td>
+                                                <?php echo $value['tags']?>
+                                            </td>
+                                            <td>
+                                                <span style="text-transform: capitalize"><?php echo $value['post_status']?></span><br />
+                                                <?php echo date( 'M d, Y', strtotime( $value['published_date'] ) )?>
+                                            </td>
+                                            <td>
+                                                <div class="action-toolbar">
 
-                                                        <a href="<?php echo route("dashboard/post/{$value['id']}/edit" )?>" class="text-info tools">
-                                                            <i class="fa fa-edit"></i>
-                                                        </a>
+                                                    <a href="<?php echo route("dashboard/post/{$value['id']}/restore" )?>" class="text-info tools">
+                                                        <i class="fa fa-undo"></i>
+                                                    </a>
 
-                                                        <a href="<?php echo route("dashboard/post/{$value['id']}/trash" )?>" class="text-danger tools">
-                                                            <i class="fa fa-trash"></i>
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                                    <a href="<?php echo route("dashboard/post/{$value['id']}/destroy" )?>" class="text-danger tools">
+                                                        <i class="fa fa-trash"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
                                     <?php endforeach;?>
 
                                 <?php else : ?>
 
-                                <tr>
-                                    <td colspan="7">
-                                        <h3 class="text-center">No Posts. <a href="<?php echo route('dashboard/post/create' )?>">Create one here</a></h3>
-                                    </td>
+                                    <tr>
+                                        <td colspan="7">
+                                            <h3 class="text-center">No Deleted Posts.</h3>
+                                        </td>
 
-                                </tr>
+                                    </tr>
 
                                 <?php endif;?>
 

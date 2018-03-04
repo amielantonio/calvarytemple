@@ -15,8 +15,19 @@ function index(){
     return view( 'admin/post/post', compact( 'posts' ));
 }
 
+/**
+ * Show specific post
+ *
+ * @param $resource
+ * @return mixed
+ * @throws exception
+ */
+function show( $resource ){
 
-function show(){
+    $post = get( 'posts', $resource);
+
+
+    return view( 'admin/post/post', compact( 'post' ));
 
 }
 
@@ -71,10 +82,11 @@ function store(){
 
         'post_title'        => $_POST['post_title'],
         'post_body'         => $_POST['post_body'],
+        'post_url'          => slugify( $_POST['post_title']),
         'post_excerpt'      => $_POST['post_excerpt'],
         'category'          => $_POST['category'],
         'tags'              => $_POST['tags'],
-        'featured_image'    => resource_dir()."/uploads/{$year}/{$month}/" . $_FILES['featured_image']['name'],
+        'featured_image'    => asset( "/uploads/{$year}/{$month}/" . $_FILES['featured_image']['name'] ),
         'published_date'    => date('Y-m-d H:i:s'),
         'author'            => "Rommer Tiangco",
         'post_status'       => $post_status,
@@ -90,11 +102,29 @@ function store(){
 
     insert( 'posts', $post_value );
 
-    redirect( 'post');
+    redirect( route( 'dashboard/post' ) );
 
 }
 
-function trash(){
+function trash( $resource ){
+
+    softDelete( 'posts', $resource );
+
+
+    redirect( route( 'dashboard/post' ) );
+}
+
+/**
+ * Get all trashed posts
+ *
+ * @return mixed
+ * @throws exception
+ */
+function all_trash(){
+    $posts = trashed( 'posts');
+
+
+    return view( 'admin/post/trash_post', compact( 'posts' ));
 
 }
 
@@ -116,7 +146,11 @@ function edit( $resource ){
     return view( 'admin/post/add_post', compact( 'post', 'cat_list' ));
 }
 
-function destroy(){
+function destroy( $resource ){
+
+    delete( 'posts', $resource );
+
+    redirect( route( 'dashboard/post/trash' ) );
 
 }
 
@@ -124,12 +158,9 @@ function destroy(){
  * @return mixed
  * @throws exception
  */
-function update(){
-    if( !isset($_GET['id'])){
-        redirect( 'posts' );
-    }
+function update( $resource ){
 
-    $id = $_GET['id'];
+    $id = $resource;
     //Create Destination path
     $month = date('m');
     $year = date( 'Y' );
@@ -140,31 +171,37 @@ function update(){
     $data = [
         'post_title'        => $_POST['post_title'],
         'post_body'         => $_POST['post_body'],
+        'post_url'          => slugify( $_POST['post_title']),
         'post_excerpt'      => $_POST['post_excerpt'],
         'category'          => $_POST['category'],
         'tags'              => $_POST['tags'],
+        'published_date'    => date('Y-m-d H:i:s'),
         'post_status'       => $post_status,
         'updated_at'        => date('Y-m-d H:i:s'),
     ];
 
-    if( $_FILES['featured_image']['error'] <> 4 && $_FILES['featured_image']['error'] > 0){
+    if( $_FILES['featured_image']['error'] <> 4 && $_FILES['featured_image']['error'] > 0) {
 
 //        Throw error if there is an error in the image uploaded
-        if( $_FILES['featured_image']['error'] > 0){
+        if ($_FILES['featured_image']['error'] > 0) {
             throw new exception('Image upload error');
         }
 
-        if(!upload_post_image( $_FILES['featured_image'], $upload_dir )){
+
+
+    }elseif( $_FILES['featured_image']['error'] == 4  ){
+
+    }else{
+        if (!upload_post_image($_FILES['featured_image'], $upload_dir)) {
             return false;
         }
-
-        $data['featured_image'] = resource_dir()."/uploads/{$year}/{$month}/" . $_FILES['featured_image']['name'];
-
+        $data['featured_image'] = asset( "/uploads/{$year}/{$month}/" . $_FILES['featured_image']['name'] );
     }
 
 
+
     //Check if the request is successful
-    if( patch('reservations', $id, $data ) ){
+    if( patch('posts', $id, $data ) ){
         $alert = [
             'alertable'=> 'success',
             'message' => 'The Post updated.'
@@ -193,4 +230,13 @@ function savecat(){
     insert( 'posts_categories', $data );
 
     header('Location: post/categories');
+}
+
+
+function restore( $resource ){
+
+    softRestore( 'posts', $resource );
+
+    redirect( route( 'dashboard/post' ) );
+
 }

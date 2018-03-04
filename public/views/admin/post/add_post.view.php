@@ -36,7 +36,7 @@
                 <div class="col-sm-12">
                     <div class="box">
 
-                        <form action="<?php echo isset($post)? route( 'dashboard/post?action=update&id='.$post['0']['id'] ) : route( 'dashboard/post?action=store' ) ?>" method="post" enctype="multipart/form-data">
+                        <form action="<?php echo isset($post)? route( "dashboard/post/{$post[0]['id']}/update" ) : route( 'dashboard/post/store' ) ?>" method="post" enctype="multipart/form-data">
                             <div class="box-body pad">
 
                                 <div class="form-group">
@@ -44,13 +44,17 @@
                                     <input type="text" name="post_title" class="form-control" id="post_title" value="<?php echo isset($post)? $post['0']['post_title'] : "" ?>">
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="post_url">Link</label>
-                                    <input type="text" name="post_link" class="form-control" id="post_url" value="<?php echo isset($post) ? $post['0']['post_url'] : ""?>" readonly="readonly">
-                                </div>
+                                <?php if( isset($post) ) : ?>
+                                    <div class="form-group">
+                                        <label for="post_url">Link</label><br />
+                                        <a href="<?= route( "post" )."/{$post[0]['post_url']}"?>">
+                                            <?= route( "post" )."/{$post[0]['post_url']}"?>
+                                        </a>
+                                    </div>
+                                <?php endif; ?>
 
                                 <div class="form-group">
-                                    <label for="featured_image">Featured Image</label>
+                                    <label for="featured_image">Featured Image <small>5mb or less</small></label>
                                     <input type="file" name="featured_image" class="form-control" id="featured_image" accept="image/*">
                                     <?php if(isset($post)) : ?>
                                     <br />
@@ -116,4 +120,4 @@
             //bootstrap WYSIHTML5 - text editor
         })
     </script>
-<?php admin_get_footer(); ?>
+    <?php admin_get_footer(); ?>

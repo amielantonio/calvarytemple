@@ -27,8 +27,9 @@ $Route['/'] = [
 $Route['about'] = [
     'view' => 'frontend/home/about',
 ];
-$Route['blog'] = [
-    'request' => 'frontend/blog/blog'
+$Route['post'] = [
+    'request' => 'home/post',
+    'action' => 'resource'
 ];
 $Route['events'] = [
     'request' => 'home/event'
@@ -129,6 +130,25 @@ $Route['dashboard/post/categories'] = [
 $Route['preview/{post}'] = [
     'request' => 'dashboard/post',
     'action' => 'preview'
+];
+
+
+//Trash
+
+$Route['dashboard/post/trash'] = [
+    'request' => 'dashboard/post',
+    'action' => 'all_trash'
+];
+
+
+$Route['dashboard/post/{resource}/trash'] = [
+    'request' => 'dashboard/post',
+    'action' => 'trash'
+];
+
+$Route['dashboard/post/{resource}/restore'] = [
+    'request' => 'dashboard/post',
+    'action' => 'restore'
 ];
 
 

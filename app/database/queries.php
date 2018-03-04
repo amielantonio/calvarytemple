@@ -195,6 +195,64 @@ function atleast( $table, $limit){
 }
 
 /**
+ * Soft deletes a resource
+ *
+ * @param $table
+ * @param $id
+ * @return bool
+ */
+function softDelete( $table, $id ){
+//pull in connection
+    $conn = require DBPATH . '/connection.php';
+    // Require database configuration file
+    $db = require CONFIGPATH.'/database.php';
+    //create table instance
+    $table = $db['TB_PREFIX'] . $table;
+    $sql = sprintf(
+        'UPDATE %s SET is_delete="1" WHERE id = %s',
+        $table, $id
+    );
+    //Prepare and bind
+    $statement = $conn->prepare( $sql );
+    try {
+        $statement->execute();
+        return true;
+    }
+    catch( PDOException $e ) {
+        throw new PDOException($e->getMessage());
+    }
+}
+
+/**
+ * Restore from soft delete
+ *
+ * @param $table
+ * @param $id
+ * @return bool
+ */
+function softRestore( $table, $id ){
+//pull in connection
+    $conn = require DBPATH . '/connection.php';
+    // Require database configuration file
+    $db = require CONFIGPATH.'/database.php';
+    //create table instance
+    $table = $db['TB_PREFIX'] . $table;
+    $sql = sprintf(
+        'UPDATE %s SET is_delete="0" WHERE id = %s',
+        $table, $id
+    );
+    //Prepare and bind
+    $statement = $conn->prepare( $sql );
+    try {
+        $statement->execute();
+        return true;
+    }
+    catch( PDOException $e ) {
+        throw new PDOException($e->getMessage());
+    }
+}
+
+/**
  * Return only the resources that are not deleted
  *
  * @param $table
@@ -320,8 +378,29 @@ function firstOrCreate($_table, $attribute, $value = ""){
 
 }
 
+function rawQuerySelect( $sql ){
+    //pull in connection
+    $conn = require DBPATH . '/connection.php';
+    $statement = $conn->prepare( $sql );
+    try {
+        $statement->execute();
+        return $statement->fetchAll();
+    }
+    catch( PDOException $e ) {
+        throw new PDOException($e->getMessage());
+    }
+}
 
 
+/**
+ * Inner Join 2 tables
+ *
+ * @param array $tables
+ * @param array $fields
+ * @param $keys
+ * @param string $where
+ * @return mixed
+ */
 function innerJoin( $tables = [], $fields = [], $keys, $where = ""){
 
     //pull in connection
