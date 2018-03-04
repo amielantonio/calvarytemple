@@ -102,7 +102,13 @@ $Route['dashboard/reservation/save_category'] = [
 /** End Reservation routes */
 
 $Route['dashboard/security'] = [
-    'view' => 'admin/security/security'
+    'request' => 'dashboard/security',
+    'action' => 'index'
+];
+
+$Route['dashboard/security/connect'] = [
+    'request' => 'dashboard/security',
+    'action' => 'connect'
 ];
 
 /**

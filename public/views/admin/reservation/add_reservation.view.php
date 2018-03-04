@@ -114,10 +114,10 @@
                                 <div class="form-group">
                                     <label for="reservation">Facilitator</label>
                                     <select class="form-control select2" style="width: 100%;" id="reservation" name="facilitator" required="required">
-                                        <option selected="selected">Ptr. A</option>
-                                        <option>Ptr. B</option>
-                                        <option>Ptr. C</option>
-                                        <option>Ptr. D</option>
+                                        <option selected="selected">Ptr. Manny Carlos</option>
+                                        <option>Ptr. Ronald Garcia</option>
+                                        <option>Ptr. Jhun Payumo</option>
+                                        <option>Ptr. Israel Mangonon</option>
                                     </select>
                                 </div>
 

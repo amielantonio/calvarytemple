@@ -81,13 +81,12 @@ function store(){
 
     date_default_timezone_set( 'Asia/Manila' );
 
-
     $buffer = '2 Hours';
 
     $request_start = date( 'Y-m-d H:i:s', strtotime( $_POST['reservation_startdate']." ".$_POST['startTime'] ) );
-    $duration = '2 Hours';
+    $duration = where( 'reservation_categories', "reservation_category = '{$_POST['reservation']}'")[0]['reservation_duration'];
 
-    //Get End of Requested event
+    //Get and Set End of Requested event
     $request_end = date_add(
         date_create( $request_start ),
         date_interval_create_from_date_string( $duration ));
@@ -95,23 +94,27 @@ function store(){
     $request_end = date_format( $request_end, 'Y-m-d H:i:s' );
     //END
 
+    //Get and Set request date with buffer
     $request_buffered = date_sub(
         date_create( $request_start ),
         date_interval_create_from_date_string( $buffer )
     );
 
     $request_buffered = date_format( $request_buffered, 'Y-m-d H:i:s' );
+    //END
 
 
+    //First line of defense in checking whether there is already an existing reservation
     $first_check = where( 'reservations', "'{$request_buffered}' < reservation_enddate  AND reservation_enddate < '{$request_end}'" );
-
 
     if( !empty( $first_check )){
 
         redirect( route( 'dashboard/reservation/create?alert=1' ) );
         return false;
+
     }
 
+    //Last line of defense to check an existing reservation
     $second_check = where( 'reservations', "'{$request_buffered}' < reservation_startdate  AND reservation_startdate < '{$request_end}'" );
 
     if( !empty( $second_check ) ){
@@ -141,6 +144,20 @@ function store(){
 
 
     insert('reservations', $data );
+
+    //START SMS
+    $settings = get( 'settings', 1);
+
+    if( !insert('reservations', $data ) ){
+        redirect( route( 'reservations?alert=2' ) );
+    }
+
+    $number = $_POST['reserver_contact'];
+    $message = $settings[0]['approved_message'];
+    $apicode = $settings[0]['sms_key'];
+
+    //Notify admin
+    itexmo( $number, $message, $apicode );
 
     redirect( route( 'dashboard/reservation' ) );
     return true;

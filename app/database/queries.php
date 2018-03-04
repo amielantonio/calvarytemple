@@ -82,7 +82,7 @@ function get($table, $key ){
  * pick a specified field of all resources
  *
  * @param $table
- * @param array $key
+ * @param $key
  * @param array $fields
  * @return mixed
  */
@@ -360,7 +360,7 @@ function innerJoin( $tables = [], $fields = [], $keys, $where = ""){
  * to the where clause
  *
  * @param $table
- * @param array $where
+ * @param $where
  * @param string $limit
  * @return mixed
  */
@@ -494,8 +494,6 @@ function patch( $table, $id, $data = [], $where = "" ){
 
     //Prepare and bind
     $statement = $conn->prepare( $sql );
-
-    echo $sql;
 
     try {
         $statement->execute( $data );

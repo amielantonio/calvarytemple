@@ -34,12 +34,13 @@
         <section class="section-container">
             <div class="container">
 
-                <?php if( isset( $_GET['alert'] ) and $_GET['alert'] == 1 ) : ?>
+                <?php if( isset( $_GET['alert'] ) ) : ?>
 
                     <div class="row">
                         <div class="col-sm-12">
-                            <div class="alert alert-danger alert-dismissible" role="alert">
-                                <b>Reservation Failed</b>, There is already an existing reservation during that time.
+                            <div class="alert alert-<?= ( $_GET['alert']==2)? "danger":"success"?> alert-dismissible" role="alert">
+                                <b><?= ( $_GET['alert']==2)? "Reservation Failed":"Reservation successful"?></b>,
+                                <?= ( $_GET['alert']==2)? "There is already an existing reservation during that time." : "We will notify you shortly about the status of your reservation."?>
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -127,10 +128,10 @@
                             <div class="form-group">
                                 <label for="reservation">Facilitator</label>
                                 <select class="form-control select2" style="width: 100%;" id="reservation" name="facilitator">
-                                    <option selected="selected">Ptr. A</option>
-                                    <option>Ptr. B</option>
-                                    <option>Ptr. C</option>
-                                    <option>Ptr. D</option>
+                                    <option selected="selected">Ptr. Manny Carlos</option>
+                                    <option>Ptr. Ronald Garcia</option>
+                                    <option>Ptr. Jhun Payumo</option>
+                                    <option>Ptr. Israel Mangonon</option>
                                 </select>
                             </div>
 

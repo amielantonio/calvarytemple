@@ -41,9 +41,17 @@
                                 <a class="nav-link" href="<?= route( 'reservations' ) ?>">Reservations</a>
                             </li>
                             <li>
+                                <?php if( empty( auth_user() ) ): ?>
                                 <a href="<?= route( 'login  ' )?>">
                                     Login
                                 </a>
+                                <?php else : ?>
+
+                                <a href="<?= route( 'dashboard' )?>" class="text-info">
+                                    <?= auth_user()['firstname']." ".auth_user()['lastname']?>
+                                </a>
+
+                                <?php endif;?>
                             </li>
                             <li style="color: #fff">
                                 |
@@ -58,12 +66,6 @@
                                     <span><i class="fa fa-instagram"></i></span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="#">
-                                    <span><i class="fa fa-search"></i></span>
-                                </a>
-                            </li>
-
                         </ul>
 
                     </div>

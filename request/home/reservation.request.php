@@ -16,8 +16,6 @@ function index(){
 
 
 /**
- * @return mixed
- * @throws exception
  */
 function store(){
 
@@ -32,7 +30,7 @@ function store(){
     $buffer = '2 Hours';
 
     $request_start = date( 'Y-m-d H:i:s', strtotime( $_POST['reservation_startdate']." ".$_POST['startTime'] ) );
-    $duration = '2 Hours';
+    $duration = where( 'reservation_categories', "reservation_category = '{$_POST['reservation']}'")[0]['reservation_duration'];
 
     //Get End of Requested event
     $request_end = date_add(
@@ -86,33 +84,26 @@ function store(){
 
     ];
 
+    //START SMS
     $settings = get( 'settings', 1);
 
-    if( insert('reservations', $data ) ){
-        $alert = [
-            'alertable'=> 'success',
-            'message' => 'The Reservation has been sent.'
-        ];
-
-        $number = $settings[0]['phone_number'];
-        $message = $settings[0]['notification_message'];
-        $apicode = $settings[0]['sms_key'];
-
-        $result = itexmo( $number, $message, $apicode );
-
-//        if ($result == ""){
-//            echo "iTexMo: No response from server!!!
-//                Please check the METHOD used (CURL or CURL-LESS). If you are using CURL then try CURL-LESS and vice versa.
-//                Please CONTACT US for help. ";
-//        }else if ($result == 0){
-//            echo "Message Sent!";
-//        }
-//        else{
-//            echo "Error Num ". $result . " was encountered!";
-//        }
+    if( !insert('reservations', $data ) ){
+        redirect( route( 'reservations?alert=2' ) );
     }
 
+    $number = $settings[0]['phone_number'];
+    $message = $settings[0]['notification_message'];
+    $apicode = $settings[0]['sms_key'];
 
-    return view( 'frontend/home/reservations', compact( 'alert' ) );
+    //Notify admin
+    itexmo( $number, $message, $apicode );
+
+
+    //Auto-reply
+    $reply_message = "Thank you for reserving. We will notify you shortly about your reservation status. Thank you";
+    itexmo( $_POST['reserver_contact'], $reply_message, $apicode );
+
+    redirect( route( 'reservations?alert=1') );
+
 }
 
