@@ -2,6 +2,9 @@
 <?php admin_get_nav(); ?>
 <?php admin_get_sidebar(); ?>
 
+    <!-- bootstrap datepicker -->
+    <link rel="stylesheet" href="<?php echo asset( 'plugins/adminlte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css' ) ?>">
+
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -36,7 +39,7 @@
                 <div class="col-sm-12">
                     <div class="box">
 
-                        <form action="<?php echo isset($post)? route( 'dashboard/event?action=update&id='.$post['0']['id'] ) : route( 'dashboard/event?action=store' ) ?>" method="post" enctype="multipart/form-data">
+                        <form action="<?php echo isset($post)? route( "dashboard/events/{$post['0']['id']}/update" ) : route( "dashboard/events/store" ) ?>" method="post" enctype="multipart/form-data">
                             <div class="box-body pad">
 
                                 <div class="form-group">
@@ -61,7 +64,7 @@
                                         <div class="input-group-addon">
                                             <i class="fa fa-clock-o"></i>
                                         </div>
-                                        <input type="text" class="form-control pull-right" id="startDate" name="reservation_startdate" >
+                                        <input type="text" class="form-control pull-right" id="startDate" name="event_startdate" >
                                     </div>
                                     <!-- /.input group -->
 
@@ -76,7 +79,7 @@
                                         <div class="input-group-addon">
                                             <i class="fa fa-clock-o"></i>
                                         </div>
-                                        <input type="text" class="form-control pull-right" id="endDate" name="reservation_enddate" >
+                                        <input type="text" class="form-control pull-right" id="endDate" name="event_enddate" >
                                     </div>
                                     <!-- /.input group -->
 
@@ -121,7 +124,10 @@
     </div>
     <!-- /.content-wrapper -->
 
-
+    <!-- date-range-picker -->
+    <script src="<?php echo asset( 'plugins/adminlte/bower_components/moment/min/moment.min.js' ) ?>"></script>
+    <!-- bootstrap datepicker -->
+    <script src="<?php echo asset( 'plugins/adminlte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js' ) ?>"></script>
     <!-- CK Editor -->
     <script src="<?php echo asset( 'plugins/adminlte/bower_components/ckeditor/ckeditor.js' )?>"></script>
     <script>
@@ -131,5 +137,31 @@
             CKEDITOR.replace('editor1')
             //bootstrap WYSIHTML5 - text editor
         })
+    </script>
+
+    <script>
+        $ = jQuery;
+        $(function () {
+
+            //Initialize Select2 Elements
+
+            //Date picker
+            $('#startDate').datepicker({
+                autoclose: true,
+                todayBtn: true,
+                startDate: '<?= date('m-d-Y')?>',
+                format: 'mm/dd/yyyy'
+            })
+            $('#endDate').datepicker({
+                autoclose: true,
+                todayBtn: true,
+                startDate: '<?= date('m-d-Y')?>',
+                format: 'mm/dd/yyyy'
+            })
+
+
+
+
+        });
     </script>
 <?php admin_get_footer(); ?>

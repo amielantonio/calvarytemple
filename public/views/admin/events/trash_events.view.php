@@ -7,7 +7,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                <i class="fa fa-calendar"></i> Events
+                <i class="fa fa-calendar"></i> Deleted Events
             </h1>
 
         </section>
@@ -52,31 +52,32 @@
                                     <tr>
                                         <td><?= $x ?></td>
                                         <td><?= $event['event'] ?></td>
-                                        <td><?= date( 'F m, Y', strtotime( $event['event_startdate']) ) . " - " . date( 'F m, Y', strtotime( $event['event_enddate']) ) ?></td>
+                                        <td><?= date( 'F m, Y', strtotime( $event['event_startdate']) ) . "-" . date( 'F m, Y', strtotime( $event['event_enddate']) ) ?></td>
                                         <td><?= "#".$event['event_tag']?></td>
                                         <td><?= $event['author']?></td>
                                         <td>
                                             <div class="action-toolbar">
-                                                <a href="<?php echo route("dashboard/events/{$event['id']}/preview" )?>" class="text-info tools">
-                                                    <i class="fa fa-eye"></i>
-                                                </a>
 
-                                                <a href="<?php echo route("dashboard/events/{$event['id']}/edit" )?>" class="text-info tools">
-                                                    <i class="fa fa-edit"></i>
+                                                <a href="<?php echo route("dashboard/events/{$event['id']}/restore" )?>" class="text-info tools">
+                                                    <i class="fa fa-undo"></i>
                                                 </a>
+                                                <!-- end tools -->
 
-                                                <a href="<?php echo route("dashboard/events/{$event['id']}/trash" )?>" class="text-danger tools">
+                                                <a href="<?php echo route("dashboard/events/{$event['id']}/destroy" )?>" class="text-danger tools">
                                                     <i class="fa fa-trash"></i>
                                                 </a>
+                                                <!-- end tools -->
+
                                             </div>
+                                            <!-- /.end action toolbar -->
                                         </td>
                                     </tr>
 
-                                    <?php $x++; endforeach; else : ?>
+                                <?php $x++; endforeach; else : ?>
 
                                     <tr>
                                         <td colspan="5">
-                                            <h3 class="text-center">No Events. <a href="<?= route( 'dashboard/events/create' )?>">Add Event here</a></h3>
+                                            <h3 class="text-center">No Trashed Events. </h3>
                                         </td>
 
                                     </tr>

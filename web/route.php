@@ -152,7 +152,12 @@ $Route['dashboard/post/{resource}/restore'] = [
 ];
 
 
-/** End Posts routes */
+/** End Posts routes ------------------------------------------------------*/
+
+/**
+ * Events Routes
+ * --------------------------------------------------------------------
+ */
 
 $Route['dashboard/events'] = [
     'request' => 'dashboard/event',
@@ -160,6 +165,29 @@ $Route['dashboard/events'] = [
 ];
 
 
+//TRASH
+
+$Route['dashboard/events/{resource}/trash'] = [
+    'request' => 'dashboard/event',
+    'action' => 'trash'
+];
+
+$Route['dashboard/events/trash'] = [
+    'request' => 'dashboard/event',
+    'action' => 'all_trash'
+];
+
+$Route['dashboard/events/{resource}/restore'] = [
+    'request' => 'dashboard/event',
+    'action' => 'restore'
+];
+
+$Route['dashboard/events/{resource}/preview'] = [
+    'request' => 'dashboard/event',
+    'action' => 'preview'
+];
+
+/** End Events routes -------------------------------------------------*/
 
 $Route['dashboard/user'] = [
     'request' => 'dashboard/user',

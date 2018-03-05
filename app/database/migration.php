@@ -201,6 +201,9 @@ $Migration['events'] = [
     'event' =>[
         'field_type' => "VARCHAR(100)"
     ],
+    'event_url' =>[
+        'field_type' => "VARCHAR(100)"
+    ],
     'event_image' =>[
         'field_type' => 'TEXT',
         'is_null' => true
@@ -220,8 +223,14 @@ $Migration['events'] = [
     'event_tag' =>[
         'field_type' => 'VARCHAR(50)'
     ],
+    'event_status' =>[
+        'field_type' => 'VARCHAR(50)'
+    ],
     'author' => [
         'field_type' => 'VARCHAR(100)'
+    ],
+    'is_delete' =>[
+        'field_type' => 'INT(1)'
     ],
     'created_at' =>[
         'field_type' => 'DATETIME',

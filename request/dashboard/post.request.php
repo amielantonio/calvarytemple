@@ -88,7 +88,7 @@ function store(){
         'tags'              => $_POST['tags'],
         'featured_image'    => asset( "/uploads/{$year}/{$month}/" . $_FILES['featured_image']['name'] ),
         'published_date'    => date('Y-m-d H:i:s'),
-        'author'            => "Rommer Tiangco",
+        'author'            => auth_user()['firstname']." ".auth_user()['lastname'],
         'post_status'       => $post_status,
         'post_likes'        => 0,
         'created_at'        => date('Y-m-d H:i:s'),
@@ -121,8 +121,8 @@ function trash( $resource ){
  * @throws exception
  */
 function all_trash(){
-    $posts = trashed( 'posts');
 
+    $posts = trashed( 'posts');
 
     return view( 'admin/post/trash_post', compact( 'posts' ));
 
