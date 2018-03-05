@@ -27,6 +27,33 @@
             <div class="container">
                 <div class="row">
 
+                    <div class="col-sm-12">
+                        <?php if( !empty( $posts ) and isset( $posts) ) : ?>
+
+
+                            <?php foreach( $posts as $key => $post ) : ?>
+                                <a href="<?= route( "post" )."/{$post['post_url']}"?>">
+                                    <div class="card" style="flex-direction: row">
+                                        <img class="card-img-top" src="<?= $post['featured_image'] ?>" alt="Card image" style="width: 200px;height: 100%;">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><?= $post['post_title']?></h5>
+                                            <p class="card-text text-muted small">
+                                                By <?= isset( $post )? $post['author'] : "Blog and Devotions" ?> |
+                                                Published <?= isset( $post )? date( 'F d, Y', strtotime( $post['published_date'] ) ) : "Blog and Devotions" ?>
+                                            </p>
+                                            <p class="card-text"><?= $post['post_excerpt'] ?></p>
+                                        </div>
+                                    </div>
+                                </a>
+                            <?php endforeach; ?>
+
+                        <?php else : ?>
+
+                            <h1>No posts</h1>
+
+                        <?php endif;?>
+                    </div>
+
                 </div>
             </div>
 
