@@ -11,12 +11,13 @@ if( isset($_POST['drop'])){
 }
 
 if( isset($_POST['refresh'])){
-    refresh_migrate();
+    migrate_seed();
 }
 
 ?>
 
 
+<h1>Migration</h1>
 <form action="" method="post">
     <button name="migrate" type="submit">
         Migrate Tables
@@ -29,11 +30,22 @@ if( isset($_POST['refresh'])){
     </button>
 </form>
 
+
+<hr>
+<h1>Seeder</h1>
+
 <form action="" method="post">
     <button name="refresh" type="submit">
-        Refresh Tables
+        Migrate Seeds
     </button>
 </form>
+
+
+Steps:
+<ol>
+    <li>When there is no database tables present. Run the <code>Migrate Tables</code> button to Migrate all tables in the migration.php file.</li>
+    <li>Run the <code>Migrate Seeds</code> button if there is an existing seeder.</li>
+</ol>
 
 
 

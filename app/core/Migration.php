@@ -25,11 +25,6 @@ function drop_migrate(){
     drop_tables();
 }
 
-function refresh_migrate(){
-
-    refresh_tables();
-
-}
 
 /**
  * @throws exception
@@ -151,9 +146,29 @@ function drop_tables(){
     }
 }
 
-function refresh_tables(){
+/**
+ * Run Seed migration Function
+ */
+function migrate_seed(){
 
-    drop_tables();
-    create_table();
+    // Pull in Seed Service Provider
+    // Loop in the contents of the file specified in the Service provider
+    // Run Insert query.
+
+    $seedFiles = require BASEPATH."/migration/SeedServiceProvider.php";
+
+    //Loop the files
+    foreach ( $seedFiles as $file ){
+
+        $seeds = require BASEPATH . "/migration/seed/{$file}.php";
+
+        //Loop In table for insertion
+        foreach( $seeds as $table_name => $data ){
+
+            insert( $table_name, $data );
+
+        }
+
+    }
 
 }
