@@ -27,21 +27,24 @@
             <div class="container">
                 <div class="row">
 
-                    <div class="col-sm-12">
-                        <?php if( !empty( $posts ) and isset( $posts) ) : ?>
+                    <div class="col-sm-6">
+
+                        <h2>Recent Events</h2>
+
+                        <?php if( !empty( $recentEvents ) and isset( $recentEvents) ) : ?>
 
 
-                            <?php foreach( $posts as $key => $post ) : ?>
-                                <a href="<?= route( "post" )."/{$post['post_url']}"?>">
-                                    <div class="card" style="flex-direction: row">
-                                        <img class="card-img-top" src="<?= $post['featured_image'] ?>" alt="Card image" style="width: 200px;height: 100%;">
+                            <?php foreach( $recentEvents as $key => $event ) : ?>
+                                <a href="<?= route( "event" )."/{$event['event_url']}"?>">
+                                    <div class="card mb-20" style="flex-direction: row">
+                                        <img class="card-img-top" src="<?= $event['event_image'] ?>" alt="Card image" style="width: 200px;height: 100%;">
                                         <div class="card-body">
-                                            <h5 class="card-title"><?= $post['post_title']?></h5>
+                                            <h5 class="card-title"><?= $event['event']?></h5>
                                             <p class="card-text text-muted small">
-                                                By <?= isset( $post )? $post['author'] : "Blog and Devotions" ?> |
-                                                Published <?= isset( $post )? date( 'F d, Y', strtotime( $post['published_date'] ) ) : "Blog and Devotions" ?>
+                                                <?= isset( $event )? "Posted By " . $event['author'] : "" ?> |
+                                                Event Date <?= isset( $event )? date( 'F d, Y', strtotime( $event['event_startdate'] ) ) . " - " . date( 'F d, Y', strtotime( $event['event_enddate'] ) ) : "" ?>
                                             </p>
-                                            <p class="card-text"><?= $post['post_excerpt'] ?></p>
+                                            <p class="card-text"><?= $event['event_details'] ?></p>
                                         </div>
                                     </div>
                                 </a>
@@ -49,7 +52,38 @@
 
                         <?php else : ?>
 
-                            <h1>No posts</h1>
+                            <h1>No Recent Events</h1>
+
+                        <?php endif;?>
+
+                    </div>
+
+                    <div class="col-sm-6">
+
+                        <h2>Upcoming Events</h2>
+
+                        <?php if( !empty( $upcomingEvents ) and isset( $upcomingEvents) ) : ?>
+
+
+                            <?php foreach( $upcomingEvents as $key => $event ) : ?>
+                                <a href="<?= route( "event" )."/{$event['event_url']}"?>">
+                                    <div class="card mb-20" style="flex-direction: row">
+                                        <img class="card-img-top" src="<?= $event['event_image'] ?>" alt="Card image" style="width: 200px;height: 100%;">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><?= $event['event']?></h5>
+                                            <p class="card-text text-muted small">
+                                                <?= isset( $event )? "Posted By " . $event['author'] : "" ?> |
+                                                Event Date <?= isset( $event )? date( 'F d, Y', strtotime( $event['event_startdate'] ) ) . " - " . date( 'F d, Y', strtotime( $event['event_enddate'] ) ) : "Blog and Devotions" ?>
+                                            </p>
+                                            <p class="card-text"><?= $event['event_details'] ?></p>
+                                        </div>
+                                    </div>
+                                </a>
+                            <?php endforeach; ?>
+
+                        <?php else : ?>
+
+                            <h1>No Upcoming Events</h1>
 
                         <?php endif;?>
                     </div>

@@ -14,7 +14,27 @@ function index(){
 
 }
 
+/**
+ * Show the frontend of the event
+ *
+ * @param $resource
+ * @return mixed
+ */
+function show( $resource ){
 
+
+    $event = where( 'events', "event_url = '{$resource}'" );
+
+
+    return view( 'frontend/events/single_event', compact( 'event' ) );
+}
+
+
+/**
+ * Save the specific Event to the database
+ *
+ * @return bool
+ */
 function store(){
 
     //Create Destination path
@@ -80,14 +100,52 @@ function edit( $resource ){
 
 function update( $resource ){
 
+//Create Destination path
+    $month = date('m');
+    $year = date( 'Y' );
+    $upload_dir = upload_img_posts().'\\'.$year.'\\'.$month.'\\';
 
+
+    $event_status = isset($_POST['btn-publish']) ? $post_status = 'published' : $post_status = 'draft';
+
+    $data = [
+
+        'event'             => $_POST['event'],
+        'event_url'         => slugify($_POST['event']),
+        'event_image'       => asset( "uploads/{$year}/{$month}/" . $_FILES['event_image']['name'] ),
+        'event_description' => $_POST['event_description'],
+        'event_startdate'   => date( 'Y-m-d', strtotime( $_POST['event_startdate'] ) ),
+        'event_enddate'     => date( 'Y-m-d', strtotime( $_POST['event_enddate'] ) ),
+        'event_details'     => $_POST['event_details'],
+        'event_tag'         => $_POST['event_tag'],
+        'event_status'      => $event_status,
+        'author'            => auth_user()['firstname']." ".auth_user()['lastname'],
+        'created_at'        => date( 'Y-m-d H:i:s' ),
+        'updated_at'         => date( 'Y-m-d H:i:s' ),
+
+    ];
+
+
+    if(!upload_post_image( $_FILES['event_image'], $upload_dir )){
+        return false;
+    }
+
+    patch( 'events', $resource, $data );
+
+    redirect( route( "dashboard/events/{$resource}" ) );
 
 }
 
-
+/**
+ * Permanently delete the specified event to the database
+ *
+ * @param $resource
+ */
 function destroy( $resource ){
 
+    delete( 'events', $resource );
 
+    redirect( route( 'dashboard/events' ) );
 
 }
 
@@ -128,4 +186,8 @@ function restore( $resource ){
 }
 function preview( $resource ){
 
+    $event = get( 'events', $resource );
+
+
+    return view( 'frontend/events/single_event', compact( 'event'));
 }

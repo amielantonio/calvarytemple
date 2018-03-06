@@ -1,8 +1,16 @@
 <?php
 
 
+/**
+ * Index functio get all recent events a upcoming events
+ *
+ * @return mixed
+ */
 function index(){
-    $event = all( 'events' );
+    $upcomingEvents = where( 'events', 'DATE( NOW() ) > event_startdate', 5);
 
-    return view( 'frontend/event/event', compact( 'event' ) );
+    $recentEvents = where( 'events', 'DATE( NOW() ) < event_startdate', 5 );
+
+    return view( 'frontend/events/events', compact( 'upcomingEvents, recentEvents' ) );
 }
+

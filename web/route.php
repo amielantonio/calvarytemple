@@ -31,9 +31,18 @@ $Route['post'] = [
     'request' => 'home/post',
     'action' => 'resource'
 ];
+//Events
 $Route['events'] = [
-    'request' => 'home/event'
+    'request' => 'home/event',
 ];
+
+$Route['events/{resource}'] = [
+    'request' => 'home/event',
+    'action' => 'show'
+];
+
+//End Events
+
 $Route['reservations'] = [
     'request' => 'home/reservation',
     'action' => 'resource'
