@@ -74,9 +74,9 @@ function auth_logout(){
  * @return bool
  */
 function authenticate(){
-//    $user = auth_user();
-//
-//    return !empty( $user ) ? true : false ;
+    $user = auth_user();
+
+//    return ( empty( $user ) ) ? false : true ;
 
     return true;
 

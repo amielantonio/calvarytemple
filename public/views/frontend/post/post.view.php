@@ -55,9 +55,9 @@
                     </div>
 
 
-                    <div class="col-sm-3">
-                        <?php get_sidebar(); ?>
-                    </div>
+<!--                    <div class="col-sm-3">-->
+<!--                        --><?php //get_sidebar(); ?>
+<!--                    </div>-->
 
                 </div>
             </div>

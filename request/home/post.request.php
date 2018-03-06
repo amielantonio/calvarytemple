@@ -6,9 +6,11 @@
  */
 function index(){
 
+    //get all posts
     $posts = allWithoutTrash( 'posts' );
 
-    return view( 'frontend/post/post', compact( 'posts' ) );
+
+    return view( 'frontend/post/post', compact( 'posts', 'cats' ) );
 }
 
 /**

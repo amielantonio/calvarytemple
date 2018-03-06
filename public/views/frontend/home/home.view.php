@@ -36,12 +36,12 @@
             <div class="row">
                 <div class="col-sm-6">
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        We are committed in reaching the lost and equipping them to become passionate ins serving God and the World.
                     </p>
                 </div>
                 <div class="col-sm-6">
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        To Plant and establish Christ-Centered mission oriented local churches scattered throughout the land and abroad.
                     </p>
                 </div>
             </div>

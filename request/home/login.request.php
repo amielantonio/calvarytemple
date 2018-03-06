@@ -13,12 +13,14 @@ function auth(){
 
     $result = auth_login( $_POST['username'], $_POST['password']);
 
-    if( $result === true ){
+    redirect( 'dashboard' );
 
-        redirect( 'dashboard' );
-        return true;
-
-    }
+//    if( $result === true ){
+//
+//        redirect( 'dashboard' );
+//        return true;
+//
+//    }
 
 
     //ERRORS
