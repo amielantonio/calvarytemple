@@ -106,6 +106,11 @@ function store(){
 
 }
 
+/**
+ * Move the post to trash
+ *
+ * @param $resource
+ */
 function trash( $resource ){
 
     softDelete( 'posts', $resource );
@@ -146,6 +151,11 @@ function edit( $resource ){
     return view( 'admin/post/add_post', compact( 'post', 'cat_list' ));
 }
 
+/**
+ * Permanently Deletes the specified resource
+ *
+ * @param $resource
+ */
 function destroy( $resource ){
 
     delete( 'posts', $resource );
@@ -161,7 +171,7 @@ function destroy( $resource ){
 function update( $resource ){
 
     $id = $resource;
-    //Create Destination path
+    // Create Destination path
     $month = date('m');
     $year = date( 'Y' );
     $upload_dir = upload_img_posts().'\\'.$year.'\\'.$month.'\\';
@@ -182,12 +192,10 @@ function update( $resource ){
 
     if( $_FILES['featured_image']['error'] <> 4 && $_FILES['featured_image']['error'] > 0) {
 
-//        Throw error if there is an error in the image uploaded
+        // Throw error if there is an error in the image uploaded
         if ($_FILES['featured_image']['error'] > 0) {
             throw new exception('Image upload error');
         }
-
-
 
     }elseif( $_FILES['featured_image']['error'] == 4  ){
 
@@ -232,7 +240,11 @@ function savecat(){
     header('Location: post/categories');
 }
 
-
+/**
+ * Restore the Post from Trash
+ *
+ * @param $resource
+ */
 function restore( $resource ){
 
     softRestore( 'posts', $resource );

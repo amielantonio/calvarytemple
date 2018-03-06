@@ -15,6 +15,12 @@ function index(){
 }
 
 
+function show( $resources ){
+
+
+
+}
+
 /**
  * Show a form for creating a User resource
  *
@@ -97,3 +103,33 @@ function store(){
     redirect( route( 'dashboard/user' ) );
 
 }
+
+/**
+ * Show a form for editing the specified user
+ *
+ * @param $resource
+ * @return mixed
+ */
+function edit( $resource ){
+
+    $user = innerJoin( ['users', 'accounts'], '', ['username', 'username'], "tbl_users.username = '{$resource}'" );
+
+
+    return view( 'admin/user/add_user', compact( 'user' ) );
+
+}
+
+function update( $resource ){
+
+
+
+}
+
+function destroy( $resource ){
+
+    
+
+}
+
+
+

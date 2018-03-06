@@ -98,6 +98,12 @@ function edit( $resource ){
 
 }
 
+/**
+ * Updates the data of the specified event
+ *
+ * @param $resource
+ * @return bool
+ */
 function update( $resource ){
 
 //Create Destination path

@@ -15,7 +15,11 @@ function index(){
     return view( 'admin/dashboard/settings' , compact( 'settings' ));
 }
 
-
+/**
+ * Store or updates the settings of the Web application
+ *
+ * @return bool
+ */
 function store(){
 
     $data = [
