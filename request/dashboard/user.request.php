@@ -119,13 +119,28 @@ function edit( $resource ){
 
 }
 
+/**
+ * Update the information of the specified resource
+ *
+ * @param $resource
+ */
 function update( $resource ){
 
 
 
 }
 
+
+/**
+ * Delete the User and Accounts table of the specified resource
+ *
+ * @param $resource
+ */
 function destroy( $resource ){
+
+
+
+
 
     
 
