@@ -11,6 +11,28 @@
     <link rel="stylesheet" href="<?php echo asset( 'plugins/adminlte/bower_components/select2/dist/css/select2.min.css' ) ?>">
 
 
+    <style>
+        .box{
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 3.5px;
+        }
+        .box .box-header{
+            padding: 10px;
+            background: #0b97c4;
+            color: #fff;
+
+        }
+        .box .box-body{
+            padding: 10px;
+        }
+        .box .datepicker-inline, .box .datepicker-inline .datepicker-days, .box .datepicker-inline>table, .box .datepicker-inline .datepicker-days>table{
+            width: 100%;
+        }
+        .datepicker table tr td.disabled,.datepicker table tr td.disabled:hover{
+            background: #ccc;
+        }
+    </style>
 
     <main class="app">
 
@@ -53,7 +75,7 @@
 
                 <div class="row">
 
-                    <div class="col-sm-12">
+                    <div class="col-sm-6">
                         <p>
                             <b>For more information: </b><br /> Please send us a message thru Globe: 0917-123-1234 / Smart: 0917-321-1234
                         </p>
@@ -144,7 +166,17 @@
                     </div>
                     <!--END COLUMN-->
 
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
+
+
+                        <div class="box" style="width: 100%; height: auto">
+                            <div class="box-header">
+                                Availability Dates
+                            </div>
+                            <div class="box-body">
+                                <div id="calendar" style="width: 100%"></div>
+                            </div>
+                        </div>
 
                     </div>
                     <!--END COLUMN-->
@@ -194,6 +226,36 @@
             $('.timepicker').timepicker({
                 showInputs: false
             })
+
+
+            var det = null;
+            $.ajax({
+                method: 'GET',
+                url: '<?= route( 'dashboard/reservation/all' )?>',
+                success: function( data ){
+
+                    dates = JSON.parse(data);
+
+                    dets = [];
+
+                    for(i = 0; i< dates.length; i++){
+
+
+                        var format = new Date(dates[i]['reservation_startdate']);
+
+                        finalDate =  format.getMonth() + 1 + "/" + format.getDate() + "/" + format.getFullYear();
+
+                        dets.push(finalDate);
+                    }
+
+
+                    $('#calendar').datepicker({
+                        datesDisabled: dets
+                    });
+                }
+            });
+
+
 
 
 

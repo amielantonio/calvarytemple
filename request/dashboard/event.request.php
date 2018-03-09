@@ -94,7 +94,7 @@ function edit( $resource ){
 
     $event = get( 'events', $resource );
 
-    return view( 'admin/events/add_event', $event );
+    return view( 'admin/events/add_event', compact( 'event' ) );
 
 }
 

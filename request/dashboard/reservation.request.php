@@ -16,6 +16,7 @@ function index(){
     return view( 'admin/reservation/reservation', compact( 'reservation' ));
 }
 
+
 /**
  * Show a certain reservation resource
  *
@@ -82,6 +83,12 @@ function store(){
     date_default_timezone_set( 'Asia/Manila' );
 
     $buffer = '2 Hours';
+
+    //INITIAL CHECKS
+    if( $_POST['startTime'] < date( 'H:i:s', strtotime( '8:00 am' ) ) || $_POST['startTime'] > date( 'H:i:s', strtotime( '5:00 pm' ) ) ){
+        redirect( route( 'reservations?alert=1' ) );
+        return false;
+    }
 
     $request_start = date( 'Y-m-d H:i:s', strtotime( $_POST['reservation_startdate']." ".$_POST['startTime'] ) );
     $duration = where( 'reservation_categories', "reservation_category = '{$_POST['reservation']}'")[0]['reservation_duration'];

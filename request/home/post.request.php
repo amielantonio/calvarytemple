@@ -7,7 +7,7 @@
 function index(){
 
     //get all posts
-    $posts = allWithoutTrash( 'posts' );
+    $posts = where( 'posts', 'post_status = "Published AND is_delete = 0"' );
 
 
     return view( 'frontend/post/post', compact( 'posts', 'cats' ) );

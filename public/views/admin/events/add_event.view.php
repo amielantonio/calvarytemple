@@ -64,7 +64,7 @@
                                         <div class="input-group-addon">
                                             <i class="fa fa-clock-o"></i>
                                         </div>
-                                        <input type="text" class="form-control pull-right" id="startDate" name="event_startdate" >
+                                        <input type="text" class="form-control pull-right" id="startDate" name="event_startdate" value="<?= date('m/d/Y', strtotime($event[0]['event_startdate']))?>">
                                     </div>
                                     <!-- /.input group -->
 
@@ -79,7 +79,7 @@
                                         <div class="input-group-addon">
                                             <i class="fa fa-clock-o"></i>
                                         </div>
-                                        <input type="text" class="form-control pull-right" id="endDate" name="event_enddate" >
+                                        <input type="text" class="form-control pull-right" id="endDate" name="event_enddate" value="<?= date('m/d/Y', strtotime($event[0]['event_enddate']))?>">
                                     </div>
                                     <!-- /.input group -->
 
@@ -99,7 +99,7 @@
 
                                 <div class="form-group">
                                     <label for="event_tag">Tag </label>
-                                    <input type="text" name="event_tag" class="form-control" id="event_tag" value="<?php echo isset($event)? $event['0']['tags'] : "" ?>">
+                                    <input type="text" name="event_tag" class="form-control" id="event_tag" value="<?php echo isset($event)? $event['0']['event_tag'] : "" ?>">
                                 </div>
 
 
