@@ -30,10 +30,10 @@
 
                                <h4>Please refer to this for dynamic values</h4>
                                <ul class="mb-20">
-                                   <li>{name} = User to notify</li>
-                                   <li>{reservation} = Kind of reservation</li>
-                                   <li>{reserver_name} = Name of the Person who reserved an event</li>
-                                   <li>{reserver_event} = Event of the Reserver</li>
+                                   <li>{{name}} = User to notify</li>
+                                   <li>{{reservation}} = Kind of reservation</li>
+                                   <li>{{reserver_name}} = Name of the Person who reserved an event</li>
+                                   <li>{{reserver_event}} = Event of the Reserver</li>
                                </ul>
 
 

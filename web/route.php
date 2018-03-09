@@ -69,8 +69,7 @@ $Route['auth'] = [
  */
 
 $Route['dashboard'] = [
-    'request' => 'dashboard/dashboard',
-    'middleware' => 'auth'
+    'request' => 'dashboard/dashboard'
 ];
 
 /**
