@@ -35,6 +35,10 @@ function direct_route( $uri ){
 
     //If no view, check if there is a request file.
     if( route_hasRequestFile( $valid_route ) ){
+        //Authenticate route to controller using middleware
+//        if(route_hasMiddleware( $valid_route)){
+//            include APPPATH . "/middleware/{$valid_route['middleware']}.php";
+//        }
 
         //Pass Action
         $action = isset( $valid_route['action'] ) ? $valid_route['action'] : "index" ;
@@ -45,10 +49,6 @@ function direct_route( $uri ){
         //Parse Route actions
         request_runAction( $valid_route['request'], $action, $params );
 
-        //Authenticate route to controller using middleware
-//        if(route_hasMiddleware( $valid_route)){
-//            include APPPATH . "/middleware/{$valid_route['middleware']}.php";
-//        }
 
         return true;
     }

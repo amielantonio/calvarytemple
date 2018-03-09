@@ -8,9 +8,7 @@
  */
 function index(){
 
-
     $posts = allWithoutTrash( 'posts');
-
 
     return view( 'admin/post/post', compact( 'posts' ));
 }

@@ -69,7 +69,9 @@ $Route['auth'] = [
  */
 
 $Route['dashboard'] = [
+
     'request' => 'dashboard/dashboard'
+
 ];
 
 /**

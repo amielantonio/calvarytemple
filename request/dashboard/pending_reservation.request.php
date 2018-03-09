@@ -27,10 +27,11 @@ function pending_approve( $resource ){
     $id = $resource;
 
     $data = [
-        "reservation_status = 'Approved'",
-        'approved_by = "This Person"',
-        "approved_date = '".date('Y-m-d H:i:s')."'" ,
-        "updated_at = '".date('Y-m-d H:i:s')."'"
+
+        'reservation_status' => 'Approved',
+        'approved_by' => 'Rommer Tiangco',
+        'approved_date' => date( 'Y-m-d H:i:s' ),
+        'updated_at' => date( 'Y-m-d H:i:s' )
 
     ];
 
@@ -40,6 +41,16 @@ function pending_approve( $resource ){
             'alertable'=> 'success',
             'message' => 'The Reservation has been approved.'
         ];
+
+        //Notification
+        $settings = get( 'settings', 1);
+        $phone_number = cherryPick( 'reservations', $id, ['reserver_contact'] );
+
+        $number = $phone_number[0]['reserver_contact'];
+        $message = $settings[0]['approved_message'];
+        $apicode = $settings[0]['sms_key'];
+
+        itexmo( $number, $message, $apicode );
     }
 
     // Call the data from the database again
@@ -50,16 +61,9 @@ function pending_approve( $resource ){
 
 
     //Notification
-    if( !empty($pending)){
-        $settings = get( 'settings', 1);
-        $phone_number = cherryPick( 'reservations', $id, ['reserver_contact'] );
-
-        $number = $phone_number[0]['reserver_contact'];
-        $message = $settings[0]['approved_message'];
-        $apicode = $settings[0]['sms_key'];
-
-        itexmo( $number, $message, $apicode );
-    }
+//    if( !empty($pending)){
+//
+//    }
 
 
 

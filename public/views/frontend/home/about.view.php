@@ -25,7 +25,15 @@
 
             <div class="container">
                 <div class="row">
-
+                    <div class="col-sm-12">
+                        <div class="ct-headline">
+                            <h2 class="section-title">Our Vision</h2>
+                            <div class="background"></div>
+                        </div>
+                        <p>
+                            We are committed in reaching the lost and equipping them to become passionate ins serving God and the World.
+                        </p>
+                    </div>
                 </div>
             </div>
 
@@ -35,7 +43,14 @@
 
             <div class="container">
                 <div class="row">
-
+                    <div class="col-sm-12">
+                        <div class="ct-headline">
+                            <h2 class="section-title">Our Mission</h2>
+                            <div class="background"></div>
+                        </div>
+                            To Plant and establish Christ-Centered mission oriented local churches scattered throughout the land and abroad.
+                        </p>
+                    </div>
                 </div>
             </div>
 
