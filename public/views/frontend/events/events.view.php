@@ -27,40 +27,16 @@
             <div class="container">
                 <div class="row">
 
-                    <div class="col-sm-6">
-
-                        <h2>Recent Events</h2>
-
-                        <?php if( !empty( $recentEvents ) and isset( $recentEvents) ) : ?>
-
-
-                            <?php foreach( $recentEvents as $key => $event ) : ?>
-                                <a href="<?= route( "event" )."/{$event['event_url']}"?>">
-                                    <div class="card mb-20" style="flex-direction: row">
-                                        <img class="card-img-top" src="<?= $event['event_image'] ?>" alt="Card image" style="width: 200px;height: 100%;">
-                                        <div class="card-body">
-                                            <h5 class="card-title"><?= $event['event']?></h5>
-                                            <p class="card-text text-muted small">
-                                                <?= isset( $event )? "Posted By " . $event['author'] : "" ?> |
-                                                Event Date <?= isset( $event )? date( 'F d, Y', strtotime( $event['event_startdate'] ) ) . " - " . date( 'F d, Y', strtotime( $event['event_enddate'] ) ) : "" ?>
-                                            </p>
-                                            <p class="card-text"><?= $event['event_details'] ?></p>
-                                        </div>
-                                    </div>
-                                </a>
-                            <?php endforeach; ?>
-
-                        <?php else : ?>
-
-                            <h1>No Recent Events</h1>
-
-                        <?php endif;?>
-
+                    <div class="col-sm-12">
+                        <div class="ct-headline text-center">
+                            <h2>Upcoming Events</h2>
+                            <div class="background"></div>
+                        </div>
                     </div>
 
-                    <div class="col-sm-6">
+                    <div class="offset-2 col-sm-8">
 
-                        <h2>Upcoming Events</h2>
+
 
                         <?php if( !empty( $upcomingEvents ) and isset( $upcomingEvents) ) : ?>
 

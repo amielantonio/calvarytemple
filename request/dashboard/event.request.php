@@ -19,6 +19,7 @@ function index(){
  *
  * @param $resource
  * @return mixed
+ * @throws exception
  */
 function show( $resource ){
 

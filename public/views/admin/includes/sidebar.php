@@ -6,8 +6,12 @@
     <section class="sidebar">
         <!-- Sidebar user panel -->
 
+
+
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">NAVIGATION</li>
+
+            <?php if( auth_getAccessLevel() <> 'Author' ) : ?>
             <li>
                 <a href="<?= route( 'dashboard' ) ?>">
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
@@ -58,6 +62,10 @@
             </li>
 
             <!--end admin view-->
+            <?php endif; ?>
+
+
+            <?php if( auth_getAccessLevel() <> 'Admin' ) : ?>
 
             <!--View for Author only-->
 
@@ -114,12 +122,20 @@
                 </ul>
             </li>
 
+            <?php endif;?>
+
+            <?php if( auth_getAccessLevel() <> 'Author' ) : ?>
+
+
+
             <li class="">
                 <a href="<?= route('dashboard/settings') ?>">
                     <i class="fa fa-wrench"></i> <span>Settings</span>
                 </a>
 
             </li>
+
+            <?php endif; ?>
 
         </ul>
     </section>

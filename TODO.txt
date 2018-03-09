@@ -1,15 +1,5 @@
 Todo
 
-//Backend
-1) Dashboard Calendar
-2) Security
-3) All Search must work
-4) Posts - buttons must work
-5) Same with the events
-6) Deletion of user
-7) Settings - Settings view
-8) Reservation notifications
+check niya availability dates
 
-
-//Frontend
-Fix frontend
+interface for availabilty
