@@ -39,20 +39,20 @@
                 <div class="col-sm-12">
                     <div class="box">
 
-                        <form action="<?php echo isset($post)? route( "dashboard/events/{$post['0']['id']}/update" ) : route( "dashboard/events/store" ) ?>" method="post" enctype="multipart/form-data">
+                        <form action="<?php echo isset($event)? route( "dashboard/events/{$event['0']['id']}/update" ) : route( "dashboard/events/store" ) ?>" method="post" enctype="multipart/form-data">
                             <div class="box-body pad">
 
                                 <div class="form-group">
                                     <label for="event">Event Name</label>
-                                    <input type="text" name="event" class="form-control" id="post_title" value="<?php echo isset($post)? $post['0']['post_title'] : "" ?>">
+                                    <input type="text" name="event" class="form-control" id="post_title" value="<?php echo isset($event)? $event['0']['event'] : "" ?>">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="event_image">Featured Image</label>
                                     <input type="file" name="event_image" class="form-control" id="featured_image" accept="image/*">
-                                    <?php if(isset($post)) : ?>
+                                    <?php if(isset($event)) : ?>
                                         <br />
-                                        <img src="<?php echo $post['0']['featured_image'] ?>" width="200">
+                                        <img src="<?php echo $event['0']['event_image'] ?>" width="200">
                                     <?php endif; ?>
                                 </div>
 
@@ -89,17 +89,17 @@
 
                                 <div class="form-group">
                                     <label for="editor1">Event Desciption</label>
-                                    <textarea id="editor1" name="event_description" rows="10" cols="80" style="visibility: hidden; display: none;"><?php echo isset($post)? $post['0']['post_body'] : "" ?></textarea>
+                                    <textarea id="editor1" name="event_description" rows="10" cols="80" style="visibility: hidden; display: none;"><?php echo isset($event)? $event['0']['event_description'] : "" ?></textarea>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="event_details">Additional Details</label>
-                                    <textarea name="event_details" id="event_details" class="form-control"><?php echo isset($post)? $post['0']['post_excerpt'] : "" ?></textarea>
+                                    <textarea name="event_details" id="event_details" class="form-control"><?php echo isset($event)? $event['0']['event_details'] : "" ?></textarea>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="event_tag">Tag </label>
-                                    <input type="text" name="event_tag" class="form-control" id="event_tag" value="<?php echo isset($post)? $post['0']['tags'] : "" ?>">
+                                    <input type="text" name="event_tag" class="form-control" id="event_tag" value="<?php echo isset($event)? $event['0']['tags'] : "" ?>">
                                 </div>
 
 
@@ -107,8 +107,8 @@
 
 
                             <div class="box-footer">
-                                <button type="submit" class="btn btn-primary" name="<?php echo isset($post)? "btn-update" : "btn-publish"?>">
-                                    <?php echo isset($post)? "Update" : "Publish"?>
+                                <button type="submit" class="btn btn-primary" name="<?php echo isset($event)? "btn-update" : "btn-publish"?>">
+                                    <?php echo isset($event)? "Update" : "Publish"?>
                                 </button>
                                 <button type="submit" class="btn btn-info" name="btn-draft">Save as Draft</button>
                             </div>
