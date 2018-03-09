@@ -31,7 +31,7 @@ function store(){
 
     //INITIAL CHECKS
     if( $_POST['startTime'] < date( 'H:i:s', strtotime( '8:00 am' ) ) || $_POST['startTime'] > date( 'H:i:s', strtotime( '5:00 pm' ) ) ){
-        redirect( route( 'reservations?alert=1' ) );
+        redirect( route( 'reservations?alert=2' ) );
         return false;
     }
 
@@ -60,7 +60,7 @@ function store(){
 
     if( !empty( $first_check )){
 
-        redirect( route( 'reservations?alert=1' ) );
+        redirect( route( 'reservations?alert=2' ) );
         return false;
     }
 
@@ -68,7 +68,7 @@ function store(){
 
     if( !empty( $second_check ) ){
 
-        redirect( route( 'reservations?alert=1' ) );
+        redirect( route( 'reservations?alert=2' ) );
         return false;
     }
 
